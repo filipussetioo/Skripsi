@@ -16,7 +16,7 @@
 \makeatletter
 \renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
 \renewcommand{\thispagestyle}[1]{}
-\markright{\textbf{\textsc{AIF401/AIF402 \textemdash Rencana Kerja Skripsi \textemdash Sem. Genap 2016/2017}}}
+\markright{\textbf{\textsc{AIF401/AIF402 \textemdash Rencana Kerja Skripsi \textemdash Sem. Genap 2022/2023}}}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \renewcommand{\baselinestretch}{1}
@@ -31,11 +31,11 @@
 \author{\nama \textendash \@npm} 
 
 %tulis nama dan NPM anda di sini:
-\newcommand{\nama}{Lionov}
-\newcommand{\@npm}{1997730020}
-\newcommand{\@judultopik}{Simulasi Kerumunan di Museum} % Judul/topik anda
+\newcommand{\nama}{Filipus}
+\newcommand{\@npm}{6181901074}
+\newcommand{\@judultopik}{Konversi SharIF Judge dari CodeIgniter 3 ke CodeIgniter 4} % Judul/topik anda
 \newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
-\newcommand{\tanggal}{01/01/1900}
+\newcommand{\tanggal}{22/02/2023}
 
 % Dokumen hasil template ini harus dicetak bolak-balik !!!!
 
@@ -44,69 +44,76 @@
 \pagenumbering{arabic}
 
 \section{Deskripsi}
-Tuliskan deskripsi dari topik skripsi yang akan anda ajukan. Di sini dapat dituliskan latar belakang, seperti apa penelitian yang sudah ada sebelumnya dan apa yang akan anda kerjakan. Sertakan gambar agar penjelasan anda menjadi lebih baik.
+Tugas merupakan suatu bentuk pembelajaran dan penilaian yang diberikan oleh pengajar kepada pelajar untuk membantu pelajar mendalami materi yang sudah diberikan. Pembagian tugas yang diberikan dapat dibagi menjadi 2 jenis yakni tugas individu dan tugas kelompok. Tugas individu merupakan tugas yang hanya ditanggung oleh satu individu sedangkan, tugas kelompok merupakan tugas yang ditanggung oleh beberapa individu. Tugas selanjutnya akan dikumpulkan kepada pengajar dan diberikan penilaian berdasarkan tingkat ketepatan jawaban dari tugas tersebut. Pengumpulan dan pengecekan tugas terutama \textit{coding} secara manual memiliki kekurangan dimana diperlukan banyak langkah dalam melakukan pengecekan dan pengiriman nilai. Pengecekan secara manual juga terdapat kesulitan dalam pengecekan yakni, kekurangan dalam pengecekan plagiat antara tugas pelajar. Maka, dibutuhkan perangkat lunak untuk melakukan pengecekan secara otomatis salah satunya adalah \textit{Online Judge}.
 
-Pada skripsi ini, akan dibuat sebuah perangkat lunak yang dapat menampilkan visualisasi dan simulasi kerumunan orang yang berkunjung ke sebuah museum. Dengan menggunakan perangkat lunak tersebut, pengelola museum dapat mengatur tempat peletakan objek sehingga tidak terjadi kerumunan yang terlalu padat.
+\textit{Online Judge} merupakan sebuah perangkat lunak berbasis web yang dapat melakukan pengecekan \textit{program} sesuai dengan standar yang sudah diberikan. Perangkat lunak ini dapat menerima jawaban dari pelajar dan melakukan pengecekan secara otomatis dan memberikan keluaran berupa nilai dari pelajar tersebut. 
 
-Dari berbagai macam teknik yang dapat digunakan untuk melakukan simulasi kerumunan, dipilih dua buah teknik yaitu teknik {\it flow tiles} dan {\it social force model (steering behaviour)}.
 
-Dst, dst, dst, \ldots\ldots\ldots 
+Pengumpulan tugas \textit{programming} terutama di Informatika Unpar menggunakan sebuah perangkat lunak berbasis web bernama SharIF Judge. 
 
-Perangkat lunak akan dibuat dengan bantuan {\it framework} OpenSteer. Sebagai studi kasus, museum yang digunakan untuk melakukan simulasi adalah Museum Geologi Bandung.
+SharIF Judge merupakan sebuah alat \textit{open source} untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python secara online. SharIF Judge dibentuk menggunakan \textit{framework} CodeIgniter 3 yang merupakan \textit{framework} berbasis PHP dan dimodifikasi sesuai dengan kebutuhan Informatika Unpar untuk mengumpulkan tugas dan ujian mahasiswa. 
 
-Dst, dst, dst, \ldots\ldots\ldots 
+CodeIgniter 3 merupakan sebuah \textit{framework} gratis yang bertujuan untuk mempermudah dalam membentuk sebuah aplikasi \textit{website} menggunakan PHP. CodeIgniter 3 menggunakan struktur MVC yang membagi file menjadi 3 buah yaitu Model, View, Controller. Selain itu, CodeIgniter 3 merupakan \textit{framework} ringan dan menyediakan banyak \textit{library} untuk digunakan oleh penggunanya. 
+
+CodeIgniter 3 sudah memasuki fase \textit{maintenance} sehingga tidak akan mendapatkan \textit{update} lebih lanjut dari pembentuknya. CodeIgniter 3 pada akhirnya akan tidak dapat dipakai dan akan hilangnya dokumentasi dari situs web resmi. Sehingga, perangkat lunak yang menggunakan CodeIgniter 3 perlu dikonversi ke \textit{framework} CodeIgniter dengan versi terbaru yakni CodeIgniter 4.
+
+CodeIgniter 4 merupakan versi terbaru dari \textit{framework} CodeIgniter yang memiliki banyak perubahan fitur dari versi sebelumnya. CodeIgniter 4 dibentuk menggunakan versi PHP 7.4 sedangkan CodeIgniter 3 dibentuk menggunakan versi PHP 5.6. CodeIgniter 4 membagi file menggunakan struktur MVC namun, memiliki struktrur folder berbeda dengan versi sebelumnya.
+
+Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4. Konversi dilakukan karena CodeIgniter 3 sudah memasukin fase \textit{maintenance} sehingga CodeIgniter 3 hanya akan mendapatkan \textit{security update}.
+
+Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4. Konversi dilakukan karena CodeIgniter 3 sudah memasukin fase \textit{maintenance} sehingga CodeIgniter 3 hanya akan mendapatkan \textit{security update}.
 
 \section{Rumusan Masalah}
-Tuliskan rumusan dari masalah yang akan anda bahas pada skripsi ini. Rumusan masalah biasanya berupa kalimat pertanyaan. Gunakan itemize seperti contoh di bagian Deskripsi Perangkat Lunak.
+\begin{itemize}
+	\item Apa standar yang ada sehingga CodeIgniter 3 perlu dikoversi CodeIgniter 4?
+	\item Bagaimana cara melakukan konversi CodeIgniter 3 menjadi CodeIgniter 4?
+	\item Bagaimana mengevaluasi kode SharIF Judge dan mengubahnya agar dapat berjalan di CodeIgniter 4?
+\end{itemize}
 
 \section{Tujuan}
-Tuliskan tujuan dari topik skripsi yang anda ajukan. Tujuan penelitian biasanya berkaitan erat dengan pertanyaan yang diajukan di bagian rumusan masalah. Gunakan itemize seperti contoh di bagian Deskripsi Perangkat Lunak.
+\begin{itemize}
+	\item Mencari standar yang dibutuhkan sehingga CodeIgniter 3 perlu di konversi mendjadi CodeIgniter 4.
+	\item Melakukan konversi dengan megubah kode sesuai dengan CodeIgniter 4.
+	\item Melakukan evaluasi kode SharIF Judge dan mengubahnya agar dapat berjalan di CodeIgniter 4.
+\end{itemize}
 
 \section{Deskripsi Perangkat Lunak}
-Tuliskan deksripsi dari perangkat lunak yang akan anda hasilkan. Apa saja fitur yang disediakan oleh PL tersebut dan apa saja kemampuan dari PL tersebut. Perhatikan contoh di bawah ini:
-
-Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
+Perangkat lunak akhir yang akan dibuat memiliki fitur yang sama dengan sebelumnya sebagai berikut:
 \begin{itemize}
-	\item Pengguna dapat melihat denah Musem Geologi Bandung dalam bidang dua dimensi. Sedangkan pengunjung direpresentasikan menggunakan lingkaran-lingkaran kecil (tidak menggunakan gambar manusia yang diambil dari atas)
-	\item Pengguna dapat memunculkan atau menghilangkan gambar {\it flow tiles} pada denah museum. 
-	\item Pengguna dapat mengatur jalannya simulasi: memulai(start) simulasi, menunda(pause) simulasi, melanjutkan(continue) simulasi, maupun menghentikan(stop) simulasi
-	\item Pengguna dapat mengatur banyaknya pengunjung di dalam museum, baik melalui perubahan frekuensi kedatangan pengunjung maupun menambahkan dan menghapus pengunjung satu-persatu secara manual.
-	\item Posisi kamera dapat diubah (pergerakan di bidang tiga dimensi) sehingga pengguna dapat melihat simulasi di museum dari berbagai arah. 
-	\item Posisi kamera dapat diubah untuk emngikuti perjalanan seorang pengunjung di dalam 
-	\item Pengguna dapat memilih apakah akan menggunakan teknik {\it flow tiles} atau tidak pada saat simulasi berlangsung
-	\item Jenis {\it flow tiles} yang digunakan dapat diubah-ubah pada saat simulasi sedang berlangsung
-		
+	\item Pengguna dapat melakukan login dengan beberapa \textit{user}.
+	\item Perangkat lunak dapat menerima kode dengan bahasa C, C++, Java, dan Python. 
+	\item Perangkat lunak dapat mendeteksi plagiarisme terhadap kode yang sudah dikumpulkan.
+	\item Pengguna dapat mengumpulkan kode yang akan dinilai.
+	\item Pengguna dapat mendapatkan nilai berdasarkan kode dan soal yang diberikan.
+	\item Pengguna dapat megunduh hasil jawaban menjadi file excel.
+	\item Pengguna dapat mengunduh kode yang sudah dikumpulkan dalam file zip.	
 \end{itemize}
 
 \section{Detail Pengerjaan Skripsi}
-Tuliskan bagian-bagian pengerjaan skripsi secara detail. Bagian pekerjaan tersebut mencakup awal hingga akhir skripsi, termasuk di dalamnya pengerjaan dokumentasi skripsi, pengujian, survei, dll.
-
 Bagian-bagian pekerjaan skripsi ini adalah sebagai berikut :
 	\begin{enumerate}
-		\item Melakukan survei ke Museum Geologi Bandung untuk mendapatkan denah serta mengetahui perilaku pengunjung museum secara umum (arah perjalanan, kecepatan, lama melihat objek, dll)
-		\item Melakukan analisis pada hasil survei terhadap pergerakan pengunjung di museum dan membuat rancangan denah di komputer yang dilengkapi dengan penghalang dan objek di museum.
-		\item Melakukan studi literatur mengenai sifat kolektif suatu kerumunan, teknik {\it social force model} dan teknik {\it flow tiles}
-		\item Mempelajari bahasa pemrograman C++ dan cara menggunakan framework OpenSteer
-		\item Merancang pergerakan kerumunan di dalam museum menggunakan teknik {\it social force model} dan {\it flow tiles} serta menggunakan teknik lainnya seperti konsep pathway dan waypoints. Selain itu, dirancang pula adanya waktu tunggu (pada saat pengunjung melihat objek di museum) dan cara pembuatan jalur bagi setiap individu pengunjung
-		\item Melakukan analisa dan merancang struktur data yang cocok untuk menyimpan penghalang (obstacle)
-		\item Mengimplementasikan keseluruhan algoritma dan struktur data yang dirancang, dengan menggunakan framework OpenSteer 
-		\item Melakukan pengujian (dan eksperimen) yang melibatkan responde untuk menilai hasil simulasi secara kualitatif
+		\item Melakukan eksplorasi fungsi-fungsi dan cara kerja SharIF Judge. 
+		\item Melakukan studi literatur mengenai CodeIgniter 3 dan CodeIgniter 4.
+		\item Melakukan studi literatur mengenai cara melakukan konversi CodeIgniter 3 menjadi CodeIgniter 4.
+		\item Melakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4.
+		\item Melakukan pengujian dan eksperimen
 		\item Menulis dokumen skripsi
 	\end{enumerate}
 
 \section{Rencana Kerja}
 Rincian capaian yang direncanakan di Skripsi 1 adalah sebagai berikut:
 \begin{enumerate}
-\item
-\item
-\item
+\item Mempelajari cara kerja SharIF Judge.
+\item Melakukan studi literatur mengenai CodeIgniter 3 dan CodeIgniter 4.
+\item Melakukan studi literatur mengenai cara konversi CodeIgniter 3 menjadi CodeIgniter 4.
+\item Menulis sebagian dokumen skripsi yaitu bab 1, 2, dan 3.
 \end{enumerate}
 
 Sedangkan yang akan diselesaikan di Skripsi 2 adalah sebagai berikut:
 \begin{enumerate}
-\item
-\item
-\item
+\item Melakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4.
+\item Melakukan pengujian dan eksperimen
+\item Menulis dokumen skripsi untuk bab 4, 5, dan 6.
 \end{enumerate}
 
 \vspace{1cm}

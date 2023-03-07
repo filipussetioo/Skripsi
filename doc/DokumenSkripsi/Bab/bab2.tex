@@ -2,28 +2,170 @@
 \chapter{Landasan Teori}
 \label{chap:teori}
 
-\section{Skripsi}
-\label{sec:skripsi} 
+\section{SharIF Judge}
+\label{sec:judge}
+
+SharIF Judge merupakan sebuah \textit{Online Judge} yang diambil dari Mohammed Javad Naderi yang dibentuk menggunakan CodeIgniter 3 dan diubah sesuai dengan kebutuhan di Informatika Universitas Katolik Parahyangan. SharIF Judge dapat menilai kode berbahasa \textit{C, C++, Java, dan Python} dengan mengunggah file ataupun mengetiknya langsung.
+
+\subsection{Instalasi}
+
+Berikut merupakan persyaratan dan langkah-langkah melakukan \textit{instalasi SharIF Judge}:
+
+\subsubsection{Persyaratan}
+SharIF Judge dapat dijalankan pada sistem operasi \textit{Linux} dengan syarat sebagai berikut:
+\begin{itemize}
+\item Diperlukan \textit{webserver} dengan versi PHP 5.3 atau lebih baru.
+\item Pengguna dapat menjalankan PHP pada \textit{command line}. Pada \textit{Ubuntu} diperlukan instalasi paket \textit{php5-cli}.
+\item \textit{MySql database} dengan ekstensi \textit{Mysqli} untuk PHP atau \textit{PostgreSql database}.
+\item PHP harus memiliki akses untuk menjalankan perintah melalui fungsi \textit{shell\textunderscore exec}.
+
+\begin{lstlisting}[language=Java, caption=Kode untuk melakukah pengetesan fungsi \textit{shell_exec}, label=kode:shell]
+	echo shell_exec("php -v");
+\end{lstlisting}
+
+\item \textit{Tools} untuk melakukan kompilasi dan menjalankan kode yang dikumpulkan (\textit{gcc, g++, javac, java, python2, python3}).
+\item \textit{Perl} disarankan untuk diinstalasi untuk alasan ketepatan waktu, batas memori, dan memaksimalkan batas ukuran pada hasil kode yang dikirim.
+\end{itemize}
+
+\subsubsection{Instalasi}
+\begin{itemize}
+\item Mengunduh versi terakhir dari \textit{SharIF Judge} dan melakukan \textit{unpack} pada direktori \textit{public html}.
+\item Memindahkan \textit{folder system} dan \textit{application} diluar direktori \textit{public} dan mengubah \textit{path} pada \verb|index.php|(Opsional).
+\begin{lstlisting}[language=Java, caption=Contoh \textit{path} pada halaman index.php, label=kode:movesystemandapp]
+	$system_path = '/home/mohammad/secret/system';
+	application_folder = '/home/mohammad/secret/application';
+\end{lstlisting}
+\item Membentuk \textit{database MySql} atau \textit{PostgreSql} untuk \textit{SharIF Judge}. Jangan melakukan instalasi paket koneksi \textit{database} apapun untuk \textit{C, C++, Java,} atau \textit{Python}.
+
+\end{itemize}
+
+\subsection{\textit{Clean Urls}}
+
+
+\subsection{Users}
+\subsection{Menambah Assignment}
+\subsection{Sample Assignment}
+
+\section{CodeIgniter 3}
+\label{sec:ci3} 
  
-Rencananya akan diisi dengan penjelasan umum mengenai buku skripsi.
+CodeIgniter 3 merupakan sebuah \textit{framework} yang berfungsi untuk mempermudah penggunanya dalam membentuk aplikasi \textit{website} menggunakan bahasa PHP. CodeIgniter 3 menggunakan struktur MVC (dapat dilihat pada Gambar ~\ref{fig:mvc})) dalam pembentukan \textit{website}.
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{mvc}  
+	\caption[Gambar arsitektur MVC]{Gambar arsitektur MVC} 
+	\label{fig:mvc} 
+\end{figure} 
 
-\dtext{11-12} 
+MVC membagi struktur \textit{folder} menjadi 3 buah dengan fungsi berbeda yaitu Model, View, Controller. Model
 
-\section{\LaTeX}
-\label{sec:latex}
+\section{CodeIgniter 4}
+\label{sec:ci4}
 
-Mengapa menggunakan \LaTeX{} untuk buku skripsi dan apa keunggulan/kerugiannya bagi mahasiswa dan pembuat template. 
-
-\dtext{13-14}
+CodeIgniter 4 merupakan versi terbaru dari \textit{framework} CodeIgniter.
 
 
-\section{Template Skripsi FTIS UNPAR}
-\label{sec:template}
+\section{Koversi CodeIgniter 3 ke CodeIgniter 4 \footnote{\url{https://codeigniter.com/user_guide/installation/upgrade_4xx.html}}}
+\label{sec:konversici3c4}
  
-Akan dipaparkan bagaimana menggunakan template ini, termasuk petunjuk singkat membuat referensi, gambar dan tabel.
-Juga hal-hal lain yang belum terpikir sampai saat ini. 
+CodeIgniter 3 sedang mengalami fase \textit{maintenance} sehingga perlu dilakukan konversi menjadi CodeIgniter 4. Konversi CodeIgniter 3 ke CodeIgniter 4 diperlukan penulisan ulang karena terdapat banyak implementasi yang berbeda. Konversi ke CodeIgniter 4 diawali dengan melakukan instalasi projek baru CodeIgniter 4.
+
+
+\subsection{Struktur Aplikasi}
+
+Struktur direktori pada CodeIgniter 4 memiliki perubahan yang terdiri \textit{app, public, dan writable}. Direktori app merupakan perubahan dari direktori application dengan isi yang hampir sama dengan beberapa perubahan nama dan perpindahan direktori. Pada CodeIgniter 4 terdapat direktori \textit{public} yang bertujuan sebagai direktori utama pada aplikasi website. Selanjutnya terdapat direktori \textit{writable} yang berisikan \textit{cache data, logs,} dan \textit{session data}.
+
+
+\textbf{\textit{Routing}}
+
+CodeIgniter 4 meletakan \textit{route} pada \textit{file} \verb|app\Config\Routes.php|. CodeIgniter 4 memiliki fitur \textit{auto routing} seperti pada CodeIgniter 3 namun, pada \textit{default} di matikan. Fitur \textit{auto routing} memungkinkan untuk dinyalakan serupa dengan pada CodeIgniter 3 namun tidak direkomendasikan karena alasan \textit{security}.  
  
-\dtext{15-16}
+ 
+\textbf{\textit{Model, View, and Controller}}
+ 
+Struktur MVC pada CodeIgniter 4 berbeda dibandingkan CodeIgniter 3 dimana pada CodeIgniter 4 direktori \textit{Model} terdapat pada direktori \verb|app\Models|. Pembentukan \textit{file} untuk \textit{Model} perlu ditambahkan \verb|namespace App\Models;| dan \verb|use CodeIgniter\Model;| pada awal \textit{file} setelah membuka tag PHP. Selanjutnya nama fungsi perlu diubah dari \verb|extends CI_Model| menjadi \verb|extends Model|. 
+ 
+\textit{View} pada CodeIgniter 4 terdapat di \verb|app\Views| dengan sintaks yang harus diubah. Sintaks yang harus diubah merupakan sintaks untuk memanggil \textit{view} pada CodeIgniter 3 \verb|$this->load->view('x');| sedangkan pada CodeIgniter 4 dapat menggunakan \verb|return view('x);|. Selanjutnya, sintaks \verb|<?php echo $title?>| pada halaman \textit{view} dapat diubah menjadi
+ \verb|<?= $title ?>|. 
+ 
+\textit{Controller} pada CodeIgniter 4 terdapat di \verb|app\Controllers| dan diperlukan beberapa perubahan. Pertama, perlu ditambahkan \verb|namespace App\Controllers;| pada awal \textit{file} setelah membuka tag PHP. Selanjutnya, perlu mengubah \verb|extends CI_Controller| menjadi \verb|extends BaseController|. Selanjutnya, diperlukan pengubahan nama pada pemanggilan \textit{file} menjadi \verb|App\Controllers\User.php| .
+ 
+\textbf{\textit{Libraries}}
+ 
+CodeIgniter 4 menyediakan \textit{library} untuk digunakan dan dapat diinstall apabila diperlukan. Pemanggilan \textit{library} berubah dari \verb|$this->load->library('x');| menjadi \verb|$this->x = new X();|. Terdapat beberapa \textit{library} yang harus di \textit{upgrade} dengan sedikit perubahan.
+ 
+
+\textbf{\textit{Helpers}}
+ 
+\textit{Helpers} tidak terdapat banyak perubahan namun, beberapa \textit{helpers} pada \textit{CodeIgniter 3} tidak terdapat pada \textit{CodeIgniter 4} sehingga perlu perubahan pada implementasi fungsinya. \textit{Helpers} dapat di dimuat secara otomatis menggunakan \verb|app\Config\Autoload.php|
+
+
+\textbf{\textit{Events}}
+
+
+\textbf{\textit{Framework}}
+
+
+\textbf{\textit{Configuration}}
+
+\textit{File configuration} CodeIgniter 4 terdapat pada \verb|app\Config| dengan penulisan sedikit berbeda dengan versi sebelumnya. Pengguna hanya perlu melakukan pemindahan menuju CodeIgniter 4 dan apabila menggunakan \textit{file config custom} maka, diperlukan penulisan ulang pada direktori Config dengan melakukan \textit{extend} pada \verb|CodeIgniter\Config\BaseConfig|.   
+
+\textbf{\textit{Database}}
+
+Penggunaan \textit{database} pada CodeIgniter 4 hanya berubah sedikit dibandingkan dengan versi sebelumnya. Data-data penting kredensial diletakan pada \verb|app\Config\Database.php| dan perlu dilakukan beberapa perubahan sintaks dan \textit{query}. Sintaks untuk memuat database diubah menjadi \verb|$db = db_connect();| dan  apabila menggunakan beberapa \textit{database} maka sintaks menjadi \verb|$db = db_connect('group_name');|. Semua \textit{query} harus diubah dari \verb|$this->db| menjadi \verb|$db| dan beberapa sintaks perlu diubah seperti \verb|$query->result();| menjadi \verb|$query->getResult();|. Selain itu, terdapat \textit{class} baru yakni \textit{Query Builder Class} yang harus di inisiasi \verb|$builder = $db->table('mytable');| dan dapat dipakai untuk menjalankan \textit{query} dengan mengganti \verb|$this->db| seperti \verb|$this->db->get();| menjadi \verb|$builder->get();|.
+
+\textbf{\textit{Emails}}
+
+Perubahan \textit{email} hanya terdapat pada nama dari \textit{method} dan pemanggilan \textit{library email}. Pemanggilan  \textit{library} berubah dari \verb|$this->load->library('email);| menjadi \verb|$email = service('email');| dan selanjutnya perlu dilakukan perubahan pada semua \verb|$this->email| menjadi \verb|$email|. Selanjutnya beberapa pemanggilan \textit{method} berubah dengan tambahan \textit{set} didepannya seperti \textit{from} menjadi \textit{setFrom}.
+
+\textbf{\textit{Encryption}}
+
+Terdapat perubahan 
+
+\textbf{\textit{Working with Uploaded Files}}
+
+Terdapat banyak perubahan dimana pada CodeIgniter 4 pengguna dapat mengecek apakah \textit{file} telah terunggah tanpa \textit{error} dan lebih mudah untuk melakukan penyimpanan \textit{file}. Pada CodeIgniter 4 melakukan akses pada \textit{uploaded file} dilakukan dengan \verb|$file = $this->request->getFile('userfile')| dan dapat dilakukan validasi dengan cara \verb|$file->isValid()|. Penyimpanan \textit{file} yang sudah diunggah dapat dilakukan dengan \verb|$path = $this->request->getFile('userfile')->store('head_img/', 'user_name.jpg');|. \textit{File} yang sudah diunggah dan di validasi akan tersimpan pada \verb|writable/uploads/head_img/user_name.jpg.|
+
+\textbf{\textit{HTML Tables}}
+
+Tidak terdapat banyak perubahan pada \textit{framework} versi terbaru hanya perubahan pada nama \textit{method} dan pemanggilan \textit{library}. Perubahan pemanggilan \textit{library} dari \verb|$this->load->library('table');| menjadi \verb|$table = new \CodeIgniter\View\Table();| dan perlu dilakukan perubahan setiap \verb|$this->table| menjadi \verb|$table|. Selain itu, terdapat bebera perubahan pada penamaan \textit{method} dari \textit{underscored} menjadi \textit{camelCase}.
+
+
+\textbf{\textit{Localization}}
+
+\textit{CodeIgniter 4} mengembalikan \textit{file} bahasa menjadi \textit{array} sehingga perlu dilakukan beberapa perubahan. Pertama, perlu dilakukan konfigurasi \textit{default languange} 
+pada perangkat lunak. Selanjutnya melakukan pemindahan \textit{file} bahasa pada \textit{CodeIgniter 3} menuju \verb|app\Languange\<locale>|. \textit{File-file} bahasa \textit{CodeIgniter 3} perlu dilakukan penghapusan semua kode \verb|$this->lang->load($file, $lang);| dan mengubah \textit{method} pemanggilan bahasa dari \verb|$this->lang->line('error_email_missing')| menjadi \verb|echo lang('Errors.errorEmailMissing');|
+ 
+\textbf{\textit{Migrations}}
+
+Perubahan perlu dilakukan pada nama \textit{file} menjadi nama dengan cap waktu. Selanjutnya dilakukan penghapusan kode \verb|defined('BASEPATH') OR exit('No direct script access allowed');| dan menambahkan dua buah kode yakni, \verb|namespace App\Database\Migrations;| dan \verb|use CodeIgniter\Database\Migration;| setelah membuka tag PHP. Setelah itu, \verb|extends CI_Migration| diubah menjadi \verb|extends Migration|. Terakhir, terdapat perubahan pada nama \textit{method} \textit{Forge} dari \verb|$this->dbforge->add_field| menjadi \textit{camelCase} \verb|$this->forge->addField|.
+ 
+\textbf{\textit{Pagination}}
+
+
+
+\textbf{\textit{HTTP Response}}
+
+
+
+\textbf{\textit{Routing}}
+
+
+
+\textbf{\textit{Security}}
+
+
+
+\textbf{\textit{Sessions}}
+
+
+
+\textbf{\textit{Validations}}
+
+
+
+\textbf{\textit{View Parser}}
+
 
 \subsection{Tabel}  
 Berikut adalah contoh pembuatan tabel. 
