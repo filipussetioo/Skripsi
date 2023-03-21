@@ -16,7 +16,7 @@
 \makeatletter
 \renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
 \renewcommand{\thispagestyle}[1]{}
-\markright{\textbf{\textsc{AIF401/AIF402 \textemdash Rencana Kerja Skripsi \textemdash Sem. Genap 2022/2023}}}
+\markright{\textbf{\textsc{AIF401 \textemdash Rencana Kerja Skripsi \textemdash Sem. Genap 2022/2023}}}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \renewcommand{\baselinestretch}{1}
@@ -46,33 +46,23 @@
 \section{Deskripsi}
 Tugas merupakan suatu bentuk pembelajaran dan penilaian yang diberikan oleh pengajar kepada pelajar untuk membantu pelajar mendalami materi yang sudah diberikan. Pembagian tugas yang diberikan dapat dibagi menjadi 2 jenis yakni tugas individu dan tugas kelompok. Tugas individu merupakan tugas yang hanya ditanggung oleh satu individu sedangkan, tugas kelompok merupakan tugas yang ditanggung oleh beberapa individu. Tugas selanjutnya akan dikumpulkan kepada pengajar dan diberikan penilaian berdasarkan tingkat ketepatan jawaban dari tugas tersebut. Pengumpulan dan pengecekan tugas terutama \textit{coding} secara manual memiliki kekurangan dimana diperlukan banyak langkah dalam melakukan pengecekan dan pengiriman nilai. Pengecekan secara manual juga terdapat kesulitan dalam pengecekan yakni, kekurangan dalam pengecekan plagiat antara tugas pelajar. Maka, dibutuhkan perangkat lunak untuk melakukan pengecekan secara otomatis salah satunya adalah \textit{Online Judge}.
 
-\textit{Online Judge} merupakan sebuah perangkat lunak berbasis web yang dapat melakukan pengecekan \textit{program} sesuai dengan standar yang sudah diberikan. Perangkat lunak ini dapat menerima jawaban dari pelajar dan melakukan pengecekan secara otomatis dan memberikan keluaran berupa nilai dari pelajar tersebut. 
+\textit{Online Judge} merupakan sebuah perangkat lunak yang dapat melakukan pengecekan \textit{program} sesuai dengan standar yang sudah diberikan. Perangkat lunak ini dapat menerima jawaban dari pelajar dan melakukan pengecekan secara otomatis dan memberikan keluaran berupa nilai dari pelajar tersebut\cite{kurnia:01:judge}. Salah satu perangkat lunak \textit{Online Judge} terdapat pada Universitas Katolik Parahyangan jurusan Informatika bernama SharIF Judge. SharIF Judge merupakan sebuah perangkat lunak \textit{open source} untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python secara online. SharIF Judge dibentuk menggunakan \textit{framework} CodeIgniter 3 yang merupakan \textit{framework} berbasis PHP (\textit{Hypertext Preprocessor}) dan dimodifikasi sesuai dengan kebutuhan Informatika Unpar untuk mengumpulkan tugas dan ujian mahasiswa.
 
+CodeIgniter 3 merupakan sebuah \textit{framework} gratis yang bertujuan untuk mempermudah dalam membentuk sebuah aplikasi \textit{website} menggunakan PHP. CodeIgniter 3 menggunakan struktur MVC yang membagi file menjadi 3 buah yaitu Model, View, Controller. Selain itu, CodeIgniter 3 merupakan \textit{framework} ringan dan menyediakan banyak \textit{library} untuk digunakan oleh penggunanya. Namun, CodeIgniter 3 sudah memasuki fase \textit{maintenance} sehingga tidak akan mendapatkan \textit{update} lebih lanjut dari pembentuknya. CodeIgniter 3 pada akhirnya akan tidak dapat dipakai dan akan hilangnya dokumentasi dari situs web resmi. Sehingga, perangkat lunak yang menggunakan CodeIgniter 3 perlu dikonversi ke \textit{framework} CodeIgniter dengan versi terbaru yakni CodeIgniter 4.
 
-Pengumpulan tugas \textit{programming} terutama di Informatika Unpar menggunakan sebuah perangkat lunak berbasis web bernama SharIF Judge. 
+CodeIgniter 4 merupakan versi terbaru dari \textit{framework} CodeIgniter yang memiliki banyak perubahan fitur dari versi sebelumnya. CodeIgniter 4 dapat dijalankan menggunakan versi PHP 7.4 atau lebih baru sedangkan CodeIgniter 3 dapat dijalankan menggunakan versi PHP 5.6 atau lebih baru. CodeIgniter 4 juga membagi file menggunakan struktur MVC namun, memiliki struktrur folder berbeda dengan versi sebelumnya.
 
-SharIF Judge merupakan sebuah alat \textit{open source} untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python secara online. SharIF Judge dibentuk menggunakan \textit{framework} CodeIgniter 3 yang merupakan \textit{framework} berbasis PHP dan dimodifikasi sesuai dengan kebutuhan Informatika Unpar untuk mengumpulkan tugas dan ujian mahasiswa. 
+Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4. Konversi dilakukan karena CodeIgniter 3 sudah memasukin fase \textit{maintenance} sehingga CodeIgniter 3 akan tidak dapat digunakan dan hilangnya dokumentasi dari situs resmi.
 
-CodeIgniter 3 merupakan sebuah \textit{framework} gratis yang bertujuan untuk mempermudah dalam membentuk sebuah aplikasi \textit{website} menggunakan PHP. CodeIgniter 3 menggunakan struktur MVC yang membagi file menjadi 3 buah yaitu Model, View, Controller. Selain itu, CodeIgniter 3 merupakan \textit{framework} ringan dan menyediakan banyak \textit{library} untuk digunakan oleh penggunanya. 
-
-CodeIgniter 3 sudah memasuki fase \textit{maintenance} sehingga tidak akan mendapatkan \textit{update} lebih lanjut dari pembentuknya. CodeIgniter 3 pada akhirnya akan tidak dapat dipakai dan akan hilangnya dokumentasi dari situs web resmi. Sehingga, perangkat lunak yang menggunakan CodeIgniter 3 perlu dikonversi ke \textit{framework} CodeIgniter dengan versi terbaru yakni CodeIgniter 4.
-
-CodeIgniter 4 merupakan versi terbaru dari \textit{framework} CodeIgniter yang memiliki banyak perubahan fitur dari versi sebelumnya. CodeIgniter 4 dibentuk menggunakan versi PHP 7.4 sedangkan CodeIgniter 3 dibentuk menggunakan versi PHP 5.6. CodeIgniter 4 membagi file menggunakan struktur MVC namun, memiliki struktrur folder berbeda dengan versi sebelumnya.
-
-Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4. Konversi dilakukan karena CodeIgniter 3 sudah memasukin fase \textit{maintenance} sehingga CodeIgniter 3 hanya akan mendapatkan \textit{security update}.
-
-Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 menjadi CodeIgniter 4. Konversi dilakukan karena CodeIgniter 3 sudah memasukin fase \textit{maintenance} sehingga CodeIgniter 3 hanya akan mendapatkan \textit{security update}.
 
 \section{Rumusan Masalah}
 \begin{itemize}
-	\item Apa standar yang ada sehingga CodeIgniter 3 perlu dikoversi CodeIgniter 4?
 	\item Bagaimana cara melakukan konversi CodeIgniter 3 menjadi CodeIgniter 4?
 	\item Bagaimana mengevaluasi kode SharIF Judge dan mengubahnya agar dapat berjalan di CodeIgniter 4?
 \end{itemize}
 
 \section{Tujuan}
 \begin{itemize}
-	\item Mencari standar yang dibutuhkan sehingga CodeIgniter 3 perlu di konversi mendjadi CodeIgniter 4.
 	\item Melakukan konversi dengan megubah kode sesuai dengan CodeIgniter 4.
 	\item Melakukan evaluasi kode SharIF Judge dan mengubahnya agar dapat berjalan di CodeIgniter 4.
 \end{itemize}
@@ -80,9 +70,14 @@ Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 menjad
 \section{Deskripsi Perangkat Lunak}
 Perangkat lunak akhir yang akan dibuat memiliki fitur yang sama dengan sebelumnya sebagai berikut:
 \begin{itemize}
-	\item Pengguna dapat melakukan login dengan beberapa \textit{user}.
+	\item Perangkat lunak dapat menambahkan beberapa jenis pengguna.
+	\item Perangkat lunak dapat menerima \textit{login} terhadap beberapa pengguna.
+	\item Perangkat lunak dapat menambahkan \textit{testcase} untuk pengecekan dengan metode \textit{Output Comparison} dan \textit{Tester Code}.
 	\item Perangkat lunak dapat menerima kode dengan bahasa C, C++, Java, dan Python. 
 	\item Perangkat lunak dapat mendeteksi plagiarisme terhadap kode yang sudah dikumpulkan.
+	\item Perangkat lunak dapat melakukan fitur \textit{Rejudge}.
+	\item Perangkat lunak dapat menampilkan \textit{scoreboard} sesuai dengan hasil pengumpulan.
+	\item Pengguna dapat menambahkan \textit{custom rule} untuk pengumpulan terlambat.
 	\item Pengguna dapat mengumpulkan kode yang akan dinilai.
 	\item Pengguna dapat mendapatkan nilai berdasarkan kode dan soal yang diberikan.
 	\item Pengguna dapat megunduh hasil jawaban menjadi file excel.
