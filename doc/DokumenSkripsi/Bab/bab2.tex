@@ -16,7 +16,7 @@ CodeIgniter 3 merupakan sebuah \textit{framework opensource} yang berfungsi untu
 
 Berikut merupakan pembagian \textit{flow chart} aplikasi \textit{CodeIgniter 3}:
 \begin{enumerate}
-\item \texttt{Index.php} berfungsi sebagai \textit{front controller} yang berguna untuk melakukan inisiasi
+\item \texttt{index.php} berfungsi sebagai \textit{front controller} yang berguna untuk melakukan inisiasi
 \item \textit{Router} berfungsi dalam melakukan pemeriksaan dan menentukan penggunaan \textit{HTTP Request}.
 \item \textit{Cache} berfungsi untuk mengirimkan \textit{file cache}(apabila ada) kepada \textit{browser} secara langsung.   
 \item \textit{Security} berfungsi sebagai alat penyaringan setiap data dan \textit{HTTP Request} yang masuk. Penyaringan data tersebut dilakukan sebelum \textit{controller} aplikasi dimuat agar aplikasi menjadi lebih aman.
@@ -154,16 +154,16 @@ Secara asali \textit{URL} yang dihasilkan \textit{CodeIgniter 3} terdapat nama \
 \verb|example.com/index.php/news/article/my_article|
 \end{center}
 
-Pengguna dapat menghapus \textit{file} \verb|index.php| file pada \textit{url} menggunakan \textit{file} \verb|.htaccess| apabila \textit{server Apache} pengguna menghidupkan \verb|mod\_ rewrite|. Berikut merupakan contoh aturan sederhana menggunakan metode \textit{negative}:
+Pengguna dapat menghapus \textit{file} \verb|index.php| file pada \textit{url} menggunakan \textit{file} \verb|.htaccess| apabila \textit{server Apache} pengguna menghidupkan \verb|mod_rewrite|. Berikut merupakan contoh \textit{file} \verb|.htaccess| menggunakan metode \textit{negative}:
 
-\begin{lstlisting}[language=Java, caption=Contoh \textit{path} pada halaman index.php, label=kode:htaccess]
+\begin{lstlisting}[language=Java, caption=Contoh \textit{file} \texttt{.htaccess} pada halaman index.php, label=kode:htaccess]
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
 \end{lstlisting}
 
-Aturan diatas menyebabkan \textit{HTTP Request} selain yang berasal dari direktori atau \textit{file} diperlakukan sebagai sebuah permintaan pada file \verb|index.php|. Selain itu, pengguna juga dapat menambahkan akhirkan pada \textit{URL} agar halaman pengguna dapat menampilkan halaman sesuai dengan tipe yang diingikan. Berikut merupakan contoh \textit{URL} sebelum dan sesudah ditambahkan akhiran: 
+Aturan diatas menyebabkan \textit{HTTP Request} selain yang berasal dari direktori atau \textit{file} diperlakukan sebagai sebuah permintaan pada file \verb|index.php|. Selain itu, pengguna juga dapat menambahkan akhirkan pada \textit{URL} agar halaman pengguna dapat menampilkan halaman sesuai dengan tipe yang diingikan. Berikut merupakan contoh \textit{URL} sebelum dan sesudah ditambahkan akhiran berupa: 
 
 \begin{center}
 \verb|example.com/index.php/products/view/shoes|
@@ -216,14 +216,14 @@ Kode \ref{kode:libraryclass} merupakan contoh \textit{file library} pada \textit
 
 Pemanggilan kelas ini dapat dilakukan melalui \textit{controller} manapun dan dapat diberikan parameter sesuai dengan metode yang dibentuk pada \textit{library}. \textit{CodeIgniter 3} menyediakan berbagai \textit{library} yang dapat digunakan oleh pengguna seperti berikut:
 
-\subsubsection{Kelas \textit{JavaScript}}
+\subsubsection{\textit{JavaScript}}
 Penggunaan kelas \textit{javascript} dapat dipanggil pada konstruktor \textit{controller} dengan cara berikut:
 
 \begin{center}
 \verb|$this->load->library('javascript');|
 \end{center}
 
-Pengguna selanjutnya harus melakukan inisiasi \textit{library} pada bagian \verb|<head>| seperti berikut:
+Pengguna selanjutnya harus melakukan inisiasi \textit{library} pada halaman \textit{view tag} \verb|<head>| seperti berikut:
 
 \begin{center}
 \verb|<?php echo $library_src;?>|
@@ -231,7 +231,23 @@ Pengguna selanjutnya harus melakukan inisiasi \textit{library} pada bagian \verb
 \verb|<?php echo $script_head;?>|
 \end{center}
 
-Selain menggunakan \textit{javascript}, pengguna dapat memakai \textit{jQuery} dengan menambahkan \textit{jQuery} pada akhir inisiasi kelas \textit{javascript}.
+Sintaks \verb|$library_src| merupakan lokasi \textit{library} yang akan dimuat sedangkan \verb|$script_head| merupakan lokasi untuk fungsi yang akan dijalankan. Selanjutnya \textit{javascript} dapat diinisiasikan pada \textit{controller} menggunakan sintaks berikut:
+
+\begin{center}
+	\verb|$this->javascript|
+\end{center}
+
+Selain menggunakan \textit{javascript}, pengguna dapat memakai \textit{jQuery} dengan menambahkan \textit{jQuery} pada akhir inisiasi kelas \textit{javascript} seperti berikut:
+
+\begin{center}
+\verb|$this->load->library('javascript/jquery');|
+\end{center}
+
+Penggunga dapat memakai berbagai fungsi \textit{library jquery} menggunakan sintaks berikut:
+
+\begin{center}
+\verb|$this->jquery|
+\end{center}
 
 \subsubsection{Kelas \textit{Email}}
 \textit{CodeIgniter 3} menyediakan kelas \textit{email} dengan fitur sebagai berikut:
@@ -245,13 +261,13 @@ Selain menggunakan \textit{javascript}, pengguna dapat memakai \textit{jQuery} d
 \item Lampiran
 \item Pembungkus kata
 \item Prioritas
-\item Kumpulan mode \textit{BCC}, dapat memisahkan daftar \textit{email} skala besar menjadi skala kecil
+\item Mode\textit{BCC Batch}, memisahkan daftar \textit{email} besar menjadi beberapa \textit{BCC} kecil.
 \item Alat \textit{Debugging email}
 \end{itemize}
 
-Penggunaan \textit{library email} dapat dikonfigurasikan pada \textit{file config}. Kode \ref{kode:emaillib} merupakan contoh konfigurasi pada \textit{file config}.
+Penggunaan \textit{library email} dapat dikonfigurasikan pada \textit{file config}. Pengguna dapat mengirim \textit{email} dengan mudah menggunakan fungsi-fungsi yang telah disediakan \textit{library email}. Kode \ref{kode:emaillib} merupakan contoh pengiriman email melalui \textit{controller}.
 
-\begin{lstlisting}[caption=Contoh konfigurasi \textit{library email}, label=kode:emaillib]
+\begin{lstlisting}[caption=Contoh pengiriman email melalui \textit{controller}, label=kode:emaillib]
 $this->load->library('email');
 
 $this->email->from('your@example.com', 'Your Name');
@@ -265,7 +281,7 @@ $this->email->message('Testing the email class.');
 $this->email->send();
 \end{lstlisting}
 
-Kode \ref{kode:emaillib} merupakan contoh konfigurasi untuk mengirim \textit{email} dari \texttt{your@example.com} menuju \texttt{someone@example.com} dengan \textit{cc} dan \textit{bcc} dan subjek berupa \textit{Email Test}. Selain itu, pengguna juga dapat melakukan konfigurasi preferensi \textit{email} melalui dua puluh satu preferesi. Pengguna dapat melakukan konfigurasi secara otomatis melalui \textit{file config} atau melakukan konfigurasi secara manual . Kode \ref{kode:emaillibset} merupakan contoh konfigurasi preferensi secara manual.
+Kode \ref{kode:emaillib} merupakan contoh penggunaan \textit{library email} untuk mengirim \textit{email} dari \texttt{your@example.com} menuju \texttt{someone@example.com}. Konfigurasi ini juga mengirim dua buah salinan menuju \texttt{another@\\another-example.com} dan \texttt{them@their-example.com} dengan subjek berupa \texttt{Email Test} dengan pesan \texttt{Testing the email class.}. Selain itu, pengguna juga dapat melakukan konfigurasi preferensi \textit{email} melalui dua puluh satu preferesi. Pengguna dapat melakukan konfigurasi secara otomatis melalui \textit{file config} atau melakukan konfigurasi secara manual . Kode \ref{kode:emaillibset} merupakan contoh konfigurasi preferensi secara manual.
 
 \begin{lstlisting}[caption=Contoh konfigurasi preferensi \textit{library email} secara manual, label=kode:emaillibset]
 $config['protocol'] = 'sendmail';
@@ -336,10 +352,10 @@ Kode \ref{kode:controllerfileupload} merupakan contoh kode dengan dua buah metod
 \item \verb|index()| yang digunakan untuk mengembalikan \textit{view} bernama \texttt{upload\_form}
 \item \verb|do_upload| yang digunakan untuk melakukan validasi berupa tipe, ukuran, lebar, dan panjang maksimal sebuah file. Metode ini juga mengembalikan \textit{error} dan menyimpan \textit{file} sesuai dengan direktori yang sudah diatur.
 \end{enumerate}
-Direktori penyimpanan dapat diubah sesuai dengan kebutuhan namun perlu pengubahan izin direktori menjadi 777.
+Direktori penyimpanan dapat diubah sesuai dengan kebutuhan namun perlu pengubahan izin direktori menjadi 777 agar dapat di baca, di tulis, dan di eksekusi oleh seluruh pengguna.
 
 \subsubsection{Kelas \textit{Zip Encoding}}
-\textit{Library Zip Encoding} digunakan untuk membentuk arsip \textit{Zip} yang dapat diunduh menuju \textit{desktop} atau disimpan pada direktori. \textit{Library} ini dapat diinsiasi dengan kode sebagai berikut:
+\textit{Zip} merupakan format sebuah \textit{file} yang berguna untuk melakukan kompress terhadap \textit{file} untuk mengurangi ukuran dan menjadikannya sebuah \textit{file}. \textit{CodeIgniter 3} menyediakan \textit{library Zip Encoding} yang dapat digunakan untuk membentuk arsip \textit{Zip} yang dapat diunduh menuju \textit{desktop} atau disimpan pada direktori. \textit{Library} ini dapat diinsiasi dengan kode sebagai berikut:
 
 \begin{center}
 \verb|$this->load->library('zip');|
@@ -1645,7 +1661,7 @@ Kode merupakan contoh pembentukan \textit{database} dengan tabel bernama \textit
 \item Lampiran
 \item Pembungkus kata
 \item Prioritas
-\item Kumpulan mode \textit{BCC}, dapat memisahkan daftar \textit{email} skala besar menjadi skala kecil
+\item Mode\textit{BCC Batch}, memisahkan daftar \textit{email} besar menjadi beberapa \textit{BCC} kecil.
 \item Alat \textit{Debugging email}
 \end{itemize}
 
@@ -1802,7 +1818,14 @@ Struktur MVC pada CodeIgniter 4 berbeda dibandingkan CodeIgniter 3 dimana terdap
 \item Selanjutnya pengguna harus menambahkan \verb|namespace App\Models;| setelah pembukaan \textit{tag PHP}.
 \item Pengguna juga harus menambahkan \verb|use CodeIgniter\Model;| setelah kode diatas.
 \item Pengguna harus mengganti \verb|extends CI_Model| menjadi \verb|extends Model|.
-\item Terakhir pemanggilan \textit{model} berubah dari \verb|$this->load->model('x');| menjadi \verb|$this->x = new X();|.
+\item Terakhir pemanggilan \textit{model} berubah dari sintaks: 
+\begin{center}
+	\verb|$this->load->model('x');|
+\end{center} 
+	menjadi sintaks berikut:
+\begin{center}
+	\verb|$this->x = new X();|.
+\end{center}
 \end{enumerate}
  
 \subsubsection{\textit{View}}
@@ -1810,10 +1833,31 @@ Struktur MVC pada CodeIgniter 4 berbeda dibandingkan CodeIgniter 3 dimana terdap
  \verb|<?= $title ?>|. Berikut merupakan cara melakukan pembaharuan \textit{view}:
 \begin{enumerate}
 \item Pertama pengguna perlu memindahkan seluruh \textit{file views} menuju \verb|app/Views|
-\item Selanjutnya pengguna perlu mengubah sintaks \verb|$this->load->view('directory_name/file_name')| menjadi \verb|return view('directory_name/file_name');|
-\item Pengguna juga perlu mengubah sintaks \verb|$content = $this->load->view('file', $data, TRUE);| menjadi \verb|$content = view('file', $data);|.
-\item Pada \textit{file views} pengguna dapat mengubah sintaks \verb|<?php echo $title; ?>| menjadi \verb|<?= $title ?>|.
-\item Pengguna juga perlu menghapus bila terdapat sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');}.
+\item Selanjutnya pengguna perlu mengubah sintaks:
+\begin{center}
+	\verb|$this->load->view('directory_name/file_name')|
+\end{center}
+menjadi sintaks berikut:
+\begin{center}
+	\verb|return view('directory_name/file_name');|
+\end{center}
+\item Pengguna juga perlu mengubah sintaks:
+\begin{center}
+	\verb|$content = $this->load->view('file', $data, TRUE);|
+\end{center}	
+	 menjadi sintaks berikut:
+\begin{center}
+	\verb|$content = view('file', $data);|.
+\end{center}
+\item Pada \textit{file views} pengguna dapat mengubah sintaks:
+\begin{center} 
+	\verb|<?php echo $title; ?>|
+\end{center}
+menjadi sintaks berikut:
+\begin{center}
+	\verb|<?= $title ?>|.
+\end{center}
+\item Pengguna juga perlu menghapus apabila terdapat sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');}.
 \end{enumerate}
  
 \subsubsection{\textit{Controller}}
@@ -1822,7 +1866,7 @@ Struktur MVC pada CodeIgniter 4 berbeda dibandingkan CodeIgniter 3 dimana terdap
 \item Pertama pengguna harus memindahkan seluruh \textit{file controller} menuju \verb|app/Controllers|.
 \item Pengguna juga harus menambahkan sintaks \verb|namespace App\Controllers;| setelah pembukaan \textit{tag PHP}.
 \item Selanjutnya pengguna harus mengubah \verb|extends CI_Controller| menjadi \verb|extends BaseController|.
-\item Pengguna juga harus menghapus baris \verb|defined('BASEPATH') OR exit('No direct script access allowed');| apabila ada.
+\item Pengguna juga harus menghapus baris \texttt{defined('BASEPATH') OR exit('No direct script access allowed');} apabila ada.
 \end{enumerate}
  
 \subsection{\textit{Libraries}}
@@ -1834,7 +1878,7 @@ CodeIgniter 4 menyediakan \textit{library} untuk digunakan dan dapat diinstall a
 
 \subsubsection{\textit{Database}}
 
-Penggunaan \textit{database} pada CodeIgniter 4 hanya berubah sedikit dibandingkan dengan versi sebelumnya. Data-data penting kredensial diletakan pada \verb|app\Config\Database.php| dan perlu dilakukan beberapa perubahan sintaks dan \textit{query}. Sintaks untuk memuat database diubah menjadi \verb|$db = db_connect();| dan  apabila menggunakan beberapa \textit{database} maka sintaks menjadi \verb|$db = db_connect('group_name');|. Semua \textit{query} harus diubah dari \verb|$this->db| menjadi \verb|$db| dan beberapa sintaks perlu diubah seperti \verb|$query->result();| menjadi \verb|$query->getResult();|. Selain itu, terdapat \textit{class} baru yakni \textit{Query Builder Class} yang harus di inisiasi \verb|$builder = $db->table('mytable');| dan dapat dipakai untuk menjalankan \textit{query} dengan mengganti \verb|$this->db| seperti \verb|$this->db->get();| menjadi \verb|$builder->get();|.
+Penggunaan \textit{database} pada CodeIgniter 4 hanya berubah sedikit dibandingkan dengan versi sebelumnya. Data-data penting kredensial diletakan pada \verb|app\Config\Database.php| dan perlu dilakukan beberapa perubahan sintaks dan \textit{query}. Sintaks untuk memuat database diubah menjadi \verb|$db = db_connect();| dan  apabila menggunakan beberapa \textit{database} maka sintaks menjadi \verb|$db = db_connect('group_name');|. Semua \textit{query} harus diubah dari \verb|$this->db| menjadi \verb|$db| dan beberapa sintaks perlu diubah seperti \verb|$query->result();| menjadi \verb|$query->getResult();|. Selain itu, terdapat \textit{class} baru yakni \textit{Query Builder Class} yang harus di inisiasi \texttt{\$builder = \$db->table('mytable');} dan dapat dipakai untuk menjalankan \textit{query} dengan mengganti \verb|$this->db| seperti \verb|$this->db->get();| menjadi \verb|$builder->get();|.
 
 \subsubsection{\textit{Emails}}
 
@@ -1842,7 +1886,14 @@ Perubahan \textit{email} hanya terdapat pada nama dari \textit{method} dan peman
 
 \subsubsection{\textit{Working with Uploaded Files}}
 
-Terdapat banyak perubahan dimana pada CodeIgniter 4 pengguna dapat mengecek apakah \textit{file} telah terunggah tanpa \textit{error} dan lebih mudah untuk melakukan penyimpanan \textit{file}. Pada CodeIgniter 4 melakukan akses pada \textit{uploaded file} dilakukan dengan \verb|$file = $this->request->getFile('userfile')| dan dapat dilakukan validasi dengan cara \verb|$file->isValid()|. Penyimpanan \textit{file} yang sudah diunggah dapat dilakukan dengan \verb|$path = $this->request->getFile('userfile')->store('head_img/', 'user_name.jpg');|. \textit{File} yang sudah diunggah dan di validasi akan tersimpan pada \verb|writable/uploads/head_img/user_name.jpg.|
+Terdapat banyak perubahan dimana pada CodeIgniter 4 pengguna dapat mengecek apakah \textit{file} telah terunggah tanpa \textit{error} dan lebih mudah untuk melakukan penyimpanan \textit{file}. Pada CodeIgniter 4 melakukan akses pada \textit{uploaded file} dilakukan dengan sintaks berikut:
+\begin{center}
+\verb|$file = $this->request->getFile('userfile')|
+\end{center} selanjutnya dapat dilakukan validasi dengan cara sebagai berikut:
+\begin{center}
+\verb|$file->isValid()|
+\end{center} 
+Penyimpanan \textit{file} yang sudah diunggah dapat dilakukan dengan \verb|$path = $this->request->getFile('userfile')->store('head_img/', 'user_name.jpg');|. \textit{File} yang sudah diunggah dan di validasi akan tersimpan pada \verb|writable/uploads/head_img/user_name.jpg.|
 
 \subsubsection{\textit{HTML Tables}}
 
@@ -1856,7 +1907,12 @@ pada perangkat lunak. Selanjutnya melakukan pemindahan \textit{file} bahasa pada
  
 \subsubsection{\textit{Migrations}}
 
-Perubahan perlu dilakukan pada nama \textit{file} menjadi nama dengan cap waktu. Selanjutnya dilakukan penghapusan kode \verb|defined('BASEPATH') OR exit('No direct script access allowed');| dan menambahkan dua buah kode yakni, \verb|namespace App\Database\Migrations;| dan \verb|use CodeIgniter\Database\Migration;| setelah membuka tag PHP. Setelah itu, \verb|extends CI_Migration| diubah menjadi \verb|extends Migration|. Terakhir, terdapat perubahan pada nama \textit{method} \textit{Forge} dari \verb|$this->dbforge->add_field| menjadi \textit{camelCase} \verb|$this->forge->addField|.
+Perubahan perlu dilakukan pada nama \textit{file} menjadi nama dengan cap waktu. Selanjutnya dilakukan penghapusan kode \verb|defined('BASEPATH') OR exit('No direct script access allowed');| dan menambahkan dua buah kode setelah membuka tag PHP yaitu:
+\begin{itemize}
+	\item \verb|namespace App\Database\Migrations;|
+	\item \texttt{use CodeIgniter/Database/Migration;}
+\end{itemize}
+  Setelah itu, \verb|extends CI_Migration| diubah menjadi \verb|extends Migration|. Terakhir, terdapat perubahan pada nama \textit{method} \textit{Forge} dari \verb|$this->dbforge->add_field| menjadi \textit{camelCase} \verb|$this->forge->addField|.
 
 \subsubsection{\textit{Routing}}
 
@@ -1866,8 +1922,8 @@ Pengguna dapat melakukan pembaharuan \textit{routing} dengan cara berikut:
 \item Terdapat perubahan dari \verb|(:any)| menjadi \verb|(:segment)|.
 \item Pengguna juga harus mengubah sintaks pada \verb|app/Config/Routes.php| seperti berikut:
 	\begin{itemize}
-	\item \verb|$route['journals'] = 'blogs';| menjadi \verb|$routes->add('journals', 'Blogs::index');| untuk memanggil fungsi \texttt{index} pada \textit{controller} \texttt{Blogs}.
-	\item \verb|$route['product/(:any)'] = 'catalog/product_lookup'| menjadi \verb|$routes->add('product/(:segment)', 'Catalog::productLookup');|.
+	\item \verb|$route['journals'] = 'blogs';| menjadi \texttt{\$routes->add('journals', 'Blogs::index');} untuk memanggil fungsi \texttt{index} pada \textit{controller} \texttt{Blogs}.
+	\item \verb|$route['product/(:any)'] = 'catalog/product_lookup'| menjadi \texttt{\$routes->add('product/(:segment)', 'Catalog::productLookup');}.
 	\end{itemize}
 \end{enumerate}
 
@@ -1880,7 +1936,10 @@ Pengguna dapat melakukan pembaharuan pada \textit{validations} melalui cara beri
 		\item \verb|$this->load->helper(array('form', 'url'));| menjadi \verb|helper(['form', 'url']);|
 		\item Pengguna perlu menghapus kode \verb|$this->load->library('form_validation');|
 		\item \verb|if ($this->form_validation->run() == FALSE)| menjadi \verb|if (! $this->validate([]))|
-		\item \verb|$this->load->view('myform');| menjadi \verb|return view('myform', ['validation' => $this->validator,]);|
+		\item \verb|$this->load->view('myform');| menjadi seperti berikut:
+\begin{center}		
+ \verb|return view('myform', ['validation' => $this->validator,]);|
+\end{center}
 	\end{itemize}
 	\item Pengguna juga perlu mengubah kode (dapat dilihat pada kode\ref{kode:ci4validations}) untuk melakukan validasi.
 	\begin{lstlisting}[caption=Perubahan kode untuk melakukan validasi. ,label=kode:ci4validations]
@@ -1899,7 +1958,7 @@ $isValid = $this->validate([
 \textit{Helpers} tidak terdapat banyak perubahan namun, beberapa \textit{helpers} pada \textit{CodeIgniter 3} tidak terdapat pada \textit{CodeIgniter 4} sehingga perlu perubahan pada implementasi fungsinya. \textit{Helpers} dapat di dimuat secara otomatis menggunakan \verb|app\Config\Autoload.php|
 
 \subsection{\textit{Events}}
-\textit{Events} merupakan pembaharuan dari \textit{Hooks}. Pengguna sekarang dapat memakai \verb|Events::on('post_controller_constructor', ['MyClass', 'MyFunction']);| dengan \textit{namespace} \verb|CodeIgniter\Events\Events;|.
+\textit{Events} merupakan pembaharuan dari \textit{Hooks}. Pengguna harus mengubah \verb|$hook['post_controller_constructor']| menjadi  \texttt{Events::on('post_controller_constructor', ['MyClass', 'MyFunction']);} dengan \textit{namespace} \verb|CodeIgniter\Events\Events;|. 
 
 \subsection{\textit{Framework}}
 Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \verb|MY_X| pada direktori \textit{libraries} untuk memperpanjang atau mengganti potongan \textit{CI4}. Pengguna dapat membentuk kelas dimanapun dan menambahkan metode pada \verb|app/Config/Services.php|.

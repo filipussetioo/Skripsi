@@ -1,0 +1,48 @@
+\chapter{Analisis}
+\label{chap:analisis}
+
+\section{Analisis \textit{CodeIgniter 3}}
+\label{sec:analisis-ci3}
+\section{Analisis \textit{CodeIgniter 4}}
+\label{sec:analisis-ci4}
+\textit{CodeIgniter 4} terdapat banyak perubahan yang mengakibatkan harusnya penulisan ulang dibanding pembaharuan \textit{framework}. Perubahan yang terjadi terdapat pada struktur aplikasi dan beberapa fungsi yang memiliki pemanggilan berbeda dan harus diperbaharui.
+\subsection{Struktur Aplikasi}
+Struktur aplikasi \textit{CodeIgniter 4} terdiri dari \textit{app, public,} dan \textit{writable}. Berikut merupakan isi dari setiap direktori \textit{app} pada \textit{CodeIgniter 4}:
+\subsubsection{App}
+Direktori \textit{app} berisikan direktori \textit{system} sama seperti direktori \textit{application} pada \textit{CodeIgniter 3}. Direktori tersebut berisikan sebagai berikut:
+\begin{itemize}
+\item Config \\ Direktori ini berisikan \textit{file-file} konfigurasi yang dibutuhkan untuk menjalankan aplikasi seperti \texttt{Database.php} berguna mengkonfigurasikan \textit{username} dan \textit{password} dari \textit{database} yang akan digunakan.
+\item Controllers \\ Direktori ini berisikan \textit{controller} yang dibentuk untuk mengatur alur dari aplikasi yang akan dibentuk dengan akar bernama \verb|BaseController.php|.
+\item Database \\ Direktori ini berisikan \textit{file-file} untuk melakukan \textit{Migrations} dan \textit{Seeds}. \textit{Migrations} dapat digunakan untuk mengubah \textit{database} seperti menambahkan kolom, membentuk tabel, menghapus tabel, dan fungsi \textit{SQL} lainnya. \textit{Seeds} dapat digunakan untuk menambahkan data-data pada tabel yang sudah dibentuk.
+\item Filters \\Direktori ini berisikan \textit{file} yang ditulis secara pribadi berguna untuk menambahkan aksi setelah ataupun sebelum menjalankan sebuah \textit{controller}.
+\item Helpers \\Direktori ini berisikan \textit{file helpers} yang berguna untuk membantu pengguna seperti \textit{cookie helper}, \textit{form helper}, dan lainnya. Pengguna juga dapat menulis \textit{helper} sendiri pada direktori ini.  
+\item Language \\Direktori ini berisikan \textit{file} bahasa apabila pengguna ingin membuat aplikasi menggunakan \textit{Localization} yang dapat menampilkan bahasa berbeda.
+\item Libraries \\Direktori ini berisikan \textit{library} yang ditulis oleh pengguna.
+\item Models \\ Direktori ini berisikan \textit{model} yang dapat digunakan untuk melakukan akses terhadap \textit{tabel} spesifik pada \textit{database}.
+\item ThirdParty
+\item Views \\ Direktori ini berisikan halaman yang akan ditampilkan kepada pengguna.
+\end{itemize}
+\subsubsection{Public}
+Direktori \textit{public} merupakan akar dari dokumen pada \textit{CodeIgniter 4}. Direktori ini berisikan aset yang dapat dilihat atau diakses oleh pengguna melalui \textit{browser} seperti gambar, logo, \textit{javascript}, dan lainnya.
+
+\subsubsection{Test}
+Direktori ini berisikan \textit{tools} yang dapat digunakan pengguna untuk melakukan \textit{test} dan \textit{debug} aplikasi.
+\subsubsection{Vendor}
+Direktori ini berisikan \textit{file system} yang dipasang melalui \textit{composer}. 
+\subsubsection{Writable}
+Direktori \textit{writable} berisikan data-data yang ditulis oleh aplikasi. Berikut merupakan isi dari setiap direktori \textit{writable} pada \textit{CodeIgniter 4}:
+\begin{itemize}
+\item Cache
+\item debugbar
+\item logs
+\item session
+\item uploads
+\end{itemize}
+
+\section{Analisis konversi menuju \textit{CodeIgniter 4}}
+Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulisan ulang karena terdapat perubahan struktur aplikasi dan beberapa fungsi yang memiliki pemanggilan berbeda dan harus dilakukan pembaharuan.
+\subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{Twig} dan \textit{library} lainnya.
+\subsection{Pemindahan \textit{file} dari \textit{CodeIgniter 3} ke \textit{CodeIgniter 4}}
+
+
+\subsection{Pembaharuan \textit{file-file CodeIgniter 3} }
