@@ -536,7 +536,35 @@ Ekpresi ini menghasilkan \textit{URI} \textit{products/shirts/123} yang memanggi
 \section{SharIF Judge\cite{sharif:23}}
 \label{sec:judge}
 
-\textit{SharIF Judge} merupakan sebuah \textit{Online Judge} percabangan dari \textit{Sharif Judge} yang dibentuk oleh Mohammed Javad Naderi. \textit{Sharif Judge} dibentuk menggunakan CodeIgniter 3 dan dimodifikasi sesuai dengan kebutuhan di Informatika Universitas Katolik Parahyangan menjadi nama \textit{SharIF Judge}. \textit{SharIF Judge} dapat menilai kode berbahasa \textit{C, C++, Java, dan Python} dengan mengunggah file ataupun mengetiknya langsung.
+\textit{SharIF Judge} merupakan sebuah \textit{Online Judge} percabangan dari \textit{Sharif Judge} yang dibentuk oleh Mohammed Javad Naderi. \textit{Sharif Judge} dibentuk menggunakan \textit{CodeIgniter 3} dan dimodifikasi sesuai dengan kebutuhan di Informatika Universitas Katolik Parahyangan menjadi nama \textit{SharIF Judge}. \textit{SharIF Judge} dapat menilai kode berbahasa \textit{C, C++, Java, dan Python} dengan mengunggah file ataupun mengetiknya langsung.
+
+\subsection{Struktur Aplikasi}
+\label{subsec:judgestructure}
+\begin{lstlisting}
+.
+|-- application
+|   |-- cache
+|   |-- config
+|   |-- controllers
+|   |-- core
+|   |-- core
+|   |-- helpers
+|   |-- hooks
+|   |-- language
+|   |-- libraries
+|   |-- logs
+|   |-- models
+|   |-- third_party
+|   |-- vendor
+|   |-- views
+|-- assets
+|   |-- images
+|   |-- js
+|   |-- styles
+|-- restricted
+|   |-- tester
+|-- system
+\end{lstlisting}
 
 \subsection{Instalasi}
 \label{subsec:instalasi}
@@ -1496,6 +1524,43 @@ Kode \ref{kode:controllersexample} merupakan contoh \textit{controllers} yang me
 \verb|example.com/index.php/helloworld/|
 \end{center}
 
+Selain itu, \textit{CodeIgniter 4} menyediakan fungsi bernama \textit{Controller Filters} yang berfungsi untuk membiarkan pengguna membentuk sebuah kondisi sebelum ataupun sesudah \textit{controller} dijalankan. Kode \ref{kode:filterexample} merupakan contoh penggunaan \textit{filters}.
+
+\begin{lstlisting}[caption=Contoh \textit{Controllers Filters} pada \textit{CodeIgniter 4},label=kode:filterexample]
+<?php
+
+namespace App\Filters;
+
+use CodeIgniter\Filters\FilterInterface;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Config\Database;
+
+class MyFilter implements FilterInterface
+{
+    public function before(RequestInterface $request, $arguments = null)
+    {
+        $session = \Config\Services::session();
+        $db = Database::connect();
+
+        if ( !$db->tableExists('sessions'))
+			return redirect()->to('/install');
+		if ( !$session->get('logged_in')) // if not logged in
+			return redirect()->to('/login');
+    }
+
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
+    {
+        // Do something here
+    }
+}
+\end{lstlisting}
+
+Kode \ref{kode:filterexample} merupakan contoh kode yang akan melakukan pengecekan tabel ataupun \textit{session} sebelum \textit{controller} dijalankan. Selanjutnya pengguna perlu menambahkan konfigurasi \textit{filter } pada \textit{routes} seperti sintaks berikut.
+\begin{center}
+	\verb|$routes->get('/', 'Dashboard::index',['filter' => 'check-install:dual,noreturn']);|
+\end{center}
+
 \subsection{\textit{CodeIgniter URLs}}
 \textit{CodeIgniter 4} menggunakan pendekatan \textit{segment-based} dibandingkan menggunakan \textit{query-string} untuk menghasilkan \textit{URL} sehingga ramah manusia dan mesin pencari. Berikut merupakan contoh \textit{URL} yang dihasilkan \textit{CodeIgniter 4}:
 
@@ -1796,7 +1861,7 @@ Setelah dilakukan pemanggilan, pengguna dapat memakai fungsi-fungsi yang disedia
 \section{Koversi CodeIgniter 3 ke CodeIgniter 4\cite{codeigniter:23:ci4}}
 \label{sec:konversici3c4}
  
-CodeIgniter 3 pada akhirnya tidak dapat digunakan dan kehilangan dokumentasinya, sehingga perlu dilakukan konversi menjadi CodeIgniter 4. Konversi CodeIgniter 3 ke CodeIgniter 4 diperlukan penulisan ulang karena terdapat banyak implementasi yang berbeda. Konversi ke CodeIgniter 4 diawali dengan melakukan instalasi projek baru CodeIgniter 4.
+Konversi CodeIgniter 3 ke CodeIgniter 4 diperlukan penulisan ulang karena terdapat banyak implementasi yang berbeda. Konversi ke CodeIgniter 4 diawali dengan melakukan instalasi projek baru CodeIgniter 4.
 
 
 \subsection{Struktur Aplikasi}
@@ -1958,7 +2023,14 @@ $isValid = $this->validate([
 \textit{Helpers} tidak terdapat banyak perubahan namun, beberapa \textit{helpers} pada \textit{CodeIgniter 3} tidak terdapat pada \textit{CodeIgniter 4} sehingga perlu perubahan pada implementasi fungsinya. \textit{Helpers} dapat di dimuat secara otomatis menggunakan \verb|app\Config\Autoload.php|
 
 \subsection{\textit{Events}}
-\textit{Events} merupakan pembaharuan dari \textit{Hooks}. Pengguna harus mengubah \verb|$hook['post_controller_constructor']| menjadi  \texttt{Events::on('post_controller_constructor', ['MyClass', 'MyFunction']);} dengan \textit{namespace} \verb|CodeIgniter\Events\Events;|. 
+\textit{Events} merupakan pembaharuan dari \textit{Hooks}. Pengguna harus mengubah
+\begin{center}
+	\verb|$hook['post_controller_constructor']|
+\end{center} 
+menjadi 
+\begin{center} \verb|Events::on('post_controller_constructor', ['MyClass', 'MyFunction']);}|
+\end{center}
+Dan menambahkan \textit{namespace} \verb|CodeIgniter\Events\Events;|. 
 
 \subsection{\textit{Framework}}
 Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \verb|MY_X| pada direktori \textit{libraries} untuk memperpanjang atau mengganti potongan \textit{CI4}. Pengguna dapat membentuk kelas dimanapun dan menambahkan metode pada \verb|app/Config/Services.php|.
