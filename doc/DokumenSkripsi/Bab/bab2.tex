@@ -533,10 +533,13 @@ Ekpresi ini menghasilkan \textit{URI} \textit{products/shirts/123} yang memanggi
 \verb|$route['login/(.+)'] = 'auth/login/$1';|
 \end{center}
 
+\subsection{\textit{Auto-loading}}
+\textit{CodeIgniter 3} menyediakan sebuah fungsi untuk memuat berbagai kelas seperti \textit{libraries, helpers,} dan \textit{models}. Kelas dapat dimasukan pada \texttt{application/config/autoload.php} sesuai dengan petunjuk yang ada. \textit{File autoload} akan di inisiasikan setiap aplikasi dijalankan sehingga pengguna tidak perlu memuat kelas tersebut berulang kali. 
+
 \section{SharIF Judge\cite{sharif:23}}
 \label{sec:judge}
 
-\textit{SharIF Judge} merupakan sebuah \textit{Online Judge} percabangan dari \textit{Sharif Judge} yang dibentuk oleh Mohammed Javad Naderi. \textit{Sharif Judge} dibentuk menggunakan \textit{CodeIgniter 3} dan dimodifikasi sesuai dengan kebutuhan di Informatika Universitas Katolik Parahyangan menjadi nama \textit{SharIF Judge}. \textit{SharIF Judge} dapat menilai kode berbahasa \textit{C, C++, Java, dan Python} dengan mengunggah file ataupun mengetiknya langsung.
+\textit{SharIF Judge} merupakan sebuah \textit{Online Judge} percabangan dari \textit{Sharif Judge} yang dibentuk oleh Mohammed Javad Naderi. \textit{Sharif Judge} dibentuk menggunakan \textit{CodeIgniter 3} dan dimodifikasi sesuai dengan kebutuhan di Informatika Universitas Katolik Parahyangan menjadi nama \textit{SharIF Judge}. \textit{SharIF Judge} dapat menilai kode berbahasa \textit{C, C++, Java, dan Python} dengan mengunggah file ataupun mengetiknya secara langsung.
 
 \subsection{Struktur Aplikasi}
 \label{subsec:judgestructure}
@@ -546,7 +549,6 @@ Ekpresi ini menghasilkan \textit{URI} \textit{products/shirts/123} yang memanggi
 |   |-- cache
 |   |-- config
 |   |-- controllers
-|   |-- core
 |   |-- core
 |   |-- helpers
 |   |-- hooks
@@ -564,6 +566,7 @@ Ekpresi ini menghasilkan \textit{URI} \textit{products/shirts/123} yang memanggi
 |-- restricted
 |   |-- tester
 |-- system
+|-- assignments
 \end{lstlisting}
 
 \subsection{Instalasi}
