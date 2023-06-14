@@ -138,11 +138,23 @@ Fungsi lainnya akan dipindahkan sesuai dengan yang ada pada \textit{CodeIgniter 
 \textit{Libraries} pada \textit{CodeIgniter 3} memiliki perubahan dan penghapusan pada \textit{CodeIgnier 4} sehingga perlu dilakukan pembaharuan. Berikut merupakan \textit{libraries} yang dipakai pada \textit{SharIF Judge}:
 
 \subsubsection{\textit{Emails}}
-\textit{Emails} pada \textit{CodeIgnier 3} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi menggunakan \textit{camelcase}. Kode \ref{} merupakan contoh penggunaan \textit{library email}.
+\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi menggunakan \textit{camelcase}. Kode \ref{} merupakan contoh penggunaan \textit{library email}.
 
-\begin{lstlisting}[caption=Contoh penggunaan initController untuk variabel, label=kode:initController]
-
+\begin{lstlisting}[caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3]
+$this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->settings_model->get_setting('mail_from_name'));
+				$this->email->setTo($user[1]);
+				$this->email->setSubject('SharIF Judge Username and Password');
+				$text = $this->settings_model->get_setting('add_user_mail');
+				$text = str_replace('{SITE_URL}', base_url(), $text);
+				$text = str_replace('{ROLE}', $user[4], $text);
+				$text = str_replace('{USERNAME}', $user[0], $text);
+				$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
+				$text = str_replace('{LOGIN_URL}', base_url(), $text);
+				$this->email->setMessage($text);
+				$this->email->send()
 \end{lstlisting}
+
+Kode \ref{kode:emailslibbab3} memiliki sintaks dengan nama sama namun terdapat perubahan menjadi \textit{camelcase}.
 
 \subsubsection{\textit{Working with Uploaded Files}}
 \textit{Working with uploaded files} terdapat perubahan pada beberapa sintaks dan validasi terhadap \textit{file} yang telah diunggah. Konversi aplikasi \textit{SharIF Judge} akan menggunakan fungsi ini dengan beberapa perubahan sintaks sesuai dengan dokumentasinya.
@@ -163,12 +175,21 @@ Selain menggunakan \texttt{validation\_errors()} akan digunakan sebuah fungsi \t
 \textit{Library} yang terdapat pada \textit{CodeIgniter 4} juga dapat di\textit{extend} dan dibentuk sesuai dengan kebutuhan. Berikut merupakan \textit{library} yang dibentuk oleh pengguna. Berikut merupakan \textit{library} yang dibentuk oleh pengguna.
 
 \subsubsection{\textit{Password\_hash}}
-\textit{Library} ini dibentuk oleh \textit{phpass} untuk melakukan enkripsi \textit{password} dan melakukan verifikasi \textit{password}. \textit{Phpass} merupakan \textit{library} 
+\textit{Library} ini dibentuk oleh \textit{phpass} untuk melakukan enkripsi \textit{password} dan melakukan verifikasi \textit{password}. \textit{Phpass} dapat melakukan enkripsi dengan beberapa metode antara lain \textit{CRYPT\_BLOWFISH} dan \textit{CRYPT\_EXT\_DES}. Namun, \textit{phpass} hanya mendukung \textit{PHP} versi 5 sampai dengan 7. Sehingga, akan dilakukan konversi menggunakan fungsi yang disediakan oleh \textit{PHP} bernama \texttt{password\_hash()}. Seluruh penggunaan \textit{library} ini akan diubah menggunakan fungsi yang disediakan oleh \textit{PHP} dengan metode \textit{hashing} sama yaitu \textit{CRYPT\_BLOWFISH}. Perubahan fungsi \textit{hashing} ini bersifat \textit{backward compatible} sehingga dapat menggunakan \textit{database} aplikasi terdahulu tanpa perlu membentuk data baru. Berikut merupakan contoh pengubahan kode dari \textit{phpass} menjadi \textit{password\_hash}.
 
-\textit{Phpass} hanya mendukung \textit{PHP} versi 5 sampai dengan 7. Sehingga, akan dilakukan konversi menggunakan fungsi yang disediakan oleh \textit{PHP} bernama \texttt{password\_hash()}. Seluruh penggunaan \textit{library} ini akan diubah menggunakan fungsi yang disediakan oleh \textit{PHP} dengan metode \textit{hashing} sama yaitu \textit{CRYPT\_BLOWFISH}.
+\begin{center}
+\verb|'password' => $this->password_hash->HashPassword($password)|
+\end{center}
+menjadi
+\begin{center}
+\verb|'password' => password_hash($password,PASSWORD_BCRYPT)|
+\end{center}
+
+Sintaks diatas menggunakan \texttt{PASSWORD\_BCRYPT} karena algoritma tersebut memakai \textit{CRYPT\_BLOWFISH} untuk melakukan enkripsi.
+
 
 \subsection{\textit{Configuration}}
-\textit{Configuration} memiliki perubahan nama dan perpindahan beberapa sintaks. Perubahan nama terdapat pada \verb|application/config/config.php| menjadi \texttt{app/Config/App.php}. Selain itu, berikut merupakan sintaks yang dipindahkan menuju \texttt{app/Config/Security.php}:
+\textit{Configuration} terdapat perubahan nama dari yang sebelumnya \texttt{application/config/config.php} menjadi \texttt{app/Config/App.php} dan penambahan \textit{file} dengan nama \texttt{app/Config/Secrets.php}. Berhubung dengan perubahan nama tersebut, terdapat beberapa perpindahan beberapa sintaks menuju direktori baru tersebut. Berikut merupakan sintaks yang dipindahkan menuju \texttt{app/Config/Security.php}:
 \begin{itemize}
 \item \verb|$config['csrf_protection'] = TRUE;|
 \item \verb|$config['csrf_token_name'] = 'shj_csrf_token';|
@@ -212,3 +233,343 @@ Sintaks diatas akan mengembalikan pengguna menuju \textit{url} \texttt{login/for
 
 Konversi \textit{helpers} akan dipindahkan dari yang sebelumnya menggunakan \textit{autoload} menuju \texttt{initController} dengan menambahkan pada variabel \textit{helpers}.
 
+\section{Analisis Sistem Kini}
+Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} dan di kustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan  arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}.
+
+\subsection{\textit{Model}}
+\textit{Model} terdapat pada direktori \texttt{application/models}. Direktori ini berisikan kelas \textit{model} dengan fungsi-fungsi untuk mengolah data pada aplikasi. Berikut merupakan \textit{model} pada \textit{SharIF Judge} beserta fungsi-fungsinya.
+\subsubsection{\texttt{Assignment\_model.php}}
+\textit{Model Assignment} terdapat beberapa fungsi untuk memproses data pada tabel \textit{assignment}. Berikut merupakan fungsi-fungsi dari \textit{model} tersebut:
+\begin{itemize}
+	\item \texttt{add\_assignment}\\
+	Fungsi ini berguna untuk menambahkan atau memperbaharui \textit{assignment} pada \textit{database}.
+	\item \texttt{delete\_assignment}\\
+	Fungsi ini berguna untuk menghapus \textit{assignment} pada \textit{database}.
+	\item \texttt{all\_assignments}\\
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{assignment} beserta informasi \textit{assignment} tersebut.
+	\item \texttt{new\_assignment\_id}\\
+	Fungsi ini berguna untuk mencari \texttt{id} terkecil yang dapat digunakan untuk menambahkan \textit{assignment} baru.
+	\item \texttt{all\_problems}\\
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{problems} dari \textit{assignment} yang ada.
+	\item \texttt{problem\_info}\\
+	Fungsi ini berguna untuk mengembalikan baris tabel untuk \textit{problem} tertentu.
+	\item \textit{assignment\_info}\\
+	Fungsi ini berguna untuk mengembalikan baris tabel untuk \texttt{assignment} tertentu.
+	\item \texttt{is\_participant}\\
+	Fungsi ini berguna untuk mengecek apakah \textit{username} merupakan peserta atau tidak.
+	\item \texttt{increase\_total\_submits}\\
+	Fungsi ini berguna untuk menambahkan satu buah total \textit{submit}.
+	\item \texttt{set\_moss\_time}\\
+	Fungsi ini berguna untuk memperbaharui \textit{"Moss Update Time"} untuk \textit{assignment} tertentu.
+	\item \texttt{get\_moss\_time}\\
+	Fungsi ini berguna untuk mengembalikan \textit{"Moss Update Time"} untuk \textit{assignment} tertentu.
+	\item \texttt{save\_problem\_description}\\
+	Fungsi ini berguna untuk menyimpan atau memperbaharui deskripsi \textit{problem}.
+	\item \texttt{\_update\_coefficients}\\
+	Fungsi ini dipanggil pada fungsi \texttt{add\_assignment} yang berguna untuk memperbaharui koefisien dari \textit{assignment} tertentu.
+\end{itemize}
+\subsubsection{\texttt{Hof\_model.php}}
+\begin{itemize}
+	\item \texttt{get\_all\_final\_submission}\\
+	Fungsi ini berguna untuk mengambil data untuk \textit{Hall of Fame} berdasarkan \textit{username}.
+	\item \texttt{get\_all\_user\_assignments}\\
+	Fungsi ini berguna untuk mengambil detail \textit{assignment} dan \textit{problem} berdasarkan pengguna.
+\end{itemize}
+\subsubsection{\texttt{Logs\_model.php}}
+\begin{itemize}
+	\item \texttt{insert\_to\_logs}\\
+	Fungsi ini berguna untuk mencatat \textit{log} pada tabel \textit{login}.
+	\item \texttt{get\_all\_logs}\\
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{log} dalam bentuk \textit{array}.
+\end{itemize}
+\subsubsection{\texttt{Notifications\_model.php}}
+\begin{itemize}
+	\item \texttt{get\_all\_notifications}\\
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{notifications} dalam bentuk \textit{array}.
+	\item \texttt{get\_latest\_notifications}\\
+	Fungsi ini berguna untuk mengembalikan sepuluh \textit{notification} terakhir.
+	\item \texttt{add\_notification}\\
+	Fungsi ini berguna untuk menambahkan \textit{notification} baru.
+	\item \texttt{update\_notification}\\
+	Fungsi ini berguna untuk memperbaharui \textit{notification} tertentu.
+	\item \texttt{delete\_notification}\\
+	Fungsi ini berguna untuk menghapus \textit{notification} tertentu.
+	\item \texttt{get\_notification}\\
+	Fungsi ini berguna untuk mengembalikan \textit{notification} dalam bentuk \textit{array}.
+	\item \texttt{have\_new\_notification}\\
+	Fungsi ini berguna untuk mengecek apakah terdapat \textit{notification} setelah waktu tertentu.
+\end{itemize}
+\subsubsection{\texttt{Queue\_model.php}}
+\begin{itemize}
+	\item \texttt{in\_queue}\\
+	Fungsi ini berguna untuk mengecek apakah \textit{submission} pengguna tertentu sudah dalam antrean.
+	\item \texttt{get\_queue}\\
+	Fungsi ini berguna untuk mengembalikan data seluruh antrian.
+	\item \texttt{empty\_queue}\\
+	Fungsi ini berguna untuk menghapus seluruh tabel \textit{queue}.
+	\item \texttt{add\_to\_queue}\\
+	Fungsi ini berguna untuk memasukan \textit{submission} kedalam tabel \textit{queue}.
+	\item \texttt{rejudge}\\
+	Fungsi ini berguna untuk menambahkan \textit{submission} kedalam antrean untuk dilakukan \textit{rejudge}.
+	\item \texttt{rejudge\_single}\\
+	Fungsi ini berguna untuk menambahkan satu buah \textit{submission} kedalam antrean untuk dilakukan \textit{rejudge}.
+	\item \texttt{get\_first\_item}\\
+	Fungsi ini berguna untuk mengambil data pertama dalam antrean.
+	\item \texttt{remove\_item}\\
+	Fungsi ini berguna untuk menghapus data tertentu dalam antrean.
+	\item \texttt{save\_judge\_result\_in\_db}\\
+	Fungsi ini berguna untuk menyimpan hasil dari \textit{judge} ke dalam \textit{database}.
+	\item \texttt{add\_to\_queue\_exec}\\
+	Fungsi ini berguna untuk menambahkan data \textit{dummy} pada antrean.
+\end{itemize}
+\subsubsection{\texttt{Scoreboard\_model.php}}
+\begin{itemize}
+	\item \texttt{\_generate\_scoreboard}\\
+	Fungsi ini dipanggil pada fungsi \texttt{update\_scoreboard} dan berfungsi untuk menghasilkan \textit{scoreboard} dari \textit{final submission}.
+	\item \texttt{update\_scoreboards}\\
+	Fungsi ini berguna untuk memperbaharui \textit{cache scoreboard} dari seluruh \textit{assignment}. Fungsi ini dipanggil setiap terdapat penghapusan pengguna atau seluruh \textit{assignment} pengguna.
+	\item \texttt{update\_scoreboard}\\
+	Fungsi ini berguna untuk memperbaharui \textit{cache scoreboard} dari seluruh \textit{assignment}. Fungsi ini dipanggil setelah \textit{judge} atau \textit{rejudge}.
+	\item \texttt{get\_scoreboard}\\
+	Fungsi ini berguna untuk mengambil seluruh \textit{cache scoreboard} dari \textit{assignment} tertentu.
+\end{itemize}
+\subsubsection{\texttt{Settings\_model.php}}
+\begin{itemize}
+	\item \texttt{get\_setting}\\
+	Fungsi ini berguna untuk mengembalikan data \textit{setting} tertentu.
+	\item \texttt{set\_setting}\\
+	Fungsi ini berguna untuk memperbaharui \textit{setting}.
+	\item \texttt{get\_all\_settings}\\
+	Fungsi ini berguna untuk mengembalikan seluruh data \textit{setting}.
+	\item \texttt{set\_settings}\\
+	Fungsi memperbaharui beberapa \textit{setting}.
+\end{itemize}
+\subsubsection{\texttt{Submit\_model.php}}
+\begin{itemize}
+	\item \texttt{get\_submission}\\
+	Fungsi ini berguna untuk mengembalikan baris data \textit{submission} tertentu.
+	\item \texttt{get\_final\_submissions}\\
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{final submission}.
+	\item \texttt{get\_all\_submissions}\\
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{submission}.
+	\item \texttt{count\_final\_submissions}\\
+	Fungsi ini berguna untuk menghitung seluruh \textit{final submission}.
+	\item \texttt{count\_all\_submissions}\\
+	Fungsi ini berguna untuk menghitung seluruh \textit{submission}.
+	\item \texttt{set\_final\_submission}\\
+	Fungsi ini berguna untuk memperbaharui \textit{submission} terentu menjadi \textit{final submission}.
+	\item \texttt{add\_upload\_only}\\
+	Fungsi ini berguna untuk menambahkan hasil dari \textit{upload only} ke dalam \textit{database}.
+\end{itemize}
+\subsubsection{\textit{User\_model.php}}
+\begin{itemize}
+	\item \texttt{have\_user}\\
+	Fungsi ini berguna untuk mengecek apakah terdapat pengguna dengan \textit{username} tertentu.
+	\item \texttt{user\_id\_to\_username}\\
+	Fungsi ini berguna untuk mengembalikan \textit{user id} menjadi \textit{username}.
+	\item \texttt{username\_to\_user\_id}\\
+	Fungsi ini berguna untuk mengembalikan \textit{username} menjadi \textit{user id}.
+	\item \texttt{have\_email}\\
+	Fungsi ini berguna untuk mengecek apakah terdapat \textit{username} dengan \textit{email} tertentu.
+	\item \texttt{add\_user}\\
+	Fungsi ini berguna untuk menambahkan sebuah pengguna.
+	\item \texttt{add\_users}\\
+	Fungsi ini berguna untuk menambahkan banyak pengguna.
+	\item \texttt{delete\_user}\\
+	Fungsi ini berguna untuk menghapus pengguna tertentu.
+	\item \texttt{delete\_submissions}\\
+	Fungsi ini berguna untuk menghapus seluruh \textit{submission} pada pengguna tertentu.
+	\item \texttt{validate\_user}\\
+	Fungsi ini berguna untuk mengecek \textit{username} dan \textit{password} apakah sesuai dengan data.
+	\item \texttt{selected\_assignment}\\
+	Fungsi ini berguna untuk mengembalikan \textit{assignment} untuk pengguna tertentu.
+	\item \texttt{get\_names}\\
+	Fungsi ini berguna untuk mengembalikan nama dari pengguna tertentu.
+	\item \texttt{update\_profile}\\
+	Fungsi ini berguna untuk memperbaharui profil dari pengguna seperti nama, \textit{email, password}, dan \textit{role}.
+	\item \texttt{send\_password\_reset\_mail}\\
+	Fungsi ini berguna untuk menghasilkan \textit{password reset key} dan mengirim \textit{email} untuk melakukan \textit{reset password}.
+	\item \texttt{passchange\_is\_valid}\\
+	Fungsi ini berguna untuk mengecek apakah \textit{password key} yang diberikan sesuai atau tidak.
+	\item \texttt{reset\_password}\\
+	Fungsi ini berguna untuk mengatur ulang \textit{password} sesuai dengan \textit{password key} tertentu.
+	\item \texttt{get\_all\_users}\\
+	Fungsi ini berguna untuk mengembalikan seluruh pengguna untuk halaman \textit{users}.
+	\item \texttt{get\_user}\\
+	Fungsi ini berguna untuk mengembalikan baris data untuk pengguna tertentu.
+	\item \texttt{update\_login\_time}\\
+	Fungsi ini berguna untuk memperbaharui \textit{login time} dan \textit{last login time} untuk pengguna tertentu.
+\end{itemize}
+\subsubsection{\textit{User.php}}
+\begin{itemize}
+	\item \texttt{select\_assignment}\\
+	Fungsi ini berguna untuk mengatur \textit{assignment} yang dipilih oleh pengguna.
+	\item \texttt{save\_widget\_positions}\\
+	Fungsi ini berguna untuk memperbaharui posisi dari \textit{dashboard widget} pada \textit{database}.
+	\item \texttt{get\_widget\_positions}\\
+	Fungsi ini berguna untuk mengembalikan data \textit{dashboard widget}.
+\end{itemize}
+
+\subsection{\textit{View}}
+\subsection{Halaman pada \textit{SharIF Judge}}
+Halaman pada \textit{SharIF Judge} dibagi berdasarkan \textit{role} penggunanya. Setiap role memiliki tampilan halaman berbeda dengan fitur-fitur berbeda setiap \textit{role} penggunanya. Berikut merupakan halaman dan fitur pada \textit{SharIF Judge}:
+
+\subsubsection{\textit{Dashboard}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{dashboard}  
+	\caption[Tampilan Halaman \textit{Dashboard}]{Tampilan Halaman Dashboard} 
+	\label{fig:dashboard} 
+\end{figure} 
+
+Gambar \ref{fig:dashboard} merupakan tampilan halaman \textit{dashboard} yang terdapat pada semua \textit{role} pengguna.
+\subsubsection{\textit{Profile}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{profile}  
+	\caption[Tampilan Halaman \textit{Profile}]{Tampilan Halaman Profile} 
+	\label{fig:profile} 
+\end{figure}
+
+Gambar \ref{fig:profile} merupakan tampilan halaman \textit{profile} yang terdapat pada semua \textit{role} pengguna. Namun, terdapat fitur yang tidak dapat digunakan oleh \textit{siswa} dan \textit{instructor} yakni mengganti role.
+
+\subsubsection{\textit{Settings}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{settings}  
+	\caption[Tampilan Halaman \textit{Settings}]{Tampilan Halaman Settings} 
+	\label{fig:settings} 
+\end{figure}
+
+Gambar \ref{fig:settings} merupakan tampilan halaman \textit{settings} yang terdapat hanya pada \textit{role} admin dan \textit{head instructor}. 
+
+\subsubsection{\textit{Users}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{users}  
+	\caption[Tampilan Halaman \textit{Users}]{Tampilan Halaman Users} 
+	\label{fig:users} 
+\end{figure}
+
+Gambar \ref{fig:users} merupakan tampilan halaman \textit{users} yang terdapat hanya pada \textit{role} admin dan \textit{head instructor}.
+
+\subsubsection{\textit{Notifications}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{notifications}  
+	\caption[Tampilan Halaman \textit{Notifications}]{Tampilan Halaman Notifications} 
+	\label{fig:notifications} 
+\end{figure}
+
+Gambar \ref{fig:notifications} merupakan tampilan halaman \textit{notifications} yang terdapat pada semua \textit{role} pengguna.
+
+\subsubsection{\textit{Assignments}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{assignments}  
+	\caption[Tampilan Halaman \textit{Assignments}]{Tampilan Halaman Assignments} 
+	\label{fig:assignments} 
+\end{figure}
+
+Gambar \ref{fig:assignments} merupakan tampilan halaman \textit{assignments} yang terdapat pada semua \textit{role} pengguna. Namun, terdapat bagian yang tidak dapat diakses oleh \textit{role} siswa dan \textit{instructor} yakni bagian \textit{actions}.
+\subsubsection{\textit{Problems}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{problems}  
+	\caption[Tampilan Halaman \textit{Problems}]{Tampilan Halaman Problems} 
+	\label{fig:problems} 
+\end{figure}
+
+Gambar \ref{fig:problems} merupakan tampilan halaman \textit{problems} yang terdapat pada semua \textit{role} pengguna.
+
+\subsubsection{\textit{Submit}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{submit}  
+	\caption[Tampilan Halaman \textit{Submit}]{Tampilan Halaman Submit} 
+	\label{fig:submit} 
+\end{figure}
+
+Gambar \ref{fig:submit} merupakan tampilan halaman \textit{submit} yang terdapat pada semua \textit{role} pengguna.
+
+\subsubsection{\textit{Final Submissions}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{finalsubmission}  
+	\caption[Tampilan Halaman \textit{Final Submission}]{Tampilan Halaman Final Submission} 
+	\label{fig:finalsubmission} 
+\end{figure}
+
+Gambar \ref{fig:finalsubmission} merupakan tampilan halaman \textit{submit} yang terdapat pada semua \textit{role} pengguna.
+\subsubsection{\textit{All Submissions}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{allsubmission}  
+	\caption[Tampilan Halaman \textit{All Submission}]{Tampilan Halaman All Submission} 
+	\label{fig:allsubmission} 
+\end{figure}
+
+Gambar \ref{fig:allsubmission} merupakan tampilan halaman \textit{All Submission} yang terdapat pada semua \textit{role} pengguna.
+
+\subsubsection{\textit{Scoreboard}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{scoreboard}  
+	\caption[Tampilan Halaman \textit{Scoreboard}]{Tampilan Halaman Scoreboard} 
+	\label{fig:scoreboard} 
+\end{figure}
+
+Gambar \ref{fig:allsubmission} merupakan tampilan halaman \textit{All Submission} yang terdapat pada semua \textit{role} pengguna.
+
+\subsubsection{\textit{Hall of Fame}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{halloffame}  
+	\caption[Tampilan Halaman \textit{Hall of Fame}]{Tampilan Halaman Hall of Fame} 
+	\label{fig:halloffame} 
+\end{figure}
+
+Gambar \ref{fig:halloffame} merupakan tampilan halaman \textit{Hall of Fame} yang terdapat pada semua \textit{role} pengguna.
+
+
+\subsubsection{\textit{24-hour Log}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{24hourlog}  
+	\caption[Tampilan Halaman \textit{24-hour Log}]{Tampilan Halaman 24-hour Log} 
+	\label{fig:24hourlog} 
+\end{figure}
+
+Gambar \ref{fig:24hourlog} merupakan tampilan halaman \textit{24-hour Log} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+
+\subsubsection{\textit{Rejudge}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{rejudge}  
+	\caption[Tampilan Halaman \textit{ReJudge}]{Tampilan Halaman ReJudge} 
+	\label{fig:rejudge} 
+\end{figure}
+
+Gambar \ref{fig:rejudge} merupakan tampilan halaman \textit{ReJudge} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+
+\subsubsection{\textit{Submission Queue}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{submissionqueue}  
+	\caption[Tampilan Halaman \textit{Submission Queue}]{Tampilan Halaman Submission Queue} 
+	\label{fig:submissionqueue} 
+\end{figure}
+
+Gambar \ref{fig:submissionqueue} merupakan tampilan halaman \textit{Submission Queue} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+
+\subsubsection{\textit{Cheat Detection}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{cheatdetection}  
+	\caption[Tampilan Halaman \textit{Cheat Detection}]{Tampilan Halaman Cheat Detection} 
+	\label{fig:cheatdetection} 
+\end{figure}
+
+Gambar \ref{fig:cheatdetection} merupakan tampilan halaman \textit{Cheat Detection} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+
+\subsection{\textit{Controller}}

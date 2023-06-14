@@ -74,7 +74,8 @@ Kode \ref{kode:model} membentuk beberapa fungsi yaitu:
 \verb|$this->load->model('model_name');|.
 \end{center}
 
-\subsubsection{\textit{\textbf{View}}} berfungsi dalam menyajikan informasi kepada pengguna. \textit{View} biasanya merupakan halaman web namun, pada \textit{CodeIgniter 3} \textit{view} dapat berupa pecahan halaman seperti \textit{header} atau \textit{footer}. Pecahan halaman dapat dimasukan pada halaman lain agar mempermudah dan membentuk kode yang lebih bersih.
+\subsubsection{\textit{\textbf{View}}}
+\textit{View} berfungsi dalam menyajikan informasi kepada pengguna. \textit{View} biasanya merupakan halaman web namun, pada \textit{CodeIgniter 3} \textit{view} dapat berupa pecahan halaman seperti \textit{header} atau \textit{footer}. Pecahan halaman dapat dimasukan pada halaman lain agar mempermudah dan membentuk kode yang lebih bersih.
 
 \begin{lstlisting}[caption=Contoh \textit{view} pada \textit{CodeIgniter 3}, label=kode:view]
 <?php
@@ -94,7 +95,8 @@ Kode \ref{kode:view} merupakan contoh \textit{file view} \textit{CodeIgniter 3} 
 \verb|$this->load->view('name');|
 \end{center}
 
-\subsubsection{\textit{\textbf{Controller}}} berfungsi sebagai perantara antara \textit{Model}, \textit{View}, dan sumber daya yang dibutuhkan untuk melakukan proses \textit{HTTP Request} dan menjalankan halaman web. Penamaan \textit{controller} biasanya digunakan sebagai \textit{url} pada perangkat lunak pengguna. Berikut merupakan contoh \textit{controller} \textit{CodeIgniter 3} pada direktori \verb|application/controllers/|:
+\subsubsection{\textit{\textbf{Controller}}} 
+\textit{Controller} berfungsi sebagai perantara antara \textit{Model}, \textit{View}, dan sumber daya yang dibutuhkan untuk melakukan proses \textit{HTTP Request} dan menjalankan halaman web. Penamaan \textit{controller} biasanya digunakan sebagai \textit{url} pada perangkat lunak pengguna. Berikut merupakan contoh \textit{controller} \textit{CodeIgniter 3} pada direktori \verb|application/controllers/|:
 
 \begin{lstlisting}[caption=Contoh \textit{controller} pada \textit{CodeIgniter 3}, label=kode:controller]
 <?php
@@ -735,7 +737,7 @@ Pengguna dapat menambahkan \textit{assignment} baru melalui bagian \textit{Add} 
 Berikut merupakan beberapa pengaturan pada halaman \textit{Add Assignments}:
 \begin{itemize}
 \item \subsubsection{\textit{Assignment Name}}
-\textit{Assignment} akan ditampilkan sesuai dengan namanya pada daftar \textit{assignment}.
+\textit{Assignment} akan ditampilkan sesuai dengan masukan pada daftar \textit{assignment}.
 
 \item \subsubsection{\textit{Start Time}}
 Pengguna tidak dapat mengumpulkan \textit{assignment} sebelum waktu dimulai("\textit{Start Time}"). Format pengaturan waktu untuk waktu mulai adalah \verb|MM/DD/YYYY HH:MM:SS| dengan contoh \verb|08/31/2013 12:00:00|. 
@@ -1563,6 +1565,8 @@ Kode \ref{kode:filterexample} merupakan contoh kode yang akan melakukan pengecek
 \begin{center}
 	\verb|$routes->get('/', 'Dashboard::index',['filter' => 'check-install:dual,noreturn']);|
 \end{center}
+
+Sintaks diatas akan melakukan pengecekan pada \textit{controller} \texttt{Dashboard::index} sebelum dan setelah \textit{controller} tersebut dijalankan.
 
 \subsection{\textit{CodeIgniter URLs}}
 \textit{CodeIgniter 4} menggunakan pendekatan \textit{segment-based} dibandingkan menggunakan \textit{query-string} untuk menghasilkan \textit{URL} sehingga ramah manusia dan mesin pencari. Berikut merupakan contoh \textit{URL} yang dihasilkan \textit{CodeIgniter 4}:
