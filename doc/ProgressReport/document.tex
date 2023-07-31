@@ -6,7 +6,7 @@
 \graphicspath{ {./Gambar/} }
 \usepackage{float}
 \usepackage[cm]{fullpage}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \pagestyle{myheadings}
 \usepackage{etoolbox}
 \usepackage{setspace} 
@@ -44,13 +44,13 @@
 %ISILAH DATA BERIKUT INI:
 \newcommand{\nama}{Filipus}
 \newcommand{\@npm}{6181901074}
-\newcommand{\tanggal}{30/05/2023} %Tanggal pembuatan dokumen
+\newcommand{\tanggal}{14/06/2023} %Tanggal pembuatan dokumen
 \newcommand{\@judultopik}{Konversi SharIF Judge dari CodeIgniter 3 ke CodeIgnier 4} % Judul/topik anda
-\newcommand{\kodetopik}{PAN5392}
+\newcommand{\kodetopik}{PAN5492}
 \newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
 \newcommand{\pembA}{Pascal Alfadian Nugroho}
 \newcommand{\pembB}{-}
-\newcommand{\semesterPertama}{8 - Genap 22/23} % semester pertama kali topik diambil, angka 1 dimulai dari sem Ganjil 96/97
+\newcommand{\semesterPertama}{54 - Genap 22/23} % semester pertama kali topik diambil, angka 1 dimulai dari sem Ganjil 96/97
 \newcommand{\lamaSkripsi}{1} % Jumlah semester untuk mengerjakan skripsi s.d. dokumen ini dibuat
 \newcommand{\kulPertama}{Skripsi 1} % Kuliah dimana topik ini diambil pertama kali
 \newcommand{\tipePR}{B} % tipe progress report :
@@ -104,7 +104,7 @@ Pada skripsi ini, akan dilakukan konversi SharIF Judge dari CodeIgniter 3 sehing
 \section{Rumusan Masalah}
 \begin{itemize}
 \item Bagaimana cara melakukan konversi CodeIgniter 3 menjadi CodeIgniter 4?
-\item Bagaimana mengevaluasi kode SharIF Judge dan mengubahnya agar dapat berjalan di Code22 Igniter 4?
+\item Bagaimana mengevaluasi kode SharIF Judge dan mengubahnya agar dapat berjalan di CodeIgniter 4?
 \end{itemize}
 
 \section{Tujuan}
@@ -118,7 +118,8 @@ Detail bagian pekerjaan skripsi sesuai dengan rencan kerja/laporan perkembangan 
 	\begin{enumerate}
 		\item \textbf{Melakkan studi literatur mengenai \textit{Online Judge}.}\footnote{Kurnia, A., Lim, A., \& Cheang, B. (2001). Online Judge. Computers \& Education, 36(4), 299–315. https://doi.org/10.1016/s0360-1315(01)00018-5 (23 Maret 2023)}\\
 		{\bf Status :} baru ditambakan pada semester ini.\\
-		{\bf Hasil :} \textit{Online Judge} merupakan sebuah perangkat lunak yang dibentuk untuk membantu pengguna dalam melakukan pengecekan dan penilaian terhadap sebuah program. \textit{Online Judge} dibentuk untuk membantu pengajar dalam melakukan pengecekan secara otomatis dan membantu pengajar dalam menghindari program berbahaya seperti terdapat \textit{malware}. Perangkat lunak ini dapat menerima masukan berupa program yang selanjutnya akan diperiksa dan memberikan keluaran berupa nilai dari program tersebut. \textit{Online Judge} akan menilai program berdasarkan masukan dan keluaran sesuai dengan standar yang sudah ditentukan. Program akan dinilai menggunakan \textit{secret test sets} sehingga, pengajar dapat mengetahui apakah program akan mengeluarkan keluaran sesuai dengan \textit{test sets} yang diberikan.
+		{\bf Hasil :} \textit{Online Judge} sudah dipelajari.\\
+		\textit{Online Judge} merupakan sebuah perangkat lunak yang dibentuk untuk membantu pengguna dalam melakukan pengecekan dan penilaian terhadap sebuah program. \textit{Online Judge} dibentuk untuk membantu pengajar dalam melakukan pengecekan secara otomatis dan membantu pengajar dalam menghindari program berbahaya seperti terdapat \textit{malware}. Perangkat lunak ini dapat menerima masukan berupa program yang selanjutnya akan diperiksa dan memberikan keluaran berupa nilai dari program tersebut. \textit{Online Judge} akan menilai program berdasarkan masukan dan keluaran sesuai dengan standar yang sudah ditentukan. Program akan dinilai menggunakan \textit{secret test sets} sehingga, pengajar dapat mengetahui apakah program akan mengeluarkan keluaran sesuai dengan \textit{test sets} yang diberikan.
 		
 		  Penggunaan \textit{online judge} dapat memiliki beberapa keuntungan dalam melakukan pengecekan program. Berikut merupakan beberapa keuntungan penggunaan \textit{online judge}:
 		  \begin{itemize}
@@ -138,7 +139,7 @@ Detail bagian pekerjaan skripsi sesuai dengan rencan kerja/laporan perkembangan 
 		
 		\item \textbf{Melakukan studi literatur mengenai \textit{SharIF Judge}\footnote{Dokumentasi \textit{SharIF Judge} \url{https://github.com/ifunpar/SharIF-Judge/blob/docs/readme.md}(19 Maret 2023)}.}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} \\
+		{\bf Hasil :} \textit{SharIF Judge} sudah dipelajari dan berhasil di jalankan pada \textit{local}.\\
 		\textit{SharIF Judge} merupakan sebuah \textit{Online Judge} percabangan dari \textit{Sharif Judge} yang dibentuk oleh Mohammed Javad Naderi. \textit{Sharif Judge} dibentuk menggunakan \textit{CodeIgniter 3} dan dimodifikasi sesuai dengan kebutuhan di Informatika Universitas Katolik Parahyangan menjadi nama \textit{SharIF Judge}. \textit{SharIF Judge} dapat menilai kode berbahasa \textit{C, C++, Java, dan Python} dengan mengunggah file ataupun mengetiknya secara langsung. \textit{SharIF Judge} memiliki struktur aplikasi seperti berikut.
 
 \textbf{\large{Struktur Aplikasi}}
@@ -975,7 +976,8 @@ for func in BLACKLIST:
 
 		\item \textbf{Melakukan studi literatur mengenai \textit{CodeIgniter 3}\footnote{Dokumentasi \textit{CodeIgniter 3} \url{https://codeigniter.com/userguide3/}(19 Maret 2023)}}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} CodeIgniter 3 merupakan sebuah \textit{framework opensource} yang berfungsi untuk mempermudah pengguna dalam membentuk aplikasi \textit{website} menggunakan bahasa PHP. CodeIgniter 3 memiliki tujuan untuk membantu pengguna dalam membentuk aplikasi web lebih cepat dengan menyediakan beragam \textit{library} dan tampilan dan \textit{logic} yang simpel. \textit{CodeIgniter 3} juga merupakan \textit{framework} ringan yang menggunakan struktur \textit{Model-View-Controller}, dan menghasilkan \textit{URLs} yang bersih. \textit{Code Igniter 3} memiliki \textit{flow chart} aplikasi yang dapat dilihat pada gambar \ref{fig:ci3flowchart}.
+		{\bf Hasil :} \textit{CodeIgniter 3} sudah dipelajari cara kerja dan dokumentasinya.\\
+		\textit{CodeIgniter 3} merupakan sebuah \textit{framework opensource} yang berfungsi untuk mempermudah pengguna dalam membentuk aplikasi \textit{website} menggunakan bahasa PHP. \textit{CodeIgniter 3} memiliki tujuan untuk membantu pengguna dalam membentuk aplikasi web lebih cepat dengan menyediakan beragam \textit{library} dan tampilan dan \textit{logic} yang simpel. \textit{CodeIgniter 3} juga merupakan \textit{framework} ringan yang menggunakan struktur \textit{Model-View-Controller}, dan menghasilkan \textit{URLs} yang bersih. \textit{Code Igniter 3} memiliki \textit{flow chart} aplikasi yang dapat dilihat pada gambar \ref{fig:ci3flowchart}.
 
 \begin{figure}[H]
 	\centering  
@@ -1504,7 +1506,7 @@ Ekpresi ini menghasilkan \textit{URI} \textit{products/shirts/123} yang memanggi
 
 		\item \textbf{Melakukan studi literatur mengenai \textit{CodeIgniter 4}\footnote{Dokumentasi \textit{CodeIgniter 4} \url{https://codeigniter.com/user_guide/}(19 Maret 2023)}}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} \\ \textit{CodeIgniter 4} merupakan versi terbaru dari \textit{framework} \textit{CodeIgniter} yang berfungsi untuk membantu pembentukan web. \textit{CodeIgniter 4} dapat dipasang menggunakan \textit{composer} ataupun dipasang secara manual dengan mengunduhnya dari situs web resmi. Setelah dilakukan pemasangan \textit{CodeIgniter 4} memiliki lima buah direktori dengan struktur aplikasi sebagai berikut:
+		{\bf Hasil :} \textit{CodeIgniter 4} sudah dipelajari cara kerja dan membentuknya.\\ \textit{CodeIgniter 4} merupakan versi terbaru dari \textit{framework} \textit{CodeIgniter} yang berfungsi untuk membantu pembentukan web. \textit{CodeIgniter 4} dapat dipasang menggunakan \textit{composer} ataupun dipasang secara manual dengan mengunduhnya dari situs web resmi. Setelah dilakukan pemasangan \textit{CodeIgniter 4} memiliki lima buah direktori dengan struktur aplikasi sebagai berikut:
 
 \begin{itemize}
 \item \texttt{app/}
@@ -1993,7 +1995,7 @@ Setelah dilakukan pemanggilan, pengguna dapat memakai fungsi-fungsi yang disedia
 
 		\item \textbf{Melakukan studi literatur mengenai konversi \textit{CodeIgniter 3} ke \textit{CodeIgniter 4}\footnote{Dokumentasi \textit{CodeIgniter 4} \url{https://codeigniter.com/user_guide/installation/upgrade_4xx.html}(22 Maret 2023)}}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} \\ Aplikasi akan dikonversi menuju \textit{CodeIgniter 4} dengan struktur sebagai berikut.
+		{\bf Hasil :} Sudah dipelajari cara melakukan konversi dan melakukan konversi secara sederhana.\\ Aplikasi akan dikonversi menuju \textit{CodeIgniter 4} dengan struktur sebagai berikut.
 		\begin{figure}[H]
 			\centering  
 			\includegraphics[scale=0.5]{dirMapping}  
@@ -2185,11 +2187,11 @@ Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \
 
 		\item \textbf{Menulis dokumen skripsi}\\
 		{\bf Status :} Ada sejak rencana kerja skripsi.\\
-		{\bf Hasil :} \\ Menulis sebagian dokumen skripsi yaitu bab 1, 2, dan 3.
+		{\bf Hasil :} Menulis sebagian dokumen skripsi yaitu bab 1, 2, dan 3.
 		
 		\item \textbf{Melakukan studi literatur \textit{Twig}\footnote{Dokumentasi \textit{Twig} \url{https://twig.symfony.com/doc/3.x/functions/block.html}(10 Maret 2023)}}\\
 		{\bf Status :} baru ditambahkan pada semester ini\\
-		{\bf Hasil :} \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman \textit{PHP}. \textit{Twig} digunakan pada \textit{view} aplikasi \textit{ShaIF Judge} untuk menampilkan data berupa variabel dan melanjutkan atau memasukan sebuah \textit{template view} pada \textit{view} lainnya. Kode \ref{kode:twigtag} merupakan contoh penggunaan \textit{Twig} pada salah satu halaman \textit{SharIF Judge}.
+		{\bf Hasil :} Sudah dipelajari cara kerja \textit{twig} untuk implementasi pada \textit{view}.\\ \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman \textit{PHP}. \textit{Twig} digunakan pada \textit{view} aplikasi \textit{ShaIF Judge} untuk menampilkan data berupa variabel dan melanjutkan atau memasukan sebuah \textit{template view} pada \textit{view} lainnya. Kode \ref{kode:twigtag} merupakan contoh penggunaan \textit{Twig} pada salah satu halaman \textit{SharIF Judge}.
 		\begin{lstlisting}[caption=Contoh penggunaan \textit{twig} pada \textit{view}. ,label=kode:twigtag]
 <h1>Members</h1>
 <ul>
@@ -2203,8 +2205,15 @@ Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \
 		
 		\item \textbf{Melakukan implementasi sederhana}\\
 		{\bf Status :} baru ditambahkan pada semester ini\\
-		{\bf Hasil :} Mengimplementasikan kode pada projek \textit{CodeIgniter 4} antara lain fitur \textit{install, login, logout, dashboard, profile} ,dan \textit{setting}. Berikut merupakan fitur yang sudah di implementasikan:
+		{\bf Hasil :} Sudah berhasil melakukan implementasi sederhana pada beberapa fitur.\\Mengimplementasikan kode pada projek \textit{CodeIgniter 4} antara lain fitur \textit{install, login, logout, dashboard, profile} ,dan \textit{setting}. Berikut merupakan fitur yang sudah di implementasikan:
 		\begin{itemize}
+				\item \textbf{Install}
+			\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.4]{installv3}  
+	\caption[Tampilan Halaman \textit{Install}]{Tampilan Halaman Install} 
+	\label{fig:installv3} 
+\end{figure}
 		 	\item \textbf{Login}
 		 	\begin{figure}[H]
 	\centering  
@@ -2248,14 +2257,14 @@ Langkah-langkah kerja yang berhasil diselesaikan dalam Skripsi 1 ini adalah seba
 
 
 
-\section{Kendala yang Dihadapi}
-%TULISKAN BAGIAN INI JIKA DOKUMEN ANDA TIPE A ATAU C
-Kendala - kendala yang dihadapi selama mengerjakan skripsi :
-\begin{itemize}
-	\item Beberapa \textit{library} yang tidak terdukung pada \textit{CodeIgntier 4} sehingga perlu dilakukan pengubahan atau penulisan ulang.
-	\item Aplikasi \textit{SharIF Judge} yang perlu dijalankan pada \textit{linux} sehingga perlu menggunakan \textit{virtual machine}.
-	\item Terdapat aktivitas lain diluar perkuliahan dan skripsi.
-\end{itemize}
+%\section{Kendala yang Dihadapi}
+%%TULISKAN BAGIAN INI JIKA DOKUMEN ANDA TIPE A ATAU C
+%Kendala - kendala yang dihadapi selama mengerjakan skripsi :
+%\begin{itemize}
+%	\item Beberapa \textit{library} yang tidak terdukung pada \textit{CodeIgntier 4} sehingga perlu dilakukan pengubahan atau penulisan ulang.
+%	\item Aplikasi \textit{SharIF Judge} yang perlu dijalankan pada \textit{linux} sehingga perlu menggunakan \textit{virtual machine}.
+%	\item Terdapat aktivitas lain diluar perkuliahan dan skripsi.
+%\end{itemize}
 
 \vspace{1cm}
 \centering Bandung, \tanggal\\

@@ -5,7 +5,7 @@
 \section{CodeIgniter 3\cite{ci3:22}}
 \label{sec:ci3} 
  
-CodeIgniter 3 merupakan sebuah \textit{framework opensource} yang berfungsi untuk mempermudah pengguna dalam membentuk aplikasi \textit{website} menggunakan bahasa PHP. CodeIgniter 3 memiliki tujuan untuk membantu pengguna dalam membentuk aplikasi web lebih cepat dengan menyediakan beragam \textit{library} dan tampilan dan \textit{logic} yang simpel. \textit{CodeIgniter 3} juga merupakan \textit{framework} ringan yang menggunakan struktur \textit{Model-View-Controller}, dan menghasilkan \textit{URLs} yang bersih. \textit{Code Igniter 3} memiliki \textit{flow chart} aplikasi yang dapat dilihat pada gambar \ref{fig:ci3flowchart}.
+CodeIgniter 3 merupakan sebuah \textit{framework opensource} yang berfungsi untuk mempermudah pengguna dalam membangun aplikasi \textit{website} menggunakan bahasa PHP. CodeIgniter 3 memiliki tujuan untuk membantu pengguna dalam membangun aplikasi web lebih cepat dengan menyediakan beragam \textit{library} dan tampilan dan \textit{logic} yang simpel. \textit{CodeIgniter 3} juga merupakan \textit{framework} ringan yang menggunakan struktur \textit{Model-View-Controller}, dan menghasilkan \textit{URLs} yang bersih. \textit{Code Igniter 3} memiliki \textit{flow chart} aplikasi yang dapat dilihat pada gambar \ref{fig:ci3flowchart}.
 
 \begin{figure}[H]
 	\centering  
@@ -63,7 +63,7 @@ class Blog_model extends CI_Model {
 }
 \end{lstlisting}
 
-Kode \ref{kode:model} membentuk beberapa fungsi yaitu:
+Kode \ref{kode:model} terdapat beberapa fungsi yaitu:
 \begin{itemize}
 \item \verb|get_last_ten_entries()| yang berfungsi untuk mengambil 10 data terakhir dari tabel \verb|entries| menggunakan \textit{query builder}.
 \item \verb|insert_entry()| yang berfungsi untuk memasukan data \textit{title,content},dan \textit{date} menuju tabel \verb|entries|.
@@ -75,7 +75,7 @@ Kode \ref{kode:model} membentuk beberapa fungsi yaitu:
 \end{center}
 
 \subsubsection{\textit{\textbf{View}}}
-\textit{View} berfungsi dalam menyajikan informasi kepada pengguna. \textit{View} biasanya merupakan halaman web namun, pada \textit{CodeIgniter 3} \textit{view} dapat berupa pecahan halaman seperti \textit{header} atau \textit{footer}. Pecahan halaman dapat dimasukan pada halaman lain agar mempermudah dan membentuk kode yang lebih bersih.
+\textit{View} berfungsi dalam menyajikan informasi kepada pengguna. \textit{View} biasanya merupakan halaman web namun, pada \textit{CodeIgniter 3} \textit{view} dapat berupa pecahan halaman seperti \textit{header} atau \textit{footer}. Pecahan halaman dapat dimasukan pada halaman lain agar mempermudah dan membangun kode yang lebih bersih.
 
 \begin{lstlisting}[caption=Contoh \textit{view} pada \textit{CodeIgniter 3}, label=kode:view]
 <?php
@@ -126,12 +126,12 @@ Metode \textit{index} akan secara otomatis dipanggil menjadi \textit{URL} dan pe
 Overview bisa disatuin aja jadi epndahuluan (Flowchart and MVC).
 General topic subsubbab.
 Sisanya desesuain sama yg dipake Judge dan kalo ada bab yg bisa disatuin disatuin aja(libraries di general topic/helpers).
-\textit{CodeIgniter 3} memiliki beragam fungsi untuk mempermudah pengguna dalam membentuk aplikasi web. Berikut merupakan fungsi-fungsi yang ada pada \textit{CodeIgniter 3}:
+\textit{CodeIgniter 3} memiliki beragam fungsi untuk mempermudah pengguna dalam membangun aplikasi web. Berikut merupakan fungsi-fungsi yang ada pada \textit{CodeIgniter 3}:
 \fi
 
 \subsection{\textit{CodeIgniter URLs}}
 
-\textit{CodeIgniter 3} menggunakan pendekatan \textit{segment-based} dibandingkan menggunakan \textit{query string} untuk membentuk \textit{URL} yang mempermudah mesin pencari dan pengguna. Berikut merupakan contoh \textit{URL} pada \textit{CodeIgniter 3}:
+\textit{CodeIgniter 3} menggunakan pendekatan \textit{segment-based} dibandingkan menggunakan \textit{query string} untuk membangun \textit{URL} yang mempermudah mesin pencari dan pengguna. Berikut merupakan contoh \textit{URL} pada \textit{CodeIgniter 3}:
 
 \begin{center}
 \verb|example.com/news/article/my_article|
@@ -185,7 +185,7 @@ Pengguna dapat mengubah \verb|enable_query_strings| menjadi \textit{TRUE}. \text
 
 \subsection{\textit{Helpers}}
 \textit{Helpers} merupakan fungsi pada \textit{CodeIgniter 3}
-yang mempermudah pengguna dalam membentuk aplikasi web. Setipa \textit{file helpers} terdiri dari banyak fungsi yang membantu sesuai kategori dan tidak ditulis dalanm format \textit{Object Oriented}. \textit{File helpers} terdapat pada direktori \textit{system/helpers} atau \textit{application/helpers}. Pengguna dapat memakai fitur \textit{helpers} dengan cara memuatnya seperti berikut:
+yang mempermudah pengguna dalam membangun aplikasi web. Setipa \textit{file helpers} terdiri dari banyak fungsi yang membantu sesuai kategori dan tidak ditulis dalanm format \textit{Object Oriented}. \textit{File helpers} terdapat pada direktori \textit{system/helpers} atau \textit{application/helpers}. Pengguna dapat memakai fitur \textit{helpers} dengan cara memuatnya seperti berikut:
 
 \begin{center}
 \verb|$this->load->helper('name');|
@@ -357,7 +357,7 @@ Kode \ref{kode:controllerfileupload} merupakan contoh kode dengan dua buah metod
 Direktori penyimpanan dapat diubah sesuai dengan kebutuhan namun perlu pengubahan izin direktori menjadi 777 agar dapat di baca, di tulis, dan di eksekusi oleh seluruh pengguna.
 
 \subsubsection{Kelas \textit{Zip Encoding}}
-\textit{Zip} merupakan format sebuah \textit{file} yang berguna untuk melakukan kompress terhadap \textit{file} untuk mengurangi ukuran dan menjadikannya sebuah \textit{file}. \textit{CodeIgniter 3} menyediakan \textit{library Zip Encoding} yang dapat digunakan untuk membentuk arsip \textit{Zip} yang dapat diunduh menuju \textit{desktop} atau disimpan pada direktori. \textit{Library} ini dapat diinsiasi dengan kode sebagai berikut:
+\textit{Zip} merupakan format sebuah \textit{file} yang berguna untuk melakukan kompress terhadap \textit{file} untuk mengurangi ukuran dan menjadikannya sebuah \textit{file}. \textit{CodeIgniter 3} menyediakan \textit{library Zip Encoding} yang dapat digunakan untuk membangun arsip \textit{Zip} yang dapat diunduh menuju \textit{desktop} atau disimpan pada direktori. \textit{Library} ini dapat diinsiasi dengan kode sebagai berikut:
 
 \begin{center}
 \verb|$this->load->library('zip');|
@@ -384,7 +384,7 @@ $this->zip->archive('/path/to/directory/my_backup.zip');
 $this->zip->download('my_backup.zip');
 \end{lstlisting}
 
-Kode \ref{kode:zip} merupakan contoh untuk melakukan penyimpanan \textit{Zip file} pada direktori dan dapat mengunduh \textit{file} menuju \textit{desktop} pengguna. Selain menggunakan \textit{library} yang sudah disediakan, pengguna dapat membentuk dan memperluas \textit{libraries} sendiri sesuai dengan kebutuhan. Kode merupakan contoh \textit{library} yang dibentuk.
+Kode \ref{kode:zip} merupakan contoh untuk melakukan penyimpanan \textit{Zip file} pada direktori dan dapat mengunduh \textit{file} menuju \textit{desktop} pengguna. Selain menggunakan \textit{library} yang sudah disediakan, pengguna dapat membangun dan memperluas \textit{libraries} sendiri sesuai dengan kebutuhan. Kode merupakan contoh \textit{library} yang dibentuk.
 
 \begin{lstlisting}[caption=Contoh \textit{library} yang dibentuk, label=kode:newlib]
 class Example_library {
@@ -444,13 +444,13 @@ $this->db->join('comments', 'comments.id = blogs.id');
 $query = $this->db->get();
 \end{lstlisting}
 
-Kode \ref{kode:databaseselect} merupakan contoh kode untuk melakukan \textit{query} pada tabel \texttt{blogs} yang melakukan \textit{join} dengan tabel \texttt{comments}. Pengguna dapat mengambil hasil dari \textit{query} menjadi \textit{object} atau \textit{array}. Selain itu, \textit{database} pada \textit{CodeIgniter 3} juga dapat digunakan untuk membentuk, menghapus, dan mengubah \textit{database} ataupun menambahkan kolom pada \textit{table}. Penggunaan \textit{database} untuk mebentuk, menghapus, atau mengubah \textit{database} harus dilakukan inisasi sebagai berikut:
+Kode \ref{kode:databaseselect} merupakan contoh kode untuk melakukan \textit{query} pada tabel \texttt{blogs} yang melakukan \textit{join} dengan tabel \texttt{comments}. Pengguna dapat mengambil hasil dari \textit{query} menjadi \textit{object} atau \textit{array}. Selain itu, \textit{database} pada \textit{CodeIgniter 3} juga dapat digunakan untuk membangun, menghapus, dan mengubah \textit{database} ataupun menambahkan kolom pada \textit{table}. Penggunaan \textit{database} untuk mebentuk, menghapus, atau mengubah \textit{database} harus dilakukan inisasi sebagai berikut:
 \begin{center}
 \verb|$this->load->dbforge()|
 \end{center}
-Setelah dilakukan inisiasi pengguna dapat membentuk \textit{database} menggunakan kelas \textit{Forge}. Kode \ref{kode:databasecreate} merupakan contoh untuk membentuk \textit{database}.
+Setelah dilakukan inisiasi pengguna dapat membangun \textit{database} menggunakan kelas \textit{Forge}. Kode \ref{kode:databasecreate} merupakan contoh untuk membangun \textit{database}.
 
-\begin{lstlisting}[caption=Contoh membentuk \textit{database} menggunakan \textit{CodeIgniter3} , label=kode:databasecreate]
+\begin{lstlisting}[caption=Contoh membangun \textit{database} menggunakan \textit{CodeIgniter3} , label=kode:databasecreate]
 	$this->dbforge->create_database('db_name')
 \end{lstlisting}
 
@@ -603,7 +603,7 @@ SharIF Judge dapat dijalankan pada sistem operasi \textit{Linux} dengan syarat s
 	application_folder = '/home/mohammad/secret/application';
 	
 \end{lstlisting}
-\item Membentuk \textit{database MySql} atau \textit{PostgreSql} untuk \textit{SharIF Judge}. Jangan melakukan instalasi paket koneksi \textit{database} apapun untuk \textit{C, C++, Java,} atau \textit{Python}.
+\item Membangun \textit{database MySql} atau \textit{PostgreSql} untuk \textit{SharIF Judge}. Jangan melakukan instalasi paket koneksi \textit{database} apapun untuk \textit{C, C++, Java,} atau \textit{Python}.
 \item Mengatur koneksi \textit{database} pada \textit{file} \verb|application/config/database.example.php| dan menyimpannya dengan nama \verb|database.php|. Pengguna dapat menggunakan awalan untuk nama tabel.
 
 \begin{lstlisting}[language=Java, caption=Contoh pengaturan koneksi untuk \textit{database}, label=kode:dbsetup]
@@ -1224,9 +1224,9 @@ Pengguna harus memastikan untuk menggunakan \textit{sandbox} untuk bahasa \texti
 Pengguna harus memastikan untuk menggunakan \textit{shield} untuk bahasa \textit{C, C++,} dan \textit{Python}. Penggunaan \textit{shield} dapat dilihat pada subbab \ref{subsec:shield}.
 
 \item \subsubsection{Menjalankan sebagai \textit{Non-Priviledge User}}
-Pengguna diwajibkan menjalankan kode yang telah dikumpulkan sebagai \textit{non-priviledge user}. \textit{Non-Priviledge User} adalah \textit{user} yang tidak memiliki akses jaringan, tidak dapat menulis \textit{file} apapun, dan tidak dapat membentuk banyak proses.
+Pengguna diwajibkan menjalankan kode yang telah dikumpulkan sebagai \textit{non-priviledge user}. \textit{Non-Priviledge User} adalah \textit{user} yang tidak memiliki akses jaringan, tidak dapat menulis \textit{file} apapun, dan tidak dapat membangun banyak proses.
 
-Diasumsikan bahwa PHP dijalankan sebagai pengguna \verb|www-data| pada server. Membentuk \textit{user} baru \verb|restricted-user| dan melakukan pengaturan \textit{password}. Selanjutnya, jalankan \verb|sudo visudo| dan tambahkan kode \verb|www-data ALL=(restricted_user) NOPASSWD: ALL| pada baris terakhir \textit{file sudoers}.
+Diasumsikan bahwa PHP dijalankan sebagai pengguna \verb|www-data| pada server. Membangun \textit{user} baru \verb|restricted-user| dan melakukan pengaturan \textit{password}. Selanjutnya, jalankan \verb|sudo visudo| dan tambahkan kode \verb|www-data ALL=(restricted_user) NOPASSWD: ALL| pada baris terakhir \textit{file sudoers}.
 \begin{itemize}
 
 \item Pada \textit{file} \verb|tester\runcode.sh| ubah kode:
@@ -1411,7 +1411,7 @@ Direktori ini menyimpan \textit{file} test dan tidak perlu dipindahkan ke \texti
 
 \item \texttt{vendor/} atau \texttt{system/}
 
-Direktori ini berisikan \textit{file} yang diperlukan dalam menjalani \textit{framework} dan tidak boleh dimodifikasi oleh pengguna. Pengguna dapat melakukan \textit{extend} atau membentuk kelas baru untuk menambahkan fungsi yang diperlukan.
+Direktori ini berisikan \textit{file} yang diperlukan dalam menjalani \textit{framework} dan tidak boleh dimodifikasi oleh pengguna. Pengguna dapat melakukan \textit{extend} atau membangun kelas baru untuk menambahkan fungsi yang diperlukan.
 
 \end{itemize}
 
@@ -1529,7 +1529,7 @@ Kode \ref{kode:controllersexample} merupakan contoh \textit{controllers} yang me
 \verb|example.com/index.php/helloworld/|
 \end{center}
 
-Selain itu, \textit{CodeIgniter 4} menyediakan fungsi bernama \textit{Controller Filters} yang berfungsi untuk membiarkan pengguna membentuk sebuah kondisi sebelum ataupun sesudah \textit{controller} dijalankan. Kode \ref{kode:filterexample} merupakan contoh penggunaan \textit{filters}.
+Selain itu, \textit{CodeIgniter 4} menyediakan fungsi bernama \textit{Controller Filters} yang berfungsi untuk membiarkan pengguna membangun sebuah kondisi sebelum ataupun sesudah \textit{controller} dijalankan. Kode \ref{kode:filterexample} merupakan contoh penggunaan \textit{filters}.
 
 \begin{lstlisting}[caption=Contoh \textit{Controllers Filters} pada \textit{CodeIgniter 4},label=kode:filterexample]
 <?php
@@ -1586,7 +1586,7 @@ https://www.example.com/ci-blog/}
 page=2}
 \end{itemize}
 
-Secara asali \textit{CodeIgniter 4} membentuk \textit{URL} dengan \verb|index.php| namun, pengguna dapat menghapus \textit{file} \verb|index.php| pada \textit{URL} yang dibentuk. Pengguna dapat menghapus \verb|index.php| sesuai dengan \textit{server} yang digunakan. Berikut merupakan contoh dua buah \textit{server} yang biasanya dipakai:
+Secara asali \textit{CodeIgniter 4} membangun \textit{URL} dengan \verb|index.php| namun, pengguna dapat menghapus \textit{file} \verb|index.php| pada \textit{URL} yang dibentuk. Pengguna dapat menghapus \verb|index.php| sesuai dengan \textit{server} yang digunakan. Berikut merupakan contoh dua buah \textit{server} yang biasanya dipakai:
 
 \subsubsection{\textit{Apache Web Server}}
 Pengguna dapat \textit{URL} melalui \textit{file} \verb|.htaccess| dengan menyalakan ekstensi \verb|mod_rewrite|. Kode \ref{kode:htaccessapache} merupakan contoh \textit{file} \verb|.htaccess| untuk menghapus \verb|index.php| pada \textit{URL} yang dibentuk.
@@ -1684,7 +1684,7 @@ $builder->select('title, content, date');
 $builder->from('mytable');
 $query = $builder->get();
 \end{lstlisting}
-Kode \ref{kode:queryexampleci4} merupakan contoh penggunaan \textit{query} untuk mengambil data \textit{title,content} ,dan \textit{date} pada tabel \textit{mytable}. \textit{CodeIgniter 4} juga menyediakan fitur untuk membentuk \textit{database} melalui fitur bernama \textit{Database Forge}. Pengguna dapat membentuk,mengubah, menghapus tabel dan juga menambahkan \textit{field} pada tabel tersebut. Kode \ref{kode:ci4databaseforge} merupakan contoh pembentukan \textit{database}.
+Kode \ref{kode:queryexampleci4} merupakan contoh penggunaan \textit{query} untuk mengambil data \textit{title,content} ,dan \textit{date} pada tabel \textit{mytable}. \textit{CodeIgniter 4} juga menyediakan fitur untuk membangun \textit{database} melalui fitur bernama \textit{Database Forge}. Pengguna dapat membangun,mengubah, menghapus tabel dan juga menambahkan \textit{field} pada tabel tersebut. Kode \ref{kode:ci4databaseforge} merupakan contoh pembentukan \textit{database}.
 \begin{lstlisting}[caption=Contoh pembentukan tabel melalui \textit{database forge}. ,label=kode:ci4databaseforge]
 <?php
 
@@ -1856,7 +1856,7 @@ Kode \ref{kode:ci4fileuploadcontroller} terdapat dua buah fungsi yaitu:
 \end{itemize}
 
 \subsection{\textit{Helpers}}
-\textit{Helpers} merupakan fungsi pada \textit{CodeIgniter 4} yang menyediakan beberapa fungsi untuk pengguna dalam membentuk aplikasi web. \textit{Helpers} dapat dimuat oleh pengguna seperti berikut:
+\textit{Helpers} merupakan fungsi pada \textit{CodeIgniter 4} yang menyediakan beberapa fungsi untuk pengguna dalam membangun aplikasi web. \textit{Helpers} dapat dimuat oleh pengguna seperti berikut:
 
 \begin{center}
 \verb|<?php|
@@ -2040,6 +2040,6 @@ menjadi
 Dan menambahkan \textit{namespace} \verb|CodeIgniter\Events\Events;|. 
 
 \subsection{\textit{Framework}}
-Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \verb|MY_X| pada direktori \textit{libraries} untuk memperpanjang atau mengganti potongan \textit{CI4}. Pengguna dapat membentuk kelas dimanapun dan menambahkan metode pada \verb|app/Config/Services.php|.
+Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \verb|MY_X| pada direktori \textit{libraries} untuk memperpanjang atau mengganti potongan \textit{CI4}. Pengguna dapat membangun kelas dimanapun dan menambahkan metode pada \verb|app/Config/Services.php|.
 
 

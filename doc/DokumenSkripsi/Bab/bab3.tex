@@ -269,6 +269,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini dipanggil pada fungsi \texttt{add\_assignment} yang berguna untuk memperbaharui koefisien dari \textit{assignment} tertentu.
 \end{itemize}
 \subsubsection{\texttt{Hof\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{Hof\_model.php} yang berguna untuk mengambil data untuk ditampilkan pada halaman \textit{Hall of Fame}.
 \begin{itemize}
 	\item \texttt{get\_all\_final\_submission}\\
 	Fungsi ini berguna untuk mengambil data untuk \textit{Hall of Fame} berdasarkan \textit{username}.
@@ -276,6 +277,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk mengambil detail \textit{assignment} dan \textit{problem} berdasarkan pengguna.
 \end{itemize}
 \subsubsection{\texttt{Logs\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{Logs\_model.php} yang berguna untuk mencatat \textit{log} pada beberapa tabel.
 \begin{itemize}
 	\item \texttt{insert\_to\_logs}\\
 	Fungsi ini berguna untuk mencatat \textit{log} pada tabel \textit{login}.
@@ -283,6 +285,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk mengembalikan seluruh \textit{log} dalam bentuk \textit{array}.
 \end{itemize}
 \subsubsection{\texttt{Notifications\_model.php}}
+\textit{Notifications Assignment} terdapat beberapa fungsi untuk memproses data pada tabel \textit{notifications}. Berikut merupakan fungsi-fungsi dari \textit{model} tersebut:
 \begin{itemize}
 	\item \texttt{get\_all\_notifications}\\
 	Fungsi ini berguna untuk mengembalikan seluruh \textit{notifications} dalam bentuk \textit{array}.
@@ -300,6 +303,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk mengecek apakah terdapat \textit{notification} setelah waktu tertentu.
 \end{itemize}
 \subsubsection{\texttt{Queue\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{Queue\_model.php} yang berguna untuk memproses data pada halaman \textit{queue}.
 \begin{itemize}
 	\item \texttt{in\_queue}\\
 	Fungsi ini berguna untuk mengecek apakah \textit{submission} pengguna tertentu sudah dalam antrean.
@@ -323,6 +327,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk menambahkan data \textit{dummy} pada antrean.
 \end{itemize}
 \subsubsection{\texttt{Scoreboard\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{Scoreboard\_model.php} yang berguna untuk memproses data untuk ditampilkan pada halaman \textit{Score Board}.
 \begin{itemize}
 	\item \texttt{\_generate\_scoreboard}\\
 	Fungsi ini dipanggil pada fungsi \texttt{update\_scoreboard} dan berfungsi untuk menghasilkan \textit{scoreboard} dari \textit{final submission}.
@@ -334,6 +339,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk mengambil seluruh \textit{cache scoreboard} dari \textit{assignment} tertentu.
 \end{itemize}
 \subsubsection{\texttt{Settings\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{Settings\_model.php} yang berguna untuk memproses data untuk ditampilkan pada tabel \textit{settings}.
 \begin{itemize}
 	\item \texttt{get\_setting}\\
 	Fungsi ini berguna untuk mengembalikan data \textit{setting} tertentu.
@@ -345,6 +351,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi memperbaharui beberapa \textit{setting}.
 \end{itemize}
 \subsubsection{\texttt{Submit\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{Submit\_model.php} yang berguna untuk memproses data yang berkaitan dengan \textit{submission}.
 \begin{itemize}
 	\item \texttt{get\_submission}\\
 	Fungsi ini berguna untuk mengembalikan baris data \textit{submission} tertentu.
@@ -362,6 +369,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk menambahkan hasil dari \textit{upload only} ke dalam \textit{database}.
 \end{itemize}
 \subsubsection{\textit{User\_model.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{User\_model.php} yang berguna untuk memproses data pada tabel \textit{users}.
 \begin{itemize}
 	\item \texttt{have\_user}\\
 	Fungsi ini berguna untuk mengecek apakah terdapat pengguna dengan \textit{username} tertentu.
@@ -401,6 +409,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	Fungsi ini berguna untuk memperbaharui \textit{login time} dan \textit{last login time} untuk pengguna tertentu.
 \end{itemize}
 \subsubsection{\textit{User.php}}
+Berikut merupakan fungsi-fungsi dari \texttt{User.php} yang berguna untuk memproses data pada tabel \textit{users}.
 \begin{itemize}
 	\item \texttt{select\_assignment}\\
 	Fungsi ini berguna untuk mengatur \textit{assignment} yang dipilih oleh pengguna.
@@ -413,6 +422,9 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 \subsection{\textit{View}}
 \subsection{Halaman pada \textit{SharIF Judge}}
 Halaman pada \textit{SharIF Judge} dibagi berdasarkan \textit{role} penggunanya. Setiap role memiliki tampilan halaman berbeda dengan fitur-fitur berbeda setiap \textit{role} penggunanya. Berikut merupakan halaman dan fitur pada \textit{SharIF Judge}:
+
+\subsection{\textit{View}}
+\textit{View} terdapat pada direktori \texttt{application/views}. Direktori ini berisikan seluruh \textit{file} untuk tampilan halaman \textit{SharIF Judge}. \textit{File} tersebut dipisahkan oleh direktori sesuai dengan fungsinya. Direktori tersebut dibagi menjadi tiga buah direktori utama yakni \textit{error, pages}, dan \textit{templates}. Direktori \textit{error} berisikan tampilan halaman \textit{error} yang akan dilihat oleh pengguna. Direktori \textit{pages} merupakan tampilan utama \textit{SharIF Judge} yang terbagi lagi menjadi dua buah direktori yakni \textit{admin} dan \textit{authentication}. Direktori \textit{admin} berisikan tampilan halaman untuk \textit{role admin}. Direktori \textit{authentication} berisikan tampilan halaman untuk akses pengguna seperti \textit{LOgin, Register,} dan \textit{Reset Password}. Direktori \textit{templates} terdiri dari tampilan yang digunakan oleh seluruh tampilan halaman seperti \textit{header} dan \textit{side bar}. Berikut merupakan tampilan halaman pada \textit{SharIF Judge}:
 
 \subsubsection{\textit{Dashboard}}
 \begin{figure}[H]
@@ -573,3 +585,134 @@ Gambar \ref{fig:submissionqueue} merupakan tampilan halaman \textit{Submission Q
 Gambar \ref{fig:cheatdetection} merupakan tampilan halaman \textit{Cheat Detection} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
 
 \subsection{\textit{Controller}}
+\textit{Controller} pada direktori \texttt{application/controller}. Direktori ini berisikan kelas \textit{controller} dengan fungsi-fungsi dalam mengambil atau memberikan data \textit{models} untuk dialihkan menuju \textit{views} untuk ditampilkan. Berikut merupakan \textit{controller} pada \textit{SharIF Jugde} beserta fungsi-fungsinya.
+\subsubsection{\texttt{Assignments.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Assignments.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \texttt{assignments.twig} menggunakan \texttt{Assignment_model}.
+	\item \texttt{select}\\
+	Fungsi ini berguna untuk memilih \textit{assignment} menggunakan \textit{ajax}.
+	\item \texttt{pdf}\\
+	Fungsi ini berguna untuk mengunduh \textit{assignment} atau \textit{problem} dalam bentuk pdf.
+	\item \texttt{downloadtestsdesc}\\
+	Fungsi ini berguna untuk mengunduh dan mengompres data \textit{test} dan deskripsi sebuah \textit{assignment}.
+	\item \texttt{download_submissions}\\
+	Fungsi ini berguna untuk mengunduh dan mengompres kode terakhir sebuah \textit{assignment} pengguna.
+	\item \texttt{delete}\\
+	Fungsi ini berguna untuk menghapus \textit{assignment}.
+	\item \texttt{add}\\
+	Fungsi ini berguna untuk menambah atau mengubah \textit{assignment} berdasarkan masukan pengguna.
+	\item \texttt{\_add}\\
+	Fungsi ini berguna untuk menambah atau mengubah \textit{assignment}.
+	\item \texttt{edit}\\
+	Fungsi ini berguna untuk mengecek \textit{role} pengguna dapat mengubah \textit{assignment}. Selanjutnya akan dikembalikan pada fungsi \texttt{add}. 
+	\item \texttt{pdfCheck}
+	Fungsi ini berguna untuk mengecek \textit{file} pdf dari sebuah \textit{assignment}.
+\end{itemize}
+
+\subsubsection{\texttt{Dashboard.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Dashboard.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \textit{dashboard} menggunakan tiga buah \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Assignment_model}, \texttt{Settings_model}, dan \texttt{Notifications_model}.
+	\item \texttt{widget_positions}\\
+	Fungsi ini berguna untuk menyimpan data \textit{widget} pengguna.
+\end{itemize}
+\subsubsection{\texttt{Install.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Install.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk membentuk tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk memasukan data pengguna \textit{admin} berdasarkan masukan.
+\end{itemize}
+\subsubsection{\texttt{Login.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Login.php}.
+\begin{itemize}
+	\item \texttt{\_registration\_code}\\
+	Fungsi ini beguna untuk memeriksa kode registrasi.
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk melakukan validasi \textit{username} dan \textit{password} pengguna. Selain itu, fungsi ini juga memperbaharui \textit{log} pada tabel \textit{login}.
+	\item \texttt{register}\\
+	Fungsi ini berguna untuk melakukkan validasi dalam pembetukan akun.
+	\item \texttt{logout}\\
+	Fungsi ini berguna untuk menghancurkan \textit{session} dari pengguna dan memindahkan pengguna ke halaman \textit{login}.
+	\item \texttt{lost}\\
+	Fungsi ini berguna untuk mengirim \textit{email} lupa password.
+	\item \texttt{rest}\\
+	Fungsi ini berguna untuk melakukan \textit{reset password} pengguna.
+\end{itemize}
+\subsubsection{\texttt{Logs.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Logs.php}.
+\begin{itemize}
+	\item \texttt{index.php}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{logs}.
+\end{itemize}
+\subsubsection{\texttt{Moss.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Moss.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{moss}.
+	\item \texttt{update}\\
+	Fungsi ini berguna untuk memperbaharui \textit{moss\_userid} yang dimasukan oleh pengguna.
+	\item \texttt{\_detec}\\
+	Fungsi ini berguna untuk melakukan pengecekan terhadap \textit{submission}. !!TODO
+\end{itemize}
+\subsubsection{\texttt{Notification.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Notification.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikam data pada halaman \textit{notifications} menggunakan \texttt{assignment_model} dan \texttt{notifications_model}.
+	\item \texttt{add}\\
+	Fungsi ini berguna untuk menambahkan data \textit{notifications}.
+	\item \texttt{edit}\\
+	Fungsi ini berguna untuk memperbaharui data \textit{notifications}.
+	\item \texttt{delete}\\
+	Fungsi ini berguna untuk menghapus data \textit{notifications}.
+	\item \texttt{check}\\
+	Fungsi ini berguna memeriksa \textit{notifications} baru.
+\end{itemize}
+\subsubsection{\texttt{Problems.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Problems.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data \textit{problems} sesuai dengan \textit{assignment} tertentu pada halaman \textit{problems}.
+	\item \texttt{edit}\\
+	Fungsi ini berguna untuk memperbaharui deskripsi \textit{problems} pada \textit{assignment} tertentu.
+\end{itemize}
+\subsubsection{\texttt{Profile.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{profile}. Selain itu, fungsi ini berguna untuk melakukan pembaharuan data \textit{profile}.
+	\item \texttt{\_password\_check}\\
+	Fungsi ini berguna untuk melakukan validasi terhadap \textit{password} yang akan dimasukkan pengguna sesuai dengan aturan.
+	\item \texttt{\_password\_again\_check}\\
+	Fungsi ini berguna untuk melakukan validasi terhadap pengulangan \textit{password} yang dimasukkan pengguna.
+	\item \texttt{\_email\_check}\\
+	Fungsi ini berguna untuk melakukan validasi terhadap \textit{email} yang dimasukkan pengguna
+	\item \texttt{\_role\_check}\\
+	 Fungsi ini berguna untuk melakukan validasi \textit{role} pengguna.
+\end{itemize}
+\subsubsection{\texttt{Queue.php}}
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan meberikan dat apada halaman \textit{queue} menggunakan tiga buah \textit{model}. \textit{Model} tersebut adalah \texttt{Assignment\_model}, \texttt{queue\_model}, dan \texttt{settings\_model}.
+	\item \texttt{pause}\\
+	Fungsi ini berguna untuk memperbaharui data pada tabel \textit{settings}.
+	\item \texttt{resume}\\
+	Fungsi ini berguna untuk melanjutkan proses \textit{queue}.
+	\item \texttt{empty\_queue}\\
+	Fungsi ini berguna untuk menghapus data tabel \textit{queue}.
+\end{itemize}
+\subsubsection{\texttt{Queueprocess.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Queueprocess.php}.
+\begin{itemize}
+	\item \texttt{run}
+\end{itemize}
+\subsubsection{\texttt{Rejudge.php}}
+\subsubsection{\texttt{Scoreboard.php}}
+\subsubsection{\texttt{Server\_time.php}}
+\subsubsection{\texttt{Settings.php}}
+\subsubsection{\texttt{Submission.php}}
+\subsubsection{\texttt{Submit.php}}
+\subsubsection{\texttt{User.php}}
