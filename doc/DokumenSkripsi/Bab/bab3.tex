@@ -5,7 +5,6 @@ Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulis
 \subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{Twig}, \textit{phpoffice}, \textit{radius}, dan \textit{adldap2}.
 \subsection{Pemindahan \textit{file} dari \textit{CodeIgniter 3} ke \textit{CodeIgniter 4}}
 
-
 \subsection{Pembaharuan \textit{file-file CodeIgniter 3} }
 
 \subsection{Struktur Aplikasi}
@@ -590,14 +589,14 @@ Gambar \ref{fig:cheatdetection} merupakan tampilan halaman \textit{Cheat Detecti
 Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Assignments.php}.
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \texttt{assignments.twig} menggunakan \texttt{Assignment_model}.
+	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \texttt{assignments.twig} menggunakan \texttt{Assignment\_model}.
 	\item \texttt{select}\\
 	Fungsi ini berguna untuk memilih \textit{assignment} menggunakan \textit{ajax}.
 	\item \texttt{pdf}\\
 	Fungsi ini berguna untuk mengunduh \textit{assignment} atau \textit{problem} dalam bentuk pdf.
 	\item \texttt{downloadtestsdesc}\\
 	Fungsi ini berguna untuk mengunduh dan mengompres data \textit{test} dan deskripsi sebuah \textit{assignment}.
-	\item \texttt{download_submissions}\\
+	\item \texttt{download\_submissions}\\
 	Fungsi ini berguna untuk mengunduh dan mengompres kode terakhir sebuah \textit{assignment} pengguna.
 	\item \texttt{delete}\\
 	Fungsi ini berguna untuk menghapus \textit{assignment}.
@@ -615,16 +614,13 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Assignments.php
 Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Dashboard.php}.
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \textit{dashboard} menggunakan tiga buah \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Assignment_model}, \texttt{Settings_model}, dan \texttt{Notifications_model}.
-	\item \texttt{widget_positions}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \textit{dashboard} menggunakan tiga buah \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Assignment\_model}, \texttt{Settings\_model}, dan \texttt{Notifications\_model}.
+	\item \texttt{widget\_positions}\\
 	Fungsi ini berguna untuk menyimpan data \textit{widget} pengguna.
 \end{itemize}
 \subsubsection{\texttt{Install.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Install.php}.
-\begin{itemize}
-	\item \texttt{index}\\
-	Fungsi ini berguna untuk membentuk tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk memasukan data pengguna \textit{admin} berdasarkan masukan.
-\end{itemize}
+\textit{Controller} \texttt{Install.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk membentuk tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk memasukan data pengguna \textit{admin} yang pertama kali memasang \textit{SharIF Judge} pada perangkat.
+
 \subsubsection{\texttt{Login.php}}
 Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Login.php}.
 \begin{itemize}
@@ -642,11 +638,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Login.php}.
 	Fungsi ini berguna untuk melakukan \textit{reset password} pengguna.
 \end{itemize}
 \subsubsection{\texttt{Logs.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Logs.php}.
-\begin{itemize}
-	\item \texttt{index.php}\\
-	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{logs}.
-\end{itemize}
+\textit{Controller} \texttt{Logs.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{logs} menggunakan \texttt{Logs\_model}.
 \subsubsection{\texttt{Moss.php}}
 Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Moss.php}.
 \begin{itemize}
@@ -661,7 +653,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Moss.php}.
 Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Notification.php}.
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikam data pada halaman \textit{notifications} menggunakan \texttt{assignment_model} dan \texttt{notifications_model}.
+	Fungsi ini berguna untuk mengambil dan memberikam data pada halaman \textit{notifications} menggunakan \texttt{assignment\_model} dan \texttt{notifications\_model}.
 	\item \texttt{add}\\
 	Fungsi ini berguna untuk menambahkan data \textit{notifications}.
 	\item \texttt{edit}\\
@@ -696,7 +688,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}.
 \subsubsection{\texttt{Queue.php}}
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan meberikan dat apada halaman \textit{queue} menggunakan tiga buah \textit{model}. \textit{Model} tersebut adalah \texttt{Assignment\_model}, \texttt{queue\_model}, dan \texttt{settings\_model}.
+	Fungsi ini berguna untuk mengambil dan meberikan data pada halaman \textit{queue} menggunakan tiga buah \textit{model}. \textit{Model} tersebut adalah \texttt{Assignment\_model}, \texttt{queue\_model}, dan \texttt{settings\_model}.
 	\item \texttt{pause}\\
 	Fungsi ini berguna untuk memperbaharui data pada tabel \textit{settings}.
 	\item \texttt{resume}\\
@@ -705,14 +697,91 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}.
 	Fungsi ini berguna untuk menghapus data tabel \textit{queue}.
 \end{itemize}
 \subsubsection{\texttt{Queueprocess.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Queueprocess.php}.
-\begin{itemize}
-	\item \texttt{run}
-\end{itemize}
+\textit{Controller} \texttt{Queueprocess.php} hanya memiliki satu buah fungsi bernama \texttt{index}.Fungsi ini berguna untuk menjalankan proses \textit{judge} berdasarkan \textit{queue} satu demi satu sesuai antrean. Fungsi ini menggunakan beberapa \textit{model} yaitu \texttt{Queue\_model}, \texttt{Submit\_model}, \texttt{Assignments\_model}, dan \texttt{Settings\_model}.
 \subsubsection{\texttt{Rejudge.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Rejudge.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{rejudge} menggunakan \texttt{Assignment\_model}.
+	\item \texttt{rejudge\_single}\\
+	Fungsi ini berguna untuk melakukan \textit{rejudge} pada satu buah masalah tertentu.
+\end{itemize}
 \subsubsection{\texttt{Scoreboard.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Scoreboard.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk memberikan data pada halaman \textit{scoreboard} menggunakan dua buah \textit{model}. \textit{Model} tersebut adalah \texttt{Assignment\_model} dan \texttt{Scoreboard\_model}.
+\end{itemize}
 \subsubsection{\texttt{Server\_time.php}}
+\textit{Controller} \texttt{Server\_time.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk mengeluarkan \textit{server\_time}.
+
 \subsubsection{\texttt{Settings.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Settings.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{settings} menggunakan \texttt{Settings\_model} dan \texttt{Assignment\_model}.
+	\item \texttt{update}\\
+	Fungsi ini berguna untuk mengambil masukan dan memperbaharui data pada halaman \textit{settings} berdasarkan masukan tersebut. Data tersebut nantinya akan disimpan pada \textit{database} menggunakan fungsi \texttt{Settings\_model}.  
+\end{itemize}
 \subsubsection{\texttt{Submission.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submission.php}.
+\begin{itemize}
+	\item \texttt{\_download\_excel}\\
+	Fungsi ini berguna untuk mengubah data-data dari \textit{submission} yang dipilih menjadi format \textit{excel}.
+	\item \texttt{final\_excel}\\
+	Fungsi ini berguna untuk mengunduh data \textit{final submissions}.
+	\item \texttt{all\_excel}\\
+	Fungsi ini berguna untuk mengunduh data seluruh \textit{submissions}.
+	\item \texttt{the\_final}\\
+	Fungsi ini berguna untuk memberikan data pada halaman \textit{Final Submissions} menggunakan beberapa \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Submit\_model}, \texttt{Settings\_model}, dan \texttt{User\_model}.
+	\item \texttt{all}\\
+	Fungsi ini berguna untuk memberikan data pada halaman \textit{All Submissions} menggunakan beberapa \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Submit\_model}, \texttt{Settings\_model}, dan \texttt{User\_model}.
+	\item \texttt{select}\\
+	Fungsi ini berguna untuk memilih \textit{submission} yang akan dijadikan \textit{submission final} oleh pengguna.
+	\item \texttt{\_check\_type}\\
+	Fungsi ini berguna untuk melakukan pengecekan tipe \textit{submission} yang telah dikumpulkan oleh pengguna.
+	\item \texttt{view\_code}\\
+	Fungsi ini berguna untuk memperlihatkan \textit{submission} yang telah dikumpulkan oleh pengguna sesuai dengan tipenya.
+	\item \texttt{download\_file}\\
+	Fungsi ini berguna untuk mengunduh hasil dari \textit{submission} yang telah dikumpulkan oleh pengguna.
+\end{itemize}
 \subsubsection{\texttt{Submit.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submit.php}.
+\begin{itemize}
+	\item \texttt{\_language\_to\_type}\\
+	Fungsi ini berguna untuk mengubah bahasa pemrograman menjadi tipe sesuai dengan pilihan pengguna.
+	\item \texttt{\_language\_to\_ext}\\
+	Fungsi ini berguna untuk mengubah bahasa pemrograman menjadi ekstensi sesuai dengan pilihan pengguna.
+	\item \texttt{\_match}\\
+	Fungsi ini berguna untuk mencocokan tipe dengan ekstensi dari bahasa pemrogramannya.
+	\item \texttt{\_check\_language}\\
+	Fungsi ini berguna untuk melakukan pengecekan terhadap bahasa pemrograman yang digunakan.
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{submit} menggunakan \texttt{Assignment\_model}. 
+	\item \texttt{\_upload}\\
+	Fungsi ini berguna untuk menyimpan jawaban dan memasukannya ke \textit{queue} untuk dinilai.
+	\item \texttt{load}\\
+	Fungsi ini berguna untuk memuat kode dari \textit{editor file}.
+	\item \texttt{save}\\
+	Fungsi ini berguna untuk meyimpan kode menuju \textit{editor file} dan mengirim ataupun menjalankannya.
+	\item \texttt{\_submit}\\
+	Fungsi ini berguna untuk menambahkan kode pada \textit{queue} untuk dilakukan \textit{judge}.
+	\item \texttt{\_execute}\\
+	Fungsi ini berguna untuk menambahkan kode untuk dijalankan atau di \textit{queue}.
+	\item \texttt{get\_output}
+	Fungsi ini berguna untuk memuat \textit{file} menjadi hasil eksekusi.
+\end{itemize}
 \subsubsection{\texttt{User.php}}
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{User.php}.
+\begin{itemize}
+	\item \texttt{index}\\
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{users}.
+	\item \texttt{add}\\
+	Fungsi ini berguna untuk menambahkan pengguna baru sesuai dengan masukan.
+	\item \texttt{delete}\\
+	Fungsi ini berguna untuk menghapus pengguna yang dipilih.
+	\item \texttt{delete\_submissions}\\
+	Fungsi ini berguna untuk menghapus \textit{submission} dari sebuah pengguna.
+	\item \texttt{list\_excel}\\
+	Fungsi ini berguna untuk menghasilkan dan mengunduh data pengguna pada format \textit{excel}.
+\end{itemize}
