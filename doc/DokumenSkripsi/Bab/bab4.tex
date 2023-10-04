@@ -1,64 +1,94 @@
 \chapter{Perancangan}
 \label{chap:perancangan}
+Bab ini membahas perancangan untuk seluruh implementasi \textit{SharIF Judge} pada \textit{CodeIgniter 4}.
 
-\section{Perancangan Konversi Menuju \textit{CodeIgniter 4}}
-Bagian ini akan membahas mengenai implementasi konversi menuju \textit{CodeIgniter 4} seperti yang telah dibahas pada Bab 2.
-\subsection{Implementasi Persiapan \textit{CodeIgniter 4}}
-Pertama perlu dilakukan pemasangan aplikasi \textit{CodeIgniter 4}. Pemasangan ini dapat dilakukan dengan pengunduhan manual melalui situs resmi \textit{CodeIgniter 4} ataupun melalui \textit{composer}. Pemasangan melalui \textit{composer} dapat dilakukan menggunakan \textit{command line} dengan kode sebagai berikut:
-\begin{center}
-\verb|composer create-project codeigniter4/appstarter SharIF-JudgeV3|
-\end{center}
+\section{Instalasi \textit{CodeIgniter 4}}
+\textit{CodeIgniter 4} akan dilakukan instalasi menggunakan \textit{composer}. \textit{Composer} merupakan sebuah \textit{dependency manager} untuk PHP yang memungkinkan pengguna untuk melakukan instalasi seluruh kebutuhan untuk menjalankan program berbasis PHP. Instalasi akan dilakukan menggunakan kode sebagai berikut:
 
-Setelah dilakukan pemasangan \textit{CodeIgniter 4}, perlu dilakukan pemasangan komponen pendukung melalui \textit{composer} seperti \textit{Twig} sebagai \textit{template engine}, \textit{PHPOffice}, \textit{RADIUS}, dan \textit{ADLDAP}. Pemasangan komponen pendukung \textit{Twig} dapat dilakukan menggunakan \textit{command line} dengan kode sebagai berikut:
+\section{Perubahan Struktur Aplikasi}
+\label{sec:perubahanStruktur}
+Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada gambar \ref{fig:dirMappingBab4}.
 
-\begin{center}
-\verb|composer require "twig/twig:^2.0"|
-\end{center}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{dirMapping}  
+	\caption[\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}]{\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}} 
+	\label{fig:dirMappingBab4} 
+\end{figure} 
 
-Pemasangan komponen pendukung \textit{PHPOffice} dapat dilakukan sebagai berikut:
-
-\begin{center}
-	\verb|composer require phpoffice/phpspreadsheet|
-\end{center}
-
-Pemasangan komponen pendukung \textit{RADIUS} dapat dilakukan dengan cara berikut:
-
-\begin{center}
-	\verb|composer require dapphp/radius|
-\end{center}
-
-Pemasangan komponen pendukung \textit{ADLDAP} dapat dilakukan dengan cara berikut:
-
-\begin{center}
-	\verb||
-\end{center}
-
-\subsection{Pemindahan \textit{file} dari \textit{CodeIgniter 3} ke \textit{CodeIgniter 4}}
-\textit{CodeIgniter 4} memiliki struktur berbeda dengan \textit{CodeIgniter 3} sehingga kita memerlukan pemindahan \textit{file-file} sesuai dengan struktur yang ada pada \textit{CodeIgniter 4}. Data-data konfigurasi yang terdapat pada \texttt{application/config} akan dipindahkan menuju \texttt{app/config}. Data-data pada \textit{model} akan dipindahkan menuju \verb|app/Models|. Data-data \textit{controllers} akan dipindahkan menuju \verb|app/Controllers|. Data-data \textit{views} akan dipindahkan menuju \verb|app/Views|. Sedangkan data-data seperti aset, \textit{javascript}, dan logo akan dipindahkan menuju \verb|public|.
-
-\subsection{Pembaharuan \textit{file-file CodeIgniter 3}}
-\textit{File-file} yang telah dipindahkan akan dilakukan pembaharuan agar sesuai dengan standar pada \textit{CodeIgnier 4}. 
-\subsubsection{\textit{Model}}
-Seluruh \textit{file model} yang telah dipindahkan akan dilakukan perubahan dengan menghapuskan \texttt{defined('BASEPATH') OR exit('No direct script access allowed');} dan menambahkan kedua kode berikut:
+Struktur aplikasi pada \textit{CodeIgniter 4} akan berisikan sebagai berikut :
+\subsection{App}
 \begin{itemize}
-	\item \verb|namespace App\Models;|
-	\item \verb|use CodeIgniter\Model;|
+	\item \texttt{app/Config}\\ berisikan data-data pada \texttt{application/Config}. Terdapat juga penambahan \textit{file} \texttt{Secrets.php} dan juga pemindahan token menuju \texttt{app/Config/Security.php}.  
+	\item \texttt{}\\ 
 \end{itemize}
-
-Selanjutnya dilakukan pengubahan seluruh pemanggilan \textit{model} dari \verb|$this->load->model('x');| menjadi \verb|$this->x = new X();|.
+\section{Rancangan Perubahan Kode pada CodeIgniter 3 Menjadi CodeIgniter 4}
+\label{sec:rancanganPerubahanKode}
+Pada \textit{CodeIgniter 4} terdapat perubahan dan penghilangan fungsi-fungsi sehingga terdapat perubahan dan penggantian fungsi.
+\subsection{Config}
+\textit{File config} pada \textit{CodeIgniter 3} akan dipindahkan sesuai dengan pemetaan pada gambar .
+\subsection{\textit{Model, View} dan \textit{Controller}}.
+\subsubsection{\textit{Model}}
+\textit{Model} akan dipindahkan sesuai dengan direktori \ref{sec:perubahanStruktur} dan diubah sesuai dengan dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{Model} akan diganti penamaannya dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelcase}.
 
 \subsubsection{\textit{View}}
+\textit{View} akan diubah menggunakan \textit{extension} \texttt{.php} sesuai pada dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{file view} akan diubah menjadi \textit{extension} \texttt{.php} dari yang sebelumnya menggunakan \texttt{.twig}. Seluruh \textit{delimiters} juga akan diubah menggunakan fungsi pada \textit{CodeIgniter 4}. Perubahan \textit{view} dapat dilihat pada kode \ref{kode:loginViewBab4}.
+
+\begin{lstlisting}[caption=Perubahan \textit{view} pada \textit{Login.php}, label=kode:loginViewBab4]
+<!-- {#
+ # SharIF Judge
+ # file: login.twig
+ # author: Mohammad Javad Naderi <mjnaderi@gmail.com>
+ #} -->
+<!DOCTYPE html>
+<html lang="en">
+<?= $this->include('templates/simple_header')?>
+
+<?= form_open() ?>
+	<div class="box login">
+
+		<div class="judge_logo">
+			<a href="<?= site_url() ?>"><img src="<?= base_url('assets/images/banner.png') ?>"/></a>
+		</div>
+
+		<div class="login_form">
+			<div class="login1">
+				<p>
+					<label for="form_username">Username</label><br/>
+					<input id="form_username" type="text" name="username" required="required" pattern="[0-9a-z]{3,20}" title="The Username field must be between 3 and 20 characters in length, and contain only digits and lowercase letters" class="sharif_input" value="<?= set_value('username') ?>" autofocus="autofocus"/>
+					<?= isset($this->errors['username'])?>
+				</p>
+				<p>
+					<label for="form_password">Password</label><br/>
+					<input id="form_password" type="password" name="password" required="required" pattern=".{6,200}" title="The Password field must be at least 6 characters in length" class="sharif_input"/>
+					<?= isset($this->errors['password'])?>
+				</p>
+				<?php if ($error): ?>
+					<div class="shj_error">Incorrect username or password.</div>
+				<?php endif ?>
+			</div>
+			<div class="login2">
+				<p style="margin:0;">
+					<?php if ($registration_enabled): ?>
+					<a href="<?= site_url('register') ?>">Register</a> |
+					<?php endif ?>
+					<a href="<?= site_url('login/lost') ?>">Reset Password</a>
+					<input type="submit" value="Login" id="sharif_submit"/>
+				</p>
+			</div>
+		</div>
+
+	</div>q
+<?= form_close() ?>
+</body>
+</html>
+\end{lstlisting}
+
+Selain terdapat perubahan \textit{extension} dan \textit{delimiters}, terdapat juga penambahan kode pada \textit{Controller} karena tidak mendukung pembentukan variabel pada \textit{View}. Kode \ref{} merupakan contoh penambahan kode pada \textit{Controller}.
+
+\begin{lstlisting}[caption=Perubahan \textit{view} pada \textit{Login.php}, label=kode:loginViewBab4]
+
+\end{lstlisting}
+
 \subsubsection{\textit{Controller}}
-\textit{File-file} yang telah dipindahkan akan dilakukan perubahan dengan menghapuskan \texttt{defined('BASEPATH') OR exit('No direct script access allowed');}. Selanjutnya dilakukan perubahan dengan mengganti kode berikut:
-\begin{center}
-	\verb|extends CI_Controller|
-\end{center}
-\begin{center}
-Menjadi kode berikut:
-	\verb|extends BaseController|.
-\end{center}
-
-Setelah itu dilakukan penambahkan kode \verb|namespace App\Controllers;| setelah pembukaan \textit{tag PHP}.
-\subsubsection{\textit{Library}}
-
-\section{Implementasi Analisis Konversi \textit{CodeIgniter 3} ke \textit{CodeIgniter 4}}
+\textit{Controller} terdapat perubahan pada bagian \texttt{\_\_construct()} dimana sekarang tidak dapat mengembalikan sesuatu. Oleh karena itu, akan dibentuk beberapa \textit{filters} untuk melakukan pengecekan terhadap fungsi yang sebelumnya terdapat pada \texttt{\_\_construct()}.
