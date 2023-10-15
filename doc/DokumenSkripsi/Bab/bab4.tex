@@ -7,31 +7,527 @@ Bab ini membahas perancangan untuk seluruh implementasi \textit{SharIF Judge} pa
 
 \section{Perubahan Struktur Aplikasi}
 \label{sec:perubahanStruktur}
-Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada gambar \ref{fig:dirMappingBab4}.
-
-\begin{figure}[H]
-	\centering  
-	\includegraphics[scale=0.5]{dirMapping}  
-	\caption[\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}]{\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}} 
-	\label{fig:dirMappingBab4} 
-\end{figure} 
+Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada bab \ref{chap:Analisis} gambar \ref{fig:dirMapping}. 
 
 Struktur aplikasi pada \textit{CodeIgniter 4} akan berisikan sebagai berikut :
-\subsection{App}
-\begin{itemize}
-	\item \texttt{app/Config}\\ berisikan data-data pada \texttt{application/Config}. Terdapat juga penambahan \textit{file} \texttt{Secrets.php} dan juga pemindahan token menuju \texttt{app/Config/Security.php}.  
-	\item \texttt{}\\ 
-\end{itemize}
-\section{Rancangan Perubahan Kode pada CodeIgniter 3 Menjadi CodeIgniter 4}
-\label{sec:rancanganPerubahanKode}
-Pada \textit{CodeIgniter 4} terdapat perubahan dan penghilangan fungsi-fungsi sehingga terdapat perubahan dan penggantian fungsi.
-\subsection{Config}
-\textit{File config} pada \textit{CodeIgniter 3} akan dipindahkan sesuai dengan pemetaan pada gambar .
-\subsection{\textit{Model, View} dan \textit{Controller}}.
-\subsubsection{\textit{Model}}
-\textit{Model} akan dipindahkan sesuai dengan direktori \ref{sec:perubahanStruktur} dan diubah sesuai dengan dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{Model} akan diganti penamaannya dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelcase}.
+\subsection{app/Config}
+File \textit{config} pada \textit{CodeIgniter 3} akan dipindahkan sesuai dengan pemetaan pada gambar. Direktori berisikan data-data pada \texttt{application/Config}. Beberapa data pada direktori ini akan dipindahkan menuju file yang terdapat pada \textit{CodeIgniter 4}. Terdapat juga penambahan \textit{file} \texttt{Secrets.php} yang dibentuk secara manual. Berikut merupakan rincian isi direktori ini:
+\subsubsection{\texttt{App.php}}
+File ini tidak akan digunakan sehingga akan dibiarkan kosong dan seluruh data akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:envfileapp} merupakan isi dari file \texttt{.env} yang dipindahkan dari direktori \texttt{application/config}:
 
-\subsubsection{\textit{View}}
+\begin{lstlisting}[caption= Kode \texttt{application/config/App.php} yang dipindahkan menuju \texttt{.env}, label=kode:envfileapp]
+	app.baseURL = 'http://sharif.localhost/'
+\end{lstlisting}
+
+Kode \ref{kode:envfileapp} akan menentukan \textit{url} dasar dari aplikasi menjadi \texttt{http://sharif.localhost/}.
+
+\subsubsection{\texttt{Autoload.php}}
+File ini tidak akan digunakan karena pada \textit{CodeIgniter 3} tidak mengikuti standar pada PSR-4. Sedangkan pada \textit{CodeIgniter 4} mengikuti standar PSR-4 sehingga dapat melakukan inisiasi terhadap sebuah kelas menggunakan sintaks \texttt{new Kelas}. Beberapa kelas yang diinisiasi pada file ini akan dipindahkan menuju \texttt{BaseController} dan juga akan dipanggil menggunakan PSR-4 pada file-file yang menggunakan kelas tersebut.
+
+\subsubsection{\texttt{Cache.php}}
+File ini tidak terdapat perubahan karena akan tetap menggunakan konfigurasi \textit{default}.
+
+\subsubsection{\texttt{Constant.php}}
+File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/config/constants.php}. Kode .
+
+\subsubsection{\texttt{Filters.php}}
+\label{subsubsec:filters}
+
+\subsection{\textit{Controllers}}
+\textit{Controller} terdapat perubahan pada bagian fungsi \texttt{\_\_construct()} dimana sekarang tidak dapat mengembalikan sesuatu. Oleh karena itu, akan dibentuk beberapa \textit{filters} \ref{subsubsec:filters} untuk melakukan pengecekan terhadap fungsi yang sebelumnya terdapat pada \texttt{\_\_construct()}.
+	\subsubsection{app/Controllers} 
+	Direktori ini berisikan seluruh \textit{controller} yang dipindahkan dari \textit{CodeIgniter 3}. Berikut merupakan rincian isi pada direktori ini:
+	\begin{itemize}
+		\item \texttt{Assignments.php}
+		\item \texttt{BaseController.php}
+		\item \texttt{Dashboard.php}
+		\item \texttt{Halloffame.php}
+		\item \texttt{Install.php}
+		\item \texttt{Login.php}
+		\item \texttt{Logs.php}
+		\item \texttt{Moss.php}
+		\item \texttt{Notifications.php}
+		\item \texttt{Problems.php}
+		\item \texttt{Profile.php}
+		\item \texttt{Queue.php}
+		\item \texttt{Queueprocess.php}
+		\item \texttt{Rejudge.php}
+		\item \texttt{Scoreboard.php}
+		\item \texttt{Server\_time.php}
+		\item \texttt{Settings.php}
+		\item \texttt{Submissions.php}
+		\item \texttt{Submit.php}
+		\item \texttt{Users.php}
+	\end{itemize}
+
+\textit{Controllers} terdapat perubahan dan penambahan baik dalam \textit{extends} maupun dalam pemanggilan kelas lain seperti \textit{model}. Kode \ref{kode:controllerBab4} merupakan perubahan yang terdapat pada \textit{controller} \texttt{Logs.php}.
+
+\begin{lstlisting}[caption=Perubahan kode \textit{controllers} pada \textit{CodeIgniter 4}, label=kode:controllerBab4]
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use App\Models\AssignmentModel;
+use App\Models\LogsModel;
+use App\Models\User;
+
+class Logs extends BaseController
+{
+	protected $session;
+	protected $user;
+	protected $logs_model;
+	protected $assignment_model;
+
+	public function __construct()
+	{
+		$this->session = session();
+		$this->logs_model = new LogsModel();
+		$this->assignment_model = new AssignmentModel();
+		$this->user = new User();
+		if ( $this->user->level <= 2) // permission denied
+			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+	}
+	
+	public function index()
+	{
+
+		$data = array(
+			'logs' => $this->logs_model->get_all_logs(),
+			'selected' => 'logs',
+			'user' => $this->user,
+			'all_assignments' => $this->assignment_model->all_assignments(),
+			'finish_time' => $this->user->selected_assignment['finish_time'],
+			'extra_time' => $this->user->selected_assignment['extra_time'],
+		);
+
+		return view('pages/admin/logs', $data);
+	}
+}
+\end{lstlisting}
+
+Kode \ref{kode:controllerBab4} terdapat perubahan dimana sekarang akan \textit{extends} \textit{BaseController}. Terdapat juga penghapusan sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');}. Terdapat penambahan sintaks \textit{namespace} dan juga beberapa sintaks untuk memanggil \textit{models}. \textit{Controller} juga memiliki perubahan dalam mengembalikan \textit{view} dimana sekarang menggunakan sintaks \texttt{return view}. Selain itu terdapat penambahan pada \texttt{BaseController.php} untuk melakukan inisiasi terhadap \textit{helpers} dan juga beberapa \textit{library} yang akan digunakan.
+
+\subsection{\textit{Filters}}
+Pada \textit{CodeIgniter 4} \texttt{\_\_construct()} tidak dapat mengembalikan sesuatu oleh karena itu akan dibentuk beberapa \textit{filters} untuk melakukan pengecekan. Beberapa \textit{filters} yang dibentuk antara lain berfungsi untuk mengecek apakah dijalankan dari \textit{command line interface}, apakah sudah \textit{install} dan \textit{login}, apakah sudah \textit{login}, apakah sudah \textit{login} dan dijalankan dari \textit{command line interface}, apakah sudah \textit{login} dan apakah \textit{request} berupa \textit{AJAX}, dan apakah sudah \textit{login} dan pengecekan terhadap \textit{role} pengguna. Kode \ref{kode:filtersbab4} merupakan sintaks untuk melakukan pengecekan apakah dijalankan dari \textit{command line interface}.
+
+\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersbab4]
+	public function before(RequestInterface $request, $arguments = null)
+    {   
+        $request = \Config\Services::request();
+
+        if ($request->isCLI())
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+\end{lstlisting}
+Kode \ref{kode:filtersbab4} merupakan pemindahan kode dari \texttt{\_\_construct} menuju \textit{filters} \texttt{CheckCLI}. Kode ini akan mengecek apakah \textit{request} yang diberikan oleh pengguna merupakan \textit{command line interface}. Apabila \textit{request} yang diberikan bukan berupa itu maka akan diberikan error berupa halaman tidak ditemukan. Setelah dibentuk \textit{filters}, selanjutnya akan ditambahkan menuju file \texttt{Filters.php} untuk mendefiniskan nama untuk dimasukkan menuju \textit{routes}. Kode \ref{kode:filtersnamebab4} merupakan penambahan nama pada file \texttt{Filters.php}.
+
+\begin{lstlisting}[caption=Penambahan nama \textit{filters} untuk didefinisikan menuju \textit{routes}, label=kode:filtersnamebab4]
+	public array $aliases = [
+        'csrf'          => CSRF::class,
+        'toolbar'       => DebugToolbar::class,
+        'honeypot'      => Honeypot::class,
+        'invalidchars'  => InvalidChars::class,
+        'secureheaders' => SecureHeaders::class,
+        'check-installandlogin' => CheckInstallAndLogin::class,
+     ]
+\end{lstlisting}
+
+Kode \ref{kode:filtersnamebab4} merupakan penambahan nama \textit{filters} untuk dipanggil menuju \textit{routes}. Penamaan ini akan ditambahkan pada \textit{array} \verb|$aliases| dengan \textit{index} dan nama kelasnya. Setelah ditambahkan, \textit{filters} akan dipanggil pada \textit{routes} yang membutuhkan pengecekan. Kode \ref{kode:filtersroutesbab4} merupakan penambahan \textit{filters} pada \textit{routes} sesuai dengan kebutuhannya.
+
+\begin{lstlisting}[caption=Penambahan \textit{filter} pada \textit{routes}, label=kode:filtersroutesbab4]
+	$routes->get('/settings','Settings::index',['filter' => 'check-loginandlevelAdmin:dual,noreturn']);
+\end{lstlisting}
+
+Kode \ref{kode:filtersroutesbab4} menambahkan \textit{filter} yang sudah dibentuk dan dinamakan setelah penulisan nama \textit{controller} dan fungsinya. 
+
+\subsection{\textit{Libraries}}
+\textit{Libraries} terdapat beberapa perubahan dan penghapusan fungsi sehingga akan digantikan. Berikut merupakan perancangan perubahan fungsi pada \textit{CodeIgniter 4}.
+
+\subsubsection{\textit{Emails}}
+\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3} merupakan contoh penggunaan \textit{library email}.
+
+\begin{lstlisting}[caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3]
+$this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->settings_model->get_setting('mail_from_name'));
+				$this->email->setTo($user[1]);
+				$this->email->setSubject('SharIF Judge Username and Password');
+				$text = $this->settings_model->get_setting('add_user_mail');
+				$text = str_replace('{SITE_URL}', base_url(), $text);
+				$text = str_replace('{ROLE}', $user[4], $text);
+				$text = str_replace('{USERNAME}', $user[0], $text);
+				$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
+				$text = str_replace('{LOGIN_URL}', base_url(), $text);
+				$this->email->setMessage($text);
+				$this->email->send()
+\end{lstlisting}
+
+Kode \ref{kode:emailslibbab3} memiliki sintaks dengan nama sama namun terdapat perubahan menjadi \textit{camelcase}.
+
+\subsubsection{\textit{Working with Uploaded Files}}
+\textit{Working with uploaded files} terdapat perubahan pada beberapa sintaks dan validasi terhadap \textit{file} yang telah diunggah. Konversi aplikasi \textit{SharIF Judge} akan menggunakan fungsi ini dengan beberapa perubahan sintaks sesuai dengan dokumentasinya. Kode \ref{kode:uploadfilebab4} merupakan perubahan yang terdapat pada \textit{library} ini. 
+\begin{lstlisting}[caption=Perancangan perubahan \textit{library upload} pada \textit{CodeIgniter 4}, label=kode:uploadfilebab4]
+$zip_uploaded = $this->request->getFile('tests_desc');
+		if ( $_FILES['tests_desc']['error'] === UPLOAD_ERR_NO_FILE ){
+			$this->messages[] = array(
+				'type' => 'notice',
+				'text' => "Notice: You did not upload any zip file for tests. If needed, upload by editing assignment."
+			);
+		}
+		elseif ( !$zip_uploaded){
+			$this->messages[] = array(
+				'type' => 'error',
+				'text' => "Error: Error uploading tests zip file: ".$zip_uploaded->getErrorString()
+			);
+		}
+		else{
+			$zip_uploaded->move($assignments_root);
+			$this->messages[] = array(
+				'type' => 'success',
+				'text' => "Tests (zip file) uploaded successfully."
+			);
+		}
+\end{lstlisting}
+
+Kode \ref{kode:uploadfilebab4} merupakan perubahan yang terdapat pada \textit{library upload}. . Pengambilan file akan digantikan dengan sintaks \verb|$this->request->getFile('')| dengan parameter berupa nama dari \textit{tag form} yang sudah dibentuk. Selanjutnya akan dilakukan pengecekan terhadap file yang sudah di unggah dan memberikan beberapa \textit{error message} sesuai dengan kondisinya. File yang sudah di unggah akan dipindahkan menuju direktori \texttt{assignments\_root}.
+
+\subsubsection{\textit{Validation}}
+\textit{Form\_validation} akan digantikan dengan fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. \textit{Validation} akan diinisiasikan pada fungsi \texttt{\_\_construct} pada setiap \textit{controller} yang membutuhkan. Kode \ref{kode:validationinitiationbab4} merupakan inisiasi \textit{validation} pada \textit{controller}.
+
+\begin{lstlisting}[caption=Perancangan inisiasi \textit{validation} pada \texttt{\_\_construct}, label=kode:validationinitiationbab4]
+
+protected $validation;
+
+	public function __construct()
+	{
+		$this->validation = \Config\Services::validation();
+	}
+\end{lstlisting}
+
+Kode \ref{kode:validationinitiationbab4} merupakan sintaks untuk melakukan inisiasi terhadap \textit{validation}. Setiap \textit{controller} yang menggunakan \textit{validation} akan dideklarasikan sebuah variabel bernama \textit{validation} agar dapat dipanggil pada seluruh fungsi yang membutuhkan pada kelas tersebut. \textit{Validation} dilanjutkan dengan penetapan aturan untuk \textit{tag form} yang diinginkan. Berikut merupakan contoh pembentukan aturan untuk mengumpulkan sebuah data pada \textit{form}.
+
+\begin{lstlisting}[caption=Perancangan perubahan konfigurasi aturan pada \textit{library validation}, label=kode:validationrulesbab4]
+$this->validation->setRule('username', 'username', 'required|min\_length[3]|max\_length[20]);
+\end{lstlisting}
+
+Kode \ref{kode:validationrulesbab4} akan menetapkan aturan terhadap \textit{input} yang akan masukan oleh pengguna sesuai dengan nama \textit{form}nya. Sedangkan penetapan aturan berubah menggunakan \textit{camelCase}. Aturan yang dibentuk secara manual akan dipindahkan menuju file \texttt{Validation.php}. Kode \ref{kode:validationrulesmanualbab4} merupakan aturan yang dibentuk secara manual.
+
+\begin{lstlisting}[caption=Perancangan aturan yang dibentuk secara manual pada file \texttt{Validation.php}, label=kode:validationrulesmanualbab4]
+class MyRules
+{   
+    public function password_check($str): bool
+    {
+        if (strlen($str) == 0 OR (strlen($str) >= 6 && strlen($str) <= 200))
+			return TRUE;
+		return FALSE;
+    }
+
+    public function password_again_check($str) :bool
+    {
+        $request = \Config\Services::request();
+        if ($request->getPost('password') !== $request->getPost('password_again'))
+			return FALSE;
+		return TRUE;
+    }
+
+    public function role_check($user,$role) 
+    {
+        $user = new User();
+        if ($user->level <= 2)
+			return ($role == '');
+
+		// Admins can change everybody's user role:
+		$roles = array('admin', 'head_instructor', 'instructor', 'student');
+		return in_array($role, $roles);
+    }
+
+    /**
+	 * Checks whether a user with this email exists
+	 */
+	public function email_check($email,$edit_username):bool
+	{
+        $user_model = new UserModel();
+		if ($user_model->have_email($email, $edit_username))
+			return FALSE;
+		return TRUE;
+	}
+
+    /**
+	 * checks whether the entered registration code is correct or not
+	 *
+	 */
+	public function _registration_code($code){
+        $settings_model = new SettingsModel();
+		$rc = $settings_model->get_setting('registration_code');
+		if ($rc == '0')
+			return TRUE;
+		if ($rc == $code)
+			return TRUE;
+		return FALSE;
+	}
+
+    /**
+	 * Required
+	 *
+	 * @param	string
+	 * @return	bool
+	 */
+	public function required($str)
+	{
+		return is_array($str) ? (bool) count($str) : ($str !== '');
+	}
+
+
+	// -------------------------------------------------------------------------
+
+
+	/**
+	 * Is Lowercase
+	 *
+	 * @param $str
+	 * @return bool
+	 */
+	public function lowercase($str)
+	{
+		return (strtolower($str) === $str);
+	}
+
+    	// ------------------------------------------------------------------------
+
+
+	public function _check_language($str)
+	{
+		if ($str=='0')
+			return FALSE;
+		if (in_array( strtolower($str),array('c', 'c++', 'python 2', 'python 3', 'java', 'zip', 'pdf', 'txt')))
+			return TRUE;
+		return FALSE;
+	}
+
+
+	// ------------------------------------------------------------------------
+	// Used in Submissions.php
+
+	public function _check_type($type)
+	{
+		return ($type === 'code' || $type === 'result' || $type === 'log');
+	}
+}
+\end{lstlisting}
+
+Aturan-aturan diatas dipindahkan dari \textit{controller} menuju \texttt{Validation.php} agar dapat digunakan untuk melakukan validasi. Aturan yang sudah dibentuk dapat digunakan seperti aturan lainnya dengan cara menulis nama kelasnya. Setelah aturan ditetapkan akan dieksekusi berdasarkan \textit{request} dari pengguna dan dilakukan validasi. Kode \ref{kode:validationrunbab4} merupakan perubahan penggunaan \textit{validation} terhadap data yang sudah diberikan oleh pengguna.
+\begin{lstlisting}[caption=Perancangan perubahan penggunaan \textit{validation} pada \textit{CodeIgniter 4}, label=kode:validationrunbab4]
+if ($this->validation->withRequest($this->request)->run())
+		{
+			if ( !$this->request->isAJAX() ){
+				exit;
+			}else{
+				list($ok, $error) = $this->user_model->add_users(
+					$this->request->getPost('new_users'),
+					$this->request->getPost('send_mail'),
+					$this->request->getPost('delay')
+				);
+			return view('pages/admin/add_user_result', array('ok' => $ok, 'error' => $error));
+			}
+		}
+\end{lstlisting}
+
+Kode \ref{kode:validationrunbab4} akan menjalankan \textit{validation} berdasarkan \textit{request} dari pengguna. \textit{Validation} akan tetap menggunakan sintaks \texttt{run()} namun akan ada penambahan sintaks \texttt{withRequest} dimana validasi akan dijalankan setiap ada \textit{HTTP Request} dari pengguna. Namun, \textit{CodeIgniter 4} tidak menyediakan fungsi \texttt{form\_error} sehingga akan diubah dengan menggunakan fungsi baru bernama \texttt{validation\_errors()}. Fungsi tersebut dapat digunakan untuk mengembalikan \textit{error} apabila terdapat data yang tidak sesuai dengan aturan. \textit{Error} tersebut dapat ditampilkan pada halaman \textit{view} menggunakan sintaks berikut.
+
+\begin{center}
+\verb|<?= $validation->hasError('username') ? $validation->getError('username') : '' ?>|
+\end{center}
+
+Sintaks diatas akan melakukan pengecekan apakah terdapat \textit{error} dari \textit{form} bernama \texttt{username} dan apabila terdapat maka akan dikembalikan dara \textit{error} yang berasal dari \textit{validation}. Variabel \texttt{validation} akan dikirimkan dari \textit{controller} berisikan \textit{library validation}.
+
+\subsubsection{\textit{Zip Archive}}
+\textit{Zip Encoding} akan digantikan dengan fungsi PHP \textit{zip archive} karena sudah tidak tersedia pada \textit{CodeIgniter 4}. Fungsi \textit{zip archive} terdapat beberapa perbedaan sehingga akan disesuaikan dengan fungsi-fungsi yang ada. Kode \ref{kode:ziparchivebab4} merupakan perubahan yang terdapat pada \textit{zip encoding}.
+
+\begin{lstlisting}[caption=Perancangan perubahan \textit{zip encoding} menjadi \textit{zip archive}, label=kode:ziparchivebab4]
+$this->zip = new \ZipArchive();
+		$this->zip->open($zipname, ZipArchive::CREATE);
+		for ($i=1 ; $i<=$number_of_problems ; $i++)
+		{
+
+			$path = "$root_path/p{$i}/in";
+			$options = ['add_path' => "p{$i}/in/", 'remove_all_path' => TRUE];
+			$this->zip->addGlob($path.'/*.{txt}', GLOB_BRACE, $options);
+
+			$path = "$root_path/p{$i}/out";
+			$options = ['add_path' => "p{$i}/out/", 'remove_all_path' => TRUE];
+			$this->zip->addGlob($path.'/*.{txt}', GLOB_BRACE, $options);
+
+			$path = "$root_path/p{$i}/tester.cpp";
+			if (file_exists($path))
+				$this->zip->addFile($path,"p{$i}/tester.cpp");
+
+			$pdf_files = glob("$root_path/p{$i}/*.pdf");
+			if ($pdf_files)
+			{
+				$path = $pdf_files[0];
+				$this->zip->addFile($path,"p{$i}/".shj_basename($path));
+			}
+
+			$path = "$root_path/p{$i}/desc.html";
+			if (file_exists($path))
+				$this->zip->addFile($path,"p{$i}/desc.html");
+
+			$path = "$root_path/p{$i}/desc.md";
+			if (file_exists($path))
+				$this->zip->addFile($path,"p{$i}/desc.md");
+		}
+
+		$pdf_files = glob("$root_path/*.pdf");
+		if ($pdf_files)
+		{
+			$path = $pdf_files[0];
+			$this->zip->addFile($path,shj_basename($path));
+		}
+		$this->zip->close();
+		
+		header('Content-Type: application/zip');
+		header('Content-disposition: attachment; filename=' . $zipname);
+		header('Content-Length: ' . filesize($zipname));
+		readfile($zipname);
+\end{lstlisting}
+
+Kode \ref{kode:ziparchivebab4} merupakan perubahan dari \textit{zip encoding} menjadi \textit{zip archive}. \textit{Zip archive} akan dilakukan inisiasi pada variabel \texttt{zip}. Selanjutnya akan dibuka file \textit{zip} menggunakan sintaks \texttt{open} yang menerima dua buah parameter. Parameter pertama berisikan nama \textit{zip} file yang ingin dibentuk sedangkan parameter kedua berisikan mode \textit{zip} yang diinginkan. Fungsi
+\\
+\textit{Library} yang terdapat pada \textit{CodeIgniter 4} juga dapat di\textit{extend} dan dibentuk sesuai dengan kebutuhan. Berikut merupakan \textit{library} yang dibentuk oleh pengguna.
+
+\subsubsection{\textit{Twig}}
+\textit{Library} ini tidak akan digunakan untuk membentuk \textit{view} pada \textit{CodeIgniter 4} namun, akan ada penggunaan sebuah fungsi \textit{Twig} yang akan dibentuk pada direktori \texttt{app/Libraries}. Fungsi tersebut bernama \texttt{extra\_time\_formatter} yang memiliki fungsi untuk mengubah input yang diberikan menjadi format jam dikali enam puluh menit. Kode \ref{kode:twigextratime} merupakan fungsi yang akan dibentuk pada direktori \texttt{app/Libraries} dengan nama \texttt{Twig.php}.
+\begin{lstlisting}[caption=Perancangan perubahan \textit{library MY\_Form\_validation} pada \textit{CodeIgniter 4}, label=kode:twigextratime]
+<?php
+namespace App\Libraries;
+
+class Twig
+{
+
+	/**
+	 * Required
+	 *
+	 * @param	string
+	 * @return	bool
+	 */
+	public function extra_time_formatter($extra_time)
+	{
+		// convert to minutes
+		$extra_time = floor($extra_time/60);
+		// convert to H*60
+		if ($extra_time % 60 == 0 )
+			$extra_time = ($extra_time/60) . '*60';
+		return $extra_time;
+	}
+}
+
+\end{lstlisting}
+
+Kode \ref{kode:twigextratime} merupakan fungsi yang akan dibentuk pada file \texttt{Twig.php}. Fungsi ini akan dipanggil pada halaman \texttt{add\_assignment.php}.
+
+\subsubsection{\textit{Unzip}}
+\textit{Library} ini akan digunakan kembali dan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} terdapat penghapusan sintaks \textit{defined} dan juga penambahan \textit{namespace}. Kode \ref{kode:unzipbab4} merupakan penghapusan sintaks \textit{defined} dan juga penambahan \textit{namespace}.
+
+\begin{lstlisting}[caption=Perancangan perubahan \textit{library Unzip} pada \textit{CodeIgniter 4}, label=kode:unzipbab4]
+namespace App\Libraries;
+
+class Unzip
+{
+\end{lstlisting}
+
+Kode \ref{kode:unzipbab4} merupakan perubahan yang terdapat pada \textit{library} ini. Terdapat penghapusan sintaks \textit{defined} dan penggantian menjadi \textit{namespace}. Selanjutnya, \textit{library} ini akan diinisiasikan pada fungsi \textit{controller} yang menggunakan. Kode \ref{kode:unzipcontroller} merupakan inisiasi \textit{library unzip} pada \textit{controller}.
+
+\begin{lstlisting}[caption=Perancangan inisiasi \textit{library unzip} pada \textit{controller}, label=kode:unzipcontroller]
+
+		$this->unzip = new Unzip();
+		// Create a temp directory
+		$tmp_dir_name = "shj_tmp_directory";
+		$tmp_dir = "$assignments_root/$tmp_dir_name";
+		shell_exec("rm -rf $tmp_dir; mkdir $tmp_dir;");
+
+		// Extract new test cases and descriptions in temp directory
+		$this->unzip->allow(array('txt', 'cpp', 'html', 'md', 'pdf'));
+		$extract_result = $this->unzip->extract("$assignments_root/".$zip_uploaded->getName(), $tmp_dir);
+\end{lstlisting}
+
+Kode \ref{kode:unzipcontroller} merupakan inisiasi \textit{library unzip} pada \textit{controller}. Inisiasi akan dilakukan pada variabel \texttt{unzip} yang sudah dibentuk diluar fungsi tersebut. Penggunaan akan tetap sama seperti sebelumnya sehingga tidak terdapat perubahan sintaks.
+
+\subsubsection{\textit{Password\_hash}}
+\textit{Library} ini tidak akan digunakan dan akan digantikan oleh \textit{password hash} yang disediakan oleh PHP .\textit{Library} \textit{Password\_hash} merekomendasikan pegguna untuk menggunakan fungsi \textit{native} yang disediakan oleh PHP apabila aplikasi mendukung PHP versi 5.5 ke atas. Sehingga, akan dilakukan konversi menggunakan fungsi yang disediakan oleh PHP bernama \texttt{password\_hash()}. Seluruh penggunaan \textit{library} ini akan diubah menggunakan fungsi yang disediakan oleh PHP dengan metode \textit{hashing} sama yaitu \textit{CRYPT\_BLOWFISH}. Perubahan fungsi \textit{hashing} ini bersifat \textit{backward compatible} sehingga dapat menggunakan \textit{database} aplikasi terdahulu tanpa perlu membentuk data baru. Berikut merupakan contoh pengubahan kode dari \textit{phpass} menjadi \textit{password\_hash}.
+
+\begin{center}
+\verb|'password' => $this->password_hash->HashPassword($password)|
+\end{center}
+menjadi
+\begin{center}
+\verb|'password' => password_hash($password,PASSWORD_BCRYPT)|
+\end{center}
+
+Sintaks \texttt{password\_hash()} diatas menerima dua buah parameter yakni data yang ingin di enkripsi dan tipe enkripsi. Enkripsi akan menggunakan sintaks \texttt{PASSWORD\_BCRYPT} yang menggunakan tipe \textit{hash} berupa \texttt{CRYPT\_BLOWFISH}. Selain itu, terdapat fungsi untuk melakukan pengecekan \textit{password} yang sudah di enkripsi. Berikut merupakan contoh pengubahan kode untuk melakukan pengecekan \textit{password} yang sudah di enkripsi.
+\begin{center}
+\verb|password_verify($password, $query->getRow()->password)|
+\end{center}
+Sintaks diatas menerima dua buah parameter dengan parameter pertama berupa masukan dari pengguna dan parameter berikutnya merupakan \textit{hash} dari \textit{password} yang sudah disimpan. Fungsi ini akan mengembalikan data berupa \textit{true} apabila \textit{password} sama dan \textit{false} apabila \textit{password} berbeda.
+
+\subsubsection{\textit{MY\_Form\_validation}}
+\textit{Library MY\_Form\_validation} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan perubahan \textit{extends} menjadi menuju \texttt{Validation}, penghapusan sintaks \texttt{defined} , dan akan ada penambahan \textit{namespace} pada baris awal file. Kode \ref{kode:myformvalidationbab3} merupakan contoh penambahan \textit{namespace} dan penggantian \textit{extends} pada \textit{library} ini.
+\begin{lstlisting}[caption=Contoh perubahan \textit{library MY\_Form\_validation} pada \textit{CodeIgniter 4}, label=kode:myformvalidationbab3]
+namespace App\Libraries;
+
+use CodeIgniter\Validation\Validation;
+
+class MY_Form_validation extends Validation
+\end{lstlisting}
+Kode \ref{kode:myformvalidationbab3} mengapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}. Selain itu, kelas \textit{library} akan \textit{extends} \textit{Validation}.
+\subsubsection{\textit{MY\_Profiler}}
+
+\subsubsection{\textit{Parsedown}}
+\textit{Library Parsedown} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \texttt{defined}.  Kode \ref{kode:parsedownbab3} merupakan contoh penambahan \textit{namespace} dan juga penambahan sintaks \textit{defined}.
+\begin{lstlisting}[caption=Perancangan perubahan \textit{library Parsedown} pada \textit{CodeIgniter 4}, label=kode:parsedownbab3]
+namespace App\Libraries;
+
+class Parsedown
+\end{lstlisting}
+Kode \ref{kode:parsedownbab3} menghapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}. Penggunaan \textit{library} ini tidak akan berubah sehingga tidak terdapat perbedaan sintaks. Namun, terdapat perubahan cara inisiasi \textit{library} ini dimana sekarang akan menggunakan sintaks \textit{new} dan dilakukan inisiasi pada \textit{BaseController}. Kode \ref{kode:parsedownbab3initiate} merupakan perubahan cara melakukan inisiasi \textit{library parsedown}.
+
+\begin{lstlisting}[caption=Perancangan perubahan inisiasi \textit{library Parsedown} pada \textit{controller CodeIgniter 4}, label=kode:parsedownbab3initiate]
+ 	protected $parsedown;
+
+    /**
+     * Constructor.
+     */
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+    {
+        // Do Not Edit This Line
+        parent::initController($request, $response, $logger);
+
+        // Preload any models, libraries, etc, here.
+
+        // E.g.: $this->session = \Config\Services::session();
+        $this->parsedown = new Parsedown();
+    }
+\end{lstlisting}
+
+Kode \ref{kode:parsedownbab3initiate} merupakan perubahan inisiasi pada \textit{CodeIgniter 4}. \textit{Library parsedown} akan dilakukan inisiasi menuju variabel \texttt{parsedown} yang sudah dibentuk pada luar fungsi. Inisiasi dilakukan pada \textit{BaseController} karena terdapat pemakaian pada beberapa \textit{model} dan \textit{controller}. 
+
+\subsubsection{\textit{Phpexcel}}
+\textit{Library} ini akan digunakan kembali namun tidak akan dipindahkan menuju \texttt{app/Libraries}. \textit{Library} akan dilakukan instalasi melalui \textit{composer} dengan sintaks berikut:
+\begin{center}
+	\verb|composer require phpoffice/phpexcel|
+\end{center}
+Sintaks diatas akan dijalankan pada akar dari aplikasi dan tidak terdapat perubahan terhadap penggunaan sintaks ini.
+
+\subsubsection{\textit{Shj\_pagination}}
+\textit{Library} ini akan digunakan kembali dan dipindahkan menuju direktori \texttt{app/Libraries}. Selain itu, terdapat penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \textit{defined}. Kode \ref{kode:shjpaginationbab4} merupakan penambahan perubahan dan penambahan sintaks pada \textit{library} ini.
+
+\begin{lstlisting}[caption=Perancangan perubahan \textit{library Shj\_pagination} pada \textit{CodeIgniter 4}, label=kode:shjpaginationbab4]
+namespace App\Libraries;
+
+class Shj_pagination
+{
+\end{lstlisting}
+
+\subsection{\textit{Model}}
+\textit{Model} akan dipindahkan sesuai dengan direktori \ref{sec:perubahanStruktur} dan diubah sesuai dengan dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{Model} akan diganti penamaannya dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelcase}. Berikut merupakan rincian 
+
+\subsection{\textit{View}}
 \textit{View} akan diubah menggunakan \textit{extension} \texttt{.php} sesuai pada dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{file view} akan diubah menjadi \textit{extension} \texttt{.php} dari yang sebelumnya menggunakan \texttt{.twig}. Seluruh \textit{delimiters} juga akan diubah menggunakan fungsi pada \textit{CodeIgniter 4}. Perubahan \textit{view} dapat dilihat pada kode \ref{kode:loginViewBab4}.
 
 \begin{lstlisting}[caption=Perubahan \textit{view} pada \textit{Login.php}, label=kode:loginViewBab4]
@@ -84,11 +580,34 @@ Pada \textit{CodeIgniter 4} terdapat perubahan dan penghilangan fungsi-fungsi se
 </html>
 \end{lstlisting}
 
-Selain terdapat perubahan \textit{extension} dan \textit{delimiters}, terdapat juga penambahan kode pada \textit{Controller} karena tidak mendukung pembentukan variabel pada \textit{View}. Kode \ref{} merupakan contoh penambahan kode pada \textit{Controller}.
+Kode \ref{kode:loginViewBab4} merupakan perubahan yang terdapat pada halaman \textit{view}. \textit{Delimiters} \verb|{{ }}| akan digantikan menjadi \texttt{<?= ?>} sedangkan \verb|{% %}| akan digantikan menjadi \texttt{<?php ?>}. \textit{Delimiters} yang memanggil fungsi pada \textit{CodeIgniter 4} akan digantikan menjadi \texttt{<?= ?>}. Perubahan juga terdapat pada sintaks dari yang sebelumnya menggunakan \texttt{include} akan digantikan menggunakan fungsi \textit{CodeIgniter 4} berupa \verb|$this->include|. Selain terdapat perubahan \textit{extension} dan \textit{delimiters}, terdapat juga penambahan kode pada \textit{Controller} karena tidak mendukung pembentukan variabel \textit{global} pada \textit{View}. Kode \ref{kode:loginControllerViewBab4} merupakan contoh penambahan kode pada \textit{Controller}.
 
-\begin{lstlisting}[caption=Perubahan \textit{view} pada \textit{Login.php}, label=kode:loginViewBab4]
-
+\begin{lstlisting}[caption=Penambahan kode pada \textit{Login.php}, label=kode:loginControllerViewBab4]
+	$data = [
+			'error' => FALSE,
+			'registration_enabled' => $this->settings_model->get_setting('enable_registration'),
+			'title' => 'Login',
+			'validationError' => $this->validation
+		];
 \end{lstlisting}
 
-\subsubsection{\textit{Controller}}
-\textit{Controller} terdapat perubahan pada bagian \texttt{\_\_construct()} dimana sekarang tidak dapat mengembalikan sesuatu. Oleh karena itu, akan dibentuk beberapa \textit{filters} untuk melakukan pengecekan terhadap fungsi yang sebelumnya terdapat pada \texttt{\_\_construct()}.
+Kode \ref{kode:loginControllerViewBab4} merupakan contoh penambahan data pada \textit{controller}. Penambahan data terjadi karena halaman \textit{view} PHP tidak dapat mendeklarasikan variabel secara \textit{global} sehingga data-data seperti \textit{title} tidak dapat diakses oleh \textit{view} lainnya.
+
+\subsection{public}
+	\subsubsection{assets}
+	Direktori ini berisikan seluruh data yang dapat dilihat oleh pengguna seperti \textit{javascript}, gambar, dan lainnya. Berikut merupakan rincian isi pada direktori ini:
+	\begin{itemize}
+		\item \texttt{ace}
+		\item \texttt{font}
+		\item \texttt{fullcalendar}
+		\item \texttt{gridster}
+		\item \texttt{images}
+		\item \texttt{js}
+		\item \texttt{nano\_scroller}
+		\item \texttt{noty}
+		\item \texttt{pdfjs}
+		\item \texttt{reveal}
+		\item \texttt{snippet}
+		\item \texttt{styles}
+		\item \texttt{tinymce}
+	\end{itemize}

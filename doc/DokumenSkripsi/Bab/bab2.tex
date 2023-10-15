@@ -1560,7 +1560,7 @@ class MyFilter implements FilterInterface
 }
 \end{lstlisting}
 
-Kode \ref{kode:filterexample} merupakan contoh kode yang akan melakukan pengecekan tabel ataupun \textit{session} sebelum \textit{controller} dijalankan. Selanjutnya pengguna perlu menambahkan konfigurasi \textit{filter } pada \textit{routes} seperti sintaks berikut.
+Kode \ref{kode:filterexample} merupakan contoh kode yang akan melakukan pengecekan tabel ataupun \textit{session} sebelum \textit{controller} dijalankan. Kode ini akan disimpan pada direktori \texttt{app/Filters}. Selanjutnya pengguna perlu menambahkan konfigurasi \textit{filter } pada \textit{routes} seperti sintaks berikut.
 \begin{center}
 	\verb|$routes->get('/', 'Dashboard::index',['filter' => 'check-install:dual,noreturn']);|
 \end{center}
@@ -1577,8 +1577,10 @@ Sintaks diatas akan melakukan pengecekan pada \textit{controller} \texttt{Dashbo
 \textit{CodeIgniter 4} menghasilkan \textit{URL} seperti diatas dengan membaginya menjadi:
 
 \begin{itemize}
-\item \textit{Base URL} merupakan \textit{URL} dasar dari aplikasi web yang dibentuk yaitu \texttt{	
-https://www.example.com/ci-blog/}
+\item \textit{Base URL} merupakan \textit{URL} dasar dari aplikasi web yang dibentuk yaitu 
+\begin{center}
+	\texttt{https://www.example.com/ci-blog/}
+\end{center}
 \item \textit{URI Path} merupakan alamat yang dituju yaitu \texttt{/ci-blog/blog/news/2022/10} 
 \item \textit{Route} juga merupakan alamat yang dituju tanpa \textit{URL} dasar yaitu \texttt{/blog/news/2022/10} 
 \item \textit{Query} merupakan hasil dari \textit{query} yang ingin ditampilkan yaitu \texttt{	
@@ -1634,10 +1636,10 @@ Pengguna dapat mendefinisikan \textit{route} secara otomatis melalui fitur \text
 \begin{center}
 \verb|$routes->setAutoRoute(true);|
 \end{center}
-Pengguna juga perlu mengubah \verb|$autoRoutesImproved| menjadi \verb|true| pada direktori \verb|app/Config/Feature.php|. Selain menggunakan \textit{auto routing} baru, pengguna dapat menggunakan \textit{Auto Routing (Legacy)} yang terdapat pada \textit{CodeIgniter 3} dengan cara seperti berikut:
+Pengguna perlu mengubah \verb|$autoRoutesImproved| menjadi \verb|true| pada file \verb|app/Config/Feature.php|. Selain menggunakan \textit{auto routing} baru, pengguna dapat menggunakan \textit{Auto Routing (Legacy)} yang terdapat pada \textit{CodeIgniter 3} dengan cara seperti berikut:
 
 
-\subsection{\textit{Databases}}
+\subsection{\textit{Database}}
 \textit{CodeIgniter 4} menyediakan kelas \textit{database} yang dapat menyimpan, memasukan, memperbarui, dan menghapus data pada \textit{database} sesuai dengan konfigurasi. Pengguna dapat melakukan konfigurasi untuk \textit{database} yang ingin dikoneksikan melalui direktori \verb|app/Config/Database.php| atau \textit{file} \verb|.env|. Kode \ref{kode:databaseconfci4} merupakan contoh pada direktori \verb|Database.php|.
 
 \begin{lstlisting}[caption=Contoh konfigurasi \textit{database} pada \textit{CodeIgniter 4}. ,label=kode:databaseconfci4]
@@ -1673,9 +1675,16 @@ class Database extends Config
 }
 \end{lstlisting}
 
-Kode \ref{kode:databaseconfci4} merupakan contoh konfigurasi untuk database bernama \verb|database_name| dengan \textit{username} root. Selain untuk melakukan koneksi \textit{database}, kelas ini dapat digunakan untuk menambahkan, menghapus, dan memperbaharui data pada \textit{database}. Berikut merupakan contoh penggunaan \textit{query} pada \textit{database}:
+Kode \ref{kode:databaseconfci4} merupakan contoh konfigurasi untuk database bernama \verb|database_name| dengan \textit{username} root. Selain itu, konfigurasi juga dapat dilakukan pada file \texttt{.env} untuk mempermudah dalam pengubahan pada saat melakukan \textit{deploy}. Kode \ref{kode:envdatabaseci4} merupakan contoh konfigurasi pada file \texttt{.env}:
+\begin{lstlisting}[caption=Contoh konfigurasi \textit{database} pada file \texttt{.env}. ,label=kode:envdatabaseci4]
+database.default.username = 'root';
+database.default.password = '';
+database.default.database = 'ci4';
+\end{lstlisting}
 
-\begin{lstlisting}[caption=Contoh konfigurasi \textit{database} pada \textit{CodeIgniter 4}. ,label=kode:queryexampleci4]
+Kode \ref{kode:envdatabaseci4} akan menyimpan konfigurasi pada grup \textit{default} dengan \textit{username} berupa root, tanpa menggunakan \textit{password}, dan juga dengan nama \textit{database} ci4.Selain untuk melakukan koneksi \textit{database}, kelas ini dapat digunakan untuk menambahkan, menghapus, dan memperbaharui data pada \textit{database}. Berikut merupakan contoh penggunaan \textit{query} pada \textit{database}:
+
+\begin{lstlisting}[caption=Contoh penggunaan \textit{query} menggunakan konfigurasi pada \textit{CodeIgniter 4}. ,label=kode:queryexampleci4]
 <?php
 
 $builder = $db->table('users');
@@ -1716,7 +1725,7 @@ $fields = [
 $forge->addField($fields);
 $forge->createTable('table_name');
 \end{lstlisting}
-Kode merupakan contoh pembentukan \textit{database} dengan tabel bernama \textit{table\_name} yang berisikan beberapa \textit{field}.
+Kode \ref{kode:ci4databaseforge} merupakan contoh pembentukan \textit{database} dengan tabel bernama \textit{table\_name} yang berisikan beberapa \textit{field}. 
 
 \subsection{\textit{Library}}
 \textit{CodeIgniter 4} menyediakan berbagai \textit{library} untuk membantu pengguna dalam pembentukan aplikasi web. Berikut merupakan contoh \textit{library} yang disediakan oleh \textit{CodeIgniter 4}:
@@ -1853,6 +1862,97 @@ Kode \ref{kode:ci4fileuploadcontroller} terdapat dua buah fungsi yaitu:
 \item \verb|upload()| yang memberikan aturan untuk melakukan validasi dan melakukan penyimpanan pada direktori \texttt{uploads}.
 \end{itemize}
 
+\subsubsection{\textit{Validation}}
+\textit{CodeIgniter 4} menyediakan \textit{library} untuk melakukan validasi terhadap data yang dikirimkan oleh pengguna. Data yang divalidasi dapat diberikan aturan-aturan sesuai dengan konfigurasi pengguna. Kode \ref{kode:ci4validationform} merupakan contoh penggunaan \textit{validation}.
+
+\begin{lstlisting}[caption=Contoh kode untuk melakukan pengumpulan data. ,label=kode:ci4validationform]
+<html>
+<head>
+    <title>My Form</title>
+</head>
+<body>
+
+    <?= validation_list_errors() ?>
+
+    <?= form_open('form') ?>
+
+        <h5>Username</h5>
+        <input type="text" name="username" value="<?= set_value('username') ?>" size="50">
+
+        <h5>Password</h5>
+        <input type="text" name="password" value="<?= set_value('password') ?>" size="50">
+
+        <h5>Password Confirm</h5>
+        <input type="text" name="passconf" value="<?= set_value('passconf') ?>" size="50">
+
+        <h5>Email Address</h5>
+        <input type="text" name="email" value="<?= set_value('email') ?>" size="50">
+
+        <div><input type="submit" value="Submit"></div>
+
+    <?= form_close() ?>
+
+</body>
+</html>
+\end{lstlisting}
+
+Kode \ref{kode:ci4validationform} merupakan contoh penggunaan \textit{validation} pada halaman \textit{view}. Pengambilan \textit{error} dapat menggunakan sintaks \texttt{validation\_list\_errors()}. Selanjutnya akan digunakan fungsi \texttt{form\_open} untuk membuka \textit{tag form} sesuai dengan \textit{url} yang sudah dibentuk. Setiap input akan diberikan \textit{name} sesuai dengan aturan yang ingin diberikan. Setelah \textit{tag form} selesai maka akan ditutup dengan sintaks \texttt{form\_close}. Setelah itu data-data yang sudah dimasukan akan dikirimkan menuju \textit{controller} seperti pada kode \ref{kode:ci4validationcontroller}.
+
+\begin{lstlisting}[caption=Contoh kode untuk melakukan validasi data yang sudah dikumpulkan. ,label=kode:ci4validationcontroller]
+<?php
+
+namespace App\Controllers;
+
+class Form extends BaseController
+{
+    protected $helpers = ['form'];
+
+    public function index()
+    {
+        if (! $this->request->is('post')) {
+            return view('signup');
+        }
+
+        $rules = [];
+
+        if (! $this->validate($rules)) {
+            return view('signup');
+        }
+
+        // If you want to get the validated data.
+        $validData = $this->validator->getValidated();
+
+        return view('success');
+    }
+}
+\end{lstlisting}
+Data-data yang sudah diberikan oleh pengguna akan dijalankan menggunakan \textit{controller} diatas. Sintaks \verb|if (! $this->request->is('post'))| akan melakukan pengecekan apakah \textit{request} yang diberikan berupa \textit{post} atau tidak. Selanjutnya dapat ditentukan aturan pada variabel \texttt{rules} yang nantinya akan dilakukan validasi menggunakan fungsi \texttt{validate}. Fungsi \texttt{validate} akan mengecek data yang diberikan dan menentukan apakah sudah sesuai dengan aturan yang ada atau belum. Kode \ref{kode:ci4validationrules} merupakan contoh pembentukan aturan sesuai dengan nama \textit{form} yang ada.
+
+\begin{lstlisting}[caption=Contoh kode untuk menetapkan aturan untuk validasi data yang sudah dikumpulkan. ,label=kode:ci4validationrules]
+$rules = [
+    'username' => 'required|max_length[30]',
+    'password' => 'required|max_length[255]|min_length[10]',
+    'passconf' => 'required|max_length[255]|matches[password]',
+    'email'    => 'required|max_length[254]|valid_email',
+];
+\end{lstlisting}
+
+Kode \ref{kode:ci4validationrules} merupakan contoh aturan yang ditetapkan untuk setiap \textit{form} yang ada. Aturan-aturan tersebut dapat diganti sesuai dengan kebutuhan dari pengguna. Selain menggunakan aturan yang disediakan \textit{CodeIgniter 4}, pengguna dapat membentuk aturannya sendiri pada file \textit{Validation.php}. Kode \ref{kode:ci4validationrulesmanual} merupakan contoh aturan yang dibentuk secara manual. 
+
+\begin{lstlisting}[caption=Contoh kode pembentukan aturan secara manual pada file \texttt{Validation.php}. ,label=kode:ci4validationrulesmanual]
+<?php
+
+class MyRules
+{
+    public function even($value): bool
+    {
+        return (int) $value % 2 === 0;
+    }
+}
+\end{lstlisting}
+
+Kode \ref{kode:ci4validationrulesmanual} merupakan contoh pembentukan aturan secara manual. Penggunaan aturan yang dibentuk secara manual sama seperti penggunaan aturan lainnya.
+
 \subsection{\textit{Helpers}}
 \textit{Helpers} merupakan fungsi pada \textit{CodeIgniter 4} yang menyediakan beberapa fungsi untuk pengguna dalam membangun aplikasi web. \textit{Helpers} dapat dimuat oleh pengguna seperti berikut:
 
@@ -1861,9 +1961,9 @@ Kode \ref{kode:ci4fileuploadcontroller} terdapat dua buah fungsi yaitu:
 
 \verb|helper('helpers_name');|
 \end{center}
-Setelah dilakukan pemanggilan, pengguna dapat memakai fungsi-fungsi yang disediakan sesuai dengan \textit{helpers} yang digunakan.
+Setelah dilakukan pemanggilan, pengguna dapat memakai fungsi-fungsi yang disediakan sesuai dengan \textit{helpers} yang digunakan. Fungsi-fungsi itu antara lain adalah \textit{form}, \textit{array}, dan lainnya.
 
-\section{Koversi CodeIgniter 3 ke CodeIgniter 4\cite{codeigniter:23:ci4}}
+\section{Konversi CodeIgniter 3 ke CodeIgniter 4\cite{codeigniter:23:ci4}}
 \label{sec:konversici3c4}
  
 Konversi CodeIgniter 3 ke CodeIgniter 4 diperlukan penulisan ulang karena terdapat banyak implementasi yang berbeda. Konversi ke CodeIgniter 4 diawali dengan melakukan instalasi projek baru CodeIgniter 4.
@@ -1941,7 +2041,7 @@ menjadi sintaks berikut:
  
 \subsection{\textit{Configuration}}
 
-\textit{File configuration} CodeIgniter 4 terdapat pada \verb|app\Config| dengan penulisan sedikit berbeda dengan versi sebelumnya. Pengguna hanya perlu melakukan pemindahan menuju CodeIgniter 4 dan apabila menggunakan \textit{file config custom} maka, diperlukan penulisan ulang pada direktori Config dengan melakukan \textit{extend} pada \verb|CodeIgniter\Config\BaseConfig|.   
+\textit{File configuration} CodeIgniter 4 terdapat pada \verb|app\Config| dengan penulisan sedikit berbeda dengan versi sebelumnya. Penulisan berudah dari yang sebelumnya menggunakan \textit{array} akan berubah menjadi menggunakan variabel. Pengguna hanya perlu melakukan pemindahan menuju CodeIgniter 4 dan apabila menggunakan \textit{file config custom} maka, diperlukan penulisan ulang pada direktori Config dengan melakukan \textit{extend} pada \verb|CodeIgniter\Config\BaseConfig|. Beberapa konfigurasi juga akan dipindahkan menuju file \texttt{.env}.
 
 \subsection{\textit{Database}}
 
@@ -1954,7 +2054,7 @@ Perubahan perlu dilakukan pada nama \textit{file} menjadi nama dengan cap waktu.
 	\item \verb|namespace App\Database\Migrations;|
 	\item \texttt{use CodeIgniter/Database/Migration;}
 \end{itemize}
-  Setelah itu, \verb|extends CI_Migration| diubah menjadi \verb|extends Migration|. Terakhir, terdapat perubahan pada nama \textit{method} \textit{Forge} dari \verb|$this->dbforge->add_field| menjadi \textit{camelCase} \verb|$this->forge->addField|.
+  Setelah itu, \verb|extends CI_Migration| diubah menjadi \verb|extends Migration|. Terakhir, terdapat perubahan pada nama metode \textit{Forge} dari yang sebelumnya bernama \verb|$this->dbforge->add_field| menjadi menggunakan \textit{camelCase} \verb|$this->forge->addField|.
 
 \subsection{\textit{Routing}}
 
@@ -1964,8 +2064,15 @@ Pengguna dapat melakukan pembaharuan \textit{routing} dengan cara berikut:
 \item Terdapat perubahan dari \verb|(:any)| menjadi \verb|(:segment)|.
 \item Pengguna juga harus mengubah sintaks pada \verb|app/Config/Routes.php| seperti berikut:
 	\begin{itemize}
-	\item \verb|$route['journals'] = 'blogs';| menjadi \texttt{\$routes->add('journals', 'Blogs::index');} untuk memanggil fungsi \texttt{index} pada \textit{controller} \texttt{Blogs}.
-	\item \verb|$route['product/(:any)'] = 'catalog/product_lookup'| menjadi \texttt{\$routes->add('product/(:segment)', 'Catalog::productLookup');}.
+	\item \verb|$route['journals'] = 'blogs';| \\ menjadi 
+	\begin{center}	
+	\texttt{\$routes->add('journals', 'Blogs::index');} 
+	\end{center}
+	Sintak diatas berguna untuk memanggil fungsi \texttt{index} pada \textit{controller} \texttt{Blogs}.
+	\item \verb|$route['product/(:any)'] = 'catalog/product_lookup'|\\ menjadi 
+	\begin{center}	
+		\texttt{\$routes->add('product/(:segment)', 'Catalog::productLookup');}.
+	\end{center}
 	\end{itemize}
 \end{enumerate}
 
@@ -1986,7 +2093,12 @@ Terdapat banyak perubahan dimana pada CodeIgniter 4 pengguna dapat mengecek apak
 \begin{center}
 \verb|$file->isValid()|
 \end{center} 
-\textit{File} yang sudah diunggah dapat disimpan dengan sintaks \verb|$path = $this->request->getFile('userfile')->store('head_img/', 'user_name.jpg');|. \textit{File} yang sudah diunggah dan di validasi akan tersimpan pada \verb|writable/uploads/head_img/user_name.jpg.|
+\textit{File} yang sudah diunggah dapat disimpan dengan sintaks berikut:
+\begin{center}
+\verb|$path = $this->request->getFile('userfile')->store('head_img/', 'user_name.jpg');|.
+\end{center} 
+
+Sintaks diatas akan mengambil file dengan atribut nama \texttt{userfile} dan menyimpannya pada direktori \texttt{head\_img} dengan nama file \texttt{user\_name.jpg}.
 
 \subsubsection{\textit{HTML Tables}}
 
@@ -2007,8 +2119,8 @@ Pengguna dapat melakukan pembaharuan pada \textit{validations} melalui cara beri
 	\begin{itemize}
 		\item \verb|$this->load->helper(array('form', 'url'));| menjadi \verb|helper(['form', 'url']);|
 		\item Pengguna perlu menghapus kode \verb|$this->load->library('form_validation');|
-		\item \verb|if ($this->form_validation->run() == FALSE)| menjadi \verb|if (! $this->validate([]))|
-		\item \verb|$this->load->view('myform');| menjadi seperti berikut:
+		\item \verb|if ($this->form_validation->run() == FALSE)| menjadi \verb|if (!$this->validate([]))|
+		\item \verb|$this->load->view('myform');| \\ menjadi seperti berikut:
 \begin{center}		
  \verb|return view('myform', ['validation' => $this->validator,]);|
 \end{center}
