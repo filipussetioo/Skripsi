@@ -215,16 +215,23 @@ Kode \ref{kode:libraryclass} merupakan contoh \textit{file library} pada \textit
 \verb|$this->load->library('someclass', $params);|
 \end{center} 
 
-Kode diatas memanggil \textit{library} \texttt{someclass} dan dapat dilakukan melalui \textit{controller} manapun dan dapat diberikan parameter sesuai dengan metode yang dibentuk pada \textit{library}. \textit{CodeIgniter 3} menyediakan berbagai \textit{library} yang dapat digunakan oleh pengguna seperti berikut:
+Kode diatas memanggil \textit{library} \texttt{someclass} dan dapat dilakukan melalui \textit{controller} manapun dan dapat diberikan parameter sesuai dengan metode yang dibentuk pada \textit{library}. \textit{CodeIgniter 3} menyediakan berbagai \textit{library} yang dapat digunakan oleh pengguna seperti berikut.
+
+\subsubsection{Kelas \textit{Input}}
+Kelas \textit{input} memiliki dua buah fungsi yakni melakukan praproses data masukan dan memberikan metode kepada beberapa \textit{helper}. Penggunaan kelas \textit{input} dapat dipanggil menggunakan sintaks berikut.
+\begin{center}
+	\verb|$something = $this->input->post('something');|
+\end{center}
+Sintaks diatas akan mengambil data yang dikirim menggunakan \textit{post} pada data bernama \textit{something}.
 
 \subsubsection{\textit{JavaScript}}
-Penggunaan kelas \textit{javascript} dapat dipanggil pada konstruktor \textit{controller} dengan cara berikut:
+Penggunaan kelas \textit{javascript} dapat dipanggil pada konstruktor \textit{controller} dengan cara berikut.
 
 \begin{center}
 \verb|$this->load->library('javascript');|
 \end{center}
 
-Pengguna selanjutnya harus melakukan inisiasi \textit{library} pada halaman \textit{view tag} \verb|<head>| seperti berikut:
+Sintaks diatas akan melakukan inisiasi \textit{library javascript} pada file tersebut. Pengguna selanjutnya harus melakukan inisiasi \textit{library} pada halaman \textit{view tag} \verb|<head>| seperti berikut.
 
 \begin{center}
 \verb|<?php echo $library_src;?>|
@@ -1377,7 +1384,13 @@ for func in BLACKLIST:
 \section{CodeIgniter 4\cite{codeigniter:23:ci4}}
 \label{sec:ci4}
 
-\textit{CodeIgniter 4} merupakan versi terbaru dari \textit{framework} \textit{CodeIgniter} yang berfungsi untuk membantu pembentukan web. \textit{CodeIgniter 4} dapat dipasang menggunakan \textit{composer} ataupun dipasang secara manual dengan mengunduhnya dari situs web resmi. Setelah dilakukan pemasangan \textit{CodeIgniter 4} memiliki lima buah direktori dengan struktur aplikasi sebagai berikut:
+\textit{CodeIgniter 4} merupakan versi terbaru dari \textit{framework} \textit{CodeIgniter} yang berfungsi untuk membantu pembentukan web. \textit{CodeIgniter 4} dapat dipasang menggunakan \textit{composer} ataupun dipasang secara manual dengan mengunduhnya dari situs web resmi. Berikut merupakan sintaks untuk melakukan pemasangan menggunakan \textit{composer}.
+
+\begin{center}
+\verb|composer create-project codeigniter4/appstarter project-root|
+\end{center}
+
+Sintaks diatas akan mengunduh dan melakukan instalasi projek \textit{CodeIgniter 4} dengan nama \textit{project-root}. Sintaks \texttt{codeigniter4/appstarter} berfungsi untuk mengunduh aplikasi \textit{skeleton} dari projek \textit{CodeIgniter 4} yang berisikan kebutuhan data untuk melakukan \textit{development} sebuah aplikasi. Setelah dilakukan pemasangan \textit{CodeIgniter 4} memiliki lima buah direktori dengan struktur aplikasi sebagai berikut:
 
 \begin{itemize}
 \item \texttt{app/}
@@ -1483,7 +1496,7 @@ Kode \ref{kode:modelfindall} menggabungkan \textit{query} dengan metode pencaria
 \end{lstlisting}
 
 Kode \ref{kode:viewsexample} merupakan contoh \textit{views} pada direktori \verb|app/Views| yang akan menampilkan tulisan \textit{Welcome to my Blog}. \textit{View} ini dapat ditampilkan melalui controller seperti berikut:
-\begin{lstlisting}[caption=Contoh \textit{Views},label=kode:viewsexample]
+\begin{lstlisting}[caption=Contoh menampilkan \textit{Views} pada \textit{controller},label=kode:viewsexamplecontroller]
 <?php
 
 namespace App\Controllers;
@@ -1499,7 +1512,7 @@ class Blog extends Controller
 }
 \end{lstlisting}
 
-Kode \ref{kode:viewsexample} merupakan contoh memanggil \textit{views} pada \textit{file controllers}. Kode ini mengembalikan halaman \texttt{blog\_view} pada \textit{controller} blog.
+Kode \ref{kode:viewsexamplecontroller} merupakan contoh memanggil \textit{views} pada \textit{file controllers}. Kode ini mengembalikan halaman \texttt{blog\_view} pada \textit{controller} blog.
 
 \subsubsection{\textit{Controllers}}
 
@@ -1528,7 +1541,7 @@ Kode \ref{kode:controllersexample} merupakan contoh \textit{controllers} yang me
 \verb|example.com/index.php/helloworld/|
 \end{center}
 
-Selain itu, \textit{CodeIgniter 4} menyediakan fungsi bernama \textit{Controller Filters} yang berfungsi untuk membiarkan pengguna membangun sebuah kondisi sebelum ataupun sesudah \textit{controller} dijalankan. Kode \ref{kode:filterexample} merupakan contoh penggunaan \textit{filters}.
+Selain itu, \textit{CodeIgniter 4} menyediakan fungsi bernama \textit{Controller Filters} dan kelas \textit{IncomingRequest}. \textit{Controller Filter} memiliki berfungsi untuk membiarkan pengguna membangun sebuah kondisi sebelum ataupun sesudah \textit{controller} dijalankan. Kode \ref{kode:filterexample} merupakan contoh penggunaan \textit{filters}.
 
 \begin{lstlisting}[caption=Contoh \textit{Controllers Filters} pada \textit{CodeIgniter 4},label=kode:filterexample]
 <?php
@@ -1565,7 +1578,117 @@ Kode \ref{kode:filterexample} merupakan contoh kode yang akan melakukan pengecek
 	\verb|$routes->get('/', 'Dashboard::index',['filter' => 'check-install:dual,noreturn']);|
 \end{center}
 
-Sintaks diatas akan melakukan pengecekan pada \textit{controller} \texttt{Dashboard::index} sebelum dan setelah \textit{controller} tersebut dijalankan.
+Sintaks diatas akan melakukan pengecekan pada \textit{controller} \texttt{Dashboard::index} sebelum dan setelah \textit{controller} tersebut dijalankan. Selanjutnya kelas \textit{IncomingRequest} menyediakan representasi \textit{object-oriented} sebuah \textit{HTTP request} dari \textit{client} seperti \textit{browser}. Berikut merupakan contoh \textit{IncomingRequest} mengakses data yang telah dikirimkan oleh \textit{client}.
+\begin{lstlisting}[caption=Contoh mengakses data menggunakan \textit{IncomingRequest},label=kode:incomingreqbab2]
+<?php
+
+namespace App\Controllers;
+
+use CodeIgniter\Controller;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        if ($this->request->isAJAX()) {
+            $something = $this->request->getVar('foo');
+        }
+    }
+}
+\end{lstlisting}
+Kode \ref{kode:incomingreqbab2} merupakan contoh untuk mengakses data yang telah dikirimkan oleh \textit{client}. Sintaks \texttt{isAJAX} berfungsi untuk melakukan pengecekan apakan data yang dikirimkan melalui \textit{AJAX}. Sedangkan sintaks \texttt{getVar('foo')} berfungsi untuk mengambil data yang telah dikirimkan dengan nama \textit{foo}. Selain itu pengguna juga dapat menginisiasikan kelas ini menggunakan sintaks berikut.
+\begin{center}
+	\verb|$request = \Config\Services::request();|
+\end{center}
+Sintaks diatas akan menginisiasikan kelas \textit{request} dan menyimpannya menuju variabel.
+\subsection{\textit{Autoloading Files}}
+\textit{CodeIgniter 4} menyediakan fitur \textit{autoloader} yang dapat digunakan dengan sedikit konfigurasi. Fitur ini dapat menemukan \textit{namespaced classes} individual yang menggunakan struktur direktori \textit{autoloading} pada \textit{PSR-4}. Fitur ini juga dapat digunakan bersamaan dengan \textit{autoloader} lain seperti \textit{composer}. Konfigurasi fitur ini dapat dilakukan pada direktori \texttt{app/Config/Autoload.php}. Direktori ini berisikan dua buah \textit{array} utama yakni \texttt{classmap} dan \texttt{psr4}. Kode \ref{kode:autoloadnamespace} merupakan contoh konfigurasi menggunakan \textit{namespace PSR-4}.
+\begin{lstlisting}[caption=Contoh konfigurasi menggunakan \textit{namespace PSR-4}. ,label=kode:autoloadnamespace]
+<?php
+
+namespace Config;
+
+use CodeIgniter\Config\AutoloadConfig;
+
+class Autoload extends AutoloadConfig
+{
+    // ...
+    public $psr4 = [
+        APP_NAMESPACE => APPPATH, // For custom app namespace
+        'Config'      => APPPATH . 'Config',
+    ];
+
+    // ...
+}
+\end{lstlisting}
+Kode \ref{kode:autoloadnamespace} merupakan contoh konfigurasi untuk melakukan \textit{mapping} menuju direktori. \textit{Key} dari setiap baris merupakan \textit{namespace} itu sendiri sedangkan \textit{value} merupakan \textit{path} dari direktori. Pengguna dapat melakukan pengecekan terhadap konfigurasi \textit{namespace} enggunakan sintaks dibawah.
+\begin{center}
+	\verb|php spark namespaces|
+\end{center}
+Sintaks diatas dapat dijalankan melalui \textit{command line} pada aplikasi. Konfigurasi selanjutnya menggunakan \textit{classmap} yang melakukan \textit{link} terhadap \textit{third-party libraries} yang tidak memiliki \textit{namespace}. Kode \ref{kode:autoloadclassmap} merupakan contoh konfigurasi menggunakan \textit{classmap}.
+
+\begin{lstlisting}[caption=Contoh konfigurasi menggunakan \textit{classmap}. ,label=kode:autoloadclassmap]
+<?php
+
+namespace Config;
+
+use CodeIgniter\Config\AutoloadConfig;
+
+class Autoload extends AutoloadConfig
+{
+    // ...
+    public $classmap = [
+        'Markdown' => APPPATH . 'ThirdParty/markdown.php',
+    ];
+
+    // ...
+}
+\end{lstlisting}
+Kode \ref{kode:autoloadclassmap} merupakan contoh konfigurasi menggunakan \textit{classmap}. \textit{Key} setiap row merupakan nama kelas yang ingin ditemukan sedangkan \textit{value} merupakan \textit{path} dari kelas itu sendiri.
+
+\subsection{\textit{Configuration}}
+Konfigurasi pada \textit{CodeIgniter} terletak pada direktori \texttt{app/Config}. File ini tidak ditempatkan pada satu buah file melainkan setiap kelas yang membutuhkan konfigurasi memiliki file yang berbeda. Pengguna dapat mengakses file \textit{configuration} dengan beberapa cara berikut merupakan cara-caranya.
+\begin{lstlisting}[caption=Contoh mengakses file \textit{configuration}. ,label=kode:configbab2ci4]
+<?php
+// Creating new configuration object by hand
+$config = new \Config\Pager();
+
+// Get shared instance with config function
+$config = config('Pager');
+
+// Access config class with namespace
+$config = config('Config\\Pager');
+$config = config(\Config\Pager::class);
+
+// Creating a new object with config function
+$config = config('Pager', false);
+\end{lstlisting}
+Kode \ref{kode:configbab2ci4} merupakan beberapa contoh untuk mengakses file \textit{configuration}. Pengguna dapat mengakses \textit{configuration} secara manual menggunakan sintaks \texttt{new}, pengguna dapat mengakses \textit{configuration} menggunakan fungsi \textit{config} dengan sintaks \texttt{config('namafile')}, menggunakan \textit{namespace}, dan membentuk objek baru menggunakan fungsi \textit{config}. Selanjutnya pengguna dapat mengakses properti yang terdapat pada file \textit{config} tersebut menggunakan sintaks berikut.
+\begin{center}
+	\verb|$pageSize = $config->perPage;|
+\end{center}
+Sintaks diatas akan mengambil properti \texttt{perPage} yang terdapat pada variabel \textit{config} yang sudah diinisiasi. Selain menggunakan \textit{config} yang terdapat pada \textit{CodeIgniter}, pengguna dapat membentuk file \textit{config} secara manual. Kode \ref{kode:configbab2ci4new} merupakan contoh isi \textit{file} \textit{config} yang dibentuk manual.
+\begin{lstlisting}[caption=Contoh pembentukan file \textit{configuration}. ,label=kode:configbab2ci4new]
+<?php
+
+namespace Config;
+
+use CodeIgniter\Config\BaseConfig;
+
+class CustomClass extends BaseConfig
+{
+    public $siteName  = 'My Great Site';
+    public $siteEmail = 'webmaster@example.com';
+    // ...
+}
+\end{lstlisting}
+Kode \ref{kode:configbab2ci4new} merupakan isi dari file \textit{config} yang dibentuk secara manual. File ini akan disimpan pada direktori \texttt{app/Config} dengan nama kelas yang akan \textit{extends} \texttt{BaseConfig}. Selain menggunakan file \textit{config}, pengguna juga dapat melakukan konfigurasi menggunakan variabel \textit{environment}. Penggunaan file \textit{environment} merupakan cara melakukan konfigurasi terbaik untuk saat ini dikarenakan kemudahan untuk mengubah konfigurasi pada saat melakukan \textit{deploy} aplikasi. Konfigurasi dapat diubah tanpa harus mengubah kode. \textit{CodeIgniter} menyediakan sebuah file bernama \textit{dotenv} atau yang akan disebut \texttt{.env} selanjutnya. \textit{.env} merupakan sebuah file yang terletak pada akar apliaksi. File ini dapat berisikan seluruh konfigurasi yang diperlukan oleh aplikasi. Berikut merupakan contoh variabel yang disimpan pada file \texttt{.env}.
+\begin{lstlisting}[caption=Contoh variabel yang disimpan pada file \texttt{.env}. ,label=kode:configbab2env]
+S3_BUCKET = dotenv
+SECRET_KEY = super_secret_key
+CI_ENVIRONMENT = development
+\end{lstlisting}
+Kode \ref{kode:configbab2env} merupakan contoh variabel yang disimpan pada file \texttt{.env}. Variabel dapat berisikan konfigurasi yang bersifat pribadi seperti \textit{password} dan \textit{API keys}. Namun, konfigurasi hanya bersifat sebagai pengganti data sehingga pengguna tidak dapat membentuk data baru melainkan hanya mengubah data yang sudah ada sebelumnya.
 
 \subsection{\textit{CodeIgniter URLs}}
 \textit{CodeIgniter 4} menggunakan pendekatan \textit{segment-based} dibandingkan menggunakan \textit{query-string} untuk menghasilkan \textit{URL} sehingga ramah manusia dan mesin pencari. Berikut merupakan contoh \textit{URL} yang dihasilkan \textit{CodeIgniter 4}:
@@ -1592,7 +1715,7 @@ Secara asali \textit{CodeIgniter 4} membangun \textit{URL} dengan \verb|index.ph
 \subsubsection{\textit{Apache Web Server}}
 Pengguna dapat \textit{URL} melalui \textit{file} \verb|.htaccess| dengan menyalakan ekstensi \verb|mod_rewrite|. Kode \ref{kode:htaccessapache} merupakan contoh \textit{file} \verb|.htaccess| untuk menghapus \verb|index.php| pada \textit{URL} yang dibentuk.
 
-\begin{lstlisting}[caption=Contoh \textit{file} \texttt{.htacess} pada \textit{Apache Web Server}. ,label=kode:htaccessapache]
+\begin{lstlisting}[caption=Contoh \textit{file} \texttt{.htaccess} pada \textit{Apache Web Server}. ,label=kode:htaccessapache]
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -1966,7 +2089,7 @@ Setelah dilakukan pemanggilan, pengguna dapat memakai fungsi-fungsi yang disedia
 \section{Konversi CodeIgniter 3 ke CodeIgniter 4\cite{codeigniter:23:ci4}}
 \label{sec:konversici3c4}
  
-Konversi CodeIgniter 3 ke CodeIgniter 4 diperlukan penulisan ulang karena terdapat banyak implementasi yang berbeda. Konversi ke CodeIgniter 4 diawali dengan melakukan instalasi projek baru CodeIgniter 4.
+Konversi CodeIgniter 3 ke CodeIgniter 4 diperlukan penulisan ulang karena terdapat banyak implementasi yang berbeda. Konversi ke CodeIgniter 4 diawali dengan melakukan instalasi projek baru CodeIgniter 4. Instalasi dapat dilakukan dengan mengunduh file ataupun dapat dilakukan melalui \textit{composer}.
 
 
 \subsection{Struktur Aplikasi}
@@ -1975,7 +2098,7 @@ Struktur direktori pada CodeIgniter 4 memiliki perubahan yang terdiri \textit{ap
 
 \subsection{\textit{Routing}}
 
-CodeIgniter 4 meletakan \textit{route} pada \textit{file} \verb|app\Config\Routes.php|. CodeIgniter 4 memiliki fitur \textit{auto routing} seperti pada CodeIgniter 3 namun, pada \textit{default} di matikan. Fitur \textit{auto routing} memungkinkan untuk dinyalakan serupa dengan pada CodeIgniter 3 namun tidak direkomendasikan karena alasan \textit{security}.
+CodeIgniter 4 meletakan \textit{route} pada \textit{file} \verb|app\Config\Routes.php|. CodeIgniter 4 memiliki fitur \textit{auto routing} seperti pada CodeIgniter 3 namun, secara \textit{default} di matikan. Fitur \textit{auto routing} memungkinkan untuk dinyalakan serupa dengan pada CodeIgniter 3 namun tidak direkomendasikan karena alasan \textit{security}.
  
 \subsection{\textit{Model, View, and Controller}}
  
@@ -2038,6 +2161,9 @@ menjadi sintaks berikut:
 \item Selanjutnya pengguna harus mengubah \verb|extends CI_Controller| menjadi \verb|extends BaseController|.
 \item Pengguna juga harus menghapus baris \texttt{defined('BASEPATH') OR exit('No direct script access allowed');} apabila ada.
 \end{enumerate}
+ 
+\subsection{\textit{Class Loading}}
+Pada \textit{CodeIgniter 4} sudah tidak terdapat \textit{superobject} dengan komponen \textit{framework} yang terinjeksi sebagai properti pada \textit{controller}. Kelas yang sudah dibentuk akan diinisiasikan di tempat yang membutuhkan dan komponen \textit{framework} akan diatur oleh \textit{service}. \textit{Autoloader} pada \textit{CodeIgniter 4} secara otomatis menangani lokasi kelas dengan standar \textit{PSR-4} di dalam direktori \textit{App}.
  
 \subsection{\textit{Configuration}}
 
@@ -2137,11 +2263,6 @@ $isValid = $this->validate([
 \end{lstlisting}
 \end{enumerate}
 
-\iffalse
-\subsubsection{\textit{Zip Encoding}}
-\textit{Library} ini sudah tidak tersedia pada \textit{CodeIgniter 4} dan akan digantikan dengan 
-\fi
-
 \subsection{\textit{Helpers}}
  
 \textit{Helpers} tidak terdapat banyak perubahan namun, beberapa \textit{helpers} pada \textit{CodeIgniter 3} tidak terdapat pada \textit{CodeIgniter 4} sehingga perlu perubahan pada implementasi fungsinya. \textit{Helpers} dapat di dimuat secara otomatis menggunakan \verb|app\Config\Autoload.php|
@@ -2158,5 +2279,3 @@ Dan menambahkan \textit{namespace} \verb|CodeIgniter\Events\Events;|.
 
 \subsection{\textit{Framework}}
 Pengguna tidak membutuhkan direktori \textit{core} dan tidak membutuhkan kelas \verb|MY_X| pada direktori \textit{libraries} untuk memperpanjang atau mengganti potongan \textit{CI4}. Pengguna dapat membangun kelas dimanapun dan menambahkan metode pada \verb|app/Config/Services.php|.
-
-

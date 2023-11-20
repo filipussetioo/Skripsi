@@ -3,23 +3,23 @@
 Bab ini membahas perancangan untuk seluruh implementasi \textit{SharIF Judge} pada \textit{CodeIgniter 4}.
 
 \section{Instalasi \textit{CodeIgniter 4}}
-\textit{CodeIgniter 4} akan dilakukan instalasi menggunakan \textit{composer}. \textit{Composer} merupakan sebuah \textit{dependency manager} untuk PHP yang memungkinkan pengguna untuk melakukan instalasi seluruh kebutuhan untuk menjalankan program berbasis PHP. Instalasi akan dilakukan menggunakan sintaks sebagai berikut:
+\textit{CodeIgniter 4} diinstalasi menggunakan \textit{composer}. \textit{Composer} merupakan sebuah \textit{dependency manager} untuk PHP yang memungkinkan pengguna untuk melakukan instalasi seluruh kebutuhan untuk menjalankan program berbasis PHP. Instalasi akan dilakukan menggunakan sintaks sebagai berikut:
 
 \begin{center}
 \verb|composer create-project codeigniter4/appstarter SharIF-JudgeCI4|
 \end{center}
 
-Sintaks diatas akan mengunduh dan melakukan instalasi \textit{template} projek \textit{CodeIgniter 4}.
+Sintaks diatas akan mengunduh dan melakukan instalasi \textit{template} projek \textit{CodeIgniter 4}. Template berisikan \textit{skeleton} dari projek \textit{CodeIgniter 4} yang berisikan data untuk melakukan \textit{development} sebuah aplikasi.
 
 \section{Perubahan Struktur Aplikasi}
 \label{sec:perubahanStruktur}
-Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada bab \ref{chap:analisis} gambar \ref{fig:dirMapping}. 
+Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada bab \ref{chap:analisis} gambar \ref{fig:dirMapping}. Pemindahan akan dilakukan dengan penyesuaian dan perubahan beberapa sintaks dan fungsi yang digunakan.
 \\
-Struktur aplikasi pada \textit{CodeIgniter 4} akan berisikan sebagai berikut :
+Struktur aplikasi pada \textit{CodeIgniter 4} berisikan sebagai berikut :
 \subsection{app/Config}
-File \textit{config} pada \textit{CodeIgniter 3} akan dipindahkan sesuai dengan pemetaan pada gambar. Direktori berisikan data-data pada \texttt{application/Config}. Beberapa data pada direktori ini akan dipindahkan menuju file yang terdapat pada \textit{CodeIgniter 4}. Terdapat juga penambahan \textit{file} \texttt{Secrets.php} yang dibentuk secara manual. Berikut merupakan rincian isi direktori yang dipindahkan:
+File \textit{config} pada \textit{CodeIgniter 3} dipindahkan sesuai dengan pemetaan pada gambar \ref{fig:dirMapping}. Direktori berisikan data-data pada \texttt{application/Config}. Beberapa data pada direktori ini dipindahkan menuju file yang terdapat pada \textit{CodeIgniter 4}. Terdapat juga penambahan \textit{file} \texttt{Secrets.php} yang dibentuk secara manual. Berikut merupakan rincian isi direktori yang dipindahkan:
 \subsubsection{\texttt{App.php}}
-File ini tidak akan digunakan sehingga akan dibiarkan kosong dan seluruh data akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:envfileapp} merupakan isi dari file \texttt{.env} yang dipindahkan dari direktori \texttt{application/config}:
+File ini tidak akan digunakan sehingga akan dibiarkan berisi sintaks \textit{default} dan seluruh data akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:envfileapp} merupakan isi dari file \texttt{.env} yang dipindahkan dari direktori \texttt{application/config.php}:
 
 \begin{lstlisting}[caption= Kode \texttt{application/config/config.php} yang dipindahkan menuju \texttt{.env}, label=kode:envfileapp]
 	app.baseURL = 'http://sharif.localhost/'
@@ -28,30 +28,16 @@ File ini tidak akan digunakan sehingga akan dibiarkan kosong dan seluruh data ak
 Kode \ref{kode:envfileapp} akan menentukan \textit{url} dasar dari aplikasi menjadi \texttt{http://sharif.localhost/}.
 
 \subsubsection{\texttt{Autoload.php}}
-File ini tidak akan digunakan karena pada \textit{CodeIgniter 3} tidak mengikuti standar pada PSR-4. Sedangkan pada \textit{CodeIgniter 4} mengikuti standar PSR-4 sehingga dapat melakukan inisiasi terhadap sebuah kelas menggunakan sintaks \texttt{new Kelas}. Beberapa kelas yang diinisiasi pada file ini akan dipindahkan menuju \texttt{BaseController} dan juga akan dipanggil menggunakan PSR-4 pada file-file yang menggunakan kelas tersebut.
+File ini tidak digunakan dan dibiarkan menggunakan konfigurasi \textit{default} karena terdapat perubahan cara kerja kelas ini. Fitur ini pada \textit{CodeIgniter 4} tidak dapat melakukan inisiasi otomatis terhadap \textit{model, controller}, dan \textit{library} saat aplikasi dijalankan. Namun kelas ini hanya akan mencari lokasi file sesuai dengan konfigurasinya saat kelas tersebut pertama kali diinisiasi. Kelas \textit{helpers} yang diinisiasikan dipindahkan menuju \texttt{BaseController} sedangkan kelas \textit{model} dan \textit{libraries} akan dipanggil menggunakan \textit{PSR-4} pada file-file yang membutuhkan kelas tersebut.
 
 \subsubsection{\texttt{Cache.php}}
-File ini tidak terdapat perubahan karena akan tetap menggunakan konfigurasi \textit{default}.
+File tidak berubah dan akan tetap menggunakan konfigurasi \textit{default} karena tidak terdapat perubahan pada \textit{SharIF Judge} versi \textit{CodeIgniter 3}.
 
 \subsubsection{\texttt{Constant.php}}
-File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/config/constants.php}. Kode  \ref{kode:constantbab4}.
+File ini berisikan seluruh data yang dipindahkan dari \texttt{application/config/constants.php}. Kode \ref{kode:constantbab4} merupakan data yang dipindahkan menuju \texttt{Constant.php}.
 
 \begin{lstlisting}[caption=Pemindahan kode pada \textit{Constant}, label=kode:constantbab4]
 define('SHJ_VERSION','1.4');
-
-define('FILE_READ_MODE', 0644);
-define('FILE_WRITE_MODE', 0666);
-define('DIR_READ_MODE', 0755);
-define('DIR_WRITE_MODE', 0777);
-
-define('FOPEN_READ', 'rb');
-define('FOPEN_READ_WRITE', 'r+b');
-define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb'); // truncates existing file data, use with care
-define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b'); // truncates existing file data, use with care
-define('FOPEN_WRITE_CREATE', 'ab');
-define('FOPEN_READ_WRITE_CREATE', 'a+b');
-define('FOPEN_WRITE_CREATE_STRICT', 'xb');
-define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
 /*Code editor related constants*/
 define('EDITOR_FILE_NAME', "editor");
@@ -61,17 +47,17 @@ define('EDITOR_OUT_NAME', "exec_out");
 define('EDITOR_SUBMIT_ID', 0);
 \end{lstlisting}
 
-Kode \ref{kode:constantbab4} merupakan pemindahan dari \texttt{application/config/constants.php} menuju \texttt{Constant.php}. Sintaks yang telah dipindahkan akan bersifat \textit{global} sehingga dapat diakses oleh seluruh file pada \textit{CodeIgniter 4}.
+Kode \ref{kode:constantbab4} merupakan pemindahan dari \texttt{application/config/constants.php} menuju \texttt{Constant.php}. Sintaks \texttt{SHJ\_VERSION} akan digunakan pada tampilan \texttt{sidebar} sedangkan sintaks \texttt{EDITOR} digunakan pada fungsi \textit{submit}. Sintaks yang telah dipindahkan akan bersifat \textit{global} sehingga dapat diakses oleh seluruh file pada \textit{CodeIgniter 4}.
 
 \subsubsection{\texttt{Cookie.php}}
-File ini tidak terdapat perubahan karena akan tetap menggunakan konfigurasi \textit{default}.
+File ini tidak terdapat perubahan dan tetap menggunakan konfigurasi \textit{default} karena tidak terdapat perubahan pada \textit{SharIF Judge} versi \textit{CodeIgniter 3}.
 
-\subsubsection{\texttt{Databases.php}}
-File ini tidak akan digunakan karena akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:databaseenvbab4} merupakan pemindahan menuju file \texttt{.env}.
+\subsubsection{\texttt{Database.php}}
+File ini dibiarkan menggunakan konfigurasi \textit{default} karena akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:databaseenvbab4} merupakan pemindahan menuju file \texttt{.env} yang dipindahkan dari direktori \texttt{application/config.php}.
 
 \begin{lstlisting}[caption=Pemindahan \texttt{app/config/database.php} menuju \texttt{.env}, label=kode:databaseenvbab4]
 database.default.hostname = db
-database.default.database = pndevworks_project
+database.default.database = sharif
 database.default.username = root
 database.default.password = 
 database.default.DBDriver = MySQLi
@@ -89,7 +75,7 @@ File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/c
     public string $mailType = 'html';
 \end{lstlisting}
 
-Kode \ref{kode:emailconfigbab4} merupakan pemindahan konfigurasi \textit{email} yang terdapat pada \texttt{secrets.php}. Kode akan berisikan \textit{protocol} yang digunakan untuk mengirim \textit{email}, \textit{host} yang akan digunakan, dan tipe \textit{email} yang dikirimkan. Seluruh data akan disimpan menuju variabel pada \textit{CodeIgniter 4}.
+Kode \ref{kode:emailconfigbab4} merupakan pemindahan konfigurasi \textit{email} yang terdapat pada \texttt{secrets.php}. Kode akan berisikan \textit{protocol} yang digunakan untuk mengirim \textit{email}, \textit{host} yang akan digunakan, dan tipe \textit{email} yang dikirimkan. Seluruh data akan disimpan menuju variabel pada \textit{CodeIgniter 4} dan terdapat perubahan nama variabel menjadi \textit{camelCase}.
 
 \subsubsection{\texttt{Encryption.php}}
 File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:encryptionbab4} merupakan pemindahan konfigurasi enkripsi yang akan digunakan.
@@ -102,7 +88,7 @@ Kode \ref{kode:encryptionbab4} merupakan pemindahan \textit{key} dari enkripsi y
 
 \subsubsection{\texttt{Filters.php}}
 \label{subsubsec:filters}
-File ini berisikan seluruh nama kelas \textit{filter} yang telah dibentuk. Kode \ref{kode:filtersnamebab4}
+File ini berisikan seluruh nama \textit{filters} yang telah dibentuk. Kode \ref{kode:filtersnamebab4} merupakan pembentukan nama \textit{filters} sesuai dengan kelas yang sudah dibentuk.
 
 \begin{lstlisting}[caption=Penambahan nama \textit{filters} untuk didefinisikan menuju \textit{routes}, label=kode:filtersnamebab4]
 	public array $aliases = [
@@ -121,7 +107,7 @@ File ini berisikan seluruh nama kelas \textit{filter} yang telah dibentuk. Kode 
      ]
 \end{lstlisting}
 
-Kode \ref{kode:filtersnamebab4} merupakan penambahan nama \textit{filters} untuk dipanggil menuju \textit{routes}. Penamaan ini akan ditambahkan pada \textit{array} \verb|$aliases| dengan \textit{index} dan nama kelasnya.
+Kode \ref{kode:filtersnamebab4} merupakan penambahan nama \textit{filters} untuk dipanggil menuju \textit{routes}. Penamaan ini akan ditambahkan pada \textit{array} \verb|$aliases| dengan nama lain \textit{filters} dan nama kelasnya.
 \subsubsection{\texttt{Routes.php}}
 File ini akan berisikan seluruh pemindahan dan penambahan manual dari \textit{routes} pada \textit{SharIF Judge}. Kode \ref{kode:routesbab4} merupakan pembentukan \textit{routes} aplikasi secara manual.
 \begin{lstlisting}[caption=Penambahan \textit{routes} yang digunakan pada aplikasi \textit{SharIF Judge}, label=kode:routesbab4]
@@ -234,7 +220,7 @@ $routes->get('/problems/(:num)/(:num)','Problems::index/$1/$2');
 $routes->get('/problems/edit/(:any)/(:num)/(:num)', 'Problems::edit/$1/$2/$3');
 $routes->post('/problems/edit/(:any)/(:num)/(:num)', 'Problems::edit/$1/$2/$3');
 \end{lstlisting}
-Kode \ref{kode:routesbab4} merupakan seluruh \textit{routes} yang didefinisikan secara explisit sesuai dengan kegunaannya.
+Kode \ref{kode:routesbab4} merupakan seluruh \textit{routes} yang didefinisikan secara explisit sesuai dengan kegunaannya. Terdapat juga penambahan \textit{filters} untuk melakukan pengecekan sebelum \textit{controller} diinisiasikan. Pembentukan \textit{routes} secara manual dilakukan karena alasan keamanan dan juga konfigurasi \textit{filters} yang berbeda untuk setiap \textit{controller}.
 
 \subsubsection{\texttt{Secrets.php}}
 File ini merupakan file yang dibentuk secara manual oleh pengguna. File ini berisikan seluruh kebutuhan konfigurasi yang tidak terdapat pada \textit{config} lainnya. Kode \ref{kode:secrets} merupakan pemindahan file \texttt{Secrets.php} menuju \texttt{app/Config}.
@@ -273,10 +259,10 @@ public $shj_mail = [
 }
 \end{lstlisting}
 
-Kode \ref{kode:secrets} merupakan pemindahan kode menuju \texttt{app/Config}. Terdapat penghapusan sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');} pada baris pertama kalimat. Sintaks yang telah dihapus akan digantikan oleh sintaks \textit{class} yang dapat dilihat pada baris pertama dan \textit{extend} \texttt{BaseConfig}. Terdapat juga penambahan sintaks \textit{namespace} dan \textit{use}. File ini akan digunakan dan dipanggil pada \textit{controller} untuk melakukan autentikasi pengguna.
+Kode \ref{kode:secrets} merupakan pemindahan kode menuju \texttt{app/Config}. Terdapat penghapusan sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');} pada baris pertama kalimat. Sintaks yang telah dihapus akan digantikan oleh sintaks \textit{class} seperti pada baris pertama dan nama kelas akan \textit{extend} \texttt{BaseConfig}. Terdapat juga penambahan sintaks \textit{namespace} dan \textit{use}. File ini akan digunakan dan dipanggil pada \textit{controller} untuk melakukan autentikasi pengguna.
 
 \subsubsection{\texttt{Security.php}}
-File ini akan berisikan seluruh konfigurasi yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:security} merupakan pemindahan data menuju \texttt{Security.php}.
+File ini akan berisikan seluruh konfigurasi yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:security} merupakan pemindahan data token \textit{csrf} dan \textit{cookie} menuju \texttt{Security.php}.
 \begin{lstlisting}[caption=Pemindahan file \textit{config} menuju \textit{Security}, label=kode:security]
 public string $tokenName = 'shj_csrf_token';
 public string $cookieName = 'shjcsrftoken';
@@ -285,7 +271,7 @@ public string $cookieName = 'shjcsrftoken';
 Kode \ref{kode:security} merupakan pemindahan sintaks menuju \texttt{Security.php}. Sintaks pada baris pertama merupakan nama \textit{token} yang akan digunakan sedangkan sintaks kedua merupakan nama \textit{cookie} yang akan digunakan. Sintaks pada \textit{CodeIgniter 4} tidak akan menggunakan \textit{array} namun akan disimpan menuju variabel. Sintaks lainnya tidak akan diubah karena akan menggunakan konfigurasi \textit{default} dari \textit{CodeIgniter 4}.
 
 \subsubsection{\texttt{Session.php}}
-File ini akan berisika seluruh konfigurasi yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:session} merupakan pemindahan data menuju \texttt{Session.php}.
+File ini akan berisika seluruh konfigurasi yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:session} merupakan pemindahan data konfigurasi \textit{session} menuju \texttt{Session.php}.
 \begin{lstlisting}[caption=Pemindahan file \textit{config} menuju \textit{Session}, label=kode:session]
 public string $driver = 'CodeIgniter\Session\Handlers\DatabaseHandler';
 public string $cookieName = 'shjsession';
@@ -295,7 +281,7 @@ Kode \ref{kode:session} merupakan pemindahan data menuju \texttt{Session.php}. D
 
 \subsubsection{\texttt{Validation.php}}
 \label{subsubsec:validationbab4}
-File ini berisikan aturan yang dapat dipakai untuk melakukan validasi sebelum diproses oleh aplikasi. Kode \ref{kode:validationrulesmanualbab4} merupakan aturan validasi data yang dibentuk secara manual oleh pengguna.
+File ini berisikan aturan yang dibentuk secara manual oleh pengguna untuk melakukan validasi sebelum \textit{request} diproses oleh aplikasi. Kode \ref{kode:validationrulesmanualbab4} merupakan aturan validasi data yang dibentuk secara manual oleh pengguna.
 
 \begin{lstlisting}[caption=Perancangan aturan yang dibentuk secara manual pada file \texttt{Validation.php}, label=kode:validationrulesmanualbab4]
 class MyRules
@@ -405,7 +391,7 @@ Kode \ref{kode:validationrulesmanualbab4} merupakan pembentukan aturan secara ma
 \subsection{\textit{Controllers}}
 \textit{Controller} terdapat perubahan pada bagian fungsi \texttt{\_\_construct()} dimana sekarang tidak dapat mengembalikan sesuatu. Oleh karena itu, akan dibentuk beberapa \textit{filters} \ref{subsubsec:filters} untuk melakukan pengecekan terhadap fungsi yang sebelumnya terdapat pada \texttt{\_\_construct()}.
 	\subsubsection{app/Controllers} 
-	Direktori ini berisikan seluruh \textit{controller} yang dipindahkan dari \textit{CodeIgniter 3}. Berikut merupakan isi pada direktori ini:
+	Direktori ini berisikan seluruh \textit{controller} yang dipindahkan dari \texttt{application/controllers}. Berikut merupakan isi pada direktori ini:
 	\begin{itemize}
 		\item \texttt{Assignments.php}
 		\item \texttt{BaseController.php}
@@ -429,7 +415,7 @@ Kode \ref{kode:validationrulesmanualbab4} merupakan pembentukan aturan secara ma
 		\item \texttt{Users.php}
 	\end{itemize}
 
-\textit{Controllers} terdapat perubahan dan penambahan baik dalam \textit{extends} maupun dalam pemanggilan kelas lain seperti \textit{model}. Kode \ref{kode:controllerBab4} merupakan perubahan yang terdapat pada \textit{controller} \texttt{Logs.php}.
+\textit{Controllers} terdapat perubahan dan penambahan baik dalam kelas yang dilakukan \textit{extends} maupun dalam pemanggilan kelas lain seperti \textit{model} dan \textit{helpers}. Beberapa \textit{helpers} yang dipanggil melalui \textit{autoload} akan dipindahkan menuju \textit{BaseController}. Kode \ref{kode:controllerBab4} merupakan perubahan yang terdapat pada \textit{controller} \texttt{Logs.php}.
 
 \begin{lstlisting}[caption=Perubahan kode \textit{controllers} pada \textit{CodeIgniter 4}, label=kode:controllerBab4]
 namespace App\Controllers;
@@ -475,11 +461,31 @@ class Logs extends BaseController
 
 Kode \ref{kode:controllerBab4} terdapat perubahan dimana sekarang akan \textit{extends} \textit{BaseController}. Terdapat juga penghapusan sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');}. Terdapat penambahan sintaks \textit{namespace} dan juga beberapa sintaks untuk memanggil \textit{models}. \textit{Controller} juga memiliki perubahan dalam mengembalikan \textit{view} dimana sekarang menggunakan sintaks \texttt{return view}. Selain itu terdapat penambahan pada \texttt{BaseController.php} untuk melakukan inisiasi terhadap \textit{helpers} dan juga beberapa \textit{library} yang akan digunakan. Kode \ref{kode:basecontrollerhelpers} merupakan penambahan \textit{helpers} yang dapat diakses oleh seluruh \textit{controller}
 
-\begin{lstlisting}[caption=Penambahan kode pada \texttt{BaseController}, label=kode:basecontrollerhelpers]
+\begin{lstlisting}[caption=Penambahan sintaks pada \texttt{BaseController}, label=kode:basecontrollerhelpers]
 	protected $helpers = ['text','url','shj_helper','form','cookie','string','filesystem'];
+	/**
+     * Be sure to declare properties for any property fetch you initialized.
+     * The creation of dynamic property is deprecated in PHP 8.2.
+     */
+    protected $parsedown;
+    protected $twig;
+
+    /**
+     * Constructor.
+     */
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+    {
+        // Do Not Edit This Line
+        parent::initController($request, $response, $logger);
+
+        // Preload any models, libraries, etc, here.
+        $this->parsedown = new Parsedown();
+        $this->twig = new Twig();
+        
+    }
 \end{lstlisting}
 
-Kode \ref{kode:basecontrollerhelpers} merupakan pemindahan dan penambahan \textit{helpers} dari \textit{autoload}. Seluruh \textit{helpers} yang telah dipindahkan diakses pada seluruh \textit{controller}. Penambahan ini dilakukan untuk mempermudah dalam penggunaan 
+Kode \ref{kode:basecontrollerhelpers} merupakan pemindahan dan penambahan \textit{helpers} dari \textit{autoload} menuju \texttt{BaseController}. \textit{Helpers} akan ditambahkan menuju \textit{array} \texttt{\$helpers} sedangkan beberapa \textit{thirdparty library} akan dilakukan inisiasi di dalam fungsi \texttt{initController}. Seluruh \textit{helpers} yang telah dipindahkan dapat diakses pada seluruh \textit{controller}. Penambahan ini dilakukan untuk mempermudah dalam penggunaan \textit{helpers} pada seluruh \textit{controller} agar tidak perlu diinisiasi lagi pada setiap \textit{controller} yang membutuhkan.
 
 \subsection{\textit{Filters}}
 Pada \textit{CodeIgniter 4} \texttt{\_\_construct()} tidak dapat mengembalikan sesuatu oleh karena itu akan dibentuk beberapa \textit{filters} untuk melakukan pengecekan. Beberapa \textit{filters} yang dibentuk antara lain berfungsi untuk mengecek apakah dijalankan dari \textit{command line interface}, apakah sudah \textit{install} dan \textit{login}, apakah sudah \textit{login}, apakah sudah \textit{login} dan dijalankan dari \textit{command line interface}, apakah sudah \textit{login} dan apakah \textit{request} berupa \textit{AJAX}, dan apakah sudah \textit{login} dan pengecekan terhadap \textit{role} pengguna. Terdapat total empat buah \textit{filters} yang akan dibentuk. Kode \ref{kode:filtersclibab4} merupakan sintaks untuk melakukan pengecekan apakah dijalankan dari \textit{command line interface}.
@@ -638,10 +644,12 @@ $zip_uploaded = $this->request->getFile('tests_desc');
 		}
 \end{lstlisting}
 
-Kode \ref{kode:uploadfilebab4} merupakan perubahan yang terdapat pada \textit{library upload}. Pengambilan file akan digantikan dengan sintaks \verb|$this->request->getFile('')| dengan parameter berupa nama dari \textit{tag form} yang sudah dibentuk. Selanjutnya akan dilakukan pengecekan terhadap file yang sudah di unggah dan memberikan beberapa \textit{error message} sesuai dengan kondisinya. File yang sudah di unggah akan dipindahkan menuju direktori \texttt{assignments\_root}. 
+Kode \ref{kode:uploadfilebab4} merupakan perubahan yang terdapat pada \textit{library upload}. Pengambilan file digantikan dengan sintaks \verb|$this->request->getFile('tests_desc')| dengan parameter berupa nama dari \textit{tag form} yang sudah dibentuk. Selanjutnya dilakukan pengecekan terhadap file yang sudah di unggah dan memberikan beberapa \textit{error message} sesuai dengan kondisinya. File yang sudah di unggah dipindahkan menuju direktori yang disimpan pada variabel \texttt{assignments\_root}. 
 
-\subsubsection{Request}
-\textit{Input} akan digantikan oleh fungsi \textit{request} dengan perubahan cara pemanggilan sintaks. \textit{Validation} hanya akan diinisiasikan pada fungsi \texttt{\_\_construct} setiap \textit{model} yang membutuhkan. Kode \ref{kode:requestbab4} merupakan inisiasi \textit{request} pada \textit{model}.
+Konfigurasi aturan terhadap \textit{upload} sudah tidak terdapat pada \textit{CodeIgniter 4} sehingga akan diubah dan digantikan pada kondisi di baris kedua. Kondisi tersebut dibentuk untuk melakukan pengecekan tipe file yang sudah diunggah dan memberikan \textit{error}. \textit{Error} yang dihasilkan juga sudah tidak dinamik karena tidak menggunakan \textit{validation} sehingga disesuaikan dengan \textit{error} yang terdapat pada \textit{CodeIgniter 4}.
+
+\subsubsection{IncomingRequest}
+\textit{Input} digantikan oleh fungsi \textit{request} dengan perubahan cara pemanggilan sintaks. \textit{Validation} hanya akan diinisiasikan pada fungsi \texttt{\_\_construct} setiap \textit{model} yang membutuhkan. Fungsi tidak akan diinisiasikan pada \textit{controller} karena \textit{CodeIgniter 4} sudah menyediakan fitur ini pada \textit{controller} sehingga hanya perlu dilakukan pemanggilan. Kode \ref{kode:requestbab4} merupakan inisiasi \textit{request} pada \textit{model}.
 
 \begin{lstlisting}[caption=Perancangan inisiasi \textit{request} pada \texttt{\_\_construct}, label=kode:requestbab4]
 
@@ -663,7 +671,7 @@ $this->request->getPost('assignment_select')
 Kode \ref{kode:requestbab4howto} merupakan cara penggunaan \textit{request} untuk melakukan pengecekan dan pengambilan data. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelCase}.
 
 \subsubsection{\textit{Validation}}
-\textit{Form\_validation} akan digantikan oleh fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. \textit{Validation} akan diinisiasikan pada fungsi \texttt{\_\_construct} pada setiap \textit{controller} yang membutuhkan. Kode \ref{kode:validationinitiationbab4} merupakan inisiasi \textit{validation} pada \textit{controller}.
+\textit{Form\_validation} digantikan oleh fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. \textit{Validation} akan diinisiasikan pada fungsi \texttt{\_\_construct} pada setiap \textit{controller} dan \textit{model} yang membutuhkan. Kode \ref{kode:validationinitiationbab4} merupakan inisiasi \textit{validation} pada \textit{controller}.
 
 \begin{lstlisting}[caption=Perancangan inisiasi \textit{validation} pada \texttt{\_\_construct}, label=kode:validationinitiationbab4]
 
@@ -675,13 +683,13 @@ protected $validation;
 	}
 \end{lstlisting}
 
-Kode \ref{kode:validationinitiationbab4} merupakan sintaks untuk melakukan inisiasi terhadap \textit{validation}. Setiap \textit{controller} yang menggunakan \textit{validation} akan dideklarasikan sebuah variabel bernama \textit{validation} agar dapat dipanggil pada seluruh fungsi yang membutuhkan pada kelas tersebut. \textit{Validation} dilanjutkan dengan penetapan aturan untuk \textit{tag form} yang diinginkan. Berikut merupakan contoh pembentukan aturan untuk mengumpulkan sebuah data pada \textit{form}.
+Kode \ref{kode:validationinitiationbab4} merupakan sintaks untuk melakukan inisiasi terhadap \textit{validation}. Setiap \textit{controller} yang menggunakan \textit{validation} akan dideklarasikan sebuah variabel bernama \textit{validation} agar dapat dipanggil pada seluruh fungsi yang membutuhkan pada kelas tersebut. \textit{Validation} dilanjutkan dengan penetapan aturan untuk \textit{tag form} yang diinginkan. Berikut merupakan contoh penetapan aturan untuk mengumpulkan sebuah data pada \textit{form} dengan nama \textit{username}.
 
 \begin{lstlisting}[caption=Perancangan perubahan konfigurasi aturan pada \textit{library validation}, label=kode:validationrulesbab4]
 $this->validation->setRule('username', 'username', 'required|min\_length[3]|max\_length[20]);
 \end{lstlisting}
 
-Kode \ref{kode:validationrulesbab4} akan menetapkan aturan terhadap \textit{input} yang akan masukan oleh pengguna sesuai dengan nama \textit{form}nya. Sedangkan penetapan aturan berubah menggunakan \textit{camelCase}. Aturan yang dibentuk secara manual akan dipindahkan menuju file \texttt{Validation.php}. Pembentukan aturan dapat dilihat pada sub bab \ref{subsubsec:validationbab4} kode \ref{kode:validationrulesmanualbab4}. Aturan yang sudah dibentuk dapat digunakan seperti aturan lainnya dengan cara menulis nama kelasnya. Setelah aturan ditetapkan akan dieksekusi berdasarkan \textit{request} dari pengguna dan dilakukan validasi. Kode \ref{kode:validationrunbab4} merupakan perubahan penggunaan \textit{validation} terhadap data yang sudah diberikan oleh pengguna.
+Kode \ref{kode:validationrulesbab4} akan menetapkan aturan terhadap \textit{input} yang akan masukan oleh pengguna sesuai dengan nama \textit{form}nya. Sedangkan sintkas untuk penetapan aturan berubah menggunakan \textit{camelCase}. Beberapa aturan yang dibentuk secara manual akan dipindahkan menuju file \texttt{Validation.php} dan terdapat penghapusan aturan yang sudah tidak terdapat pada \textit{CodeIgniter 4}. Pembentukan aturan dapat dilihat pada sub bab \ref{subsubsec:validationbab4} kode \ref{kode:validationrulesmanualbab4}. Aturan yang sudah dibentuk dapat digunakan seperti aturan lainnya dengan cara menulis nama kelasnya. Setelah aturan ditetapkan, \textit{valitdation} akan dieksekusi berdasarkan \textit{request} dari pengguna dan dilakukan validasi. Kode \ref{kode:validationrunbab4} merupakan perubahan penggunaan \textit{validation} terhadap data yang sudah diberikan oleh pengguna.
 \begin{lstlisting}[caption=Perancangan perubahan penggunaan \textit{validation} pada \textit{CodeIgniter 4}, label=kode:validationrunbab4]
 if ($this->validation->withRequest($this->request)->run())
 		{
@@ -826,7 +834,7 @@ class Twig
 
 \end{lstlisting}
 
-Kode \ref{kode:twigextratime} merupakan fungsi yang akan dibentuk pada file \texttt{Twig.php}. Fungsi ini akan dipanggil pada halaman \texttt{add\_assignment.php}.
+Kode \ref{kode:twigextratime} merupakan fungsi yang akan dibentuk pada file \texttt{Twig.php} dan akan digunakan pada halaman \texttt{add\_assignment.php}.
 
 \subsubsection{\textit{MY\_Form\_validation}}
 \textit{Library MY\_Form\_validation} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan perubahan \textit{extends} menjadi menuju \texttt{Validation}, penghapusan sintaks \texttt{defined} , dan akan ada penambahan \textit{namespace} pada baris awal file. Kode \ref{kode:myformvalidationbab3} merupakan contoh penambahan \textit{namespace} dan penggantian \textit{extends} pada \textit{library} ini.
@@ -837,7 +845,7 @@ use CodeIgniter\Validation\Validation;
 
 class MY_Form_validation extends Validation
 \end{lstlisting}
-Kode \ref{kode:myformvalidationbab4} mengapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}. Selain itu, kelas \textit{library} akan \textit{extends} \textit{Validation}.
+Kode \ref{kode:myformvalidationbab4} mengapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}. Selain itu, kelas \textit{library} akan \textit{extends} \textit{Validation}. 
 
 \subsubsection{\textit{Parsedown}}
 \textit{Library Parsedown} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \texttt{defined}.  Kode \ref{kode:parsedownbab3} merupakan contoh penambahan \textit{namespace} dan juga penambahan sintaks \textit{defined}.
@@ -908,7 +916,7 @@ Direktori ini akan berisikan seluruh \textit{model} yang dipindahkan dari \texti
 	\item \texttt{UserModel.php}
 \end{itemize}
 
-Seluruh \textit{Model} akan diganti penamaannya dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelcase}. Kode \ref{kode:modelbab4} merupakan perubahan sintaks yang terdapat pada \textit{model}.
+Seluruh \textit{Model} akan diganti penamaannya dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{PascalCase}. Kode \ref{kode:modelbab4} merupakan perubahan sintaks yang terdapat pada \textit{model}.
 
 \begin{lstlisting}[caption=Perancangan perubahan \textit{model} pada \textit{CodeIgniter 4}, label=kode:modelbab4]
 namespace App\Models;
@@ -944,7 +952,7 @@ class AssignmentModel extends Model
 		$this->scoreboard_model = new ScoreboardModel();
 \end{lstlisting}
 
-Kode \ref{kode:modelbab4} merupakan perubahan \textit{model} yang terdapat pada \textit{CodeIgniter 4}. Terdapat penghapusan sintaks \texttt{defined} dan juga terdapat perubahan dalam \textit{extends} dimana sekarang akan \textit{extends} \texttt{Model}. Selain itu terdapat pemanggilan \textit{model} lainnya menggunakan sintaks \texttt{new} yang disimpan melalui variabel yang sudah dibentuk. Selain itu, terdapat perubahan cara pengambilan data menggunakan \textit{query} yang dapat dilihat pada kode \ref{kode:modelqueryci4}.
+Kode \ref{kode:modelbab4} merupakan perubahan \textit{model} yang terdapat pada \textit{CodeIgniter 4}. Terdapat penghapusan sintaks \texttt{defined} dan juga terdapat perubahan dalam \textit{extends} dimana sekarang akan \textit{extends} \texttt{Model}. Selain itu terdapat pemanggilan \textit{model} lainnya menggunakan sintaks \texttt{new} yang disimpan melalui variabel yang sudah dibentuk. Terdapat juga perubahan cara pengambilan data menggunakan fungsi \textit{database} yang dapat dilihat pada kode \ref{kode:modelqueryci4}.
 
 \begin{lstlisting}[caption=Perubahan sintaks pada \textit{model}, label=kode:modelqueryci4]
 	public function all_assignments()
@@ -959,20 +967,22 @@ Kode \ref{kode:modelbab4} merupakan perubahan \textit{model} yang terdapat pada 
 	}
 \end{lstlisting}
 
-Kode \ref{kode:modelqueryci4} merupakan perubahan sintaks untuk melakukan pengambilan data dari \textit{database}. Pengambilan data pada \textit{CodeIgniter 4} perlu melakukan definisi terhadap tabel mana yang akan diambil datanya. Selanjutnya sintaks akan bersifat sama namun terdapat perubahan dari yang sebelumnya \textit{snakecase} menjadi \textit{camelCase}. \textit{Model} yang telah dibentuk dapat dipanggil menuju \textit{contoller} menggunakan sintaks berikut.
+Kode \ref{kode:modelqueryci4} merupakan perubahan sintaks untuk melakukan pengambilan menggunakan fungsi \textit{database}. Pengambilan data pada \textit{CodeIgniter 4} perlu mendefinisikan nama tabel yang akan diambil datanya. Selanjutnya sintaks akan bersifat sama namun terdapat perubahan dari yang sebelumnya \textit{snakecase} menjadi \textit{camelCase}. \textit{Model} yang telah dibentuk dapat dipanggil menuju \textit{contoller} menggunakan sintaks berikut.
 
 \begin{center}
 \verb|$this->settings_model = new SettingsModel();|
 \end{center}
 
-Sintaks diatas akan memanggil \textit{SettingsModel} dan disimpan menuju variabel.
+Sintaks diatas akan memanggil \textit{SettingsModel} dan disimpan menuju variabel. Fungsi \textit{database} juga digunakan file lain dengan melakukan inisiasi dengan sintaks berikut.
+\begin{center}
+	\verb|$this->db = db_connect();|
+\end{center}
+Sintaks diatas akan melakukan inisiasi fungsi \textit{database} dan menyimpannya menuju variabel yang telah dibentuk.
 
 \subsection{\textit{View}}
 Direktori ini berisikan seluruh \textit{view} yang dipindahkan dari \textit{CodeIgniter 3}. Berikut merupakan isi dari direktori ini:
 \subsubsection{errors}
-\begin{itemize}
-	\item \texttt{}
-\end{itemize}
+Firektori ini berisikan file \textit{default} dari \textit{CodeIgniter 4} karena tidak terdapat perubahan pada \textit{SharIF Judge} \textit{CodeIgniter 3}.
 \subsubsection{pages}
 \begin{itemize}
 	\item \texttt{assignments.php}
@@ -1020,7 +1030,7 @@ Direktori templates:
 	\item \texttt{top\_bar.php}
 \end{itemize}
 
-\textit{View} akan diubah menggunakan \textit{extension} \texttt{.php} sesuai pada dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{file view} akan diubah menjadi \textit{extension} \texttt{.php} dari yang sebelumnya menggunakan \texttt{.twig}. Seluruh \textit{delimiters} juga akan diubah menggunakan fungsi pada \textit{CodeIgniter 4}. Perubahan \textit{view} dapat dilihat pada kode \ref{kode:loginViewBab4}.
+\textit{View} akan diubah menggunakan \textit{extension} \texttt{.php} karena \textit{twig} sudah tidak terintegrasi \textit{CodeIgniter 4}. Seluruh \textit{file view} akan diubah menjadi \textit{extension} \texttt{.php} dari yang sebelumnya menggunakan \texttt{.twig}. Seluruh \textit{delimiters} juga akan diubah menggunakan fungsi pada \textit{CodeIgniter 4}. Perubahan \textit{view} dapat dilihat pada kode \ref{kode:loginViewBab4}.
 
 \begin{lstlisting}[caption=Perubahan \textit{view} pada \textit{Login.php}, label=kode:loginViewBab4]
 <!-- {#
@@ -1103,6 +1113,7 @@ Kode \ref{kode:loginControllerViewBab4} merupakan contoh penambahan data pada \t
 		\item \texttt{styles}
 		\item \texttt{tinymce}
 	\end{itemize}
+Direktori \textit{assets} akan dipindah tanpa ada perubahan apapun.
 
 \subsection{restriced}
 Direktori ini akan dipindah tanpa ada perubahan apapun.

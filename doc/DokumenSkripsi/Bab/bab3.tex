@@ -1,7 +1,7 @@
 \chapter{Analisis}
 \label{chap:analisis}
 \section{Analisis Sistem Kini}
-Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} yang di kustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan  arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}. Selain itu terdapat direktori \texttt{assets} yang berisikan seluruh kebutuhan pengguna untuk ditampilkan seperti \textit{javascript} dan gambar.
+Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} yang di kustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan  arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}. Selain itu, terdapat direktori \texttt{assets} yang berisikan seluruh kebutuhan pengguna untuk ditampilkan seperti \textit{javascript} dan gambar. Terakhir terdapat direktori \textit{config} yang berisikan konfigurasi aplikasi dan \textit{library} yang dibentuk dan digunakan oleh \textit{SharIF Judge}.
 
 \subsection{\textit{Model}}
 \textit{Model} terdapat pada direktori \texttt{application/models}. Direktori ini berisikan kelas \textit{model} dengan fungsi-fungsi untuk mengolah data pada aplikasi. Berikut merupakan \textit{model} pada \textit{SharIF Judge} beserta fungsi-fungsinya.
@@ -572,6 +572,26 @@ Direktori ini berisikan seluruh kebutuhan pengguna seperti \textit{library javas
 	\item Direktori \textit{tinymce} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi untuk membentuk \textit{WYSIWYG editor} pada sebuah aplikasi.
 \end{itemize}
 
+\subsection{\textit{Config}}
+Direktori ini berisikan seluruh konfigurasi aplikasi \textit{SharIF Judge} seperti \textit{database}, \textit{url} aplikasi, dan lainnya. Berikut merupakan isi dari direktori ini beserta kegunaannya.
+\begin{itemize}
+	\item \texttt{autoload.php} \\File ini berisikan seluruh data yang ingin diinisiasikan saat aplikasi dijalankan seperti \textit{libraries}, \textit{helpers}, dan \textit{model}.
+	\item \texttt{config.php} \\File ini berisikan konfigurasi aplikasi \textit{SharIF Judge} seperti \textit{base url} aplikasi, \textit{encryption key}, konfigurasi \textit{session}, konfigurasi \textit{cookie}, dan \textit{csfr}.
+	\item \texttt{constants.php} \\File ini berisikan data yang bersifat \textit{global} pada aplikasi.
+	\item \texttt{database.php} \\File ini berisikan konfigurasi \textit{database} yang digunakan oleh pengguna.
+	\item \texttt{doctypes.php} \\File ini berisikan deklarasi tipe dokumen untuk \textit{HTML}.
+	\item \texttt{foreign\_chars.php} \\File ini terjemahan data \textit{foreign character} yang terdapat pada \textit{text helper}.
+	\item \texttt{memcached.php} \\File ini berisikan konfigurasi \textit{server} untuk menyimpan data \textit{cache} pada server.
+	\item \texttt{migration.php} \\File ini berisikan konfigurasi untuk melakukan \textit{migration} seperti tipe \textit{migration} dan \textit{path} file \textit{migration} disimpan.
+	\item \texttt{mime.php} \\File ini berisikan tipe-tipe \textit{mime} yang digunakan oleh \textit{upload helper}.
+	\item \texttt{profiler.php} \\File ini berisikan konfigurasi untuk \textit{profiler}.
+	\item \texttt{routes.php} \\File ini berisikan konfigurasi \textit{route} dan \textit{route} yang didefinisikan secara manual.
+	\item \texttt{secrets.php} \\File ini dibentuk oleh pengguna yang berisikan data-data untuk melakukan autentikasi dan konfigurasi \textit{email}.
+	\item \texttt{smiley.php} \\File ini berisikan terjemahan dari sintaks \textit{emoticon} menjadi gambar yang digunakan pada \textit{emoticon helper}.
+	\item \texttt{twig.php} \\File ini berisikan konfigurasi \textit{template engine twig}.
+	\item \texttt{user\_agents.php} \\File ini berisikan tipe dari \textit{platform}, \textit{browser}, dan lainnya.
+\end{itemize}
+
 \subsection{\textit{Libraries}}
 \textit{SharIF Judge} menggunakan beberapa \textit{library} yang dibentuk secara manual maupun yang sudah tersedia pada \textit{Codeigniter 3}. Berikut merupakan \textit{library} yang dipakai oleh \textit{SharIF Judge}:
 
@@ -720,7 +740,7 @@ Kode \ref{kode:inputlibbab3} merupakan contoh penggunaan \textit{library upload}
 
 \section{Analisis Sistem Usulan}
 Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulisan ulang karena terdapat perubahan struktur aplikasi dan beberapa fungsi yang memiliki pemanggilan berbeda dan harus dilakukan pembaharuan.
-\subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{Twig}, \textit{phpoffice}, \textit{radius}, dan \textit{adldap2}.
+\subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{phpoffice}, \textit{radius}, dan \textit{adldap2}.
 
 \subsection{Struktur Aplikasi}
 Struktur aplikasi pada \textit{CodeIgniter 3} dan \textit{CodeIgniter 4} memiliki perubahan sehingga perlu dilakukan pemindahan \textit{file-file} menuju \textit{CodeIgnter 4}. Gambar \ref{fig:dirMapping} merupakan pemindahan struktur aplikasi \textit{SharIF Judge} pada \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4}.
@@ -744,6 +764,18 @@ Direktori-direktori \texttt{application} pada \textit{CodeIgniter 3} akan dipind
 \item \verb|application/views| akan dipindahkan menuju \texttt{app/views}.
 \end{itemize}
 
+\subsubsection{\texttt{Config}}
+\label{subsubsec:configbab3usulan}
+Data dari file pada direktori \textit{config} \textit{CodeIgniter 3} akan dipindahkan dengan penyesuaian menuju direktori \textit{Config}. Berikut merupakan file-file yang dipindahkan dengan penyesuaian.
+\begin{itemize}
+	\item \verb|autoload.php| akan dipindahkan menuju \texttt{BaseController} seperti \textit{helpers} dan terdapat penghapusan \textit{autoload library} dan \textit{model} karena perbedaan cara kerjanya.
+	\item \verb|config.php| akan dipecah dan dipindahkan menjadi tiga buah file yakni \texttt{Config/app.php}, \texttt{Config/Session.php}, dan \texttt{Config/Security.php}.
+	\item \verb|constants.php| akan dipindahkan menuju \texttt{Config/Constants.php}.
+	\item \verb|database.php| akan dipindahkan menuju \texttt{Config/Database.php}.
+	\item \verb|routes.php| akan dipindahkan menuju \texttt{Config/Routes.php}.
+	\item \verb|secrets.php| akan dibentuk baru pada direktori \texttt{Config}.
+\end{itemize}
+
 \subsubsection{\textit{Public}}
 \textit{CodeIgniter 3} tidak menyediakan direktori akar berupa \textit{public} sehingga terdapat perubahan struktur dimana direktori yang sebelumnya ada pada \texttt{application} akan dipindah menuju direktori \texttt{public}. Berikut merupakan direktori yang dipindahkan menuju direktori \texttt{public}.
 \begin{itemize}
@@ -765,7 +797,7 @@ Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis
 \begin{center}
 \verb|$routes->post("login/register",'Login::register');|
 \end{center}
-\textit{Route} akan didefinisikan secara eksplisit sesuai dengan fungsi dan metodenya.
+\textit{Route} akan didefinisikan secara eksplisit sesuai dengan fungsi dan metodenya karena alasan keamanan dan juga konfigurasi \textit{filters} yang berbeda pada setiap \textit{routes}.
 
 \subsection{\textit{Model, View, and Controller}}
 \textit{CodeIgniter 4} memiliki perubahan baik dari kegunaan dan cara pemanggilan \textit{Model, View, and Controller}. Berikut merupakan perubahan yang terjadi:
@@ -774,15 +806,22 @@ Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis
 \begin{enumerate}
 \item Menggunakan \textit{Model} dari \textit{CodeIgniter 3}
 
-\textit{Model} pada \textit{CodeIgniter 3} memiliki kekurangan dimana pengguna harus membentuk secara manual seluruh fungsi untuk mengambil, memasukan, dan memperbaharui data dari sebuah tabel spesifik pada \textit{model} tersebut. Kode \ref{kode:modelCI3} merupakan contoh fungsi yang digunakan untuk mengambil data dari sebuah tabel.
-\begin{lstlisting}[caption=Contoh fungsi untuk mengambil data seluruh user, label=kode:modelCI3]
+\textit{Model} akan dipindahkan menuju direktori \texttt{app/Models} dan dilakukan beberapa perubahan. Kode \ref{kode:modelCI3} merupakan contoh fungsi yang terdapat pada \textit{CodeIgniter 3}.
+\begin{lstlisting}[caption=Contoh fungsi untuk mengambil data seluruh user pada \textit{CodeIgniter 3}, label=kode:modelCI3]
 public function get_all_users()
 	{
 		return $this->db->order_by('role', 'asc')->order_by('id')->get('users')->result_array();
 	}
 \end{lstlisting}
 
-Kode \ref{kode:modelCI3} mengambil data dari tabel \texttt{users} dengan hasil berupa \textit{array} dan diurutkan sesuai dengan \texttt{role} dan \texttt{id}nya.
+Kode \ref{kode:modelCI3} mengambil data dari tabel \texttt{users} dengan hasil berupa \textit{array} dan diurutkan sesuai dengan \texttt{role} dan \texttt{id}nya. Kode akan dilakukan konversi dengan pengubahan sintaks. Berikut merupakan hasil konversi fungsi untuk mengambil data seluruh \textit{user}.
+\begin{lstlisting}[caption=Hasil konversi fungsi untuk mengambil data seluruh user, label=kode:modelCI3konv]
+public function get_all_users()
+	{
+		return $this->db->table('users)->orderBy('role', 'asc')->orderBy('id')->get()->getResultArray();
+	}
+\end{lstlisting}
+Kode \ref{kode:modelCI3konv} merupakan hasil konversi \textit{model} \textit{SharIF Judge} dari \textit{CodeIgniter 3} menjadi \textit{CodeIgniter 4}. Pada \textit{CodeIgniter 4} diperlukan untuk memberikan nama tabel yang akan diakses dan juga terdapat perubahan sintaks menjadi \textit{camelCase}.
 
 \item Menggunakan \textit{Model} pada \textit{CodeIgniter 4}
 
@@ -790,7 +829,7 @@ Kode \ref{kode:modelCI3} mengambil data dari tabel \texttt{users} dengan hasil b
 \begin{center}
 	\verb|make:model <name>|
 \end{center}
-\textit{Model} pada \textit{CodeIgniter 4} menyediakan fungsi untuk mengambil, memasukan, dan memperbaharui data dari sebuah tabel spesifik tanpa harus membentuk secara manual fungsi-fungsi tersebut. Pengguna dapat melakukan inisiasi dan memakai fungsi untuk mengambil data menggunakan kode berikut.
+\textit{Model} pada \textit{CodeIgniter 4} menyediakan fungsi untuk mengambil, memasukan, dan memperbaharui data dari sebuah tabel spesifik tanpa harus membentuk secara manual fungsi-fungsi tersebut. Pengguna dapat melakukan inisiasi dan memakai fungsi untuk mengambil data menggunakan sintaks berikut.
 \begin{center}
 	\verb|$userModel = new \App\Models\UserModel();|
 \end{center}
@@ -799,14 +838,12 @@ Kode \ref{kode:modelCI3} mengambil data dari tabel \texttt{users} dengan hasil b
 \end{center}
 \end{enumerate}
 
-Kode diatas akan mengambil seluruh data dari \verb|$userModel| sesuai dengan konfigurasi yang telah dilakukan pengguna. Pengguna juga dapat melakukan \textit{create, update,} dan \textit{delete} melalui kode berikut.
+Sintaks diatas akan mengambil seluruh data dari \verb|$userModel| sesuai dengan konfigurasi yang telah dilakukan pengguna. Pengguna juga dapat melakukan \textit{create, update,} dan \textit{delete} melalui sintaks berikut.
 
-\begin{lstlisting}[caption=Contoh kode untuk menghapus data pada model, label=kode:modelCI4Delete]
-$this->Notifications_model->delete('notifications', array('id' => $id));
-
-\end{lstlisting}
-
-Konversi aplikasi \textit{SharIF Judge} akan menggunakan kedua buah cara dengan penghapusan beberapa fungsi yang terdapat pada \textit{model} dari \textit{CodeIgniter 4} seperti mengambil, menghapus, dan menambahkan data. Sedangkan untuk fungsi-fungsi lain pada \textit{SharIF Judge} akan dilakukan pembaharuan sesuai dengan dokumentasi yang telah ada.
+\begin{center}
+	\verb|$this->Notifications_model->delete('notifications', array('id' => $id));|
+\end{center}
+Sintaks diatas akan menghapus data dari tabel \texttt{notifications} sesuai dengan \texttt{id} yang diberikan. Fungsi ini tidak perlu membentuk sintaks secara manual pada file \textit{models} melainkan hanya perlu memanggil \textit{model} yang ingin digunakan. Konversi aplikasi \textit{SharIF Judge} akan menggunakan cara pertama dengan penghapusan dan pembaharuan beberapa sintaks. Selain itu, terdapat perubahan nama \textit{model} dari yang sebelumnya menggunakan \textit{snake case} menjadi \textit{PascalCase} agar sesuai dengan standar PHP.
 
 \subsubsection{\textit{View}}
 \textit{View} pada aplikasi \textit{SharIF Judge} menggunakan \textit{template engine} bernama \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman \textit{PHP} yang berguna untuk mempermudah dalam mebentuk tampilan sebuah aplikasi. \textit{Twig} tidak terintegrasi pada \textit{CodeIgniter 4} sehingga akan terdapat beberapa pemasangan dan perubahan pada sintaks yang telah dipasang. Selain itu, terdapat beberapa perubahan fungsi pada \textit{CodeIgniter 4} sehingga perlu dilakukan penyesuaian seperti pengubahan \textit{file extension} dari \texttt{.twig} menjadi \texttt{.php}. Konversi \textit{SharIF Judge} menuju \textit{CodeIgniter 4} akan mengubah \textit{view} yang sebelumnya menggunakan \textit{twig} menjadi menggunakan \textit{PHP} sesuai dengan dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{delimiters} akan diubah menggunakan fitur yang terdapat pada \textit{CodeIgniter 4}. Kode \ref{kode:viewTwig} merupakan contoh konversi yang dilakukan.
@@ -828,9 +865,9 @@ menjadi kode berikut:
 Seluruh sintaks \textit{twig} akan diubah menjadi sintaks \textit{PHP} dari \textit{CodeIgniter 4} seperti yang terdapat pada kode \ref{kode:viewPHP}.
 
 \subsubsection{\textit{Controller}}
-\textit{Controller} pada \textit{CodeIgniter 4} memiliki fungsi sama dengan pada \textit{CodeIgniter 3} sehingga hanya perlu dilakukan penghapusan dan perubahan pada sintaks yang ada. Namun, terdapat perubahan pada \texttt{constructor} dimana pada \textit{CodeIgniter 4} terdapat \texttt{initController}. \textit{Constructor} pada \textit{PHP} tidak diperbolehkan untuk mengembalikan apapun sehingga terdapat beberapa pemindahan fungsi seperti \texttt{redirect()} menuju \textit{filters}. Selain itu, konversi akan tetap menggunakan \verb|__construct| dengan pemindahan beberapa sintaks menuju \texttt{initController} seperti pemanggilan \textit{helpers} dan variabel yang dapat diakses pada seluruh \textit{controller}. Berikut merupakan contoh penggunaan \texttt{initController} untuk variabel.
+\textit{Controller} pada \textit{CodeIgniter 4} memiliki fungsi sama dengan pada \textit{CodeIgniter 3} sehingga hanya akan dipindahkan dan dilakukan penghapusan dan perubahan pada sintaks yang ada. Sintaks yang dihapus berupa \texttt{defined} dan akan digantikan dengan \textit{namespace}. Beberapa sintaks untuk memanggil \textit{models} dan pengembalian \textit{view} juga akan disesuaikan. Namun, terdapat perubahan pada \texttt{constructor} dimana pada \textit{CodeIgniter 4} terdapat \texttt{initController}. \textit{Constructor} pada \textit{PHP} tidak diperbolehkan untuk mengembalikan apapun sehingga terdapat beberapa pemindahan fungsi seperti \texttt{redirect()} menuju \textit{filters}. Selain itu, konversi akan tetap menggunakan \verb|__construct| dengan pemindahan beberapa sintaks menuju \texttt{initController} seperti pemanggilan \textit{helpers} dan variabel yang dapat diakses pada seluruh \textit{controller}. Berikut merupakan contoh penggunaan \texttt{initController} untuk melakukan inisiasi fungsi menuju variabel.
 
-\begin{lstlisting}[caption=Contoh penggunaan initController untuk variabel, label=kode:initController]
+\begin{lstlisting}[caption=Penggunaan initController untuk inisiasi fungsi menuju variabel, label=kode:initController]
 protected $config;
 
 public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
@@ -845,15 +882,25 @@ public function initController(RequestInterface $request, ResponseInterface $res
     }
 \end{lstlisting}
 
-Kode \ref{kode:initController} akan memanggil variabel \verb|$config| berisikan data dari \textit{file config} \texttt{Secrets.php} yang dapat digunakan seluruh \textit{controller}.
+Kode \ref{kode:initController} akan memanggil variabel \verb|$config| berisikan data dari \textit{file config} \texttt{Secrets.php} yang dapat digunakan seluruh \textit{controller} tanpa perlu melakukan inisiasi lagi.
 
-Fungsi lainnya akan dipindahkan sesuai dengan yang ada pada \textit{CodeIgniter 3} dengan pembaharuan sesuai dengan dokumentasi \textit{CodeIgniter 4}. Selain pembaharuan, akan terdapat pemindahan variabel \textit{global} yang sebelumnya telah diinisiasikan menuju \textit{controller}.
+Fungsi lainnya akan dipindahkan sesuai dengan yang ada pada \textit{CodeIgniter 3} dengan pembaharuan. Selain pembaharuan, akan terdapat pemindahan variabel \textit{global} yang sebelumnya telah diinisiasikan menuju \textit{controller}.
+
+\subsubsection{IncomingRequest}
+\textit{Input} akan digantikan menggunakan fungsi \textit{request} dengan perubahan beberapa fungsi. Kode \ref{kode:requestconvbab3} merupakan perubahan yang terdapat dalam menerima \textit{input} dari pengguna.
+
+\begin{lstlisting}[caption=Contoh perubahan \textit{library request}, label=kode:requestconvbab3]
+$this->request = \Config\Services::request(); 
+$names => $this->request->getPost('name'),
+\end{lstlisting}
+
+Kode \ref{kode:requestconvbab3} merupakan perubahan dalam menerima data yang dikirim melalui \textit{post}.Sintaks pertama akan melakukan inisiasi terhadap \textit{library} tersebut namun inisiasi tersebut hanya diperlukan pada \textit{model} karena fungsi ini sudah terdapat pada \textit{controller}.Sintaks baris kedua akan mengambil data bernama \textit{name} yang telah dikirimkan oleh pengguna melalui \textit{post}. Konversi aplikasi \textit{SharIF Judge} akan menggunakan fungsi ini dengan beberapa perubahan sintaks sesuai dengan dokumentasinya.
 
 \subsection{\textit{Libraries}}
 \textit{Libraries} pada \textit{CodeIgniter 3} memiliki perubahan dan penghapusan pada \textit{CodeIgnier 4} sehingga perlu dilakukan pembaharuan. Berikut merupakan \textit{libraries} yang dipakai pada \textit{SharIF Judge}:
 
 \subsubsection{\textit{Emails}}
-\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3} merupakan contoh penggunaan \textit{library email}.
+\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snake case} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3} merupakan contoh penggunaan \textit{library email}.
 
 \begin{lstlisting}[caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3]
 $this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->settings_model->get_setting('mail_from_name'));
@@ -879,17 +926,13 @@ $zip_uploaded = $this->request->getFile('tests_desc');
 $pdf_uploaded->move("$assignment_dir");
 \end{lstlisting}
 
-Kode \ref{kode:uploadconvbab3} merupakan perubahan dalam melakukan \textit{upload} sebuah file. Sintaks \texttt{getFile} akan mengambil file bernama \texttt{tests\_desc} yang dikirimkan oleh pengguna. Sintak selanjutnya akan memindahkan file tersebut menuju direktori yang terlah dibentuk.
-
-\subsubsection{Request}
-\textit{Input} akan digantikan menggunakan fungsi \textit{request} dengan perubahan beberapa fungsi. Kode \ref{kode:requestconvbab3} merupakan perubahan yang terdapat dalam menerima \textit{input} dari pengguna.
-
-\begin{lstlisting}[caption=Contoh perubahan \textit{library request}, label=kode:requestconvbab3]
-$this->request = \Config\Services::request(); 
-$names => $this->request->getPost('name'),
+Kode \ref{kode:uploadconvbab3} merupakan perubahan dalam melakukan \textit{upload} sebuah file. Sintaks \texttt{getFile} akan mengambil file bernama \texttt{tests\_desc} yang dikirimkan oleh pengguna. Sintaks selanjutnya akan memindahkan file tersebut menuju direktori yang terlah ditentukan. Pada \textit{CodeIgniter 4} sudah tidak terdapat konfigurasi aturan dan pengambilan data terhadap file yang diterima. Sehingga fungsi tersebut akan digantikan oleh \textit{validation} dan beberapa fitur yang terdapat pada \textit{library ini}. Berikut merupakan contoh sintaks untuk mengambil \textit{extension} dan data dari file yang diunggah.
+\begin{lstlisting}[caption=Contoh sintaks untuk mengambil \textit{extension} dan data file, label=kode:uploadconvbab32]
+if($pdf_uploaded->getExtension() != "pdf"){
+	$zip_uploaded->getName()
+}
 \end{lstlisting}
-
-Kode \ref{kode:requestconvbab3} merupakan perubahan dalam menerima data yang dikirim melalui \textit{post}.Sintaks pertama akan melakukan inisiasi terhadap \textit{library} tersebut namun inisiasi tersebut hanya diperlukan pada \textit{model} karena fungsi ini sudah terdapat pada \textit{controller}.Sintaks baris kedua akan mengambil data bernama \textit{name} yang telah dikirimkan oleh pengguna melalui \textit{post}. Konversi aplikasi \textit{SharIF Judge} akan menggunakan fungsi ini dengan beberapa perubahan sintaks sesuai dengan dokumentasinya.
+Kode \ref{kode:uploadconvbab32} merupakan contoh sintaks untuk melakukan pengecekan \textit{extension} dan pengambilan data berupa nama dari file. Beberapa aturan tidak terdapat pada \textit{validation} sehingga akan dilakukan pengecekan manual.
 
 \subsubsection{\textit{Validation}}
 \textit{Form\_validation} akan digantikan menggunakan fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. Berikut merupakan contoh pembentukan aturan untuk mengumpulkan sebuah data pada \textit{form}.
@@ -906,17 +949,15 @@ Sintaks diatas akan mengembalikan \textit{error} terhadap \textit{form} dengan n
 
 \subsubsection{\textit{Zip Archive}}
 \label{subsubsec:ziparchivebab3}
-\textit{Zip Encoding} dan \textit{Unzip} akan digantikan dengan fungsi PHP \textit{zip archive} karena sudah tidak tersedia pada \textit{CodeIgniter 4}. Fungsi \textit{zip archive} terdapat beberapa perbedaan sehingga akan disesuaikan dengan fungsi-fungsi yang ada.
-\\
-\textit{Library} yang terdapat pada \textit{CodeIgniter 4} juga dapat di\textit{extend} dan dibentuk sesuai dengan kebutuhan. Berikut merupakan \textit{library} yang dibentuk oleh pengguna.
+\textit{Zip Encoding} dan \textit{Unzip} akan digantikan dengan fungsi PHP \textit{zip archive} karena sudah tidak tersedia pada \textit{CodeIgniter 4}. Fungsi \textit{zip archive} terdapat beberapa perbedaan sehingga akan disesuaikan dengan fungsi-fungsi yang ada. Berikut merupakan penggunaan \textit{zip archive} untuk melakukan \textit{zip}.
 
-\begin{lstlisting}[caption=Contoh perubahan penggunaan\textit{library ZipArhive} untuk melakukan \textit{zip}, label=kode:ziparchivebab3]
+\begin{lstlisting}[caption=Contoh perubahan penggunaan \textit{library Zip Archive} untuk melakukan \textit{zip}, label=kode:ziparchivebab3]
 		$this->zip = new \ZipArchive();
 		$this->zip->open($zipname, ZipArchive::CREATE);
 		$this->zip->addFile($file_path,"{$item['username']}/p{$item['problem']}.".filetype_to_extension($item['file_type']));
 \end{lstlisting}
 
-Kode \ref{kode:ziparchivebab3} merupakan perubahan dalam melakukan \textit{zip} sebuah file. Baris pertama akan melakukan inisiasi terhadap \textit{ZipArchive} sedangkan baris kedua akan membuka file \textit{zip}. Terakhir baris terakhir akan memasukan file bernama \textit{file\_path} menuju zip yang terdapat pada \textit{array item}. Selain untuk membentuk file \textit{zip}, \textit{zip arhive} juga dapat melakukan \textit{unzip} terhadap file. Kode \ref{kode:ziparchiveunzipbab3} merupakan penggunaan \textit{ZipArchive} dalam melakukan \textit{unzip}.
+Kode \ref{kode:ziparchivebab3} merupakan perubahan dalam melakukan \textit{zip} sebuah file. Baris pertama akan melakukan inisiasi terhadap \textit{ZipArchive} sedangkan baris kedua akan membuka file \textit{zip}. Terakhir sintaks \texttt{addFile} akan memasukan file bernama \textit{file\_path} menuju zip yang terdapat pada \textit{array item}. Selain untuk membentuk file \textit{zip}, \textit{zip arhive} juga dapat melakukan \textit{unzip} terhadap file. Kode \ref{kode:ziparchiveunzipbab3} merupakan penggunaan \textit{ZipArchive} dalam melakukan \textit{unzip}.
 \begin{lstlisting}[caption=Contoh perubahan penggunaan\textit{library ZipArhive} untuk melakukan \textit{unzip}, label=kode:ziparchiveunzipbab3]
 		$this->unzip = new ZipArchive();
 			// Create a temp directory
@@ -988,13 +1029,9 @@ Sintaks diatas akan dijalankan pada akar dari aplikasi dan tidak terdapat peruba
 \textit{Configurations} yang telah dipindahkan akan diubah dari yang sebelumnya menggunakan \textit{array} menjadi menggunakan \textit{variable}. Seluruh \textit{configurations} pada \textit{CodeIgniter 3} akan dipindahkan menuju \textit{CodeIgniter 4} sesuai dengan direktorinya dan fungsinya. Sedangkan \texttt{app/Config/App.php} dan dipindahkan menuju file \texttt{.env} karena alasan kemudahan untuk penggantian \textit{environment} dalam melakukan \textit{deploy}.
 
 \subsection{\textit{Database}}
-\textit{Database} pada \textit{CodeIgniter 4} fungsi yang sama pada \textit{CodeIgniter 3} sehingga akan dilakukan pemindahan konfigurasi sesuai dengan yang ada pada \textit{CodeIgniter 3}. Namun, terjadi beberapa perubahan pada sintaks untuk melakukan koneksi ke \textit{database} dan beberapa sintaks untuk melakukan \textit{query}. Sintaks koneksi \textit{database} akan berubah dari \texttt{\$this->load->database();} menjadi \texttt{db = db\_connect()}. Selain itu, pemanggilan fungsi \textit{query builder} berubah menggunakan \textit{camelcase} dari yang sebelumnya menggunakan \textit{snakecase}. Seperti dari yang sebelumnya menggunakan sintaks \texttt{get\_where} menjadi \texttt{getWhere}.
+\textit{Database} pada \textit{CodeIgniter 4} memiliki fungsi yang sama pada \textit{CodeIgniter 3} sehingga akan dilakukan pemindahan konfigurasi sesuai dengan yang ada pada \textit{CodeIgniter 3}. Namun, terjadi beberapa perubahan pada sintaks untuk melakukan koneksi ke \textit{database} dan beberapa sintaks untuk melakukan \textit{query}. Sintaks koneksi \textit{database} akan berubah dari \texttt{\$this->load->database();} menjadi \texttt{db = db\_connect()}. Selain itu, pemanggilan fungsi \textit{query builder} berubah menggunakan \textit{camelcase} dari yang sebelumnya menggunakan \textit{snakecase}. Seperti dari yang sebelumnya menggunakan sintaks \texttt{get\_where} menjadi \texttt{getWhere}.
 
-\textit{Database} pada aplikasi \textit{SharIF Judge} menggunakan \textit{autoload} yang dapat memuat beberapa fungsi secara otomatis. Berikut merupakan contoh penggunakan \textit{autoload} pada \textit{CodeIgniter 3}.
-\begin{center}
-\verb|$autoload['libraries'] = array('database');|
-\end{center}
-Sintaks diatas memuat \textit{library database} dan akan  ditambahkan pada \textit{file} \texttt{autoload.php}. Namun, pada konversi ini tidak akan menggunakan \textit{autoload} karena \textit{CodeIgniter 3} tidak mengikuti standar \textit{PSR 4} sehingga pada \textit{CodeIgniter 4} akan dimuat menggunakan \texttt{db = db\_connect()} pada \texttt{initController}.
+\textit{Database} pada aplikasi \textit{SharIF Judge} menggunakan \textit{autoload} yang dapat memuat beberapa fungsi secara otomatis. Namun, pada \textit{CodeIgniter 4}  tidak akan menggunakan \textit{autoload} karena terdapat perbedaan fungsi \textit{autoload} pada \textit{CodeIgniter 4} sehingga akan dimuat menggunakan \texttt{\$db = db\_connect()} pada \textit{controller} yang membutuhkan.
 
 \subsection{\textit{Helpers}}
 \textit{Helpers} tidak terdapat banyak perubahan namun, terdapat perubahan pemanggilan \textit{helpers} dan beberapa penghapusan \textit{helpers}. Berikut merupakan \textit{helpers} yang dihapus dan diubah cara pemanggilannya.
