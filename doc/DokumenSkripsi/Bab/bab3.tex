@@ -738,6 +738,21 @@ Kode \ref{kode:inputlibbab3} merupakan contoh penggunaan \textit{library upload}
 \subsubsection{\textit{Form validation}}
 \textit{Library} ini merupakan fungsi yang tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini berguna untuk melakukan validasi terhadap data yang dimasukan oleh pengguna sesuai dengan aturan yang telah ditetapkan.
 
+\subsubsection{Kelas \textit{URI}}
+\textit{Library} ini berfungsi untuk mengambil informasi yang terdapat pada \textit{segment} dalam sebuah \textit{URI}. Kode \ref{kode:uriclassbab3} merupakan penggunaan \textit{library} ini untuk mengambil \textit{segment} dan mengubahnya menjadi sebuah \textit{array}.
+\begin{lstlisting}[caption=Contoh penggunaan \textit{library URI}, label=kode:uriclassbab3]
+	$input = $this->uri->uri_to_assoc();
+\end{lstlisting}
+Kode \ref{kode:uriclassbab3} merupakan fungsi untuk mengambil informasi yang tersedia pada \textit{segment}. Hasil data dari pengambilan tersebut berupa \textit{associative array}.
+
+\subsubsection{\textit{Session}}
+\textit{Library} ini berfungsi untuk menyimpan informasi setiap pengguna memakai perangkat lunak. Data-data ini selanjutnya disimpan menuju \textit{database} dengan nama tabel \texttt{shj\_session}. Data-data yang telah disimpan selanjutnya dapat diambil kembali untuk melakukan pengecekan ataupun disimpan menuju tabel lainnya. Berikut merupakan penggunaan \textit{library session} untuk mengambil data pengguna:
+\begin{lstlisting}[caption=Contoh penggunaan \textit{library session}, label=kode:sessionbab3]
+	$this->session->userdata('logged_in')
+\end{lstlisting}
+
+Kode \ref{kode:sessionbab3} merupakan penggunaan \textit{library} ini untuk mengambil data dengan nama \textit{logged\_in}. \textit{SharIF Judge} menggunakan tabel untuk menyimpan \textit{session} dengan isi kolom berupa \textit{session\_id, ip\_address, user\_agent, last\_activity}, dan \textit{user\_data}.
+
 \section{Analisis Sistem Usulan}
 Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulisan ulang karena terdapat perubahan struktur aplikasi dan beberapa fungsi yang memiliki pemanggilan berbeda dan harus dilakukan pembaharuan.
 \subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{phpoffice}, \textit{radius}, dan \textit{adldap2}.
@@ -932,20 +947,50 @@ if($pdf_uploaded->getExtension() != "pdf"){
 	$zip_uploaded->getName()
 }
 \end{lstlisting}
-Kode \ref{kode:uploadconvbab32} merupakan contoh sintaks untuk melakukan pengecekan \textit{extension} dan pengambilan data berupa nama dari file. Beberapa aturan tidak terdapat pada \textit{validation} sehingga akan dilakukan pengecekan manual.
+Kode \ref{kode:uploadconvbab32} merupakan contoh sintaks untuk melakukan pengecekan \textit{extension} dan pengambilan data berupa nama dari file.
+
+\subsubsection{\textit{Working with URIs}}
+Kelas \textit{URI} akan digantikan menggunakan fungsi \textit{working with URIs} dengan perubahan fungsi. Berikut merupakan contoh pengambilan sebuah \textit{segement} yang terdapat pada \textit{URI}:
+\begin{center}
+	\verb|$temp_inp = $this->uri->getSegments();|
+\end{center}
+Sintaks diatas akan mengambil semua \textit{segment} yang tersedia pada \textit{URI}. \textit{Segment} yang sudah diambil akan disimpan menjadi sebuah \textit{array}.
+
+\subsubsection{\textit{Session}}
+Pemakaian \textit{library} ini terdapat perubahan dalam sintaks dan inisiasi \textit{library}. \textit{Library} ini perlu dilakukan inisiasi pada \textit{CodeIgniter 4}. Berikut merupakan contoh inisiasi \textit{library} ini:
+\begin{center}
+	\verb|$this->session = session();|
+\end{center}
+Sintaks diatas akan melakukan inisiasi terhadap \textit{library} yang nantinya dapat dipakai pada seluruh file. Selanjutnya terdapat perubahan cara pengambilan data berikut merupakan contoh pengambilan data pada \textit{CodeIgniter 4}:
+\begin{center}
+	\verb|$this->session->get('logged_in')|
+\end{center}
+Sintaks diatas akan mengambil data dengan nama \textit{logged\_in}. Penggunaan berubah dari yang sebelumnya menggunakan sintaks \texttt{userdata}. Selanjutnya data tersebut akan disimpan menuju \textit{database} dengan perubahan dan penghapusan kolom. Kolom tabel akan berubah menjadi empat buah yakni \textit{id, ip\_address, timestamp}, dan data.
 
 \subsubsection{\textit{Validation}}
-\textit{Form\_validation} akan digantikan menggunakan fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. Berikut merupakan contoh pembentukan aturan untuk mengumpulkan sebuah data pada \textit{form}.
+\textit{Form\_validation} akan digantikan menggunakan fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. Berikut merupakan contoh penetapan aturan untuk melakukan validasi saat mengumpulkan sebuah data pada \textit{form}:
 \begin{center}
-\verb|$validate->setRule('username', 'username', 'required|min\_length[3]|max\_length[20]);|
+\texttt{\$validate->setRule('username', 'username', 'required|min\_length[3]|max\_length[20]');}
 \end{center}
-Sintaks diatas akan melakukan validasi terhadap \textit{input} yang akan masukan oleh pengguna. Namun, \textit{CodeIgniter 4} tidak menyediakan fungsi \texttt{form\_error} sehingga akan diubah dengan menggunakan fungsi baru bernama \texttt{validation\_errors()}. Fungsi tersebut dapat digunakan untuk mengembalikan \textit{error} apabila terdapat data yang tidak sesuai dengan aturan. \textit{Error} tersebut dapat ditampilkan pada halaman \textit{view} menggunakan sintaks berikut.
+Sintaks diatas akan melakukan validasi terhadap \textit{input} yang akan masukan oleh pengguna. Sintaks penetapan aturan berubah menggunakan \textit{camelCase} dari yang sebelumnya berupa \texttt{set\_rules} menjadi \texttt{setRule}. Aturan untuk validasi tetap menggunakan fungsi yang tersedia pada \textit{CodeIgniter} tanpa perubahan namun, terdapat pemindahan aturan yang dibentuk manual dan penambahan beberapa sintaks. Kode \ref{kode:rulesaddonbab3} merupakan pemindahan aturan dengan penambahan beberapa sintaks:
+\begin{lstlisting}[caption=Contoh perubahan penambahan sintaks pada aturan yang dibentuk manual, label=kode:rulesaddonbab3]
+		public function email_check($email, $edit_username):bool
+	{
+		$edit_username = explode(',', $edit_username);
+        $user_model = new UserModel();
+		if ($user_model->have_email($email, $edit_username[1]))
+			return FALSE;
+		return TRUE;
+	}
+\end{lstlisting}
+
+Kode \ref{kode:rulesaddonbab3} merupakan pemindahan aturan menuju \texttt{app/Config/Validation.php} aturan akan ditambahkan sintaks \texttt{explode} untuk memecah \textit{array} dan juga terdapat inisiasi \textit{model}. Aturan ini dapat digunakan seperti aturan lainnya. Namun, \textit{CodeIgniter 4} tidak menyediakan fungsi \texttt{form\_error} sehingga akan diubah dengan menggunakan fungsi baru bernama \texttt{validation\_errors()}. Fungsi tersebut dapat digunakan untuk mengembalikan \textit{error} apabila terdapat data yang tidak sesuai dengan aturan. \textit{Error} tersebut dapat ditampilkan pada halaman \textit{view} menggunakan sintaks berikut.
 
 \begin{center}
 \verb|<?= $validation->getError('username'); ?>|
 \end{center}
 
-Sintaks diatas akan mengembalikan \textit{error} terhadap \textit{form} dengan nama \textit{username} apabila tidak sesuai dengan aturan yang sudah ditentukan. Variabel \texttt{validation} akan dikirimkan dari \textit{controller} berisikan \textit{library} dari \textit{validation} tersebut.
+Sintaks diatas akan mengembalikan \textit{error} terhadap \textit{form} dengan nama \textit{username} apabila tidak sesuai dengan aturan yang sudah ditentukan. Variabel \texttt{validation} akan dikirimkan dari \textit{controller} berisikan \textit{library} dari \textit{validation} tersebut. 
 
 \subsubsection{\textit{Zip Archive}}
 \label{subsubsec:ziparchivebab3}

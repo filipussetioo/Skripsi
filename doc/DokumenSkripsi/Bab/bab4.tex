@@ -13,27 +13,25 @@ Sintaks diatas akan mengunduh dan melakukan instalasi \textit{template} projek \
 
 \section{Perubahan Struktur Aplikasi}
 \label{sec:perubahanStruktur}
-Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada bab \ref{chap:analisis} gambar \ref{fig:dirMapping}. Pemindahan akan dilakukan dengan penyesuaian dan perubahan beberapa sintaks dan fungsi yang digunakan.
-\\
-Struktur aplikasi pada \textit{CodeIgniter 4} berisikan sebagai berikut :
+Struktur aplikasi \textit{SharIF Judge} akan dipindahkan seperti pemetaan pada bab \ref{chap:analisis} gambar \ref{fig:dirMapping}. Pemindahan akan dilakukan dengan penyesuaian dan perubahan beberapa sintaks dan fungsi yang digunakan. Struktur aplikasi pada \textit{CodeIgniter 4} berisikan sebagai berikut :
 \subsection{app/Config}
 File \textit{config} pada \textit{CodeIgniter 3} dipindahkan sesuai dengan pemetaan pada gambar \ref{fig:dirMapping}. Direktori berisikan data-data pada \texttt{application/Config}. Beberapa data pada direktori ini dipindahkan menuju file yang terdapat pada \textit{CodeIgniter 4}. Terdapat juga penambahan \textit{file} \texttt{Secrets.php} yang dibentuk secara manual. Berikut merupakan rincian isi direktori yang dipindahkan:
-\subsubsection{\texttt{App.php}}
+\subsubsection{\texttt{app/Config/App.php}}
 File ini tidak akan digunakan sehingga akan dibiarkan berisi sintaks \textit{default} dan seluruh data akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:envfileapp} merupakan isi dari file \texttt{.env} yang dipindahkan dari direktori \texttt{application/config.php}:
 
 \begin{lstlisting}[caption= Kode \texttt{application/config/config.php} yang dipindahkan menuju \texttt{.env}, label=kode:envfileapp]
 	app.baseURL = 'http://sharif.localhost/'
 \end{lstlisting}
 
-Kode \ref{kode:envfileapp} akan menentukan \textit{url} dasar dari aplikasi menjadi \texttt{http://sharif.localhost/}.
+Kode \ref{kode:envfileapp} akan menentukan \textit{url} dasar dari aplikasi menjadi \texttt{http://sharif.localhost/}. \textit{URL} dibentuk spesifik berupa \texttt{http://sharif.localhost/} karena dijalankan pada server lokal sehingga tidak bertabrakan dengan server lokal lainnya. \textit{URL} juga diganti karena tidak dapat diimplementasikan pada \textit{CodeIgniter 4} sehingga \textit{URL} akan ditentukan manual sesuai dengan \textit{domain} yang dibentuk.
 
-\subsubsection{\texttt{Autoload.php}}
+\subsubsection{\texttt{app/Config/Autoload.php}}
 File ini tidak digunakan dan dibiarkan menggunakan konfigurasi \textit{default} karena terdapat perubahan cara kerja kelas ini. Fitur ini pada \textit{CodeIgniter 4} tidak dapat melakukan inisiasi otomatis terhadap \textit{model, controller}, dan \textit{library} saat aplikasi dijalankan. Namun kelas ini hanya akan mencari lokasi file sesuai dengan konfigurasinya saat kelas tersebut pertama kali diinisiasi. Kelas \textit{helpers} yang diinisiasikan dipindahkan menuju \texttt{BaseController} sedangkan kelas \textit{model} dan \textit{libraries} akan dipanggil menggunakan \textit{PSR-4} pada file-file yang membutuhkan kelas tersebut.
 
-\subsubsection{\texttt{Cache.php}}
+\subsubsection{\texttt{app/Config/Cache.php}}
 File tidak berubah dan akan tetap menggunakan konfigurasi \textit{default} karena tidak terdapat perubahan pada \textit{SharIF Judge} versi \textit{CodeIgniter 3}.
 
-\subsubsection{\texttt{Constant.php}}
+\subsubsection{\texttt{app/Config/Constants.php}}
 File ini berisikan seluruh data yang dipindahkan dari \texttt{application/config/constants.php}. Kode \ref{kode:constantbab4} merupakan data yang dipindahkan menuju \texttt{Constant.php}.
 
 \begin{lstlisting}[caption=Pemindahan kode pada \textit{Constant}, label=kode:constantbab4]
@@ -49,10 +47,10 @@ define('EDITOR_SUBMIT_ID', 0);
 
 Kode \ref{kode:constantbab4} merupakan pemindahan dari \texttt{application/config/constants.php} menuju \texttt{Constant.php}. Sintaks \texttt{SHJ\_VERSION} akan digunakan pada tampilan \texttt{sidebar} sedangkan sintaks \texttt{EDITOR} digunakan pada fungsi \textit{submit}. Sintaks yang telah dipindahkan akan bersifat \textit{global} sehingga dapat diakses oleh seluruh file pada \textit{CodeIgniter 4}.
 
-\subsubsection{\texttt{Cookie.php}}
+\subsubsection{\texttt{app/Config/Cookie.php}}
 File ini tidak terdapat perubahan dan tetap menggunakan konfigurasi \textit{default} karena tidak terdapat perubahan pada \textit{SharIF Judge} versi \textit{CodeIgniter 3}.
 
-\subsubsection{\texttt{Database.php}}
+\subsubsection{\texttt{app/Config/Database.php}}
 File ini dibiarkan menggunakan konfigurasi \textit{default} karena akan dipindahkan menuju file \texttt{.env}. Kode \ref{kode:databaseenvbab4} merupakan pemindahan menuju file \texttt{.env} yang dipindahkan dari direktori \texttt{application/config.php}.
 
 \begin{lstlisting}[caption=Pemindahan \texttt{app/config/database.php} menuju \texttt{.env}, label=kode:databaseenvbab4]
@@ -66,7 +64,9 @@ database.default.DBPrefix = shj_
 
 Kode \ref{kode:databaseenvbab4} merupakan pemindahan kode dari \texttt{database.php} menuju \texttt{.env}. Kode akan berisikan \textit{hostname} yang digunakan, nama \textit{database} yang digunakan, \textit{username} dari \textit{database}, \textit{password}, \textit{DBDriver}, dan \textit{DBPrefix} yang digunakan.
 
-\subsubsection{\texttt{Email.php}}
+\subsubsection{\texttt{app/Config/Email.php}}
+File ini tidak digunakan dan dibiarkan menggunakan konfigurasi \textit{default} karena konfigurasi \textit{email} pada aplikasi \textit{SharIF Judge} diletakan pada file \texttt{Secrets.php}.
+
 File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/config/secrets.php}. Kode \ref{kode:emailconfigbab4} merupakan pemindahan konfigurasi \textit{email}.
 
 \begin{lstlisting}[caption=Pemindahan \texttt{app/config/secrets.php} menuju \texttt{Email.php}, label=kode:emailconfigbab4]
@@ -77,7 +77,7 @@ File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/c
 
 Kode \ref{kode:emailconfigbab4} merupakan pemindahan konfigurasi \textit{email} yang terdapat pada \texttt{secrets.php}. Kode akan berisikan \textit{protocol} yang digunakan untuk mengirim \textit{email}, \textit{host} yang akan digunakan, dan tipe \textit{email} yang dikirimkan. Seluruh data akan disimpan menuju variabel pada \textit{CodeIgniter 4} dan terdapat perubahan nama variabel menjadi \textit{camelCase}.
 
-\subsubsection{\texttt{Encryption.php}}
+\subsubsection{\texttt{app/Config/Encryption.php}}
 File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:encryptionbab4} merupakan pemindahan konfigurasi enkripsi yang akan digunakan.
 
 \begin{lstlisting}[caption=Pemindahan \texttt{app/config/config.php} menuju \texttt{Encryption.php}, label=kode:encryptionbab4]
@@ -86,7 +86,7 @@ File ini akan berisikan seluruh data yang dipindahkan dari \texttt{application/c
 
 Kode \ref{kode:encryptionbab4} merupakan pemindahan \textit{key} dari enkripsi yang akan digunakan. Data akan disimpan menuju variabel pada \textit{CodeIgniter 4}.
 
-\subsubsection{\texttt{Filters.php}}
+\subsubsection{\texttt{app/Config/Filters.php}}
 \label{subsubsec:filters}
 File ini berisikan seluruh nama \textit{filters} yang telah dibentuk. Kode \ref{kode:filtersnamebab4} merupakan pembentukan nama \textit{filters} sesuai dengan kelas yang sudah dibentuk.
 
@@ -108,7 +108,7 @@ File ini berisikan seluruh nama \textit{filters} yang telah dibentuk. Kode \ref{
 \end{lstlisting}
 
 Kode \ref{kode:filtersnamebab4} merupakan penambahan nama \textit{filters} untuk dipanggil menuju \textit{routes}. Penamaan ini akan ditambahkan pada \textit{array} \verb|$aliases| dengan nama lain \textit{filters} dan nama kelasnya.
-\subsubsection{\texttt{Routes.php}}
+\subsubsection{\texttt{app/Config/Routes.php}}
 File ini akan berisikan seluruh pemindahan dan penambahan manual dari \textit{routes} pada \textit{SharIF Judge}. Kode \ref{kode:routesbab4} merupakan pembentukan \textit{routes} aplikasi secara manual.
 \begin{lstlisting}[caption=Penambahan \textit{routes} yang digunakan pada aplikasi \textit{SharIF Judge}, label=kode:routesbab4]
 	$routes->setDefaultNamespace('App\Controllers');
@@ -222,8 +222,8 @@ $routes->post('/problems/edit/(:any)/(:num)/(:num)', 'Problems::edit/$1/$2/$3');
 \end{lstlisting}
 Kode \ref{kode:routesbab4} merupakan seluruh \textit{routes} yang didefinisikan secara explisit sesuai dengan kegunaannya. Terdapat juga penambahan \textit{filters} untuk melakukan pengecekan sebelum \textit{controller} diinisiasikan. Pembentukan \textit{routes} secara manual dilakukan karena alasan keamanan dan juga konfigurasi \textit{filters} yang berbeda untuk setiap \textit{controller}.
 
-\subsubsection{\texttt{Secrets.php}}
-File ini merupakan file yang dibentuk secara manual oleh pengguna. File ini berisikan seluruh kebutuhan konfigurasi yang tidak terdapat pada \textit{config} lainnya. Kode \ref{kode:secrets} merupakan pemindahan file \texttt{Secrets.php} menuju \texttt{app/Config}.
+\subsubsection{\texttt{app/Config/Secrets.php}}
+File ini merupakan file yang ditambahkan diluar dari struktur standart dari aplikasi \textit{CodeIgniter 4}. File ini berisikan seluruh kebutuhan konfigurasi yang tidak terdapat pada \textit{config} lainnya. Kode \ref{kode:secrets} merupakan pemindahan file \texttt{Secrets.php} menuju \texttt{app/Config}.
 \begin{lstlisting}[caption=Penambahan file \textit{secrets}, label=kode:secrets]
 namespace Config;
 
@@ -261,7 +261,7 @@ public $shj_mail = [
 
 Kode \ref{kode:secrets} merupakan pemindahan kode menuju \texttt{app/Config}. Terdapat penghapusan sintaks \texttt{defined('BASEPATH') OR exit('No direct script access allowed');} pada baris pertama kalimat. Sintaks yang telah dihapus akan digantikan oleh sintaks \textit{class} seperti pada baris pertama dan nama kelas akan \textit{extend} \texttt{BaseConfig}. Terdapat juga penambahan sintaks \textit{namespace} dan \textit{use}. File ini akan digunakan dan dipanggil pada \textit{controller} untuk melakukan autentikasi pengguna.
 
-\subsubsection{\texttt{Security.php}}
+\subsubsection{\texttt{app/Config/Security.php}}
 File ini akan berisikan seluruh konfigurasi yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:security} merupakan pemindahan data token \textit{csrf} dan \textit{cookie} menuju \texttt{Security.php}.
 \begin{lstlisting}[caption=Pemindahan file \textit{config} menuju \textit{Security}, label=kode:security]
 public string $tokenName = 'shj_csrf_token';
@@ -270,7 +270,7 @@ public string $cookieName = 'shjcsrftoken';
 
 Kode \ref{kode:security} merupakan pemindahan sintaks menuju \texttt{Security.php}. Sintaks pada baris pertama merupakan nama \textit{token} yang akan digunakan sedangkan sintaks kedua merupakan nama \textit{cookie} yang akan digunakan. Sintaks pada \textit{CodeIgniter 4} tidak akan menggunakan \textit{array} namun akan disimpan menuju variabel. Sintaks lainnya tidak akan diubah karena akan menggunakan konfigurasi \textit{default} dari \textit{CodeIgniter 4}.
 
-\subsubsection{\texttt{Session.php}}
+\subsubsection{\texttt{app/Config/Session.php}}
 File ini akan berisika seluruh konfigurasi yang dipindahkan dari \texttt{application/config/config.php}. Kode \ref{kode:session} merupakan pemindahan data konfigurasi \textit{session} menuju \texttt{Session.php}.
 \begin{lstlisting}[caption=Pemindahan file \textit{config} menuju \textit{Session}, label=kode:session]
 public string $driver = 'CodeIgniter\Session\Handlers\DatabaseHandler';
@@ -279,7 +279,7 @@ public string $cookieName = 'shjsession';
 
 Kode \ref{kode:session} merupakan pemindahan data menuju \texttt{Session.php}. Data yang dipindahkan berupa \texttt{cookieName} yang akan disimpan menuju variabel. Selanjutnya akan ada perubahan \textit{driver} dimana akan menggunakan sintaks diatas karena akan disimpan menuju \textit{database}.
 
-\subsubsection{\texttt{Validation.php}}
+\subsubsection{\texttt{app/Config/Validation.php}}
 \label{subsubsec:validationbab4}
 File ini berisikan aturan yang dibentuk secara manual oleh pengguna untuk melakukan validasi sebelum \textit{request} diproses oleh aplikasi. Kode \ref{kode:validationrulesmanualbab4} merupakan aturan validasi data yang dibentuk secara manual oleh pengguna.
 
@@ -301,7 +301,7 @@ class MyRules
 		return TRUE;
     }
 
-    public function role_check($user,$role) 
+    public function role_check($role) 
     {
         $user = new User();
         if ($user->level <= 2)
@@ -317,6 +317,7 @@ class MyRules
 	 */
 	public function email_check($email,$edit_username):bool
 	{
+		$edit_username = explode(',', $edit_username);
         $user_model = new UserModel();
 		if ($user_model->have_email($email, $edit_username))
 			return FALSE;
@@ -386,7 +387,7 @@ class MyRules
 }
 \end{lstlisting}
 
-Kode \ref{kode:validationrulesmanualbab4} merupakan pembentukan aturan secara manual yang dipindahkan dari \textit{controller} \texttt{Login.php}, \texttt{Profile.php}, \texttt{Submissions.php}, dan \texttt{Submit.php}. Aturan yang dibentuk secara manual dapat digunakan seperti aturan lainnya yang tersedia pada \textit{CodeIgniter 4}.
+Kode \ref{kode:validationrulesmanualbab4} merupakan pembentukan aturan secara manual yang dipindahkan dari \textit{controller} \texttt{Login.php}, \texttt{Profile.php}, \texttt{Submissions.php}, dan \texttt{Submit.php}. Aturan yang dibentuk secara manual dapat digunakan seperti aturan lainnya yang tersedia pada \textit{CodeIgniter 4}. Aturan yang dibentuk terdapat beberapa penambahan seperi pemanggilan \textit{library}, \textit{model}, dan penambahan sintaks untuk memecah \textit{array}.
 
 \subsection{\textit{Controllers}}
 \textit{Controller} terdapat perubahan pada bagian fungsi \texttt{\_\_construct()} dimana sekarang tidak dapat mengembalikan sesuatu. Oleh karena itu, akan dibentuk beberapa \textit{filters} \ref{subsubsec:filters} untuk melakukan pengecekan terhadap fungsi yang sebelumnya terdapat pada \texttt{\_\_construct()}.
@@ -417,7 +418,7 @@ Kode \ref{kode:validationrulesmanualbab4} merupakan pembentukan aturan secara ma
 
 \textit{Controllers} terdapat perubahan dan penambahan baik dalam kelas yang dilakukan \textit{extends} maupun dalam pemanggilan kelas lain seperti \textit{model} dan \textit{helpers}. Beberapa \textit{helpers} yang dipanggil melalui \textit{autoload} akan dipindahkan menuju \textit{BaseController}. Kode \ref{kode:controllerBab4} merupakan perubahan yang terdapat pada \textit{controller} \texttt{Logs.php}.
 
-\begin{lstlisting}[caption=Perubahan kode \textit{controllers} pada \textit{CodeIgniter 4}, label=kode:controllerBab4]
+\begin{lstlisting}[caption=Perubahan kode \textit{controller} \texttt{Logs.php} pada \textit{CodeIgniter 4}, label=kode:controllerBab4]
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
@@ -487,10 +488,32 @@ Kode \ref{kode:controllerBab4} terdapat perubahan dimana sekarang akan \textit{e
 
 Kode \ref{kode:basecontrollerhelpers} merupakan pemindahan dan penambahan \textit{helpers} dari \textit{autoload} menuju \texttt{BaseController}. \textit{Helpers} akan ditambahkan menuju \textit{array} \texttt{\$helpers} sedangkan beberapa \textit{thirdparty library} akan dilakukan inisiasi di dalam fungsi \texttt{initController}. Seluruh \textit{helpers} yang telah dipindahkan dapat diakses pada seluruh \textit{controller}. Penambahan ini dilakukan untuk mempermudah dalam penggunaan \textit{helpers} pada seluruh \textit{controller} agar tidak perlu diinisiasi lagi pada setiap \textit{controller} yang membutuhkan.
 
-\subsection{\textit{Filters}}
-Pada \textit{CodeIgniter 4} \texttt{\_\_construct()} tidak dapat mengembalikan sesuatu oleh karena itu akan dibentuk beberapa \textit{filters} untuk melakukan pengecekan. Beberapa \textit{filters} yang dibentuk antara lain berfungsi untuk mengecek apakah dijalankan dari \textit{command line interface}, apakah sudah \textit{install} dan \textit{login}, apakah sudah \textit{login}, apakah sudah \textit{login} dan dijalankan dari \textit{command line interface}, apakah sudah \textit{login} dan apakah \textit{request} berupa \textit{AJAX}, dan apakah sudah \textit{login} dan pengecekan terhadap \textit{role} pengguna. Terdapat total empat buah \textit{filters} yang akan dibentuk. Kode \ref{kode:filtersclibab4} merupakan sintaks untuk melakukan pengecekan apakah dijalankan dari \textit{command line interface}.
+\subsubsection{IncomingRequest}
+\textit{Input} digantikan oleh fungsi \textit{request} dengan perubahan cara pemanggilan sintaks. \textit{Validation} hanya akan diinisiasikan pada fungsi \texttt{\_\_construct} setiap \textit{model} yang membutuhkan. Fungsi tidak akan diinisiasikan pada \textit{controller} karena \textit{CodeIgniter 4} sudah menyediakan fitur ini pada \textit{controller} sehingga hanya perlu dilakukan pemanggilan. Kode \ref{kode:requestbab4} merupakan inisiasi \textit{request} pada \textit{model}.
 
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters} \texttt{CheckCLI.php}, label=kode:filtersclibab4]
+\begin{lstlisting}[caption=Perancangan inisiasi \textit{request} pada \texttt{\_\_construct}, label=kode:requestbab4]
+
+protected $request;
+
+	public function __construct()
+	{
+		$this->request = \Config\Services::request(); 
+	}
+\end{lstlisting}
+
+Kode \ref{kode:requestbab4} merupakan inisiasi yang dilakukan pada \textit{model}. \textit{Controller} tidak perlu melakukan inisiasi terhadap fungsi ini karena sudah terinisiasi pada \texttt{BaseController}. Pengambilan \textit{input} yang dilakukan oleh pengguna dilakukan menggunakan sintaks pada kode \ref{kode:requestbab4howto}.
+
+\begin{lstlisting}[caption=Perancangan penggunaan \textit{request}, label=kode:requestbab4howto]
+if($this->request->isAJAX())
+$this->request->getPost('assignment_select')
+\end{lstlisting}
+
+Kode \ref{kode:requestbab4howto} merupakan cara penggunaan \textit{request} untuk melakukan pengecekan dan pengambilan data. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelCase}.
+
+\subsection{\textit{Filters}}
+Pada \textit{CodeIgniter 4} \texttt{\_\_construct()} tidak dapat mengembalikan sesuatu oleh karena itu akan dibentuk beberapa \textit{filters} untuk melakukan pengecekan. Beberapa \textit{filters} yang dibentuk antara lain berfungsi untuk mengecek apakah dijalankan dari \textit{command line interface}, apakah sudah \textit{install} dan \textit{login}, apakah sudah \textit{login}, apakah sudah \textit{login} dan dijalankan dari \textit{command line interface}, apakah sudah \textit{login} dan apakah \textit{request} berupa \textit{AJAX}, dan apakah sudah \textit{login} dan pengecekan terhadap \textit{role} pengguna. Terdapat total tujuh buah \textit{filters} yang akan dibentuk. Kode \ref{kode:filtersclibab4} merupakan sintaks untuk melakukan pengecekan apakah dijalankan dari \textit{command line interface}.
+
+\begin{lstlisting}[caption=Perancangan kode pada \textit{Filters} \texttt{CheckCLI.php}, label=kode:filtersclibab4]
 	public function before(RequestInterface $request, $arguments = null)
     {   
         $request = \Config\Services::request();
@@ -501,7 +524,7 @@ Pada \textit{CodeIgniter 4} \texttt{\_\_construct()} tidak dapat mengembalikan s
 \end{lstlisting}
 Kode \ref{kode:filtersclibab4} merupakan pemindahan kode dari \texttt{\_\_construct} menuju \textit{filters} \texttt{CheckCLI}.  \texttt{\_\_construct} terdapat pada \textit{controller} dimana fungsi diatas digunakan pada \textit{controller} \texttt{Queueprocessphp}. Kode ini akan mengecek apakah \textit{request} yang diberikan oleh pengguna merupakan \textit{command line interface}. Apabila \textit{request} yang diberikan bukan berupa itu maka akan diberikan error berupa halaman tidak ditemukan. Kode \ref{kode:filtersinstallandloginbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan \textit{install} dan \textit{login}.
 
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersinstallandloginbab4]
+\begin{lstlisting}[caption=Perancangan kode pada \textit{Filters} \texttt{CheckInstallAndLogin.php}, label=kode:filtersinstallandloginbab4]
 	public function before(RequestInterface $request, $arguments = null)
     {   
         $db = Database::connect();
@@ -515,8 +538,8 @@ Kode \ref{kode:filtersclibab4} merupakan pemindahan kode dari \texttt{\_\_constr
     }
 \end{lstlisting}
 
-Kode \ref{kode:filtersinstallandloginbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller} \texttt{Dashboard}. Fungsi pada \textit{filters} ini akan melakukan pengecekan dan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan \textit{login}.
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersloginbab4]
+Kode \ref{kode:filtersinstallandloginbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller} \texttt{Dashboard}. Fungsi pada \textit{filters} ini akan melakukan pengecekan apakah sudah terdapat tabel \textit{session} dan apakah pengguna sudah melakukan \textit{login}. Selanjutnya \textit{filter} akan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan \textit{login}.
+\begin{lstlisting}[caption=Perancangan kode pada \textit{Filters} \texttt{CheckLogin.php}, label=kode:filtersloginbab4]
 	public function before(RequestInterface $request, $arguments = null)
     {
         $session = \Config\Services::session();
@@ -526,9 +549,9 @@ Kode \ref{kode:filtersinstallandloginbab4} merupakan pemindahan dari \texttt{\_\
     }
 \end{lstlisting}
 
-Kode \ref{kode:filtersloginbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller} \texttt{Profile}, \texttt{Notifications}, \texttt{Logs}, \texttt{Assignments}, \texttt{Submit}, \texttt{Submission}, dan \texttt{Problems}. Fungsi pada \textit{filters} ini akan melakukan pengecekan dan mengembalikan pengguna kepada \textit{routes} yang sesuai. Kode \ref{kode:filtersloginandclibab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna menjalankan \textit{request} dari \textit{command line interface} dan apakah pengguna sudah melakukan \textit{login}.
+Kode \ref{kode:filtersloginbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller} \texttt{Profile}, \texttt{Notifications}, \texttt{Logs}, \texttt{Assignments}, \texttt{Submit}, \texttt{Submission}, dan \texttt{Problems}. Fungsi pada \textit{filters} ini akan melakukan pengecekan apakah pengguna sudah melakukan \textit{login}.Selanjutnya \textit{filter} akan mengembalikan pengguna kepada \textit{routes} yang sesuai. Kode \ref{kode:filtersloginandclibab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna menjalankan \textit{request} dari \textit{command line interface} dan apakah pengguna sudah melakukan \textit{login}.
 
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersloginandclibab4]
+\begin{lstlisting}[caption=Perancangan kode pada \textit{Filters} \texttt{CheckLoginandCLI.php}, label=kode:filtersloginandclibab4]
 	public function before(RequestInterface $request, $arguments = null)
     {   
         $session = \Config\Services::session();
@@ -541,9 +564,9 @@ Kode \ref{kode:filtersloginbab4} merupakan pemindahan dari \texttt{\_\_construct
     }
 \end{lstlisting}
 
-Kode \ref{kode:filtersloginandclibab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Scoreboard}. Fungsi pada \textit{filters} ini akan melakukan pengecekan dan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginnadisajaxbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan login dan apakah \textit{request} yang diberikan pengguna berupa \textit{ajax}.
+Kode \ref{kode:filtersloginandclibab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Scoreboard}. Fungsi pada \textit{filters} ini akan melakukan pengecekan apakah \textit{controller} dijalankan melalui \textit{command line} dan apakah pengguna sudah \textit{login}. Selanjutnya \textit{filter} akan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginnadisajaxbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan login dan apakah \textit{request} yang diberikan pengguna berupa \textit{ajax}.
 
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersloginnadisajaxbab4]
+\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters} \texttt{CheckLoginandisAjax.php}, label=kode:filtersloginnadisajaxbab4]
 	public function before(RequestInterface $request, $arguments = null)
     {   
         $session = \Config\Services::session();
@@ -556,9 +579,9 @@ Kode \ref{kode:filtersloginandclibab4} merupakan pemindahan dari \texttt{\_\_con
     }
 \end{lstlisting}
 
-Kode \ref{kode:filtersloginnadisajaxbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Server\_time}. Fungsi pada \textit{filters} ini akan melakukan pengecekan dan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginandleveladminbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan login dan apakah \textit{role} dari pengguna dapat mengakses situs tersebut.
+Kode \ref{kode:filtersloginnadisajaxbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Server\_time}. Fungsi pada \textit{filters} ini akan melakukan pengecekan apakah pengguna sudah \textit{login} dan apakah \textit{request} berupa \textit{ajax}. Selanjutnya \textit{filter} akan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginandleveladminbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan login dan apakah \textit{role} dari pengguna dapat mengakses situs tersebut.
 
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersloginandleveladminbab4]
+\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters} \texttt{CheckLoginandLevelAdmin.php}, label=kode:filtersloginandleveladminbab4]
 	public function before(RequestInterface $request, $arguments = null)
     {   
         $session = \Config\Services::session();
@@ -571,9 +594,9 @@ Kode \ref{kode:filtersloginnadisajaxbab4} merupakan pemindahan dari \texttt{\_\_
     }
 \end{lstlisting}
 
-Kode \ref{kode:filtersloginandleveladminbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Server\_time}. Fungsi pada \textit{filters} ini akan melakukan pengecekan dan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginandlevelheadbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan login dan apakah \textit{role} dari pengguna dapat mengakses situs tersebut.
+Kode \ref{kode:filtersloginandleveladminbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Server\_time}. Fungsi pada \textit{filters} ini akan melakukan pengecekan terhadap \textit{level} pengguna apakah \textit{admin} dan apakah pengguna sudah melakukan \textit{login}. Selanjutnya \textit{filter} akan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Kode \ref{kode:filtersloginandlevelheadbab4} merupakan \textit{filters} yang dibentuk untuk melakukan pengecekan apakah pengguna sudah melakukan login dan apakah \textit{role} dari pengguna dapat mengakses situs tersebut.
 
-\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters}, label=kode:filtersloginandlevelheadbab4]
+\begin{lstlisting}[caption=Pemindahan kode pada \textit{Filters} \texttt{CheckLoginandLevelHead.php}, label=kode:filtersloginandlevelheadbab4]
 	public function before(RequestInterface $request, $arguments = null)
     {   
         $session = \Config\Services::session();
@@ -586,7 +609,7 @@ Kode \ref{kode:filtersloginandleveladminbab4} merupakan pemindahan dari \texttt{
     }
 \end{lstlisting}
 
-Kode \ref{kode:filtersloginandleveladminbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller}  \texttt{Server\_time}. Fungsi pada \textit{filters} ini akan melakukan pengecekan dan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Setelah dibentuk \textit{filters}, selanjutnya akan ditambahkan menuju file \texttt{Filters.php} untuk mendefiniskan nama yang selanjutnya akan dimasukkan menuju \textit{routes}. Penambahan menuju file \texttt{Filters.php} dapat dilihat pada subbab \ref{subsubsec:filters}. Setelah ditambahkan, \textit{filters} akan dipanggil pada \textit{routes} yang membutuhkan pengecekan. Kode \ref{kode:filtersroutesbab4} merupakan penambahan \textit{filters} pada \textit{routes} sesuai dengan kebutuhannya.
+Kode \ref{kode:filtersloginandleveladminbab4} merupakan pemindahan dari \texttt{\_\_construct} pada \textit{controller} \texttt{Server\_time}. Fungsi pada \textit{filters} ini akan melakukan pengecekan \textit{level} pengguna dan apakah pengguna sudah melakukan \textit{login}. Selanjutnya \textit{filter} ini akan mengembalikan pengguna kepada \textit{routes} yang sesuai apabila tidak sesuai dengan kondisinya. Setelah dibentuk \textit{filters}, selanjutnya akan ditambahkan menuju file \texttt{Filters.php} untuk mendefiniskan nama yang selanjutnya akan dimasukkan menuju \textit{routes}. Penambahan menuju file \texttt{Filters.php} dapat dilihat pada subbab \ref{subsubsec:filters}. Setelah ditambahkan, \textit{filters} akan dipanggil pada \textit{routes} yang membutuhkan pengecekan. Kode \ref{kode:filtersroutesbab4} merupakan penambahan \textit{filters} pada \textit{routes} sesuai dengan kebutuhannya.
 
 \begin{lstlisting}[caption=Penambahan \textit{filter} pada \textit{routes}, label=kode:filtersroutesbab4]
 	$routes->get('/settings','Settings::index',['filter' => 'check-loginandlevelAdmin:dual,noreturn']);
@@ -648,30 +671,43 @@ Kode \ref{kode:uploadfilebab4} merupakan perubahan yang terdapat pada \textit{li
 
 Konfigurasi aturan terhadap \textit{upload} sudah tidak terdapat pada \textit{CodeIgniter 4} sehingga akan diubah dan digantikan pada kondisi di baris kedua. Kondisi tersebut dibentuk untuk melakukan pengecekan tipe file yang sudah diunggah dan memberikan \textit{error}. \textit{Error} yang dihasilkan juga sudah tidak dinamik karena tidak menggunakan \textit{validation} sehingga disesuaikan dengan \textit{error} yang terdapat pada \textit{CodeIgniter 4}.
 
-\subsubsection{IncomingRequest}
-\textit{Input} digantikan oleh fungsi \textit{request} dengan perubahan cara pemanggilan sintaks. \textit{Validation} hanya akan diinisiasikan pada fungsi \texttt{\_\_construct} setiap \textit{model} yang membutuhkan. Fungsi tidak akan diinisiasikan pada \textit{controller} karena \textit{CodeIgniter 4} sudah menyediakan fitur ini pada \textit{controller} sehingga hanya perlu dilakukan pemanggilan. Kode \ref{kode:requestbab4} merupakan inisiasi \textit{request} pada \textit{model}.
+\subsubsection{\textit{Working with URIs}}
+Kelas \textit{URI} digantikan oleh fungsi \textit{working with URIs} dengan perubahan dan penambahan fungsi. \textit{Library} ini akan diinisiasikan pada fungsi \texttt{\_\_construct} \textit{controller} \texttt{Submissions.php}. Kode \ref{kode:workingwithurisbab4} merupakan inisiasi \textit{library} ini dan terdapat penambahan sintaks karena terdapat fungsi yang dihapus.
 
-\begin{lstlisting}[caption=Perancangan inisiasi \textit{request} pada \texttt{\_\_construct}, label=kode:requestbab4]
+\begin{lstlisting}[caption=Perancangan inisiasi dan penambahan sintaks \textit{library URIs} pada \texttt{\_\_construct}, label=kode:workingwithurisbab4]
+$temp_inp = $this->uri->getSegments();
+		$input=[];
+		foreach($temp_inp as $key => $value){
+			if($key != (count($temp_inp)-1) && ($key%2 != 0)){
+				$input[$value] = $temp_inp[$key+1];	
+			}else{
+				break;
+			}
+		}
+\end{lstlisting}
+Kode \ref{kode:workingwithurisbab4} merupakan sintaks untuk mengambil \textit{segment} yang terdapat pada \textit{URI}. \textit{Segment} ini akan disimpan dalam sebuah \textit{array} dan tidak membentuk \textit{associative array}. Oleh karena itu, terdapat penambahan sintaks \texttt{foreach} untuk mengubah \textit{array} tersebut menjadi sebuah \textit{associative array}.
 
-protected $request;
+\subsubsection{\textit{Session}}
+Sintaks penggunaan \textit{session} akan berubah dan \textit{session} akan dilakukan inisiasi sebelum pemakaian. Berikut merupakan perubahan dalam melakukan inisiasi pada \textit{session}.
+\begin{lstlisting}[caption=Perancangan inisiasi \textit{library session}, label=kode:sessioninitiatebab4]
 
-	public function __construct()
-	{
-		$this->request = \Config\Services::request(); 
+protected $session;
+
+public function selected_assignment($username){
+	$this->session = session();
 	}
+}
 \end{lstlisting}
-
-Kode \ref{kode:requestbab4} merupakan inisiasi yang dilakukan pada \textit{model}. \textit{Controller} tidak perlu melakukan inisiasi terhadap fungsi ini karena sudah terinisiasi pada \texttt{BaseController}. Pengambilan \textit{input} yang dilakukan oleh pengguna dilakukan menggunakan sintaks pada kode \ref{kode:requestbab4howto}.
-
-\begin{lstlisting}[caption=Perancangan penggunaan \textit{request}, label=kode:requestbab4howto]
-if($this->request->isAJAX())
-$this->request->getPost('assignment_select')
+Kode \ref{kode:sessioninitiatebab4} merupakan sintaks untuk melakukan inisiasi terhadap \textit{session}. \textit{Session} akan diinisiasikan pada setiap file yang menggunakan \textit{library} ini. Penggunaan \textit{session} terdapat perubahan dari sintaks untuk pengambilan data, membersihkan data, dan penetapan data. Berikut merupakan perubahan dari sintaks pada \textit{library session}:
+\begin{lstlisting}[caption=Perancangan penggunaan \textit{library session}, label=kode:sessionbab4]
+$this->session->get('logged_in')
+$this->session->set($login_data);
+$this->session->destroy();
 \end{lstlisting}
-
-Kode \ref{kode:requestbab4howto} merupakan cara penggunaan \textit{request} untuk melakukan pengecekan dan pengambilan data. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi \textit{camelCase}.
+Kode \ref{kode:sessionbab4} merupakan cara penggunaan \textit{library session}. Sintaks pada baris pertama berfungsi untuk mengambil data dengan nama \textit{logged\_in}. Sintaks pada baris kedua berfungsi untuk menetapkan sebuah data \textit{session} pada variabel \textit{login\_data}. Terakhir pada baris ketiga merupakan sintaks untuk membersihkan data pada \textit{session} pengguna tersebut.
 
 \subsubsection{\textit{Validation}}
-\textit{Form\_validation} digantikan oleh fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. \textit{Validation} akan diinisiasikan pada fungsi \texttt{\_\_construct} pada setiap \textit{controller} dan \textit{model} yang membutuhkan. Kode \ref{kode:validationinitiationbab4} merupakan inisiasi \textit{validation} pada \textit{controller}.
+\textit{Form\_validation} digantikan oleh fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. \textit{Validation} akan diinisiasikan pada fungsi \texttt{\_\_construct} setiap \textit{controller} dan \textit{model} yang membutuhkan. Kode \ref{kode:validationinitiationbab4} merupakan inisiasi \textit{validation} pada \textit{controller}.
 
 \begin{lstlisting}[caption=Perancangan inisiasi \textit{validation} pada \texttt{\_\_construct}, label=kode:validationinitiationbab4]
 

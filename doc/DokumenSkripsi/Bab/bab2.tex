@@ -362,6 +362,33 @@ Kode \ref{kode:controllerfileupload} merupakan contoh kode dengan dua buah metod
 \end{enumerate}
 Direktori penyimpanan dapat diubah sesuai dengan kebutuhan namun perlu pengubahan izin direktori menjadi 777 agar dapat di baca, di tulis, dan di eksekusi oleh seluruh pengguna.
 
+\subsubsection{\textit{Session}}
+\textit{Library session} memperbolehkan aplikasi untuk melihat jejak dari aktivitas pengguna. \textit{CodeIgniter} menyediakan beberapa cara penyimpanan \textit{session} yakni menggunakan file, \textit{database}, \textit{redis}, dan \textit{memcached}. \textit{Library} ini dapat diinisiasikan menggunakan sintaks berikut:
+\begin{center}
+	\verb|$this->load->library('session');|
+\end{center}
+Sintaks diatas akan melakukan inisiasi terhadap \textit{library session} dan dapat digunakan menggunakan sintaks berikut:
+\begin{center}
+	\verb|$this->session|
+\end{center}
+\textit{Session} bekerja ketika halaman termuat dan akan melakukan pengecekan terhadap \textit{session cookie} pengguna. Data ini akan disimpan dan diperbaharui sesuai dengan  data yang diterima. Pengguna dapat mengambil data dari \textit{session} ini menggunakan sintaks sebagai berikut:
+\begin{center}
+	\verb|$this->session->userdata('item');|
+\end{center}
+Sintaks diatas akan mengambil seluruh data \textit{session} dengan nama \textit{item}. Secara \textit{default}, aplikasi akan menyimpan data \textit{session} pada file namun pengguna dapat mengubah konfigurasi sesuai dengan kebutuhan. Berikut merupakan konfigurasi untuk menyimpan data pada \textit{database}.
+\begin{lstlisting}[caption=Contoh konfiguras untuk menyimpan data pada \textit{database}, label=kode:sessiondb]
+$config['sess_driver'] = 'database';
+$config['sess_save_path'] = 'ci_sessions';
+\end{lstlisting}
+Kode \ref{kode:sessiondb} merupakan konfigurasi untuk menyimpan data menuju \textit{database} dengan nama tabel \textit{ci\_sessions}.
+
+\subsubsection{Kelas \textit{URI}}
+Kelas \textit{URI} menyediakan metode untuk mengambil informasi yang terdapat pada \textit{URI strings}. Kelas ini diinisiasikan secara otomatis oleh \textit{CodeIgniter} sehingga tidak perlu dilakukan inisiasi lagi. Informasi dapat diambil menggunakan sintaks berikut:
+\begin{center}
+	\verb|$array = $this->uri->uri_to_assoc(3, $default);|
+\end{center}
+Sintaks diatas akan mengambil informasi yang tersedia pada \textit{URI segment} menjadi sebuah \textit{associative array}. \textit{Array} yang dihasilkan akan berisikan \textit{key} dan \textit{value} sesuai dengan penempatan \textit{segment}.
+
 \subsubsection{Kelas \textit{Zip Encoding}}
 \textit{Zip} merupakan format sebuah \textit{file} yang berguna untuk melakukan kompress terhadap \textit{file} untuk mengurangi ukuran dan menjadikannya sebuah \textit{file}. \textit{CodeIgniter 3} menyediakan \textit{library Zip Encoding} yang dapat digunakan untuk membangun arsip \textit{Zip} yang dapat diunduh menuju \textit{desktop} atau disimpan pada direktori. \textit{Library} ini dapat diinsiasi dengan kode sebagai berikut:
 
@@ -1896,6 +1923,38 @@ $email->setMessage('Testing the email class.');
 $email->send();
 \end{lstlisting}
 Kode \ref{kode:ci4emailclass} merupakan contoh penggunaan kelas \textit{email} untuk mengirimim \textit{email} dari \texttt{your@example.com} kepada \texttt{someone@example.com} dengan subjek \texttt{Email Test} dan pesan \texttt{Testing the email class.}
+\subsubsection{\textit{Session}}
+\textit{Library session} memperbolehkan aplikasi untuk melihat jejak dari aktivitas dari pengguna aplikasi tersebut. Data \textit{session} dapat disimpan pada beberapa tempat yakni file, \textit{database, memcached, redis}, dan \textit{array}. \textit{Session} dapat dilakukan inisiasi dengan sintaks sebagai berikut:
+\begin{center}
+	\verb|$session = \Config\Services::session($config);|
+\end{center}
+Sintaks diatas akan melakukan inisiasi \textit{library session} dan pengguna dapat memanggilnya menggunakan sintaks berikut:
+\begin{center}
+	\verb|$session|
+\end{center}
+\textit{Session} bekerja saat halaman dari aplikasi termuat. Aplikasi akan melakukan pengecekan terhadap \textit{session cookie} dan melakukan pembaharuan sesuai dengan \textit{session cookie} yang didapat. Pengguna juga dapat mengambil data yang tesimpan pada \textit{session} menggunakan sintaks berikut:
+\begin{center}
+	\verb|$item = $session->get('item');|
+\end{center}
+Sintaks diatas akan mengambil data \textit{session} dengan nama \textit{item} dan menyimpannya menuju sebuah variabel. Selain itu, \textit{session} juga dapat dihapus menggunakan sintaks sebagai berikut:
+\begin{center}
+	\verb|$session->destroy();|
+\end{center}
+Sintkas diatas akan membersihkan \textit{session} dari pengguna seperti saat melakukan \textit{logout}. Secara \textit{default session} akan menyimpan data menuju file namun, pengguna dapat melakukan konfigurasi sesuai dengan keinginan. Berikut merupakan konfigurasi untuk menyimpan data \textit{session} menuju \textit{database}:
+\begin{lstlisting}[caption=Contoh kode untuk konfigurasi penyimpanan \textit{session}. ,label=kode:ci4sessionclass]
+class Session extends BaseConfig
+{
+    // ...
+    public string $driver = 'CodeIgniter\Session\Handlers\DatabaseHandler';
+
+    // ...
+    public string $savePath = 'ci_sessions';
+
+    // ...
+}
+\end{lstlisting}
+Kode \ref{kode:ci4sessionclass} akan mengubah penyimpanan menggunakan \textit{databasehander} dengan tabel penyimpanan bernama \textit{ci\_sessions}. Konfigurasi dilakukan pada direktori \texttt{app/Config}.
+
 \subsubsection{\textit{Working with Uploaded Files}}
 Pengunggahan \textit{file} terdapat empat buah proses sebagai berikut:
 \begin{enumerate}
@@ -1984,6 +2043,21 @@ Kode \ref{kode:ci4fileuploadcontroller} terdapat dua buah fungsi yaitu:
 \item \verb|index()| yang mengembalikan \textit{view} bernama \texttt{upload\_form}
 \item \verb|upload()| yang memberikan aturan untuk melakukan validasi dan melakukan penyimpanan pada direktori \texttt{uploads}.
 \end{itemize}
+
+\subsubsection{\textit{Working with URIs}}
+\textit{CodeIgniter 4} menyediakan solusi berbasis \textit{object oriented} untuk bekerja dengan \textit{URI}. \textit{Library} ini simpel dan memastikan struktur selalu benar tanpa melihat \textit{URI} yang kompleks. Berikut merupakan sintaks untuk membentuk sebuah \textit{URI}:
+\begin{center}
+	\verb|$uri = new \CodeIgniter\HTTP\URI('http://www.example.com/some/path');|
+\end{center}
+Sintaks diatas akan membentuk \textit{URI} dengan nama \texttt{example.com} dengan beberapa \textit{segment}. \textit{URI} yang sudah dibentuk selanjutnya dapat diambil menggunakan sintaks berikut:
+\begin{center}
+	\verb|$uri = $this->request->getUri();|
+\end{center}
+Sintaks diatas akan mengambil \textit{URI} yang terdapat pada halaman tersebut. Selain dapat mengambil \textit{URI}, \textit{library} ini juga dapat mengambil \textit{segment} yang terdapat pada \textit{URI}. Berikut merupakan sintaks untuk mengambil \textit{segement} yang terdapat pada \textit{URI}.
+\begin{center}
+	\verb|$segments = $uri->getSegments();|
+\end{center}
+Sintaks diatas akan mengambil \textit{segment} yang tersedia pada \textit{URI} dan menghasilkan \textit{array} berisikan \textit{value} dari setiap \textit{segment} yang tersedia.
 
 \subsubsection{\textit{Validation}}
 \textit{CodeIgniter 4} menyediakan \textit{library} untuk melakukan validasi terhadap data yang dikirimkan oleh pengguna. Data yang divalidasi dapat diberikan aturan-aturan sesuai dengan konfigurasi pengguna. Kode \ref{kode:ci4validationform} merupakan contoh penggunaan \textit{validation}.
