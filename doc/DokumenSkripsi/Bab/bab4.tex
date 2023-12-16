@@ -623,8 +623,19 @@ Direktori ini berisikan \textit{helpers} yang dibentuk secara manual oleh penggu
 \subsection{\textit{Libraries}}
 \textit{Libraries} terdapat beberapa perubahan dan penghapusan fungsi sehingga akan digantikan. Berikut merupakan perancangan perubahan fungsi pada \textit{CodeIgniter 4}.
 
+\subsubsection{\textit{Error Handling}}
+\textit{Error Handling} pada \textit{CodeIgniter 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan digantikan dengan sintaks yang baru. Berikut merupakan pemanggilan \textit{error handling}:
+\begin{lstlisting}[caption=Perubahan sintaks \textit{error handling}, label=kode:errorhandlingbab4]
+	throw new \Exception('SharIF Judge is already installed.');
+\end{lstlisting}
+Kode \ref{kode:errorhandlingbab4} merupakan perubahan sintaks untuk memberikan \textit{error} dengan pesan yang ditentukan. Selain itu, terdapat perubahan dalam memberikan \textit{error} berupa 404. Berikut merupakan sintaks untuk memberikan \textit{error} berupa 404 halaman tidak ditemukan:
+\begin{lstlisting}[caption=Perubahan sintaks \textit{error handling} 404, label=kode:errorhandling404bab4]
+	throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Selected assignment has finished.');
+\end{lstlisting}
+Kode \ref{kode:errorhandling404bab4} akan mengembalikan \textit{error} berupa halaman tidak ditemukan dengan pesan \texttt{Selected assignment has finished.} dalam \textit{environment development} dan \textit{testing}. Pada \textit{environment production} tidak ditampilkan pesan \textit{error} namun hanya akan ditampilkan halaman tidak ditemukan.
+
 \subsubsection{\textit{Emails}}
-\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3} merupakan contoh penggunaan \textit{library email}.
+\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snakecase} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3} merupakan penggunaan \textit{library email}.
 
 \begin{lstlisting}[caption=Perubahan penggunaan sintaks pada \textit{library emails}, label=kode:emailslibbab3]
 $this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->settings_model->get_setting('mail_from_name'));

@@ -915,9 +915,9 @@ Kode \ref{kode:requestconvbab3} merupakan perubahan dalam menerima data yang dik
 \textit{Libraries} pada \textit{CodeIgniter 3} memiliki perubahan dan penghapusan pada \textit{CodeIgnier 4} sehingga perlu dilakukan pembaharuan. Berikut merupakan \textit{libraries} yang dipakai pada \textit{SharIF Judge}:
 
 \subsubsection{\textit{Emails}}
-\textit{Emails} pada \textit{CodeIgnier 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snake case} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3} merupakan contoh penggunaan \textit{library email}.
+\textit{Emails} pada \textit{CodeIgniter 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snake case} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3ci4} merupakan contoh penggunaan \textit{library email}.
 
-\begin{lstlisting}[caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3]
+\begin{lstlisting}[caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3ci4]
 $this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->settings_model->get_setting('mail_from_name'));
 				$this->email->setTo($user[1]);
 				$this->email->setSubject('SharIF Judge Username and Password');
@@ -931,7 +931,7 @@ $this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->se
 				$this->email->send()
 \end{lstlisting}
 
-Kode \ref{kode:emailslibbab3} memiliki sintaks dengan nama sama namun terdapat perubahan menjadi \textit{camelcase}.
+Kode \ref{kode:emailslibbab3ci4} memiliki sintaks dengan nama sama namun terdapat perubahan menjadi \textit{camelcase}.
 
 \subsubsection{\textit{Working with Uploaded Files}}
 \textit{Upload} akan digantikan dengan fungsi \textit{Working with oploaded files} dengan beberapa penggantian dan penghapusan fungsi. \textit{Working with uploaded files} terdapat perubahan pada beberapa sintaks dan validasi terhadap \textit{file} yang telah diunggah. Kode \ref{kode:uploadconvbab3} merupakan perubahan yang terdapat dalam melakukan \textit{upload} sebuah file.
@@ -1045,13 +1045,13 @@ class MY_Form_validation extends Validation
 Kode \ref{kode:myformvalidationbab3} mengapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}. Selain itu, kelas \textit{library} akan \textit{extends} \textit{Validation}.
 
 \subsubsection{\textit{Parsedown}}
-\textit{Library Parsedown} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \texttt{defined}.  Kode \ref{kode:parsedownbab3} merupakan contoh penambahan \textit{namespace} dan juga penambahan sintaks \textit{defined}.
-\begin{lstlisting}[caption=Contoh perubahan \textit{library Parsedown} pada \textit{CodeIgniter 4}, label=kode:parsedownbab3]
+\textit{Library Parsedown} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \texttt{defined}.  Kode \ref{kode:parsedownbab3ci4} merupakan contoh penambahan \textit{namespace} dan juga penambahan sintaks \textit{defined}.
+\begin{lstlisting}[caption=Contoh perubahan \textit{library Parsedown} pada \textit{CodeIgniter 4}, label=kode:parsedownbab3ci4]
 namespace App\Libraries;
 
 class Parsedown
 \end{lstlisting}
-Kode \ref{kode:parsedownbab3} menghapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}.
+Kode \ref{kode:parsedownbab3ci4} menghapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}.
 \subsubsection{\textit{Phpexcel}}
 \textit{Library} ini akan digunakan kembali namun tidak akan dipindahkan menuju \texttt{app/Libraries}. \textit{Library} akan dilakukan instalasi melalui \textit{composer} dengan sintaks berikut:
 \begin{center}
@@ -1078,8 +1078,21 @@ Sintaks diatas akan dijalankan pada akar dari aplikasi dan tidak terdapat peruba
 
 \textit{Database} pada aplikasi \textit{SharIF Judge} menggunakan \textit{autoload} yang dapat memuat beberapa fungsi secara otomatis. Namun, pada \textit{CodeIgniter 4}  tidak akan menggunakan \textit{autoload} karena terdapat perbedaan fungsi \textit{autoload} pada \textit{CodeIgniter 4} sehingga akan dimuat menggunakan \texttt{\$db = db\_connect()} pada \textit{controller} yang membutuhkan.
 
+\subsection{\textit{Error Handling}}
+\textit{Error Handling} terdapat perubahan sintaks dan perubahan cara pemanggilan. Berikut merupakan cara pemanggilan \textit{error handling}:
+\begin{lstlisting}[caption=Contoh pemanggilan \textit{Error Handling} pada \textit{CodeIgniter 4}, label=kode:errorhandlingbab3]
+<?php
+
+throw new \Exception('Some message goes here');
+\end{lstlisting}
+Kode \ref{kode:errorhandlingbab3} merupakan cara pemangilan \textit{error hadnling} pada \textit{CodeIgniter 4}. Sintaks ini akan memberikan \textit{exception} dengan pesan yang telah ditentukan. Selain memberikan pesan, pengguna juga dapat mengembalikan \textit{error} berupa 404 dengan sintaks berikut:
+\begin{lstlisting}[caption=Contoh pemanggilan \textit{Error Handling} 404 pada \textit{CodeIgniter 4}, label=kode:errorhandling404bab3]
+throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+\end{lstlisting}
+Kode \ref{kode:errorhandling404bab3} akan mengembalikan \textit{error} berupa 404 halaman tidak ditemukan.
+
 \subsection{\textit{Helpers}}
-\textit{Helpers} tidak terdapat banyak perubahan namun, terdapat perubahan pemanggilan \textit{helpers} dan beberapa penghapusan \textit{helpers}. Berikut merupakan \textit{helpers} yang dihapus dan diubah cara pemanggilannya.
+\textit{Helpers} tidak terdapat banyak perubahan namun, terdapat perubahan pemanggilan \textit{helpers} dan beberapa penghapusan \textit{helpers}. Berikut merupakan \textit{helpers} yang dihapus dan diubah cara pemanggilannya:
 \begin{itemize}
 \item \textit{Download Helper}
 \textit{Helper} ini sudah tidak tersedia pada \textit{CodeIgniter 4} sehingga perlu dilakukan pengubahan dengan menggunakan fungsi \textit{HTTP Response}. \textit{HTTP Response} menyediakan fungsi bernama \textit{Force File Download} yang berguna untuk mengunduh sebuah \textit{file} menuju perangkat pengguna. Fungsi ini dapat dipanggil menggunakan sintaks berikut.

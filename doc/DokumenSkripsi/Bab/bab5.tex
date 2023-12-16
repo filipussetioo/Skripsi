@@ -14,6 +14,7 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
     	\begin{tabular}{|l|l|}
     	\hline
         	\textbf{Parameter} & \textbf{Nilai} \\ \hline
+        	\textit{Perangkat Keras} & \textit{Macbook Pro M1} \\ \hline
         	\textit{Processor} & \textit{M1 Pro} \\ \hline
         	\textit{Random Access Memory (RAM)} & 16 GB \\ \hline
         	\textit{Storage} & 512 GB \textit{SSD} \\ \hline
@@ -27,11 +28,11 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
     	\begin{tabular}{|l|l|}
     	\hline
         	\textbf{Parameter} & \textbf{Nilai} \\ \hline
-        	Sistem Operasi & Debian \\ \hline
+        	Sistem Operasi & \textit{Debian} 11 \\ \hline
         	Bahasa Pemrograman & PHP, \textit{JavaScript}, \textit{CSS}, dan \textit{HTML} \\ \hline
         	\textit{Framework} & \textit{CodeIgniter 4.2.3} \\ \hline
         	\textit{Code Editor} & \textit{Visual Studio Code 1.84.2 (Universal)} \\ \hline
-        	\textit{Perangkat Lunak Pendukung} & \textit{Docker}\\ & \textit{Composer} 2.6.5\\ & \textit{Google Chrome Version} 119.0.6045.159 (Official Build) (arm64) \\ & \textit{MYSQL } \\ \hline
+        	\textit{Perangkat Lunak Pendukung} & \textit{Docker Version} 4.21.1 (114176)\\ & \textit{Composer} 2.6.5\\ & \textit{Google Chrome Version} 119.0.6045.159 (Official Build) (arm64)\\ & \textit{MariaDB} 10.5.8 \\ & \textit{phpMyAdmin} 4.8 \\ \hline
     	\end{tabular}
 	\end{table}
 	
@@ -44,9 +45,9 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
     	\begin{tabular}{|l|l|}
     	\hline
         	\textbf{Parameter} & \textbf{Nilai} \\ \hline
-        	\textit{Processor} & \textit{M1 Pro} \\ \hline
+        	\textit{Processor} & \textit{Regular Intel 1vCPU} \\ \hline
         	\textit{Random Access Memory (RAM)} & 512 MB \\ \hline
-        	\textit{Storage} & 10 GB \\ \hline
+        	\textit{Storage} & 10 GB \textit{SSD} \\ \hline
     	\end{tabular}
 	\end{table}
 	Tabel \ref{tab:stagingsoft} merupakan spesifikasi perangkat lunak lingkungan \textit{staging}.
@@ -58,8 +59,7 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
     	\hline
         	\textbf{Parameter} & \textbf{Nilai} \\ \hline
         	Sistem Operasi & Ubuntu 20.04 \\ \hline
-        	Bahasa Pemrograman & PHP, \textit{JavaScript}, \textit{CSS}, dan \textit{HTML} \\ \hline
-        	\textit{Perangkat Lunak Pendukung} & \textit{Apache Server}\\ & \textit{Composer}\\ & \textit{MYSQL} \\ & PHP 8.1\\ \hline
+        	Perangkat Lunak Pendukung & \textit{Apache Server} 2.4.41\\ & \textit{Composer} 2.6.3\\ & \textit{MariaDB} 10.3.38 \\ & PHP 8.1\\ \hline
     	\end{tabular}
 	\end{table}
 \end{enumerate}
@@ -67,14 +67,14 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
 \section{Implementasi}
 Berikut merupakan hasil implementasi dari analisis dan perancangan perangkat lunak yang telah dibentuk:
 \subsection{Kode Program}
-Perubahan dan penambahan kode program untuk melakukan konversi perangkat lunak telah dijabarkan pada bab \ref{chap:perancangan}. Seluruh perubahan dan penambahan dibentuk menggunakan bahasa pemrograman PHP dengan bantuan beberapa perangkat lunak tambahan. Kode program untuk \textit{controller} dapat dilihat pada \ref{lamp:A}. Kode program untuk \textit{model} dapat dilihat pada \ref{lamp:B}. Kode program untuk \textit{view} dapat dilihat pada \ref{lamp:C}.
+Perubahan dan penambahan kode program untuk melakukan konversi perangkat lunak telah dijabarkan pada bab \ref{chap:perancangan}. Seluruh perubahan dan penambahan dibentuk menggunakan bahasa pemrograman PHP dengan bantuan beberapa perangkat lunak tambahan. Kode program untuk \textit{controller} dapat dilihat pada Lampiran \ref{lamp:A}. Kode program untuk \textit{model} dapat dilihat pada Lampiran \ref{lamp:B}. Kode program untuk \textit{view} dapat dilihat pada Lampiran \ref{lamp:C}.
 
 \subsection{Basis Data}
-Basis data terdapat perubahan pada tabel \textit{session} dimana terdapat perubahan nama kolom dan penghapusan kolom. Terdapat perubahan nama kolom \textit{session\_id} menjadi \textit{id}, \textit{user\_data} menjadi \textit{data}, dan \textit{last\_activity} menjadi \textit{timestamp}. Terdapat penghapusan kolom \textit{user\_agent}, perubahan tipe \textit{data} kolom \textit{timestamp} dan \textit{data}. Tabel \ref{tab:shjsessionbab5} merupakan struktur tabel baru pada \textit{shj\_sessions}.
+Basis data terdapat perubahan pada tabel \textit{sessions} dimana terdapat perubahan nama kolom dan penghapusan kolom. Terdapat perubahan nama kolom \textit{session\_id} menjadi \textit{id}, \textit{user\_data} menjadi \textit{data}, dan \textit{last\_activity} menjadi \textit{timestamp}. Terdapat penghapusan kolom \textit{user\_agent}, perubahan tipe \textit{data} kolom \textit{timestamp} dan \textit{data}. Tabel \ref{tab:shjsessionbab5} merupakan struktur tabel baru pada \textit{shj\_sessions}.
 
 \begin{table}[H]
 \centering
-\caption{Struktur baru tabel \textit{shj\_session}}
+\caption{Struktur baru tabel \textit{shj\_sessions}}
 \label{tab:shjsessionbab5}
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -87,306 +87,528 @@ Basis data terdapat perubahan pada tabel \textit{session} dimana terdapat peruba
 \end{table}
 
 \section{Pengujian Fungsional}
-Pengujian fungsional dilakukan pada lingkungan kedua yang bertujuan untuk melakukan pengujian terhadap seluruh fungsi pada perangkat lunak \textit{SharIF Judge}. Pengujian dilakukan untuk memastikan setiap fitur yang terdapat pada \textit{SharIF Judge} versi \textit{CodeIgniter 4} dapat berjalan dengan baik setelah dilakukan konversi. Berikut merupakan pengujian terhadap fitur-fitur pada \textit{SharIF Judge}:
+Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan untuk melakukan pengujian terhadap seluruh fitur pada perangkat lunak \textit{SharIF Judge}. Pengujian dilakukan untuk memastikan setiap fitur yang terdapat pada \textit{SharIF Judge} versi \textit{CodeIgniter 4} dapat berjalan dengan baik setelah dilakukan konversi. Berikut merupakan pengujian terhadap fitur-fitur pada \textit{SharIF Judge}:
 \begin{enumerate}
 	\item Melakukan instalasi \textit{SharIF Judge}
 		\begin{itemize}
-			\item Reaksi yang diharapkan: \textit{Database} terbentuk dan lkun \textit{admin} tersimpan pada \textit{database}.
-			\item Reaksi: \textit{Database} terbentuk dan lkun \textit{admin} tersimpan pada \textit{database}.
+			\item Reaksi yang diharapkan: \textit{Database} terbentuk dan akun \textit{admin} tersimpan pada \textit{database}. 
+			\item Reaksi yang ditemukan: \textit{Database} terbentuk dan akun \textit{admin} tersimpan pada \textit{database}. Halaman \textit{error} dengan pesan \texttt{SharIF Judge is already installed.} ditampilkan apabila tabel sudah terbentuk.
 		\end{itemize}
+	\item Melakukan pengamanan terhadap \textit{sandbox}
+	\begin{itemize}
+		\item Reaksi yang diharapkan: Dapat membentuk \textit{sandbox} tanpa mengembalikan \textit{error}.
+		\item Reaksi yang ditemukan: Pembentukan \textit{sandbox} mengembalikan \textit{success message} berupa \texttt{All tests passed!}.
+	\end{itemize}
 	\item Melakukan \textit{login}
 		\begin{itemize}
 			\item Reaksi yang diharapkan: Pengguna masuk menuju \textit{dashboard} menggunakan akun yang telah dibentuk.
-			\item Reaksi: Pengguna masuk menuju \textit{dashboard} dengan akun yang telah dibentuk.
-		\end{itemize}
-	\item Melakukan \textit{login} dengan \textit{password} yang salah
-		\begin{itemize}
-			\item Reaksi yang diharapkan: Tidak dapat masuk dan mengembalikan \textit{error message} berupa \textit{Incorrect username or password}.
-			\item Reaksi: Pengguna tidak dapat masuk dan aplikasi mengembalikan \textit{error message} berupa \textit{Incorrect username or password}.
+			\item Reaksi yang ditemukan: Pengguna masuk menuju \textit{dashboard} dengan akun yang telah dibentuk. Pengguna tidak dapat \textit{login} dan aplikasi mengembalikan \textit{error message} berupa \textit{Incorrect username or password} apabila \textit{username} atau \textit{password} yang dimasukan salah.
 		\end{itemize}
 	\item Melakukan \textit{register}
 	 	\begin{itemize}
 	 		\item Reaksi yang diharapkan: Pengguna berhasil melakukan \textit{register} dan aplikasi mengembalikan \textit{Registered successfully}.
-	 		\item Reaksi: Pengguna berhasil melakukan \textit{register} dan aplikasi mengembalikan \textit{Registered successfully}.
+	 		\item Reaksi yang ditemukan: Pengguna berhasil melakukan \textit{register} dan aplikasi mengembalikan \textit{Registered successfully}. Aplikasi akan mengembalikan \textit{error message} berupa \texttt{Registration is Closed} apabila fitur \textit{register} tidak dinyalakan.
 	 	\end{itemize}
 	 \item Melakukan \textit{reset password} dengan \textit{email} yang telah terdaftar
 	 	\begin{itemize}
 	 		\item Reaksi yang diharapkan: Dikirimkan \textit{email} berupa \textit{link} untuk melakukan \textit{reset password}, pengguna diarahkan menuju situs \textit{SharIF Judge}, dan pengguna memasukan \textit{password} baru untuk \textit{login}.
-	 		\item Reaksi: Dikirimkan \textit{email} berupa \textit{link} untuk melakukan \textit{reset password},pengguna diarahkan menuju situs \textit{SharIF Judge} , dan pengguna dapat memasukan \textit{password} baru untuk \textit{login}.
+	 		\item Reaksi yang ditemukan: Dikirimkan \textit{email} berupa \textit{link} untuk melakukan \textit{reset password},pengguna diarahkan menuju situs \textit{SharIF Judge} , dan pengguna dapat memasukan \textit{password} baru untuk \textit{login}.
 	 	\end{itemize}
 	 \item \textit{Top bar} pengguna \textit{admin}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Top bar} terdapat \textit{dropdown tools}, \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}. \textit{Dropdown tools} berisikan \textit{rejudge, submission queue}, dan \textit{cheat detection}.
-	 	\item Reaksi: \textit{Top bar} memiliki \textit{dropdown tools}, \textit{ dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}. \textit{Dropdown tools} berisikan \textit{rejudge, submission queue}, dan \textit{cheat detection}.
+	 	\item Reaksi yang ditemukan: \textit{Top bar} memiliki \textit{dropdown tools}, \textit{ dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}. \textit{Dropdown tools} berisikan \textit{rejudge, submission queue}, dan \textit{cheat detection}.
 	 \end{itemize}
 	 \item \textit{Top bar} pengguna \textit{head instructor}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Top bar} terdapat \textit{dropdown tools}, \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}. \textit{Dropdown tools} berisikan \textit{rejudge, submission queue}, dan \textit{cheat detection}.
-	 	\item Reaksi: \textit{Top bar} terdapat \textit{dropdown tools}, \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}. \textit{Dropdown tools} berisikan \textit{rejudge, submission queue}, dan \textit{cheat detection}.
+	 	\item Reaksi yang ditemukan: \textit{Top bar} terdapat \textit{dropdown tools}, \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}. \textit{Dropdown tools} berisikan \textit{rejudge, submission queue}, dan \textit{cheat detection}.
 	 \end{itemize}
 	 \item \textit{Top bar} pengguna \textit{instructor}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Top bar} terdapat \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}.
-	 	\item Reaksi: \textit{Top bar} terdapat \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}.
+	 	\item Reaksi yang ditemukan: \textit{Top bar} terdapat \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}.
 	 \end{itemize}
 	 \item \textit{Top bar} pengguna \textit{student}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Top bar} terdapat \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}.
-	 	\item Reaksi: \textit{Top bar} terdapat \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}.
+	 	\item Reaksi yang ditemukan: \textit{Top bar} terdapat \textit{dropdown select assignments}, \textit{timer assignment}, dan \textit{icon profile}.
 	 \end{itemize}
 	 \item \textit{Side bar} pengguna \textit{admin}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Sidebar} berisikan \textit{dashboard, settings, users, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard, hall of fame}, dan \textit{24-hour log}.
-	 	\item Reaksi: \textit{Sidebar} berisikan \textit{dashboard, settings, users, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard, hall of fame}, dan \textit{24-hour log}. 
+	 	\item Reaksi yang ditemukan: \textit{Sidebar} berisikan \textit{dashboard, settings, users, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard, hall of fame}, dan \textit{24-hour log}. 
 	 \end{itemize}
 	 \item \textit{Side bar} pengguna \textit{head instructor}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
-	 	\item Reaksi: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
+	 	\item Reaksi yang ditemukan: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
 	 \end{itemize}
 	 \item \textit{Side bar} pengguna \textit{instructor}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
-	 	\item Reaksi: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
+	 	\item Reaksi yang ditemukan: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
 	 \end{itemize}
 	 \item \textit{Side bar} pengguna \textit{student}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
-	 	\item Reaksi: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
+	 	\item Reaksi yang ditemukan: \textit{Sidebar} berisikan \textit{dashboard, notifications, assignments, problems, submit, final submissions, all submissions, scoreboard}, dan hall of fame.
 	 \end{itemize}
 	 \item \textit{Dashboard} pengguna \textit{admin} dan \textit{head instructor}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Dashboard} berisikan \textit{calendar} dengan jangka waktu \textit{assignments} dan \textit{latest notification} dengan \textit{icon} untuk menambahkan \textit{notification}.
-	 	\item Reaksi: \textit{Dashboard} berisikan \textit{calendar} dengan jangka waktu \textit{assignments} dan \textit{latest notification} dengan \textit{icon} untuk menambahkan \textit{notification}.
+	 	\item Reaksi yang ditemukan: \textit{Dashboard} berisikan \textit{calendar} dengan jangka waktu \textit{assignments} dan \textit{latest notification} dengan \textit{icon} untuk menambahkan \textit{notification}.
 	 \end{itemize}
 	 \item \textit{Dashboard} pengguna \textit{instructor} dan \textit{student}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Dashboard} berisikan \textit{calendar} dengan jangka waktu \textit{assignments} dan \textit{latest notification}.
-	 	\item Reaksi: \textit{Dashboard} berisikan \textit{calendar} dengan jangka waktu \textit{assignments} dan \textit{latest notification}.
+	 	\item Reaksi yang ditemukan: \textit{Dashboard} berisikan \textit{calendar} dengan jangka waktu \textit{assignments} dan \textit{latest notification}.
 	 \end{itemize}
 	 \item \textit{Profile} pengguna \textit{admin}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Berisikan \textit{username, name, email, password, password again}, dan \textit{user role}.
-	 	\item Reaksi: Berisikan \textit{username, name, email, password, password again}, dan \textit{user role}.
+	 	\item Reaksi yang ditemukan: Berisikan \textit{username, name, email, password, password again}, dan \textit{user role}.
 	 \end{itemize}
 	 \item \textit{Profile} pengguna \textit{head instructor, instructor}, dan \textit{student}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Berisikan \textit{username, name, email, password}, dan password again.
-	 	\item Reaksi: Berisikan \textit{username, name, email, password}, dan password again.
+	 	\item Reaksi yang ditemukan: Berisikan \textit{username, name, email, password}, dan password again.
 	 \end{itemize}
 	 \item Mengubah \textit{password} akun pada \textit{profile}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Password} pada akun berubah dan dapat dilakukan oleh seluruh pengguna.
-	 	\item Reaksi: \textit{Password} pada akun berubah dan dapat dilakukan oleh seluruh pengguna.
+	 	\item Reaksi yang ditemukan: \textit{Password} pada akun berubah dan dapat dilakukan oleh seluruh pengguna.
 	 \end{itemize}
 	 \item Mengubah \textit{role}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Penggantian \textit{role} hanya dapat dilakukan oleh \textit{admin}.
-	 	\item Reaksi: Penggantian \textit{role} hanya dapat dilakukan oleh \textit{admin} dan akan mengembalikan \textit{error} apabila pengguna bukan \textit{admin}.
+	 	\item Reaksi yang ditemukan: Penggantian \textit{role} hanya dapat dilakukan oleh \textit{admin} dan akan mengembalikan \textit{error} apabila pengguna bukan \textit{admin}.
 	 \end{itemize}
 	 \item Halaman \textit{settings}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Halaman hanya dapat diakses oleh \textit{admin} dan akan mengeluarkan \textit{error message} apabila menggunakan \textit{role} lain.
-	 	\item Reaksi: Halaman hanya dapat diakses oleh \textit{admin} dan mengeluarkan \textit{error message} berupa 404 apabila diakses oleh \textit{role} lain.
+	 	\item Reaksi yang ditemukan: Halaman hanya dapat diakses oleh \textit{admin} dan mengeluarkan \textit{error message} berupa 404 apabila diakses oleh \textit{role} lain.
 	 \end{itemize}
 	 \item Melakukan \textit{sign out}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Pengguna kembali ke halaman \textit{login} dan \textit{session} pengguna dihancurkan.
-	 	\item Reaksi: Pengguna kembali ke halaman \textit{login} dan \textit{session} pengguna dihancurkan.
+	 	\item Reaksi yang ditemukan: Pengguna kembali ke halaman \textit{login} dan \textit{session} pengguna dihancurkan.
 	 \end{itemize}
 	 \item Mengubah konfigurasi pada halaman \textit{settings}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Konfigurasi yang diubah disimpan menuju \textit{database}.
-	 	\item Reaksi: Konfigurasi yang diubah disimpan menuju \textit{database}
+	 	\item Reaksi yang ditemukan: Konfigurasi yang diubah disimpan menuju \textit{database}
 	 \end{itemize}
 	 \item Menyalakan fitur \textit{registration}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Halaman \textit{login} terdapat tombol \textit{register} dan pengguna dapat melakukan \textit{register}.
-	 	\item Reaksi: Halaman \textit{login} terdapat tombol \textit{register} dan pengguna dapat melakukan \textit{register}.
+	 	\item Reaksi yang ditemukan: Halaman \textit{login} terdapat tombol \textit{register} dan pengguna dapat melakukan \textit{register}.
 	 \end{itemize}
 	 \item Menyalakan fitur \textit{lock student display name}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Fitur untuk mengubah \textit{display name} telah \textit{disable}.
-	 	\item Reaksi: Fitur untuk mengubah \textit{display name} telah \textit{disable}.
+	 	\item Reaksi yang ditemukan: Fitur untuk mengubah \textit{display name} telah \textit{disable}.
 	 \end{itemize}
 	 \item Halaman \textit{users}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Halaman hanya dapat diakses oleh \textit{admin}.
-	 	\item Reaksi: Halaman hanya dapat diakses oleh \textit{admin} dan akan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}.
+	 	\item Reaksi yang ditemukan: Halaman hanya dapat diakses oleh \textit{admin} dan akan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}.
 	 \end{itemize}
 	 \item Menambah \textit{users} dan mengirimkan email kepada setiap pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Pengguna dapat ditambahkan lebih dari satu dan email dikirimkan berisikan data pengguna.
-	 	\item Reaksi: Pengguna bertambah dan email dikirimkan berisikan data dari pengguna berupa \textit{username} dan \textit{password}.
+	 	\item Reaksi yang ditemukan: Pengguna bertambah dan email dikirimkan berisikan data dari pengguna berupa \textit{username} dan \textit{password}.
 	 \end{itemize}
 	 \item Mengunduh pengguna dalam format \textit{excel}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Seluruh data pada halaman \textit{users} terunduh pada perangkat pengguna dalam format \textit{excel}.
-	 	\item Reaksi: Seluruh data pada halaman \textit{users} terunduh pada perangkat pengguna dalam format \textit{excel}.
+	 	\item Reaksi yang ditemukan: Seluruh data pada halaman \textit{users} terunduh pada perangkat pengguna dalam format \textit{excel}.
 	 \end{itemize}
 	 \item Mengganti data pengguna lain
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Data pengguna lain hanya dapat diubah oleh \textit{admin}. Data berubah dan pengguna dapat mengakses menggunakan data yang baru.
-	 	\item Reaksi: Data pengguna lain hanya dapat diubah oleh \textit{admin} dan akan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}. Data berubah dan pengguna dapat mengakses menggunakan data yang baru.
+	 	\item Reaksi yang ditemukan: Data pengguna lain hanya dapat diubah oleh \textit{admin} dan akan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}. Data berubah dan pengguna dapat mengakses menggunakan data yang baru.
 	 \end{itemize}
 	 \item Melihat seluruh pengumpulan setiap pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Pengguna \textit{student} hanya dapat melihat seluruh pengumpulannya. Pengguna \textit{admin, head instructor}, dan \textit{instructor} dapat melihat pengumpulan pengguna lain.
-	 	\item Reaksi: Pengguna \textit{student} hanya dapat melihat seluruh pengumpulannya. Pengguna \textit{admin, head instructor}, dan \textit{instructor} dapat melihat pengumpulan pengguna lain.
+	 	\item Reaksi yang ditemukan: Pengguna \textit{student} hanya dapat melihat seluruh pengumpulannya. Pengguna \textit{admin, head instructor}, dan \textit{instructor} dapat melihat pengumpulan pengguna lain.
 	 \end{itemize}
 	 \item Menghapus pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya dapat dilakukan oleh \textit{admin} dan pengguna terhapus dari \textit{database}.
-	 	\item Reaksi: Hanya dapat dilakukan oleh \textit{admin} dan apabila dilakukan oleh pengguna lain akan mengembalikan \textit{error} 404. Data pengguna terhapus dari \textit{database}.
+	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan apabila dilakukan oleh pengguna lain akan mengembalikan \textit{error} 404. Data pengguna terhapus dari \textit{database}.
 	 \end{itemize}
 	 \item Menghapus \textit{submission} pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Seluruh \textit{submission} dari pengguna tersebut terhapus.
-	 	\item Reaksi: Seluruh \textit{submission} dari pengguna tersebut terhapus.
+	 	\item Reaksi yang ditemukan: Seluruh \textit{submission} dari pengguna tersebut terhapus.
 	 \end{itemize}
 	 \item Halaman \textit{nofitications}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Dapat diakses oleh seluruh pengguna namun tombol \textit{add, edit} dan \textit{delete} hanya terdapat pada pengguna \textit{admin} dan \textit{head instructor}.
-	 	\item Reaksi: Dapat diakses oleh seluruh pengguna namun tombol \textit{add, edit} dan \textit{delete} hanya terdapat pada pengguna \textit{admin} dan \textit{head instructor}.
+	 	\item Reaksi yang ditemukan: Dapat diakses oleh seluruh pengguna namun tombol \textit{add, edit} dan \textit{delete} hanya terdapat pada pengguna \textit{admin} dan \textit{head instructor}.
 	 \end{itemize}
 	 \item Halaman \textit{assignments}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Dapat diakses oleh seluruh pengguna dan dapat memilih \textit{assignment}.
-	 	\item Reaksi: Dapat diakses oleh seluruh pengguna dan dapat memilih \textit{assignment}.
+	 	\item Reaksi yang ditemukan: Dapat diakses oleh seluruh pengguna dan dapat memilih \textit{assignment}.
 	 \end{itemize}
 	 \item Memilih \textit{assignment}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Waktu pada \textit{top bar} berganti menjadi penghitung mundur waktu \textit{assignment} selesai. Apabila terdapat \textit{extra time} maka muncul tampilan dan penghitung mundur \textit{extra time}.
-	 	\item Reaksi: Waktu pada \textit{top bar} berganti menjadi penghitung mundur waktu \textit{assignment} selesai. Apabila terdapat \textit{extra time} maka muncul tampilan dan penghitung mundur \textit{extra time}.
+	 	\item Reaksi yang ditemukan: Waktu pada \textit{top bar} berganti menjadi penghitung mundur waktu \textit{assignment} selesai. Apabila terdapat \textit{extra time} maka muncul tampilan dan penghitung mundur \textit{extra time}.
 	 \end{itemize}
 	 \item Menambah \textit{assignment}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Assignment} bertambah pada direktori \textit{assignments} dan data ter\textit{extract}. Dapat menambahkan \textit{problem} dan melakukan konfigurasi sesuai dengan kebutuhan.
-	 	\item Reaksi: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Assignment} bertambah pada direktori \textit{assignments} dan data ter\textit{extract}. Dapat menambahkan \textit{problem} dan melakukan konfigurasi sesuai dengan kebutuhan.
+	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Assignment} bertambah pada direktori \textit{assignments} dan data ter\textit{extract}. Dapat menambahkan \textit{problem} dan melakukan konfigurasi sesuai dengan kebutuhan.
 	 \end{itemize}
 	 \item Mengunduh \textit{pdf} soal
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{PDF} soal terunduh menuju perangkat pengguna.
-	 	\item Reaksi: \textit{PDF} soal terunduh menuju perangkat pengguna.
+	 	\item Reaksi yang ditemukan: \textit{PDF} soal terunduh menuju perangkat pengguna.
 	 \end{itemize}
 	 \item Mengunduh \textit{test case} dan soal \textit{PDF}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Test case} dan soal \textit{pdf} terunduh menuju perangkat pengguna dengan \textit{extension zip}.
-	 	\item Reaksi: \textit{Test case} dan soal \textit{pdf} terunduh menuju perangkat pengguna dengan \textit{extension zip}.
+	 	\item Reaksi yang ditemukan: \textit{Test case} dan soal \textit{pdf} terunduh menuju perangkat pengguna dengan \textit{extension zip}.
 	 \end{itemize}
 	 \item Mengunduh \textit{final submission} berdasarkan pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan pengguna.
-	 	\item Reaksi: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan pengguna.
+	 	\item Reaksi yang ditemukan: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan pengguna.
 	 \end{itemize}
 	 \item Mengunduh \textit{final submission} berdasarkan \textit{problem}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
-	 	\item Reaksi: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
+	 	\item Reaksi yang ditemukan: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
 	 \end{itemize}
 	 \item Mendeteksi \textit{similar code} pada \textit{assignment}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Pengguna diarahkan menuju halaman \textit{cheat detection} dengan \textit{id} dari \textit{assignment} yang dipilih. Dihasilkan tautan yang berisikan hasil dari pengecekan \textit{similar code}.
-	 	\item Reaksi: Pengguna diarahkan menuju halaman \textit{cheat detection} dengan \textit{id} dari \textit{assignment} yang dipilih. Dihasilkan tautan yang berisikan hasil dari pengecekan \textit{similar code}.
+	 	\item Reaksi yang ditemukan: Pengguna diarahkan menuju halaman \textit{cheat detection} dengan \textit{id} dari \textit{assignment} yang dipilih. Dihasilkan tautan yang berisikan hasil dari pengecekan \textit{similar code}.
 	 \end{itemize}
 	 \item Melakukan \textit{edit assignment}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Assignment} berubah sesuai dengan konfigurasi pengguna.
-	 	\item Reaksi: \textit{Assignment} berubah sesuai dengan konfigurasi pengguna.
+	 	\item Reaksi yang ditemukan: \textit{Assignment} berubah sesuai dengan konfigurasi pengguna.
 	 \end{itemize}
 	 \item Menghapus \textit{assignment}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: \textit{Assignment terhapus} dari halaman \textit{assignments}.
-	 	\item Reaksi: \textit{Assignment terhapus} dari halaman \textit{assignments}.
+	 	\item Reaksi yang ditemukan: \textit{Assignment terhapus} dari halaman \textit{assignments}.
 	 \end{itemize}
 	 \item Halaman \textit{problems}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Dapat diakses oleh seluruh pengguna dan pengguna dapat mengumpukan jawaban melalui halaman tersebut. Namun, dekripsi \textit{problem} hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}.
-	 	\item Reaksi: Reaksi yang diharapkan: Dapat diakses oleh seluruh pengguna dan pengguna dapat mengumpukan jawaban pada halaman tersebut. Namun, dekripsi \textit{problem} hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}.
+	 	\item Reaksi yang ditemukan: Reaksi yang diharapkan: Dapat diakses oleh seluruh pengguna dan pengguna dapat mengumpukan jawaban pada halaman tersebut. Namun, dekripsi \textit{problem} hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}.
 	 \end{itemize}
 	 \item Menambahkan deskripsi \textit{problem} menggunakan \textit{markdown}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{markdown}. Deskripsi ditampilkan pada halaman \textit{problem}.
-	 	\item Reaksi: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{markdown}. Deskripsi ditampilkan pada halaman \textit{problem}.
+	 	\item Reaksi yang ditemukan: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{markdown}. Deskripsi ditampilkan pada halaman \textit{problem}.
 	 \end{itemize}
 	\item Menambahkan deskripsi \textit{problem} menggunakan \textit{HTML}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{HTML}. Deskripsi ditampilkan pada halaman \textit{problem}.
-	 	\item Reaksi: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{HTML}. Deskripsi ditampilkan pada halaman \textit{problem}.
+	 	\item Reaksi yang ditemukan: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{HTML}. Deskripsi ditampilkan pada halaman \textit{problem}.
 	 \end{itemize}
 	 \item Menambahkan deskripsi \textit{problem} menggunakan \textit{plain HTML}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{plain HTML}. Deskripsi ditampilkan pada halaman \textit{problem}.
-	 	\item Reaksi: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{plain HTML}. Deskripsi ditampilkan pada halaman \textit{problem}.
+	 	\item Reaksi yang ditemukan: Deskripsi \textit{problem} ditambahkan dengan tipe bahasa \textit{plain HTML}. Deskripsi ditampilkan pada halaman \textit{problem}.
 	 \end{itemize}
 	 \item Halaman \textit{submit}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Dapat diakses oleh seluruh pengguna. Pengguna dapat memilih \textit{problem} dan bahasa pemrogramannya. \textit{PDF} soal ditampilkan. Pengguna dapat langsung mencoba dan mengumpukan kode melalui \textit{editor} kode.
-	 	\item Reaksi: Dapat diakses oleh seluruh pengguna. Pengguna dapat memilih \textit{problem} dan bahasa pemrogramannya. \textit{PDF} soal ditampilkan. Pengguna dapat langsung mencoba dan mengumpukan kode melalui \textit{editor} kode.
+	 	\item Reaksi yang ditemukan: Dapat diakses oleh seluruh pengguna. Pengguna dapat memilih \textit{problem} dan bahasa pemrogramannya. \textit{PDF} soal ditampilkan. Pengguna dapat langsung mencoba dan mengumpukan kode melalui \textit{editor} kode.
 	 \end{itemize}
 	 \item Halaman \textit{final submissions}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Melihat seluruh \textit{final submission} dari seluruh pengguna apabila pengguna berupa \textit{admin, head instructor}, dan \textit{instructor}. Melihat seluruh \textit{final submission} dari pengguna apabila pengguna \textit{student}.
-	 	\item Reaksi: Melihat seluruh \textit{final submission} dari seluruh pengguna apabila pengguna berupa \textit{admin, head instructor}, dan \textit{instructor}. Melihat seluruh \textit{final submission} dari pengguna apabila pengguna \textit{student}.
+	 	\item Reaksi yang ditemukan: Melihat seluruh \textit{final submission} dari seluruh pengguna apabila pengguna berupa \textit{admin, head instructor}, dan \textit{instructor}. Melihat seluruh \textit{final submission} dari pengguna apabila pengguna \textit{student}.
 	 \end{itemize}
 	 \item Mengunduh data \textit{final submission} dalam format \textit{excel}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Seluruh data dari halaman \textit{final submission} terunduh kepada perangkat pengguna dalam format \textit{excel}.
-	 	\item Reaksi: Seluruh data dari halaman \textit{final submission} terunduh kepada perangkat pengguna dalam format \textit{excel}.
+	 	\item Reaksi yang ditemukan: Seluruh data dari halaman \textit{final submission} terunduh kepada perangkat pengguna dalam format \textit{excel}.
 	 \end{itemize}
 	 \item Melihat status dari \textit{submission} dan \textit{test case problem}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Memperlihatkan status dan nilai dari kode. Setiap \textit{test case} memperlihatkan apakah benar, salah, atau \textit{runtime error}
-	 	\item Reaksi: Memperlihatkan status dan nilai dari kode. Setiap \textit{test case} memperlihatkan apakah benar, salah, atau \textit{runtime error}
+	 	\item Reaksi yang ditemukan: Memperlihatkan status dan nilai dari kode. Setiap \textit{test case} memperlihatkan apakah benar, salah, atau \textit{runtime error}
 	 \end{itemize}
 	 \item Melakukan \textit{filter} berdasarkan nama pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya terlihat \textit{final submissions} dari pengguna tersebut.
-	 	\item Reaksi: Hanya terlihat \textit{final submissions} dari pengguna tersebut.
+	 	\item Reaksi yang ditemukan: Hanya terlihat \textit{final submissions} dari pengguna tersebut.
 	 \end{itemize}
 	 \item Melakukan \textit{filter} berdasarkan \textit{problem}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya terlihat \textit{final submissions} dari \textit{problem} tersebut.
-	 	\item Reaksi: Hanya terlihat \textit{final submissions} dari \textit{problem} tersebut.
+	 	\item Reaksi yang ditemukan: Hanya terlihat \textit{final submissions} dari \textit{problem} tersebut.
 	 \end{itemize}
 	 \item Melakukan \textit{rejudge}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} akan dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
-	 	\item Reaksi: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} akan dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
+	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} akan dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
 	 \end{itemize}
 	 \item Halaman \textit{all submissions}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Melihat seluruh \textit{submission} yang telah dikumpulkan dan dapat memilih \textit{submission} yang ingin dijadikan hasil akhir. Melihat status dari \textit{submission} pengguna. Melihat kode yang sudah dikumpulkan. Melihat \textit{log} dari setiap \textit{submission} apabila pengguna berupa \textit{admin}, \textit{head instructor}, dan \textit{instructor}.
-	 	\item Reaksi: Melihat seluruh \textit{submission} yang telah dikumpulkan dan dapat memilih \textit{submission} yang ingin dijadikan hasil akhir. Melihat status dari \textit{submission} pengguna. Melihat kode yang sudah dikumpulkan. Melihat \textit{log} dari setiap \textit{submission} apabila pengguna berupa \textit{admin}, \textit{head instructor}, dan \textit{instructor}.
+	 	\item Reaksi yang ditemukan: Melihat seluruh \textit{submission} yang telah dikumpulkan dan dapat memilih \textit{submission} yang ingin dijadikan hasil akhir. Melihat status dari \textit{submission} pengguna. Melihat kode yang sudah dikumpulkan. Melihat \textit{log} dari setiap \textit{submission} apabila pengguna berupa \textit{admin}, \textit{head instructor}, dan \textit{instructor}.
 	 \end{itemize}
 	 \item Melakukan \textit{filter} berdasarkan nama pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya terlihat \textit{all submissions} dari pengguna tersebut.
-	 	\item Reaksi: Hanya terlihat \textit{all submissions} dari pengguna tersebut.
+	 	\item Reaksi yang ditemukan: Hanya terlihat \textit{all submissions} dari pengguna tersebut.
 	 \end{itemize}
 	 \item Melakukan \textit{filter} berdasarkan \textit{problem}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya terlihat \textit{all submissions} dari \textit{problem} tersebut.
-	 	\item Reaksi: Hanya terlihat \textit{all submissions} dari \textit{problem} tersebut.
+	 	\item Reaksi yang ditemukan: Hanya terlihat \textit{all submissions} dari \textit{problem} tersebut.
 	 \end{itemize}
 	 \item Mengunduh data \textit{all submission} dalam format \textit{excel}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Seluruh data dari halaman \textit{all submission} terunduh kepada perangkat pengguna dalam format \textit{excel}.
-	 	\item Reaksi: Seluruh data dari halaman \textit{all submission} terunduh kepada perangkat pengguna dalam format \textit{excel}.
+	 	\item Reaksi yang ditemukan: Seluruh data dari halaman \textit{all submission} terunduh kepada perangkat pengguna dalam format \textit{excel}.
 	 \end{itemize}
 	 \item Halaman \textit{hall of fame}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Melihat skor total dari seluruh \textit{assignment} setiap pengguna dan mengurutkannya dari yang terbesar.
-	 	\item Reaksi: Melihat skor total dari seluruh \textit{assignment} setiap pengguna dan mengurutkannya dari yang terbesar.
+	 	\item Reaksi yang ditemukan: Melihat skor total dari seluruh \textit{assignment} setiap pengguna dan mengurutkannya dari yang terbesar.
 	 \end{itemize}
 	 \item Halaman \textit{24-hour log}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda akan terdeteksi dan ditampilkan.
-	 	\item Reaksi: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda akan terdeteksi dan ditampilkan
+	 	\item Reaksi yang ditemukan: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda akan terdeteksi dan ditampilkan
 	 \end{itemize}
 	 \item Halaman \textit{submission queue}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Dapat memberhentikan, melanjutkan, dan membersihkan antrian dari \textit{submission} yang ada.
-	 	\item Reaksi: Dapat memberhentikan, melanjutkan, dan membersihkan antrian dari \textit{submission} yang ada.
+	 	\item Reaksi yang ditemukan: Dapat memberhentikan, melanjutkan, dan membersihkan antrian dari \textit{submission} yang ada.
 	 \end{itemize}
 \end{enumerate}
+
+\section{Pengujian Experimental}
+Pengujuan experimental akan dilakukan pada tiga buah versi sistem operasi \textit{Ubuntu} yakni versi 22.04, 23.04, dan 22.10. Pengujian ini bertujuan untuk menguji perangkat lunak apakah dapat berjalan pada sistem operasi yang berbeda.
+
+\subsection{\textit{Ubuntu} 22.04}
+Pengujian experimental pertama akan dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 22.04. Pengujian akan dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
+\subsubsection{\textit{Sandbox} tidak terbangun}
+Pengujian akan dilakukan dengan membangun \textit{sandbox} untuk kode C/C++. Pembangunan \textit{sandbox} dilakukan pada direktori \texttt{tester/easysandbox} dengan menjalankan kode berikut:
+\begin{lstlisting}[caption=Pembangunan \textit{sandbox} pada \textit{Ubuntu} 22.04, label=kode:sandbox2204]
+$ cd tester/easysandbox
+$ chmod +x runalltests.sh
+$ chmod +x runtest.sh
+$ make runtests
+\end{lstlisting}
+
+Kode \ref{kode:sandbox2204} akan memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses file \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir file \texttt{runtests} akan dijalankan menggunakan sintaks \texttt{make}. Pembentukan \textit{sandbox} akan menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} sebagai berikut:
+\begin{lstlisting}[caption=\textit{Error message} pembangunan \textit{sandbox} pada \textit{Ubuntu} 22.04, label=kode:errormsg2204]
+./runalltests.sh t/test01 t/test02 t/test03 t/test04 t/test05 t/test06 t/test07 t/test08 t/test09 t/test10 t/test11 t/test12 t/test13 t/test14
+Executing t/test01...passed!
+Executing t/test02...passed!
+Executing t/test03...passed!
+Executing t/test04...passed!
+Executing t/test05...passed!
+Executing t/test06...passed!
+Executing t/test07...passed!
+Executing t/test08...passed!
+Executing t/test09...1a2
+> Hello, C++ world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, C++ world], got [<<entering SECCOMP mode>>])
+Executing t/test10...1a2
+> Hello from the constructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello from the constructor!], got [<<entering SECCOMP mode>>])
+Executing t/test11...passed!
+Executing t/test12...1a2,3
+> Here we are in main()
+> Hello from the destructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Here we are in main()
+Hello from the destructor!], got [<<entering SECCOMP mode>>])
+Executing t/test13...passed!
+Executing t/test14...1a2
+> 500500
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+500500], got [<<entering SECCOMP mode>>])
+4 test(s) failed
+make: *** [Makefile:31: runtests] Error 1
+\end{lstlisting}
+Kode \ref{kode:errormsg2204} merupakan keluaran dari pembentukan \textit{sandbox} pada \textit{Ubuntu} 22.04. Terdapat \textit{error message} berupa keluaran tidak sesuai dengan yang seharusnya. Pembentukan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
+
+\subsection{\textit{Ubuntu} 23.04}
+Pengujian experimental kedua akan dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 23.04. Pengujian akan dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
+\begin{lstlisting}[caption=Pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.04, label=kode:sandbox2304]
+$ cd tester/easysandbox
+$ chmod +x runalltests.sh
+$ chmod +x runtest.sh
+$ make runtests
+\end{lstlisting}
+
+Kode \ref{kode:sandbox2304} akan memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses file \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir file \texttt{runtests} akan dijalankan menggunakan sintaks \texttt{make}. Pembentukan \textit{sandbox} akan menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} sebagai berikut:
+\begin{lstlisting}[caption=\textit{Error message} pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.04, label=kode:errormsg2304]
+/runalltests.sh t/test01 t/test02 t/test03 t/test04 t/test05 t/test06 t/test07 t/test08 t/test09 t/test10 t/test11 t/test12 t/test13 t/test14
+Executing t/test01...failed (exit code mismatch, expected 0, got 139)
+Executing t/test02...1a2
+> Hello, world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, world], got [<<entering SECCOMP mode>>])
+Executing t/test03...failed (exit code mismatch, expected 137, got 139)
+Executing t/test04...1a2
+> 500500
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+500500], got [<<entering SECCOMP mode>>])
+Executing t/test05...1a2
+> Hello, world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, world], got [<<entering SECCOMP mode>>])
+Executing t/test06...failed (exit code mismatch, expected 137, got 139)
+Executing t/test07...1a2
+> 59
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+59], got [<<entering SECCOMP mode>>])
+Executing t/test08...failed (exit code mismatch, expected 0, got 139)
+Executing t/test09...1a2
+> Hello, C++ world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, C++ world], got [<<entering SECCOMP mode>>])
+Executing t/test10...1a2
+> Hello from the constructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello from the constructor!], got [<<entering SECCOMP mode>>])
+Executing t/test11...failed (exit code mismatch, expected 137, got 139)
+Executing t/test12...1a2,3
+> Here we are in main()
+> Hello from the destructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Here we are in main()
+Hello from the destructor!], got [<<entering SECCOMP mode>>])
+Executing t/test13...1a2
+> Hello from the destructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello from the destructor!], got [<<entering SECCOMP mode>>])
+Executing t/test14...1a2
+> 500500
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+500500], got [<<entering SECCOMP mode>>])
+14 test(s) failed
+make: *** [Makefile:31: runtests] Error 1
+\end{lstlisting}
+Kode \ref{kode:errormsg2304} merupakan keluaran dari pembentukan \textit{sandbox} pada \textit{Ubuntu} 23.04. Terdapat \textit{error message} berupa keluaran tidak sesuai dengan yang seharusnya. Pembentukan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
+
+\subsection{\textit{Ubuntu} 23.10}
+Pengujian experimental ketiga akan dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 23.10. Pengujian akan dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
+\begin{lstlisting}[caption=Pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.10, label=kode:sandbox2310]
+$ cd tester/easysandbox
+$ chmod +x runalltests.sh
+$ chmod +x runtest.sh
+$ make runtests
+\end{lstlisting}
+
+Kode \ref{kode:sandbox2310} akan memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses file \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir file \texttt{runtests} akan dijalankan menggunakan sintaks \texttt{make}. Pembentukan \textit{sandbox} akan menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} sebagai berikut:
+\begin{lstlisting}[caption=\textit{Error message} pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.10, label=kode:errormsg2310]
+g++ -g -Wall -D_BSD_SOURCE  -o t/test09 t/test09.cpp
+In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:679,
+                 from /usr/include/c++/13/bits/requires_hosted.h:31,
+                 from /usr/include/c++/13/iostream:38,
+                 from t/test09.cpp:3:
+/usr/include/features.h:196:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  196 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+g++ -g -Wall -D_BSD_SOURCE  -o t/test10 t/test10.cpp
+In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:679,
+                 from /usr/include/c++/13/bits/requires_hosted.h:31,
+                 from /usr/include/c++/13/iostream:38,
+                 from t/test10.cpp:3:
+/usr/include/features.h:196:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  196 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+g++ -g -Wall -D_BSD_SOURCE  -o t/test11 t/test11.cpp
+In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:679,
+                 from /usr/include/c++/13/bits/requires_hosted.h:31,
+                 from /usr/include/c++/13/iostream:38,
+                 from t/test11.cpp:4:
+/usr/include/features.h:196:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  196 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+g++ -g -Wall -D_BSD_SOURCE  -o t/test12 t/test12.cpp
+In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:679,
+                 from /usr/include/c++/13/bits/requires_hosted.h:31,
+                 from /usr/include/c++/13/iostream:38,
+                 from t/test12.cpp:3:
+/usr/include/features.h:196:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  196 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+gcc -std=c99 -g -Wall -D_BSD_SOURCE   -o t/test13 t/test13.c
+In file included from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdio.h:27,
+                 from t/test13.c:3:
+/usr/include/features.h:196:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  196 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+g++ -g -Wall -D_BSD_SOURCE  -o t/test14 t/test14.cpp
+In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
+                 from /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:679,
+                 from /usr/include/c++/13/bits/requires_hosted.h:31,
+                 from /usr/include/c++/13/iostream:38,
+                 from t/test14.cpp:4:
+/usr/include/features.h:196:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+  196 | # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+      |   ^~~~~~~
+./runalltests.sh t/test01 t/test02 t/test03 t/test04 t/test05 t/test06 t/test07 t/test08 t/test09 t/test10 t/test11 t/test12 t/test13 t/test14
+Executing t/test01...failed (exit code mismatch, expected 0, got 139)
+Executing t/test02...1a2
+> Hello, world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, world], got [<<entering SECCOMP mode>>])
+Executing t/test03...failed (exit code mismatch, expected 137, got 139)
+Executing t/test04...1a2
+> 500500
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+500500], got [<<entering SECCOMP mode>>])
+Executing t/test05...1a2
+> Hello, world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, world], got [<<entering SECCOMP mode>>])
+Executing t/test06...failed (exit code mismatch, expected 137, got 139)
+Executing t/test07...1a2
+> 59
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+59], got [<<entering SECCOMP mode>>])
+Executing t/test08...failed (exit code mismatch, expected 0, got 139)
+Executing t/test09...1a2
+> Hello, C++ world
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello, C++ world], got [<<entering SECCOMP mode>>])
+Executing t/test10...1a2
+> Hello from the constructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello from the constructor!], got [<<entering SECCOMP mode>>])
+Executing t/test11...failed (exit code mismatch, expected 137, got 139)
+Executing t/test12...1a2,3
+> Here we are in main()
+> Hello from the destructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Here we are in main()
+Hello from the destructor!], got [<<entering SECCOMP mode>>])
+Executing t/test13...1a2
+> Hello from the destructor!
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+Hello from the destructor!], got [<<entering SECCOMP mode>>])
+Executing t/test14...1a2
+> 500500
+failed (output mismatch, expected [<<entering SECCOMP mode>>
+500500], got [<<entering SECCOMP mode>>])
+14 test(s) failed
+make: *** [Makefile:31: runtests] Error 1
+\end{lstlisting}
+Kode \ref{kode:errormsg2310} merupakan keluaran dari pembentukan \textit{sandbox} pada \textit{Ubuntu} 23.10. Terdapat \textit{error message} berupa \textit{warning} dan \textit{test case} yang tidak berhasil dijalankan. Pembentukan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
