@@ -1,7 +1,7 @@
 <!-- {#
  # SharIF Judge
- # file: add_assignment.twig
- # author: Mohammad Javad Naderi <mjnaderi@gmail.com>
+ # file: add_assignment.php
+ # author: Filipus Setio Nugroho <filipussetio@gmail.com>
  #} -->
 <?= $this->extend('templates/base') ?>
 <?= $this->section('icon') ?><?= $edit ? 'fa-edit' : 'fa-plus-square' ?><?= $this->endSection()?>

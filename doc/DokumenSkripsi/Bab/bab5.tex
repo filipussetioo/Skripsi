@@ -6,7 +6,7 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
 
 \begin{enumerate}
 	\item Lingungan \textit{Development}\\
-	Tabel \ref{tab:devhard} merupakan spesifikasi perangkat keras lingkungan \textit{development}.
+	Tabel \ref{tab:devhard} menunjukan spesifikasi perangkat keras lingkungan \textit{development}.
 	\begin{table}[H]
  	\caption{Perangkat Keras Lingkungan \textit{Development}}
 	\label{tab:devhard}
@@ -14,13 +14,13 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
     	\begin{tabular}{|l|l|}
     	\hline
         	\textbf{Parameter} & \textbf{Nilai} \\ \hline
-        	\textit{Perangkat Keras} & \textit{Macbook Pro M1} \\ \hline
+        	Perangkat Keras & Macbook Pro M1 \\ \hline
         	\textit{Processor} & \textit{M1 Pro} \\ \hline
         	\textit{Random Access Memory (RAM)} & 16 GB \\ \hline
         	\textit{Storage} & 512 GB \textit{SSD} \\ \hline
     	\end{tabular}
 	\end{table}
-	Tabel \ref{tab:devsoft} merupakan spesifikasi perangkat lunak lingkungan \textit{development}.
+	Tabel \ref{tab:devsoft} menunjukan spesifikasi perangkat lunak lingkungan \textit{development}.
  	\begin{table}[H]
  	\caption{Perangkat Lunak Lingkungan \textit{Development}}
 	\label{tab:devsoft}
@@ -28,18 +28,18 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
     	\begin{tabular}{|l|l|}
     	\hline
         	\textbf{Parameter} & \textbf{Nilai} \\ \hline
-        	Sistem Operasi & \textit{Debian} 11 \\ \hline
+        	Sistem Operasi & \textit{Debian} 11-slim \\ \hline
         	Bahasa Pemrograman & PHP, \textit{JavaScript}, \textit{CSS}, dan \textit{HTML} \\ \hline
-        	\textit{Framework} & \textit{CodeIgniter 4.2.3} \\ \hline
-        	\textit{Code Editor} & \textit{Visual Studio Code 1.84.2 (Universal)} \\ \hline
-        	\textit{Perangkat Lunak Pendukung} & \textit{Docker Version} 4.21.1 (114176)\\ & \textit{Composer} 2.6.5\\ & \textit{Google Chrome Version} 119.0.6045.159 (Official Build) (arm64)\\ & \textit{MariaDB} 10.5.8 \\ & \textit{phpMyAdmin} 4.8 \\ \hline
+        	\textit{Framework} & \textit{CodeIgniter} 4.2.3 \\ \hline
+        	\textit{Code Editor} & \textit{Visual Studio Code} 1.84.2 (Universal) \\ \hline
+        	Perangkat Lunak Pendukung & \textit{Docker Version} 4.21.1 (114176)\\ & \textit{Composer} 2.6.5\\ & \textit{Google Chrome Version} 119.0.6045.159 (Official Build) (arm64)\\ & \textit{MariaDB} 10.5.8 \\ & \textit{phpMyAdmin} 4.8 \\ \hline
     	\end{tabular}
 	\end{table}
 	
 	\item Lingkungan \textit{Staging}\\
-	Tabel \ref{tab:staginghard} merupakan spesifikasi perangkat keras lingkungan \textit{staging}.
+	Tabel \ref{tab:staginghard} menunjukan spesifikasi perangkat keras lingkungan \textit{staging}.
 	\begin{table}[H]
- 	\caption{Perangkat Keras Lingkungan \textit{staging}}
+ 	\caption{Perangkat Keras Lingkungan \textit{Staging}}
 	\label{tab:staginghard}
     \centering
     	\begin{tabular}{|l|l|}
@@ -50,7 +50,7 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
         	\textit{Storage} & 10 GB \textit{SSD} \\ \hline
     	\end{tabular}
 	\end{table}
-	Tabel \ref{tab:stagingsoft} merupakan spesifikasi perangkat lunak lingkungan \textit{staging}.
+	Tabel \ref{tab:stagingsoft} menunjukan spesifikasi perangkat lunak lingkungan \textit{staging}.
  	\begin{table}[H]
  	\caption{Perangkat Lunak Lingkungan \textit{Staging}}
 	\label{tab:stagingsoft}
@@ -67,10 +67,10 @@ Implementasi perangkat lunak \textit{SharIF Judge} dilakukan pada dua buah lingk
 \section{Implementasi}
 Berikut merupakan hasil implementasi dari analisis dan perancangan perangkat lunak yang telah dibentuk:
 \subsection{Kode Program}
-Perubahan dan penambahan kode program untuk melakukan konversi perangkat lunak telah dijabarkan pada bab \ref{chap:perancangan}. Seluruh perubahan dan penambahan dibentuk menggunakan bahasa pemrograman PHP dengan bantuan beberapa perangkat lunak tambahan. Kode program untuk \textit{controller} dapat dilihat pada Lampiran \ref{lamp:A}. Kode program untuk \textit{model} dapat dilihat pada Lampiran \ref{lamp:B}. Kode program untuk \textit{view} dapat dilihat pada Lampiran \ref{lamp:C}.
+Perubahan dan penambahan kode program untuk melakukan konversi perangkat lunak telah dijabarkan pada bab \ref{chap:perancangan}. Seluruh perubahan dan penambahan dibentuk menggunakan bahasa pemrograman PHP dengan bantuan beberapa perangkat lunak tambahan. Kode program untuk \textit{controller} dapat dilihat pada Lampiran \ref{lamp:A}. Kode program untuk \textit{model} dapat dilihat pada Lampiran \ref{lamp:B}. Kode program untuk \textit{view} dapat dilihat pada Lampiran \ref{lamp:C}. Kode program lainnya dapat dilihat pada Lampiran \ref{lamp:D}.
 
 \subsection{Basis Data}
-Basis data terdapat perubahan pada tabel \textit{sessions} dimana terdapat perubahan nama kolom dan penghapusan kolom. Terdapat perubahan nama kolom \textit{session\_id} menjadi \textit{id}, \textit{user\_data} menjadi \textit{data}, dan \textit{last\_activity} menjadi \textit{timestamp}. Terdapat penghapusan kolom \textit{user\_agent}, perubahan tipe \textit{data} kolom \textit{timestamp} dan \textit{data}. Tabel \ref{tab:shjsessionbab5} merupakan struktur tabel baru pada \textit{shj\_sessions}.
+Basis data terdapat perubahan pada tabel \textit{sessions} dimana perubahan terjadi pada nama kolom dan penghapusan kolom. Terdapat perubahan nama kolom \textit{session\_id} menjadi \textit{id}, \textit{user\_data} menjadi \textit{data}, dan \textit{last\_activity} menjadi \textit{timestamp}. Terdapat penghapusan kolom \textit{user\_agent}, perubahan tipe \textit{data} kolom \textit{timestamp} dan \textit{data}. Tabel \ref{tab:shjsessionbab5} menunjukan struktur tabel baru pada \textit{shj\_sessions}.
 
 \begin{table}[H]
 \centering
@@ -96,8 +96,8 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 		\end{itemize}
 	\item Melakukan pengamanan terhadap \textit{sandbox}
 	\begin{itemize}
-		\item Reaksi yang diharapkan: Dapat membentuk \textit{sandbox} tanpa mengembalikan \textit{error}.
-		\item Reaksi yang ditemukan: Pembentukan \textit{sandbox} mengembalikan \textit{success message} berupa \texttt{All tests passed!}.
+		\item Reaksi yang diharapkan: Dapat membangun \textit{sandbox} tanpa mengembalikan \textit{error}.
+		\item Reaksi yang ditemukan: Pembangunan \textit{sandbox} mengembalikan \textit{success message} berupa \texttt{All tests passed!}.
 	\end{itemize}
 	\item Melakukan \textit{login}
 		\begin{itemize}
@@ -107,7 +107,7 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	\item Melakukan \textit{register}
 	 	\begin{itemize}
 	 		\item Reaksi yang diharapkan: Pengguna berhasil melakukan \textit{register} dan aplikasi mengembalikan \textit{Registered successfully}.
-	 		\item Reaksi yang ditemukan: Pengguna berhasil melakukan \textit{register} dan aplikasi mengembalikan \textit{Registered successfully}. Aplikasi akan mengembalikan \textit{error message} berupa \texttt{Registration is Closed} apabila fitur \textit{register} tidak dinyalakan.
+	 		\item Reaksi yang ditemukan: Pengguna berhasil melakukan \textit{register} dan aplikasi mengembalikan \textit{Registered successfully}. Aplikasi mengembalikan \textit{error message} berupa \texttt{Registration is Closed} apabila fitur \textit{register} tidak dinyalakan.
 	 	\end{itemize}
 	 \item Melakukan \textit{reset password} dengan \textit{email} yang telah terdaftar
 	 	\begin{itemize}
@@ -182,11 +182,11 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \item Mengubah \textit{role}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Penggantian \textit{role} hanya dapat dilakukan oleh \textit{admin}.
-	 	\item Reaksi yang ditemukan: Penggantian \textit{role} hanya dapat dilakukan oleh \textit{admin} dan akan mengembalikan \textit{error} apabila pengguna bukan \textit{admin}.
+	 	\item Reaksi yang ditemukan: Penggantian \textit{role} hanya dapat dilakukan oleh \textit{admin} dan mengembalikan \textit{error} apabila pengguna bukan \textit{admin}.
 	 \end{itemize}
 	 \item Halaman \textit{settings}
 	 \begin{itemize}
-	 	\item Reaksi yang diharapkan: Halaman hanya dapat diakses oleh \textit{admin} dan akan mengeluarkan \textit{error message} apabila menggunakan \textit{role} lain.
+	 	\item Reaksi yang diharapkan: Halaman hanya dapat diakses oleh \textit{admin} dan mengeluarkan \textit{error message} apabila menggunakan \textit{role} lain.
 	 	\item Reaksi yang ditemukan: Halaman hanya dapat diakses oleh \textit{admin} dan mengeluarkan \textit{error message} berupa 404 apabila diakses oleh \textit{role} lain.
 	 \end{itemize}
 	 \item Melakukan \textit{sign out}
@@ -212,7 +212,7 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \item Halaman \textit{users}
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Halaman hanya dapat diakses oleh \textit{admin}.
-	 	\item Reaksi yang ditemukan: Halaman hanya dapat diakses oleh \textit{admin} dan akan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}.
+	 	\item Reaksi yang ditemukan: Halaman hanya dapat diakses oleh \textit{admin} dan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}.
 	 \end{itemize}
 	 \item Menambah \textit{users} dan mengirimkan email kepada setiap pengguna
 	 \begin{itemize}
@@ -227,7 +227,7 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \item Mengganti data pengguna lain
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Data pengguna lain hanya dapat diubah oleh \textit{admin}. Data berubah dan pengguna dapat mengakses menggunakan data yang baru.
-	 	\item Reaksi yang ditemukan: Data pengguna lain hanya dapat diubah oleh \textit{admin} dan akan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}. Data berubah dan pengguna dapat mengakses menggunakan data yang baru.
+	 	\item Reaksi yang ditemukan: Data pengguna lain hanya dapat diubah oleh \textit{admin} dan mengembalikan \textit{error} berupa 404 apabila pengguna bukan \textit{admin}. Data berubah dan pengguna dapat mengakses menggunakan data yang baru.
 	 \end{itemize}
 	 \item Melihat seluruh pengumpulan setiap pengguna
 	 \begin{itemize}
@@ -237,7 +237,7 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \item Menghapus pengguna
 	 \begin{itemize}
 	 	\item Reaksi yang diharapkan: Hanya dapat dilakukan oleh \textit{admin} dan pengguna terhapus dari \textit{database}.
-	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan apabila dilakukan oleh pengguna lain akan mengembalikan \textit{error} 404. Data pengguna terhapus dari \textit{database}.
+	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan apabila dilakukan oleh pengguna lain mengembalikan \textit{error} 404. Data pengguna terhapus dari \textit{database}.
 	 \end{itemize}
 	 \item Menghapus \textit{submission} pengguna
 	 \begin{itemize}
@@ -276,13 +276,13 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \end{itemize}
 	 \item Mengunduh \textit{final submission} berdasarkan pengguna
 	 \begin{itemize}
-	 	\item Reaksi yang diharapkan: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan pengguna.
-	 	\item Reaksi yang ditemukan: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan pengguna.
+	 	\item Reaksi yang diharapkan: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh \textit{file} yang terunduh dikelompokan pada direktori berdasarkan pengguna.
+	 	\item Reaksi yang ditemukan: Seluruh \textit{final submission} dari setiap pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh \textit{file} yang terunduh dikelompokan pada direktori berdasarkan pengguna.
 	 \end{itemize}
 	 \item Mengunduh \textit{final submission} berdasarkan \textit{problem}
 	 \begin{itemize}
-	 	\item Reaksi yang diharapkan: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
-	 	\item Reaksi yang ditemukan: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh file yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
+	 	\item Reaksi yang diharapkan: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh \textit{file} yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
+	 	\item Reaksi yang ditemukan: Seluruh \textit{final submission} dari pengguna yang mengumpulkan terunduh pada perangkat dengan \textit{extension zip}. Seluruh \textit{file} yang terunduh dikelompokan pada direktori berdasarkan \textit{problem}.
 	 \end{itemize}
 	 \item Mendeteksi \textit{similar code} pada \textit{assignment}
 	 \begin{itemize}
@@ -351,8 +351,8 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \end{itemize}
 	 \item Melakukan \textit{rejudge}
 	 \begin{itemize}
-	 	\item Reaksi yang diharapkan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} akan dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
-	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} akan dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
+	 	\item Reaksi yang diharapkan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
+	 	\item Reaksi yang ditemukan: Hanya dapat dilakukan oleh \textit{admin} dan \textit{head instructor}. \textit{Submission} dilakukan penilaian ulang dan mengubah status sementara menjadi \textit{pending}.
 	 \end{itemize}
 	 \item Halaman \textit{all submissions}
 	 \begin{itemize}
@@ -381,8 +381,8 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 	 \end{itemize}
 	 \item Halaman \textit{24-hour log}
 	 \begin{itemize}
-	 	\item Reaksi yang diharapkan: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda akan terdeteksi dan ditampilkan.
-	 	\item Reaksi yang ditemukan: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda akan terdeteksi dan ditampilkan
+	 	\item Reaksi yang diharapkan: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda terdeteksi dan ditampilkan.
+	 	\item Reaksi yang ditemukan: Hanya dapat diakses oleh \textit{admin} dan berisikan seluruh data perangkat dari pengguna. Pengguna yang melakukan \textit{login} dari \textit{ip address} yang berbeda terdeteksi dan ditampilkan
 	 \end{itemize}
 	 \item Halaman \textit{submission queue}
 	 \begin{itemize}
@@ -392,12 +392,12 @@ Pengujian fungsional dilakukan pada lingkungan \textit{staging} yang bertujuan u
 \end{enumerate}
 
 \section{Pengujian Experimental}
-Pengujuan experimental akan dilakukan pada tiga buah versi sistem operasi \textit{Ubuntu} yakni versi 22.04, 23.04, dan 22.10. Pengujian ini bertujuan untuk menguji perangkat lunak apakah dapat berjalan pada sistem operasi yang berbeda.
+Pengujuan experimental dilakukan pada tiga buah versi sistem operasi \textit{Ubuntu} yakni versi 22.04, 23.04, dan 22.10. Pengujian ini bertujuan untuk menguji perangkat lunak apakah dapat berjalan pada sistem operasi yang berbeda.
 
 \subsection{\textit{Ubuntu} 22.04}
-Pengujian experimental pertama akan dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 22.04. Pengujian akan dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
+Pengujian experimental pertama dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 22.04. Pengujian dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
 \subsubsection{\textit{Sandbox} tidak terbangun}
-Pengujian akan dilakukan dengan membangun \textit{sandbox} untuk kode C/C++. Pembangunan \textit{sandbox} dilakukan pada direktori \texttt{tester/easysandbox} dengan menjalankan kode berikut:
+Pengujian dilakukan dengan membangun \textit{sandbox} untuk kode C/C++. Pembangunan \textit{sandbox} dilakukan pada direktori \texttt{tester/easysandbox} dengan menjalankan kode berikut:
 \begin{lstlisting}[caption=Pembangunan \textit{sandbox} pada \textit{Ubuntu} 22.04, label=kode:sandbox2204]
 $ cd tester/easysandbox
 $ chmod +x runalltests.sh
@@ -405,7 +405,7 @@ $ chmod +x runtest.sh
 $ make runtests
 \end{lstlisting}
 
-Kode \ref{kode:sandbox2204} akan memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses file \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir file \texttt{runtests} akan dijalankan menggunakan sintaks \texttt{make}. Pembentukan \textit{sandbox} akan menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} sebagai berikut:
+Kode \ref{kode:sandbox2204} memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses \textit{file} \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir \textit{file} \texttt{runtests} dijalankan menggunakan sintaks \texttt{make}. Pembangunan \textit{sandbox} menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} seperti yang ditunjukan pada Kode \ref{kode:errormsg2204}.
 \begin{lstlisting}[caption=\textit{Error message} pembangunan \textit{sandbox} pada \textit{Ubuntu} 22.04, label=kode:errormsg2204]
 ./runalltests.sh t/test01 t/test02 t/test03 t/test04 t/test05 t/test06 t/test07 t/test08 t/test09 t/test10 t/test11 t/test12 t/test13 t/test14
 Executing t/test01...passed!
@@ -439,10 +439,10 @@ failed (output mismatch, expected [<<entering SECCOMP mode>>
 4 test(s) failed
 make: *** [Makefile:31: runtests] Error 1
 \end{lstlisting}
-Kode \ref{kode:errormsg2204} merupakan keluaran dari pembentukan \textit{sandbox} pada \textit{Ubuntu} 22.04. Terdapat \textit{error message} berupa keluaran tidak sesuai dengan yang seharusnya. Pembentukan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
+Kode \ref{kode:errormsg2204} merupakan keluaran dari pembangunan \textit{sandbox} pada \textit{Ubuntu} 22.04. Terdapat \textit{error message} berupa keluaran tidak sesuai dengan yang seharusnya. Pembangunan dapat dikatakan tidak berhasil karena hanya sebagian \textit{test case} yang berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
 
 \subsection{\textit{Ubuntu} 23.04}
-Pengujian experimental kedua akan dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 23.04. Pengujian akan dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
+Pengujian experimental kedua dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 23.04. Pengujian dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
 \begin{lstlisting}[caption=Pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.04, label=kode:sandbox2304]
 $ cd tester/easysandbox
 $ chmod +x runalltests.sh
@@ -450,7 +450,7 @@ $ chmod +x runtest.sh
 $ make runtests
 \end{lstlisting}
 
-Kode \ref{kode:sandbox2304} akan memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses file \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir file \texttt{runtests} akan dijalankan menggunakan sintaks \texttt{make}. Pembentukan \textit{sandbox} akan menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} sebagai berikut:
+Kode \ref{kode:sandbox2304} memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses \textit{file} \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir \textit{file} \texttt{runtests} dijalankan menggunakan sintaks \texttt{make}. Pembangunan \textit{sandbox} menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} seperti yang ditunjukan pada Kode \ref{kode:errormsg2304}.
 \begin{lstlisting}[caption=\textit{Error message} pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.04, label=kode:errormsg2304]
 /runalltests.sh t/test01 t/test02 t/test03 t/test04 t/test05 t/test06 t/test07 t/test08 t/test09 t/test10 t/test11 t/test12 t/test13 t/test14
 Executing t/test01...failed (exit code mismatch, expected 0, got 139)
@@ -499,10 +499,10 @@ failed (output mismatch, expected [<<entering SECCOMP mode>>
 14 test(s) failed
 make: *** [Makefile:31: runtests] Error 1
 \end{lstlisting}
-Kode \ref{kode:errormsg2304} merupakan keluaran dari pembentukan \textit{sandbox} pada \textit{Ubuntu} 23.04. Terdapat \textit{error message} berupa keluaran tidak sesuai dengan yang seharusnya. Pembentukan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
+Kode \ref{kode:errormsg2304} merupakan keluaran dari pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.04. Terdapat \textit{error message} berupa keluaran tidak sesuai dengan yang seharusnya. Pembangunan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
 
 \subsection{\textit{Ubuntu} 23.10}
-Pengujian experimental ketiga akan dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 23.10. Pengujian akan dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
+Pengujian experimental ketiga dilakukan pada sistem operasi \textit{Ubuntu} dengan versi 23.10. Pengujian dilakukan dengan melakukan instalasi dan melakukan pengamanan terhadap \textit{sandbox}. Setelah dilakukan instalasi terdapat persoalan dalam melakukan pengamanan terhadap \textit{sandbox}. Berikut merupakan persoalan yang didapatkan:
 \begin{lstlisting}[caption=Pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.10, label=kode:sandbox2310]
 $ cd tester/easysandbox
 $ chmod +x runalltests.sh
@@ -510,7 +510,7 @@ $ chmod +x runtest.sh
 $ make runtests
 \end{lstlisting}
 
-Kode \ref{kode:sandbox2310} akan memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses file \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir file \texttt{runtests} akan dijalankan menggunakan sintaks \texttt{make}. Pembentukan \textit{sandbox} akan menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} sebagai berikut:
+Kode \ref{kode:sandbox2310} memindahkan pengguna menuju direktori \texttt{tester/easysandbox}. Selanjutnya akses \textit{file} \texttt{runalltests} dan \texttt{runtest} diubah agar dapat dieksekusi. Terakhir \textit{file} \texttt{runtests} dijalankan menggunakan sintaks \texttt{make}. Pembangunan \textit{sandbox} menghasilkan pesan berupa \texttt{All tests passed!}. Namun pada sistem operasi ini, \textit{sandbox} tidak dapat dibentuk dan menghasilkan \textit{error message} seperti yang dijunukan pada Kode \ref{kode:errormsg2310}.
 \begin{lstlisting}[caption=\textit{Error message} pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.10, label=kode:errormsg2310]
 g++ -g -Wall -D_BSD_SOURCE  -o t/test09 t/test09.cpp
 In file included from /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:39,
@@ -611,4 +611,4 @@ failed (output mismatch, expected [<<entering SECCOMP mode>>
 14 test(s) failed
 make: *** [Makefile:31: runtests] Error 1
 \end{lstlisting}
-Kode \ref{kode:errormsg2310} merupakan keluaran dari pembentukan \textit{sandbox} pada \textit{Ubuntu} 23.10. Terdapat \textit{error message} berupa \textit{warning} dan \textit{test case} yang tidak berhasil dijalankan. Pembentukan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.
+Kode \ref{kode:errormsg2310} merupakan keluaran dari pembangunan \textit{sandbox} pada \textit{Ubuntu} 23.10. Terdapat \textit{error message} berupa \textit{warning} dan \textit{test case} yang tidak berhasil dijalankan. Pembangunan dapat dikatakan tidak berhasil karena seluruh \textit{test case} tidak berhasil dilewati dan tidak terdapat pesan berupa \texttt{All tests passed!}. \textit{Error message} ini dihasilkan karena terdapat perbedaan versi pada \textit{seccomp} atau \textit{secure computing mode} sehingga tidak dapat dijalankan pada versi teratas pada \textit{Ubuntu}.

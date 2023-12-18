@@ -1,29 +1,29 @@
 \chapter{Analisis}
 \label{chap:analisis}
 \section{Analisis Sistem Kini}
-Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} yang di kustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan  arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}. Selain itu, terdapat direktori \texttt{assets} yang berisikan seluruh kebutuhan pengguna untuk ditampilkan seperti \textit{javascript} dan gambar. Terakhir terdapat direktori \textit{config} yang berisikan konfigurasi aplikasi dan \textit{library} yang dibentuk dan digunakan oleh \textit{SharIF Judge}.
+Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} yang dikustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan  arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}. Selain itu, terdapat direktori \texttt{assets} yang berisikan seluruh kebutuhan pengguna untuk ditampilkan seperti \textit{javascript} dan gambar. Terakhir terdapat direktori \textit{config} yang berisikan konfigurasi aplikasi dan \textit{library} yang dibentuk dan digunakan oleh \textit{SharIF Judge}.
 
 \subsection{\textit{Model}}
-\textit{Model} terdapat pada direktori \texttt{application/models}. Direktori ini berisikan kelas \textit{model} dengan fungsi-fungsi untuk mengolah data pada aplikasi. Berikut merupakan \textit{model} pada \textit{SharIF Judge} beserta fungsi-fungsinya.
+\textit{Model} terdapat pada direktori \texttt{application/models}. Direktori ini berisikan kelas \textit{model} dengan fungsi-fungsi untuk mengolah data pada aplikasi. Berikut merupakan \textit{model} pada \textit{SharIF Judge} beserta setiap fungsinya:
 \subsubsection{\texttt{Assignment\_model.php}}
-\textit{Model Assignment} terdapat beberapa fungsi untuk memproses data pada tabel \textit{assignment}. Berikut merupakan fungsi-fungsi dari \textit{model} tersebut:
+\texttt{Assignment\_model.php} terdapat beberapa fungsi untuk memproses data pada tabel \textit{assignment}. Berikut merupakan fungsi-fungsi dari \texttt{Assignment\_model.php}:
 \begin{itemize}
 	\item \texttt{add\_assignment}\\
 	Fungsi ini berguna untuk menambahkan atau memperbaharui \textit{assignment} pada \textit{database}.
 	\item \texttt{delete\_assignment}\\
 	Fungsi ini berguna untuk menghapus \textit{assignment} pada \textit{database}.
 	\item \texttt{all\_assignments}\\
-	Fungsi ini berguna untuk mengembalikan seluruh \textit{assignment} beserta informasi \textit{assignment} tersebut.
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{assignment} beserta informasi setiap \textit{assignment} tersebut.
 	\item \texttt{new\_assignment\_id}\\
 	Fungsi ini berguna untuk mencari \texttt{id} terkecil yang dapat digunakan untuk menambahkan \textit{assignment} baru.
 	\item \texttt{all\_problems}\\
 	Fungsi ini berguna untuk mengembalikan seluruh \textit{problems} dari \textit{assignment} yang ada.
 	\item \texttt{problem\_info}\\
-	Fungsi ini berguna untuk mengembalikan baris tabel untuk \textit{problem} tertentu.
-	\item \textit{assignment\_info}\\
-	Fungsi ini berguna untuk mengembalikan baris tabel untuk \texttt{assignment} tertentu.
+	Fungsi ini berguna untuk mengembalikan baris tabel untuk \textit{problem} yang diberikan.
+	\item \texttt{assignment\_info}\\
+	Fungsi ini berguna untuk mengembalikan baris tabel untuk \texttt{assignment} yang diberikan.
 	\item \texttt{is\_participant}\\
-	Fungsi ini berguna untuk mengecek apakah \textit{username} merupakan peserta atau tidak.
+	Fungsi ini berguna untuk mengecek apakah \textit{username} merupakan peserta \textit{assignments} atau tidak.
 	\item \texttt{increase\_total\_submits}\\
 	Fungsi ini berguna untuk menambahkan satu buah total \textit{submit}.
 	\item \texttt{set\_moss\_time}\\
@@ -31,7 +31,7 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 	\item \texttt{get\_moss\_time}\\
 	Fungsi ini berguna untuk mengembalikan \textit{"Moss Update Time"} untuk \textit{assignment} tertentu.
 	\item \texttt{save\_problem\_description}\\
-	Fungsi ini berguna untuk menyimpan atau memperbaharui deskripsi \textit{problem}.
+	Fungsi ini berguna untuk menambahkan atau memperbaharui deskripsi \textit{problem}.
 	\item \texttt{\_update\_coefficients}\\
 	Fungsi ini dipanggil pada fungsi \texttt{add\_assignment} yang berguna untuk memperbaharui koefisien dari \textit{assignment} tertentu.
 \end{itemize}
@@ -39,33 +39,33 @@ Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah
 Berikut merupakan fungsi-fungsi dari \texttt{Hof\_model.php} yang berguna untuk mengambil data untuk ditampilkan pada halaman \textit{Hall of Fame}.
 \begin{itemize}
 	\item \texttt{get\_all\_final\_submission}\\
-	Fungsi ini berguna untuk mengambil data untuk \textit{Hall of Fame} berdasarkan \textit{username}.
+	Fungsi ini berguna untuk mengambil seluruh data \textit{final submission}.
 	\item \texttt{get\_all\_user\_assignments}\\
 	Fungsi ini berguna untuk mengambil detail \textit{assignment} dan \textit{problem} berdasarkan pengguna.
 \end{itemize}
 \subsubsection{\texttt{Logs\_model.php}}
-Berikut merupakan fungsi-fungsi dari \texttt{Logs\_model.php} yang berguna untuk mencatat \textit{log} pada beberapa tabel.
+Berikut merupakan fungsi-fungsi dari \texttt{Logs\_model.php} yang berguna untuk mencatat \textit{log} pada beberapa tabel:
 \begin{itemize}
 	\item \texttt{insert\_to\_logs}\\
 	Fungsi ini berguna untuk mencatat \textit{log} pada tabel \textit{login}.
 	\item \texttt{get\_all\_logs}\\
-	Fungsi ini berguna untuk mengembalikan seluruh \textit{log} dalam bentuk \textit{array}.
+	Fungsi ini berguna untuk mengembalikan seluruh \textit{log} dari tabel \textit{login} dalam bentuk \textit{array}.
 \end{itemize}
 \subsubsection{\texttt{Notifications\_model.php}}
-\textit{Notifications Assignment} terdapat beberapa fungsi untuk memproses data pada tabel \textit{notifications}. Berikut merupakan fungsi-fungsi dari \textit{model} tersebut:
+\texttt{Notifications\_model.php} terdapat beberapa fungsi untuk memproses data pada tabel \textit{notifications}. Berikut merupakan fungsi-fungsi dari \textit{model} tersebut:
 \begin{itemize}
 	\item \texttt{get\_all\_notifications}\\
 	Fungsi ini berguna untuk mengembalikan seluruh \textit{notifications} dalam bentuk \textit{array}.
 	\item \texttt{get\_latest\_notifications}\\
-	Fungsi ini berguna untuk mengembalikan sepuluh \textit{notification} terakhir.
+	Fungsi ini berguna untuk mengembalikan sepuluh \textit{notification} terbaru.
 	\item \texttt{add\_notification}\\
-	Fungsi ini berguna untuk menambahkan \textit{notification} baru.
+	Fungsi ini berguna untuk menambahkan data \textit{notification} baru.
 	\item \texttt{update\_notification}\\
 	Fungsi ini berguna untuk memperbaharui \textit{notification} tertentu.
 	\item \texttt{delete\_notification}\\
 	Fungsi ini berguna untuk menghapus \textit{notification} tertentu.
 	\item \texttt{get\_notification}\\
-	Fungsi ini berguna untuk mengembalikan \textit{notification} dalam bentuk \textit{array}.
+	Fungsi ini berguna untuk mengembalikan \textit{notification} tertentu dalam bentuk \textit{array}.
 	\item \texttt{have\_new\_notification}\\
 	Fungsi ini berguna untuk mengecek apakah terdapat \textit{notification} setelah waktu tertentu.
 \end{itemize}
@@ -73,11 +73,11 @@ Berikut merupakan fungsi-fungsi dari \texttt{Logs\_model.php} yang berguna untuk
 Berikut merupakan fungsi-fungsi dari \texttt{Queue\_model.php} yang berguna untuk memproses data pada halaman \textit{queue}.
 \begin{itemize}
 	\item \texttt{in\_queue}\\
-	Fungsi ini berguna untuk mengecek apakah \textit{submission} pengguna tertentu sudah dalam antrean.
+	Fungsi ini berguna untuk mengecek apakah \textit{submission} pengguna tertentu sudah dalam antrean \textit{submission}.
 	\item \texttt{get\_queue}\\
-	Fungsi ini berguna untuk mengembalikan data seluruh antrian.
+	Fungsi ini berguna untuk mengembalikan data seluruh antrian \textit{submission}.
 	\item \texttt{empty\_queue}\\
-	Fungsi ini berguna untuk menghapus seluruh tabel \textit{queue}.
+	Fungsi ini berguna untuk menghapus seluruh antrean \textit{submission}.
 	\item \texttt{add\_to\_queue}\\
 	Fungsi ini berguna untuk memasukan \textit{submission} kedalam tabel \textit{queue}.
 	\item \texttt{rejudge}\\
@@ -85,7 +85,7 @@ Berikut merupakan fungsi-fungsi dari \texttt{Queue\_model.php} yang berguna untu
 	\item \texttt{rejudge\_single}\\
 	Fungsi ini berguna untuk menambahkan satu buah \textit{submission} kedalam antrean untuk dilakukan \textit{rejudge}.
 	\item \texttt{get\_first\_item}\\
-	Fungsi ini berguna untuk mengambil data pertama dalam antrean.
+	Fungsi ini berguna untuk mengambil data \textit{submission} pertama dalam antrean.
 	\item \texttt{remove\_item}\\
 	Fungsi ini berguna untuk menghapus data tertentu dalam antrean.
 	\item \texttt{save\_judge\_result\_in\_db}\\
@@ -99,11 +99,11 @@ Berikut merupakan fungsi-fungsi dari \texttt{Scoreboard\_model.php} yang berguna
 	\item \texttt{\_generate\_scoreboard}\\
 	Fungsi ini dipanggil pada fungsi \texttt{update\_scoreboard} dan berfungsi untuk menghasilkan \textit{scoreboard} dari \textit{final submission}.
 	\item \texttt{update\_scoreboards}\\
-	Fungsi ini berguna untuk memperbaharui \textit{cache scoreboard} dari seluruh \textit{assignment}. Fungsi ini dipanggil setiap terdapat penghapusan pengguna atau seluruh \textit{assignment} pengguna.
+	Fungsi ini berguna untuk memperbaharui \textit{cache scoreboard} dari seluruh \textit{assignment}. Fungsi ini dipanggil setiap terdapat penghapusan pengguna atau penghapusan seluruh \textit{assignment} pengguna.
 	\item \texttt{update\_scoreboard}\\
-	Fungsi ini berguna untuk memperbaharui \textit{cache scoreboard} dari seluruh \textit{assignment}. Fungsi ini dipanggil setelah \textit{judge} atau \textit{rejudge}.
+	Fungsi ini berguna untuk memperbaharui \textit{cache scoreboard} dari sebuah \textit{assignment}. Fungsi ini menyimpan kode HTML menuju \textit{database} pada tabel \textit{scoreboard}. Fungsi ini dipanggil setelah \textit{judge} atau \textit{rejudge}.
 	\item \texttt{get\_scoreboard}\\
-	Fungsi ini berguna untuk mengambil seluruh \textit{cache scoreboard} dari \textit{assignment} tertentu.
+	Fungsi ini berguna untuk mengambil seluruh \textit{cache scoreboard} dari \textit{assignment} tertentu dalam bentuk HTML \textit{text}.
 \end{itemize}
 \subsubsection{\texttt{Settings\_model.php}}
 Berikut merupakan fungsi-fungsi dari \texttt{Settings\_model.php} yang berguna untuk memproses data untuk ditampilkan pada tabel \textit{settings}.
@@ -111,9 +111,9 @@ Berikut merupakan fungsi-fungsi dari \texttt{Settings\_model.php} yang berguna u
 	\item \texttt{get\_setting}\\
 	Fungsi ini berguna untuk mengembalikan data \textit{setting} tertentu.
 	\item \texttt{set\_setting}\\
-	Fungsi ini berguna untuk memperbaharui \textit{setting}.
+	Fungsi ini berguna untuk memperbaharui sebuah \textit{setting} pada \textit{database}.
 	\item \texttt{get\_all\_settings}\\
-	Fungsi ini berguna untuk mengembalikan seluruh data \textit{setting}.
+	Fungsi ini berguna untuk mengembalikan seluruh data \textit{setting} dalam bentuk \textit{array}.
 	\item \texttt{set\_settings}\\
 	Fungsi memperbaharui beberapa \textit{setting}.
 \end{itemize}
@@ -131,19 +131,19 @@ Berikut merupakan fungsi-fungsi dari \texttt{Submit\_model.php} yang berguna unt
 	\item \texttt{count\_all\_submissions}\\
 	Fungsi ini berguna untuk menghitung seluruh \textit{submission}.
 	\item \texttt{set\_final\_submission}\\
-	Fungsi ini berguna untuk memperbaharui \textit{submission} terentu menjadi \textit{final submission}.
+	Fungsi ini berguna untuk memilih \textit{submission} tertentu menjadi \textit{final submission}.
 	\item \texttt{add\_upload\_only}\\
-	Fungsi ini berguna untuk menambahkan hasil dari \textit{upload only} ke dalam \textit{database}.
+	Fungsi ini berguna untuk menambahkan hasil dari \textit{upload only problem} ke dalam \textit{database}.
 \end{itemize}
-\subsubsection{\textit{User\_model.php}}
+\subsubsection{\texttt{User\_model.php}}
 Berikut merupakan fungsi-fungsi dari \texttt{User\_model.php} yang berguna untuk memproses data pada tabel \textit{users}.
 \begin{itemize}
 	\item \texttt{have\_user}\\
 	Fungsi ini berguna untuk mengecek apakah terdapat pengguna dengan \textit{username} tertentu.
 	\item \texttt{user\_id\_to\_username}\\
-	Fungsi ini berguna untuk mengembalikan \textit{user id} menjadi \textit{username}.
+	Fungsi ini berguna untuk mengubah \textit{user id} menjadi \textit{username}.
 	\item \texttt{username\_to\_user\_id}\\
-	Fungsi ini berguna untuk mengembalikan \textit{username} menjadi \textit{user id}.
+	Fungsi ini berguna untuk mengubah \textit{username} menjadi \textit{user id}.
 	\item \texttt{have\_email}\\
 	Fungsi ini berguna untuk mengecek apakah terdapat \textit{username} dengan \textit{email} tertentu.
 	\item \texttt{add\_user}\\
@@ -155,17 +155,17 @@ Berikut merupakan fungsi-fungsi dari \texttt{User\_model.php} yang berguna untuk
 	\item \texttt{delete\_submissions}\\
 	Fungsi ini berguna untuk menghapus seluruh \textit{submission} pada pengguna tertentu.
 	\item \texttt{validate\_user}\\
-	Fungsi ini berguna untuk mengecek \textit{username} dan \textit{password} apakah sesuai dengan data.
+	Fungsi ini berguna untuk mengecek \textit{username} dan \textit{password} apakah sesuai dengan data yang dimasukan.
 	\item \texttt{selected\_assignment}\\
-	Fungsi ini berguna untuk mengembalikan \textit{assignment} untuk pengguna tertentu.
+	Fungsi ini berguna untuk mengembalikan \textit{selected assignment} untuk pengguna tertentu.
 	\item \texttt{get\_names}\\
-	Fungsi ini berguna untuk mengembalikan nama dari pengguna tertentu.
+	Fungsi ini berguna untuk mengembalikan nama dari \textit{username} pengguna tertentu.
 	\item \texttt{update\_profile}\\
 	Fungsi ini berguna untuk memperbaharui profil dari pengguna seperti nama, \textit{email, password}, dan \textit{role}.
 	\item \texttt{send\_password\_reset\_mail}\\
 	Fungsi ini berguna untuk menghasilkan \textit{password reset key} dan mengirim \textit{email} untuk melakukan \textit{reset password}.
 	\item \texttt{passchange\_is\_valid}\\
-	Fungsi ini berguna untuk mengecek apakah \textit{password key} yang diberikan sesuai atau tidak.
+	Fungsi ini berguna untuk mengecek apakah \textit{password reset key} yang diberikan sesuai atau tidak.
 	\item \texttt{reset\_password}\\
 	Fungsi ini berguna untuk mengatur ulang \textit{password} sesuai dengan \textit{password key} tertentu.
 	\item \texttt{get\_all\_users}\\
@@ -175,7 +175,7 @@ Berikut merupakan fungsi-fungsi dari \texttt{User\_model.php} yang berguna untuk
 	\item \texttt{update\_login\_time}\\
 	Fungsi ini berguna untuk memperbaharui \textit{login time} dan \textit{last login time} untuk pengguna tertentu.
 \end{itemize}
-\subsubsection{\textit{User.php}}
+\subsubsection{\texttt{User.php}}
 Berikut merupakan fungsi-fungsi dari \texttt{User.php} yang berguna untuk memproses data pada tabel \textit{users}.
 \begin{itemize}
 	\item \texttt{select\_assignment}\\
@@ -191,7 +191,7 @@ Berikut merupakan fungsi-fungsi dari \texttt{User.php} yang berguna untuk mempro
 %Halaman pada \textit{SharIF Judge} dibagi berdasarkan \textit{role} penggunanya. Setiap role memiliki tampilan halaman berbeda dengan fitur-fitur berbeda setiap \textit{role} penggunanya. Berikut merupakan halaman dan fitur pada \textit{SharIF Judge}:
 
 \subsection{\textit{View}}
-\textit{View} terdapat pada direktori \texttt{application/views}. Direktori ini berisikan seluruh \textit{file} untuk tampilan halaman \textit{SharIF Judge}. \textit{File} tersebut dipisahkan oleh direktori sesuai dengan fungsinya. Direktori tersebut dibagi menjadi tiga buah direktori utama yakni \textit{error, pages}, dan \textit{templates}. Direktori \textit{error} berisikan tampilan halaman \textit{error} yang akan dilihat oleh pengguna. Direktori \textit{pages} merupakan tampilan utama \textit{SharIF Judge} yang terbagi lagi menjadi dua buah direktori yakni \textit{admin} dan \textit{authentication}. Direktori \textit{admin} berisikan tampilan halaman untuk \textit{role admin}. Direktori \textit{authentication} berisikan tampilan halaman untuk akses pengguna seperti \textit{LOgin, Register,} dan \textit{Reset Password}. Direktori \textit{templates} terdiri dari tampilan yang digunakan oleh seluruh tampilan halaman seperti \textit{header} dan \textit{side bar}. Berikut merupakan tampilan halaman pada \textit{SharIF Judge}:
+\textit{View} terdapat pada direktori \texttt{application/views}. Direktori ini berisikan seluruh \textit{file} untuk tampilan halaman \textit{SharIF Judge} yang dipisahkan oleh direktori sesuai dengan fungsi dan aksesnya. Direktori tersebut dibagi menjadi tiga buah direktori utama yakni \textit{error, pages}, dan \textit{templates}. Direktori \textit{error} berisikan tampilan halaman \textit{error} yang akan dilihat oleh pengguna. Direktori \textit{pages} merupakan tampilan utama \textit{SharIF Judge} yang terbagi lagi menjadi dua buah direktori yakni \textit{admin} dan \textit{authentication}. Direktori \textit{admin} berisikan tampilan halaman untuk \textit{role admin}. Direktori \textit{authentication} berisikan tampilan halaman untuk akses pengguna seperti \textit{Login, Register,} dan \textit{Reset Password}. Direktori \textit{templates} terdiri dari tampilan yang digunakan oleh seluruh tampilan halaman seperti \textit{header} dan \textit{side bar}. Berikut merupakan tampilan halaman pada \textit{SharIF Judge}:
 
 \subsubsection{\textit{Dashboard}}
 \begin{figure}[H]
@@ -201,7 +201,7 @@ Berikut merupakan fungsi-fungsi dari \texttt{User.php} yang berguna untuk mempro
 	\label{fig:dashboard} 
 \end{figure} 
 
-Gambar \ref{fig:dashboard} merupakan tampilan halaman \textit{dashboard} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:dashboard} menunjukan tampilan halaman \textit{dashboard} yang terdapat pada semua \textit{role} pengguna.
 \subsubsection{\textit{Profile}}
 \begin{figure}[H]
 	\centering  
@@ -210,7 +210,7 @@ Gambar \ref{fig:dashboard} merupakan tampilan halaman \textit{dashboard} yang te
 	\label{fig:profile} 
 \end{figure}
 
-Gambar \ref{fig:profile} merupakan tampilan halaman \textit{profile} yang terdapat pada semua \textit{role} pengguna. Namun, terdapat fitur yang tidak dapat digunakan oleh \textit{siswa} dan \textit{instructor} yakni mengganti role.
+Gambar \ref{fig:profile} menunjukan tampilan halaman \textit{profile} yang terdapat pada semua \textit{role} pengguna. Namun, terdapat fitur yang tidak dapat digunakan oleh \textit{siswa} dan \textit{instructor} yakni mengganti role.
 
 \subsubsection{\textit{Settings}}
 \begin{figure}[H]
@@ -220,7 +220,7 @@ Gambar \ref{fig:profile} merupakan tampilan halaman \textit{profile} yang terdap
 	\label{fig:settings} 
 \end{figure}
 
-Gambar \ref{fig:settings} merupakan tampilan halaman \textit{settings} yang terdapat hanya pada \textit{role} admin dan \textit{head instructor}. 
+Gambar \ref{fig:settings} menunjukan tampilan halaman \textit{settings} yang terdapat hanya pada \textit{role} admin dan \textit{head instructor}. 
 
 \subsubsection{\textit{Users}}
 \begin{figure}[H]
@@ -230,7 +230,7 @@ Gambar \ref{fig:settings} merupakan tampilan halaman \textit{settings} yang terd
 	\label{fig:users} 
 \end{figure}
 
-Gambar \ref{fig:users} merupakan tampilan halaman \textit{users} yang terdapat hanya pada \textit{role} admin dan \textit{head instructor}.
+Gambar \ref{fig:users} menunjukan tampilan halaman \textit{users} yang terdapat hanya pada \textit{role} admin dan \textit{head instructor}.
 
 \subsubsection{\textit{Notifications}}
 \begin{figure}[H]
@@ -240,7 +240,7 @@ Gambar \ref{fig:users} merupakan tampilan halaman \textit{users} yang terdapat h
 	\label{fig:notifications} 
 \end{figure}
 
-Gambar \ref{fig:notifications} merupakan tampilan halaman \textit{notifications} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:notifications} menunjukan tampilan halaman \textit{notifications} yang terdapat pada semua \textit{role} pengguna.
 
 \subsubsection{\textit{Assignments}}
 \begin{figure}[H]
@@ -250,7 +250,7 @@ Gambar \ref{fig:notifications} merupakan tampilan halaman \textit{notifications}
 	\label{fig:assignments} 
 \end{figure}
 
-Gambar \ref{fig:assignments} merupakan tampilan halaman \textit{assignments} yang terdapat pada semua \textit{role} pengguna. Namun, terdapat bagian yang tidak dapat diakses oleh \textit{role} siswa dan \textit{instructor} yakni bagian \textit{actions}.
+Gambar \ref{fig:assignments} menunjukan tampilan halaman \textit{assignments} yang terdapat pada semua \textit{role} pengguna. Namun, terdapat bagian yang tidak dapat diakses oleh \textit{role} siswa dan \textit{instructor} yakni bagian \textit{actions}.
 \subsubsection{\textit{Problems}}
 \begin{figure}[H]
 	\centering  
@@ -259,7 +259,7 @@ Gambar \ref{fig:assignments} merupakan tampilan halaman \textit{assignments} yan
 	\label{fig:problems} 
 \end{figure}
 
-Gambar \ref{fig:problems} merupakan tampilan halaman \textit{problems} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:problems} menunjukan tampilan halaman \textit{problems} yang terdapat pada semua \textit{role} pengguna.
 
 \subsubsection{\textit{Submit}}
 \begin{figure}[H]
@@ -269,7 +269,7 @@ Gambar \ref{fig:problems} merupakan tampilan halaman \textit{problems} yang terd
 	\label{fig:submit} 
 \end{figure}
 
-Gambar \ref{fig:submit} merupakan tampilan halaman \textit{submit} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:submit} menunjukan tampilan halaman \textit{submit} yang terdapat pada semua \textit{role} pengguna.
 
 \subsubsection{\textit{Final Submissions}}
 \begin{figure}[H]
@@ -279,7 +279,7 @@ Gambar \ref{fig:submit} merupakan tampilan halaman \textit{submit} yang terdapat
 	\label{fig:finalsubmission} 
 \end{figure}
 
-Gambar \ref{fig:finalsubmission} merupakan tampilan halaman \textit{submit} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:finalsubmission} menunjukan tampilan halaman \textit{submit} yang terdapat pada semua \textit{role} pengguna.
 \subsubsection{\textit{All Submissions}}
 \begin{figure}[H]
 	\centering  
@@ -288,7 +288,7 @@ Gambar \ref{fig:finalsubmission} merupakan tampilan halaman \textit{submit} yang
 	\label{fig:allsubmission} 
 \end{figure}
 
-Gambar \ref{fig:allsubmission} merupakan tampilan halaman \textit{All Submission} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:allsubmission} menunjukan tampilan halaman \textit{All Submission} yang terdapat pada semua \textit{role} pengguna.
 
 \subsubsection{\textit{Scoreboard}}
 \begin{figure}[H]
@@ -298,7 +298,7 @@ Gambar \ref{fig:allsubmission} merupakan tampilan halaman \textit{All Submission
 	\label{fig:scoreboard} 
 \end{figure}
 
-Gambar \ref{fig:allsubmission} merupakan tampilan halaman \textit{All Submission} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:allsubmission} menunjukan tampilan halaman \textit{All Submission} yang terdapat pada semua \textit{role} pengguna.
 
 \subsubsection{\textit{Hall of Fame}}
 \begin{figure}[H]
@@ -308,7 +308,7 @@ Gambar \ref{fig:allsubmission} merupakan tampilan halaman \textit{All Submission
 	\label{fig:halloffame} 
 \end{figure}
 
-Gambar \ref{fig:halloffame} merupakan tampilan halaman \textit{Hall of Fame} yang terdapat pada semua \textit{role} pengguna.
+Gambar \ref{fig:halloffame} menunjukan tampilan halaman \textit{Hall of Fame} yang terdapat pada semua \textit{role} pengguna.
 
 
 \subsubsection{\textit{24-hour Log}}
@@ -319,7 +319,7 @@ Gambar \ref{fig:halloffame} merupakan tampilan halaman \textit{Hall of Fame} yan
 	\label{fig:24hourlog} 
 \end{figure}
 
-Gambar \ref{fig:24hourlog} merupakan tampilan halaman \textit{24-hour Log} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+Gambar \ref{fig:24hourlog} menunjukan tampilan halaman \textit{24-hour Log} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
 
 \subsubsection{\textit{Rejudge}}
 \begin{figure}[H]
@@ -329,7 +329,7 @@ Gambar \ref{fig:24hourlog} merupakan tampilan halaman \textit{24-hour Log} yang 
 	\label{fig:rejudge} 
 \end{figure}
 
-Gambar \ref{fig:rejudge} merupakan tampilan halaman \textit{ReJudge} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+Gambar \ref{fig:rejudge} menunjukan tampilan halaman \textit{ReJudge} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
 
 \subsubsection{\textit{Submission Queue}}
 \begin{figure}[H]
@@ -339,7 +339,7 @@ Gambar \ref{fig:rejudge} merupakan tampilan halaman \textit{ReJudge} yang terdap
 	\label{fig:submissionqueue} 
 \end{figure}
 
-Gambar \ref{fig:submissionqueue} merupakan tampilan halaman \textit{Submission Queue} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+Gambar \ref{fig:submissionqueue} menunjukan tampilan halaman \textit{Submission Queue} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
 
 \subsubsection{\textit{Cheat Detection}}
 \begin{figure}[H]
@@ -349,90 +349,90 @@ Gambar \ref{fig:submissionqueue} merupakan tampilan halaman \textit{Submission Q
 	\label{fig:cheatdetection} 
 \end{figure}
 
-Gambar \ref{fig:cheatdetection} merupakan tampilan halaman \textit{Cheat Detection} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
+Gambar \ref{fig:cheatdetection} menunjukan tampilan halaman \textit{Cheat Detection} yang terdapat hanya pada \textit{role admin} dan \textit{head instructor}.
 
 \subsection{\textit{Controller}}
-\textit{Controller} pada direktori \texttt{application/controller}. Direktori ini berisikan kelas \textit{controller} dengan fungsi-fungsi dalam mengambil atau memberikan data \textit{models} untuk dialihkan menuju \textit{views} untuk ditampilkan. Berikut merupakan \textit{controller} pada \textit{SharIF Jugde} beserta fungsi-fungsinya.
+\textit{Controller} berada pada direktori \texttt{application/controller}. Direktori ini berisikan kelas \textit{controller} dengan fungsi-fungsi untuk mengambil atau memberikan data menuju \textit{models}. Data-data ini selanjutnya dialihkan menuju \textit{views} untuk ditampilkan kepada pengguna. Berikut merupakan \textit{controller} pada \textit{SharIF Jugde} beserta fungsi-fungsinya:
 \subsubsection{\texttt{Assignments.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Assignments.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Assignments.php}:
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \texttt{assignments.twig} menggunakan \texttt{Assignment\_model}.
+	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \texttt{assignments.twig} menggunakan \texttt{Assignment\_model.php}.
 	\item \texttt{select}\\
-	Fungsi ini berguna untuk memilih \textit{assignment} menggunakan \textit{ajax}.
+	Fungsi ini berguna untuk memilih \textit{assignment} melalui \textit{top bar} menggunakan AJAX.
 	\item \texttt{pdf}\\
 	Fungsi ini berguna untuk mengunduh \textit{assignment} atau \textit{problem} dalam bentuk pdf.
 	\item \texttt{downloadtestsdesc}\\
-	Fungsi ini berguna untuk mengunduh dan mengompres data \textit{test} dan deskripsi sebuah \textit{assignment}.
+	Fungsi ini berguna untuk mengompres dan mengunduh data \textit{test} dan deskripsi sebuah \textit{assignment}.
 	\item \texttt{download\_submissions}\\
-	Fungsi ini berguna untuk mengunduh dan mengompres kode terakhir sebuah \textit{assignment} pengguna.
+	Fungsi ini berguna untuk mengompres dan mengunduh kode terakhir sebuah \textit{assignment} pengguna.
 	\item \texttt{delete}\\
 	Fungsi ini berguna untuk menghapus \textit{assignment}.
 	\item \texttt{add}\\
-	Fungsi ini berguna untuk menambah atau mengubah \textit{assignment} berdasarkan masukan pengguna.
+	Fungsi ini berguna untuk mengambil data masukan pengguna untuk menambahkan atau mengubah \textit{assignment}.
 	\item \texttt{\_add}\\
 	Fungsi ini berguna untuk menambah atau mengubah \textit{assignment}.
 	\item \texttt{edit}\\
-	Fungsi ini berguna untuk mengecek \textit{role} pengguna dapat mengubah \textit{assignment}. Selanjutnya akan dikembalikan pada fungsi \texttt{add}. 
+	Fungsi ini berguna untuk mengecek \textit{role} pengguna apakah dapat mengubah \textit{assignment}. Selanjutnya pengguna dikembalikan menuju fungsi \texttt{add}. 
 	\item \texttt{pdfCheck}
-	Fungsi ini berguna untuk mengecek \textit{file} pdf dari sebuah \textit{assignment}.
+	Fungsi ini berguna untuk mengecek \textit{file} PDF dari sebuah \textit{assignment}.
 \end{itemize}
 
 \subsubsection{\texttt{Dashboard.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Dashboard.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Dashboard.php}:
 \begin{itemize}
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk mengambil dan memberikan data menuju halaman \textit{dashboard} menggunakan tiga buah \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Assignment\_model}, \texttt{Settings\_model}, dan \texttt{Notifications\_model}.
 	\item \texttt{widget\_positions}\\
-	Fungsi ini berguna untuk menyimpan data \textit{widget} pengguna.
+	Fungsi ini berguna untuk menyimpan data \textit{widget} pengguna menggunakan AJAX.
 \end{itemize}
 \subsubsection{\texttt{Install.php}}
-\textit{Controller} \texttt{Install.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk membentuk tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk memasukan data pengguna \textit{admin} yang pertama kali memasang \textit{SharIF Judge} pada perangkat.
+\textit{Controller} \texttt{Install.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk membentuk tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk menerima data pengguna \textit{admin} yang pertama kali melakukan instalasi \textit{SharIF Judge} pada perangkat.
 
 \subsubsection{\texttt{Login.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Login.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Login.php}:
 \begin{itemize}
 	\item \texttt{\_registration\_code}\\
 	Fungsi ini beguna untuk memeriksa kode registrasi.
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk melakukan validasi \textit{username} dan \textit{password} pengguna. Selain itu, fungsi ini juga memperbaharui \textit{log} pada tabel \textit{login}.
+	Fungsi ini berguna untuk melakukan validasi \textit{username} dan \textit{password} pengguna pada halaman \textit{login}. Selain itu, fungsi ini juga memperbaharui \textit{log} pada tabel \textit{login}.
 	\item \texttt{register}\\
-	Fungsi ini berguna untuk melakukkan validasi dalam pembetukan akun.
+	Fungsi ini berguna untuk melakukkan validasi dalam pembentukan akun pada halaman \textit{register}.
 	\item \texttt{logout}\\
-	Fungsi ini berguna untuk menghancurkan \textit{session} dari pengguna dan memindahkan pengguna ke halaman \textit{login}.
+	Fungsi ini berguna untuk menghancurkan \textit{session} dari pengguna dan memindahkan pengguna menuju halaman \textit{login}.
 	\item \texttt{lost}\\
 	Fungsi ini berguna untuk mengirim \textit{email} lupa password.
-	\item \texttt{rest}\\
+	\item \texttt{reset}\\
 	Fungsi ini berguna untuk melakukan \textit{reset password} pengguna.
 \end{itemize}
 \subsubsection{\texttt{Logs.php}}
 \textit{Controller} \texttt{Logs.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{logs} menggunakan \texttt{Logs\_model}.
 \subsubsection{\texttt{Moss.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Moss.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Moss.php}:
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{moss}.
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{moss}. Fungsi ini juga dapat melakukan deteksi kode menuju Moss berdasarkan permintaan.
 	\item \texttt{update}\\
-	Fungsi ini berguna untuk memperbaharui \textit{moss\_userid} yang dimasukan oleh pengguna.
+	Fungsi ini berguna untuk memperbaharui \texttt{moss\_userid} yang dimasukan oleh pengguna.
 	\item \texttt{\_detec}\\
-	Fungsi ini berguna untuk melakukan pengecekan terhadap \textit{submission}. !!TODO
+	Fungsi ini berguna untuk mengirimkan data untuk dilakukan pengecekan terhadap \textit{final submission} melalui \texttt{shell}. 
 \end{itemize}
 \subsubsection{\texttt{Notification.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Notification.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Notification.php}:
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikam data pada halaman \textit{notifications} menggunakan \texttt{assignment\_model} dan \texttt{notifications\_model}.
+	Fungsi ini berguna untuk mengambil dan mengembalikan data pada halaman \textit{notifications} menggunakan \texttt{assignment\_model} dan \texttt{notifications\_model}.
 	\item \texttt{add}\\
-	Fungsi ini berguna untuk menambahkan data \textit{notifications}.
+	Fungsi ini berguna untuk menambahkan data \textit{notifications} baru.
 	\item \texttt{edit}\\
 	Fungsi ini berguna untuk memperbaharui data \textit{notifications}.
 	\item \texttt{delete}\\
-	Fungsi ini berguna untuk menghapus data \textit{notifications}.
+	Fungsi ini berguna untuk menghapus data \textit{notifications} tertentu.
 	\item \texttt{check}\\
 	Fungsi ini berguna memeriksa \textit{notifications} baru.
 \end{itemize}
 \subsubsection{\texttt{Problems.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Problems.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Problems.php}:
 \begin{itemize}
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk mengambil dan memberikan data \textit{problems} sesuai dengan \textit{assignment} tertentu pada halaman \textit{problems}.
@@ -440,7 +440,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Problems.php}.
 	Fungsi ini berguna untuk memperbaharui deskripsi \textit{problems} pada \textit{assignment} tertentu.
 \end{itemize}
 \subsubsection{\texttt{Profile.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}:
 \begin{itemize}
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{profile}. Selain itu, fungsi ini berguna untuk melakukan pembaharuan data \textit{profile}.
@@ -458,7 +458,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}.
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk mengambil dan meberikan data pada halaman \textit{queue} menggunakan tiga buah \textit{model}. \textit{Model} tersebut adalah \texttt{Assignment\_model}, \texttt{queue\_model}, dan \texttt{settings\_model}.
 	\item \texttt{pause}\\
-	Fungsi ini berguna untuk memperbaharui data pada tabel \textit{settings}.
+	Fungsi ini berguna untuk memberhentikan proses \textit{queue}.
 	\item \texttt{resume}\\
 	Fungsi ini berguna untuk melanjutkan proses \textit{queue}.
 	\item \texttt{empty\_queue}\\
@@ -467,15 +467,15 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Profile.php}.
 \subsubsection{\texttt{Queueprocess.php}}
 \textit{Controller} \texttt{Queueprocess.php} hanya memiliki satu buah fungsi bernama \texttt{index}.Fungsi ini berguna untuk menjalankan proses \textit{judge} berdasarkan \textit{queue} satu demi satu sesuai antrean. Fungsi ini menggunakan beberapa \textit{model} yaitu \texttt{Queue\_model}, \texttt{Submit\_model}, \texttt{Assignments\_model}, dan \texttt{Settings\_model}.
 \subsubsection{\texttt{Rejudge.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Rejudge.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Rejudge.php}:
 \begin{itemize}
 	\item \texttt{index}\\
-	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{rejudge} menggunakan \texttt{Assignment\_model}.
+	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{rejudge} menggunakan \texttt{Assignment\_model}. Fungsi ini juga berguna untuk melakukan \textit{rejudge} kepada sebuah \textit{problem} tertentu.
 	\item \texttt{rejudge\_single}\\
 	Fungsi ini berguna untuk melakukan \textit{rejudge} pada satu buah masalah tertentu.
 \end{itemize}
 \subsubsection{\texttt{Scoreboard.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Scoreboard.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Scoreboard.php}:
 \begin{itemize}
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk memberikan data pada halaman \textit{scoreboard} menggunakan dua buah \textit{model}. \textit{Model} tersebut adalah \texttt{Assignment\_model} dan \texttt{Scoreboard\_model}.
@@ -484,7 +484,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Scoreboard.php}
 \textit{Controller} \texttt{Server\_time.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk mengeluarkan \textit{server\_time}.
 
 \subsubsection{\texttt{Settings.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Settings.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Settings.php}:
 \begin{itemize}
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{settings} menggunakan \texttt{Settings\_model} dan \texttt{Assignment\_model}.
@@ -492,10 +492,10 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Settings.php}.
 	Fungsi ini berguna untuk mengambil masukan dan memperbaharui data pada halaman \textit{settings} berdasarkan masukan tersebut. Data tersebut nantinya akan disimpan pada \textit{database} menggunakan fungsi \texttt{Settings\_model}.  
 \end{itemize}
 \subsubsection{\texttt{Submission.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submission.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submission.php}:
 \begin{itemize}
 	\item \texttt{\_download\_excel}\\
-	Fungsi ini berguna untuk mengubah data-data dari \textit{submission} yang dipilih menjadi format \textit{excel}.
+	Fungsi ini berguna untuk mengubah dan mengunduh data-data dari \textit{submission} yang dipilih menjadi format \textit{excel}.
 	\item \texttt{final\_excel}\\
 	Fungsi ini berguna untuk mengunduh data \textit{final submissions}.
 	\item \texttt{all\_excel}\\
@@ -503,9 +503,9 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submission.php}
 	\item \texttt{the\_final}\\
 	Fungsi ini berguna untuk memberikan data pada halaman \textit{Final Submissions} menggunakan beberapa \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Submit\_model}, \texttt{Settings\_model}, dan \texttt{User\_model}.
 	\item \texttt{all}\\
-	Fungsi ini berguna untuk memberikan data pada halaman \textit{All Submissions} menggunakan beberapa \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Submit\_model}, \texttt{Settings\_model}, dan \texttt{User\_model}.
+	Fungsi ini berguna untuk mengembalikan data pada halaman \textit{All Submissions} menggunakan beberapa \textit{model}. \textit{Model} tersebut terdiri dari \texttt{Submit\_model}, \texttt{Settings\_model}, dan \texttt{User\_model}.
 	\item \texttt{select}\\
-	Fungsi ini berguna untuk memilih \textit{submission} yang akan dijadikan \textit{submission final} oleh pengguna.
+	Fungsi ini berguna untuk memilih \textit{submission} yang akan dijadikan \textit{final submission} oleh pengguna.
 	\item \texttt{\_check\_type}\\
 	Fungsi ini berguna untuk melakukan pengecekan tipe \textit{submission} yang telah dikumpulkan oleh pengguna.
 	\item \texttt{view\_code}\\
@@ -514,7 +514,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submission.php}
 	Fungsi ini berguna untuk mengunduh hasil dari \textit{submission} yang telah dikumpulkan oleh pengguna.
 \end{itemize}
 \subsubsection{\texttt{Submit.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submit.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submit.php}:
 \begin{itemize}
 	\item \texttt{\_language\_to\_type}\\
 	Fungsi ini berguna untuk mengubah bahasa pemrograman menjadi tipe sesuai dengan pilihan pengguna.
@@ -540,7 +540,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Submit.php}.
 	Fungsi ini berguna untuk memuat \textit{file} menjadi hasil eksekusi.
 \end{itemize}
 \subsubsection{\texttt{User.php}}
-Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{User.php}.
+Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{User.php}:
 \begin{itemize}
 	\item \texttt{index}\\
 	Fungsi ini berguna untuk mengambil dan memberikan data pada halaman \textit{users}.
@@ -565,7 +565,7 @@ Direktori ini berisikan seluruh kebutuhan pengguna seperti \textit{library javas
 	\item Direktori \textit{js} \\Direktori ini berisikan \textit{javascript} dan \textit{jquery}. \textit{Javascript} dan \textit{jquery} yang terdapat pada direktori ini dibentuk secara manual dan diambil dari situs resmi.
 	\item Direktori \textit{nano\_scroller} \\Direktori ini berisikan \textit{jquery} dan \textit{css} yang berfungsi untuk membentuk \textit{scrollbar} pada aplikasi.
 	\item Direktori \textit{noty} \\Direktori ini berisikan \textit{javascript} yang berfungsi untuk mempermudah membentuk pesan \textit{alert, success,} dan sebagainya.
-	\item Direktori \textit{pdfjs} \\Direktori ini berisikan \textit{javascript} yang berfungsi untuk melakukan \textit{parsing} dan \textit{rendering} file \textit{pdf}.
+	\item Direktori \textit{pdfjs} \\Direktori ini berisikan \textit{javascript} yang berfungsi untuk melakukan \textit{parsing} dan \textit{rendering} \textit{file} \textit{pdf}.
 	\item Direktori \textit{reveal} \\Direktori ini berisikan \textit{jquery} dan \textit{css} yang berfungsi untuk menampilkan \textit{popup} berupa halaman yang dikonfigurasikan.
 	\item Direktori \textit{snippet} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi sebagai \textit{template} dalam membentuk kode \textit{javascript}.
 	\item Direktori \textit{styles} \\Direktori ini berisikan \textit{css} yang berfungsi untuk memperindah aplikasi yang dibentuk.
@@ -573,38 +573,38 @@ Direktori ini berisikan seluruh kebutuhan pengguna seperti \textit{library javas
 \end{itemize}
 
 \subsection{\textit{Config}}
-Direktori ini berisikan seluruh konfigurasi aplikasi \textit{SharIF Judge} seperti \textit{database}, \textit{url} aplikasi, dan lainnya. Berikut merupakan isi dari direktori ini beserta kegunaannya.
+Direktori ini berisikan seluruh konfigurasi aplikasi \textit{SharIF Judge} seperti \textit{database}, URL aplikasi, dan lainnya. Berikut merupakan isi dari direktori ini beserta kegunaannya:
 \begin{itemize}
-	\item \texttt{autoload.php} \\File ini berisikan seluruh data yang ingin diinisiasikan saat aplikasi dijalankan seperti \textit{libraries}, \textit{helpers}, dan \textit{model}.
-	\item \texttt{config.php} \\File ini berisikan konfigurasi aplikasi \textit{SharIF Judge} seperti \textit{base url} aplikasi, \textit{encryption key}, konfigurasi \textit{session}, konfigurasi \textit{cookie}, dan \textit{csfr}.
-	\item \texttt{constants.php} \\File ini berisikan data yang bersifat \textit{global} pada aplikasi.
-	\item \texttt{database.php} \\File ini berisikan konfigurasi \textit{database} yang digunakan oleh pengguna.
-	\item \texttt{doctypes.php} \\File ini berisikan deklarasi tipe dokumen untuk \textit{HTML}.
-	\item \texttt{foreign\_chars.php} \\File ini terjemahan data \textit{foreign character} yang terdapat pada \textit{text helper}.
-	\item \texttt{memcached.php} \\File ini berisikan konfigurasi \textit{server} untuk menyimpan data \textit{cache} pada server.
-	\item \texttt{migration.php} \\File ini berisikan konfigurasi untuk melakukan \textit{migration} seperti tipe \textit{migration} dan \textit{path} file \textit{migration} disimpan.
-	\item \texttt{mime.php} \\File ini berisikan tipe-tipe \textit{mime} yang digunakan oleh \textit{upload helper}.
-	\item \texttt{profiler.php} \\File ini berisikan konfigurasi untuk \textit{profiler}.
-	\item \texttt{routes.php} \\File ini berisikan konfigurasi \textit{route} dan \textit{route} yang didefinisikan secara manual.
-	\item \texttt{secrets.php} \\File ini dibentuk oleh pengguna yang berisikan data-data untuk melakukan autentikasi dan konfigurasi \textit{email}.
-	\item \texttt{smiley.php} \\File ini berisikan terjemahan dari sintaks \textit{emoticon} menjadi gambar yang digunakan pada \textit{emoticon helper}.
-	\item \texttt{twig.php} \\File ini berisikan konfigurasi \textit{template engine twig}.
-	\item \texttt{user\_agents.php} \\File ini berisikan tipe dari \textit{platform}, \textit{browser}, dan lainnya.
+	\item \texttt{autoload.php} \\ \textit{File} ini berisikan seluruh data yang ingin diinisiasikan saat aplikasi dijalankan seperti \textit{libraries}, \textit{helpers}, dan \textit{model}.
+	\item \texttt{config.php} \\ \textit{File} ini berisikan konfigurasi aplikasi \textit{SharIF Judge} seperti \textit{base url} aplikasi, \textit{encryption key}, konfigurasi \textit{session}, konfigurasi \textit{cookie}, dan \textit{csfr}.
+	\item \texttt{constants.php} \\\textit{File} ini berisikan data yang bersifat \textit{global} pada aplikasi.
+	\item \texttt{database.php} \\ \textit{File} ini berisikan konfigurasi \textit{database} yang digunakan oleh pengguna.
+	\item \texttt{doctypes.php} \\ \textit{File} ini berisikan deklarasi tipe dokumen untuk \textit{HTML}.
+	\item \texttt{foreign\_chars.php} \\ \textit{File} ini terjemahan data \textit{foreign character} yang terdapat pada \textit{text helper}.
+	\item \texttt{memcached.php} \\ \textit{File} ini berisikan konfigurasi \textit{server} untuk menyimpan data \textit{cache} pada server.
+	\item \texttt{migration.php} \\ \textit{File} ini berisikan konfigurasi untuk melakukan \textit{migration} seperti tipe \textit{migration} dan \textit{path} file \textit{migration} disimpan.
+	\item \texttt{mime.php} \\ \textit{File} ini berisikan tipe-tipe \textit{mime} yang digunakan oleh \textit{upload helper}.
+	\item \texttt{profiler.php} \\ \textit{File} ini berisikan konfigurasi untuk \textit{profiler}.
+	\item \texttt{routes.php} \\ \textit{File} ini berisikan konfigurasi \textit{route} dan \textit{route} yang didefinisikan secara manual.
+	\item \texttt{secrets.php} \\ \textit{File} ini dibentuk oleh pengguna yang berisikan data-data untuk melakukan autentikasi dan konfigurasi \textit{email}.
+	\item \texttt{smiley.php} \\ \textit{File} ini berisikan terjemahan dari sintaks \textit{emoticon} menjadi gambar yang digunakan pada \textit{emoticon helper}.
+	\item \texttt{twig.php} \\ \textit{File} ini berisikan konfigurasi \textit{template engine twig}.
+	\item \texttt{user\_agents.php} \\ \textit{File} ini berisikan tipe dari \textit{platform}, \textit{browser}, dan lainnya.
 \end{itemize}
 
 \subsection{\textit{Libraries}}
 \textit{SharIF Judge} menggunakan beberapa \textit{library} yang dibentuk secara manual maupun yang sudah tersedia pada \textit{Codeigniter 3}. Berikut merupakan \textit{library} yang dipakai oleh \textit{SharIF Judge}:
 
 \subsubsection{\textit{Unzip}}
-\textit{Unzip} merupakan sebuah \textit{library} yang dibentuk oleh Phil Sturgeon. \textit{Library} ini mewajibkan pengguna untuk menyalakan \textit{extension Zlib} sebelum dapat digunakan. \textit{Library Unzip} berfungsi untuk mengextraksi file dengan \textit{extension} \texttt{.zip} menuju direktori yang ditentukan dan dapat mengeluarkan \textit{error} yang sesuai. \textit{Library} ini juga dapat memberi batasan \textit{extension} apa yang diinginkan dari file tersebut. Kode \ref{kode:unzipsharif} merupakan contoh penggunaan \textit{library Unzip} pada \textit{SharIF Judge}.
+\textit{Unzip} merupakan sebuah \textit{library} yang dibentuk oleh Phil Sturgeon. \textit{Library} ini mewajibkan pengguna untuk menyalakan \textit{extension Zlib} sebelum dapat digunakan. \textit{Library Unzip} berfungsi untuk mengextraksi \textit{file} dengan \textit{extension} \texttt{.zip} menuju direktori yang ditentukan dan dapat mengeluarkan \textit{error} yang sesuai. \textit{Library} ini juga dapat memberi batasan \textit{extension} apa yang diinginkan dari \textit{file} tersebut. Kode \ref{kode:unzipsharif} menunjukan contoh penggunaan \textit{library Unzip} pada \textit{SharIF Judge}.
 
-\begin{lstlisting}[caption=Contoh kode penggunaan \textit{Library Unzip}, label=kode:unzipsharif]
+\begin{lstlisting}[language=PHP, caption=Contoh kode penggunaan \textit{Library Unzip}, label=kode:unzipsharif]
 	$this->load->library('unzip');
 	$this->unzip->allow(array('txt', 'cpp', 'html', 'md', 'pdf'));
 	$extract_result = $this->unzip->extract($u_data['full_path'], $tmp_dir);
 \end{lstlisting}
 
-Kode \ref{kode:unzipsharif} merupakan contoh penggunakan \textit{library Unzip}. Sintaks \verb|$this->load->library('unzip');| berfungsi untuk melakukan \textit{load} \textit{library Unzip} agar dapat digunakan pada fungsi tersebut. Selanjutnya sintaks \verb|$this->unzip->allow(array('txt', 'cpp', 'html', 'md', 'pdf'));| berfungsi untuk memberikan batasan \textit{extension} apa saja yang diinginkan dari file tersebut. Terakhir sintaks \verb|$extract_result = $this->unzip->extract($u_data['full_path'], $tmp_dir);| berfungsi untuk melakukan ekstraksi terhadap file zip pada \verb|$u_data['full_path']| tersebut menuju direktori pada variabel tmp\_dir.
+Sintaks \verb|$this->load->library('unzip');| berfungsi untuk melakukan \textit{load} \textit{library Unzip} agar dapat digunakan pada fungsi tersebut. Selanjutnya sintaks \verb|$this->unzip->allow();| berfungsi untuk memberikan batasan \textit{extension} apa saja yang diinginkan dari \textit{file} tersebut. Terakhir sintaks \verb|$extract_result = $this->unzip->extract($u_data['full_path'], $tmp_dir);| berfungsi untuk melakukan ekstraksi terhadap \textit{file} zip pada \verb|$u_data['full_path']| tersebut menuju direktori pada variabel tmp\_dir.
 
 \subsubsection{\textit{Twig}}
 \textit{Twig} merupakan sebuah \textit{template engine library} yang digunakan untuk mempermudah dalam membentuk \textit{view} pada aplikasi. \textit{Twig} terintegrasi dengan fungsi-fungsi pada \textit{CodeIgniter 3} sehingga dapat menggunakan seluruh fungsi yang terdapat pada \textit{CodeIgniter 3}. Kode \ref{kode:twigsharif} merupakan contoh penggunaan \textit{Twig} pada \textit{SharIF Judge}.
@@ -655,14 +655,14 @@ Kode \ref{kode:unzipsharif} merupakan contoh penggunakan \textit{library Unzip}.
 \textit{Twig} pada \textit{view SharIF Judge} menggunakan dua buah \textit{delimiters} yakni \verb|{{ }}| dan \verb|{% %}|. \textit{Delimiters} \verb|{{ }}| memiliki fungsi untuk mengembalikan \textit{expression} seperti variabel ataupun fungsi \textit{CodeIgniter 3}. Contoh fungsi yang dikembalikan oleh \textit{delimiters} pada kode diatas adalah \texttt{form\_open} yang merupakan sebuah fungsi pada \textit{CodeIgniter 3} untuk membuka \textit{tag form}. Sedangkan \textit{delimiters} \verb|{% %}| memiliki fungsi untuk mengeksekusi fungsi PHP seperti \textit{for-loops} atau \textit{if else}. Contoh fungsi yang dieksekusi pada kode diatas adalah \texttt{if} yang berfungsi untuk mengecek kondisi tertentu.
 
 \subsubsection{\textit{Password\_hash}}
-\textit{Password\_hash} merupakan sebuah \textit{library} yang dibentuk oleh \textit{phpass}. \textit{Library} ini berfungsi untuk melakukan enkripsi \textit{password} dan melakukan verifikasi \textit{password}. \textit{Library} ini mendukung beberapa metode enkripsi antara lain \textit{CRYPT\_BLOWFISH} dan \textit{CRYPT\_EXT\_DES}. Kode \ref{kode:passwordhashsharif} merupakan contoh penggunaan \textit{library} ini pada \textit{SharIF Judge}.
+\textit{Password\_hash} merupakan sebuah \textit{library} yang dibentuk oleh \textit{phpass}. \textit{Library} ini berfungsi untuk melakukan enkripsi \textit{password} dan melakukan verifikasi \textit{password}. \textit{Library} ini mendukung beberapa metode enkripsi antara lain \textit{CRYPT\_BLOWFISH} dan \textit{CRYPT\_EXT\_DES}. Kode \ref{kode:passwordhashsharif} menunjukan contoh penggunaan \textit{library} ini pada \textit{SharIF Judge}.
 
-\begin{lstlisting}[caption=Contoh kode penggunaan \textit{Library Password\_hash}, label=kode:passwordhashsharif]
+\begin{lstlisting}[language=PHP, caption=Contoh kode penggunaan \textit{Library Password\_hash}, label=kode:passwordhashsharif]
 	$this->load->library('password_hash', array(8, FALSE));
 	$user['password'] = $this->password_hash->HashPassword($this->input->post('password'));
 \end{lstlisting}
 
-Kode \ref{kode:passwordhashsharif} merupakan contoh penggunaan \textit{library Passwors\_hash}. Sintaks pada baris pertama akan melakukan \textit{load} pada \textit{library Password\_hash}. Sintaks pada baris selanjutnya akan melakukan \textit{hashing} pada \textit{input} menggunakan algoritma yang ditentukan dan menyimpannya pada sebuah variabel.
+Kode \ref{kode:passwordhashsharif} melakukan \textit{load} pada \textit{library Password\_hash}. Selanjutnya sintaks akan melakukan \textit{hashing} pada \textit{input} menggunakan algoritma yang ditentukan dan menyimpannya pada sebuah variabel.
 
 \subsubsection{\textit{MY\_Form\_validation}}
 \textit{MY\_Form\_validation} merupakan \textit{library} yang dibentuk secara manual untuk menambahkan fungsi validasi yang sudah tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini memiliki dua buah fungsi yakni:
@@ -674,14 +674,14 @@ Kode \ref{kode:passwordhashsharif} merupakan contoh penggunaan \textit{library P
 \textit{MY\_Profiler} merupakan \textit{library} yang dibentuk secara manual dan merupakan perpanjangan dari \textit{CI\_Profiler}. \textit{Library} ini berfungsi untuk mengembalikan data yang telah dijalankan oleh \textit{profiler} dan menyimpannya pada halaman pengguna. \textit{Library} ini tidak akan digunakan lagi karena tidak terdapat pada \textit{CodeIgniter 4} dan tidak dipakai pada \textit{SharIF Judge}.
 
 \subsubsection{\textit{Parsedown}}
-\textit{Parsedown} merupakan sebuah \textit{library} yang dibentuk oleh Emanuil Rusev. \textit{Library} ini berfungsi untuk mengubah teks dengan sintaks \textit{markdown} menjadi teks dalam bentuk file lain seperti HTML. Kode \ref{kode:parsedownsharif} merupakan contoh penggunaan \textit{library parsedown}.
+\textit{Parsedown} merupakan sebuah \textit{library} yang dibentuk oleh Emanuil Rusev. \textit{Library} ini berfungsi untuk mengubah teks dengan sintaks \textit{markdown} menjadi teks dalam bentuk \textit{file} lain seperti HTML. Kode \ref{kode:parsedownsharif} merupakan contoh penggunaan \textit{library parsedown}.
 
-\begin{lstlisting}[caption=Contoh kode penggunaan \textit{Library Parsedown}, label=kode:parsedownsharif]
+\begin{lstlisting}[language=PHP, caption=Contoh kode penggunaan \textit{Library Parsedown}, label=kode:parsedownsharif]
 	$this->load->library('parsedown');
 	$html = $this->parsedown->parse(file_get_contents("$assignment_dir/p$i/desc.md"));
 \end{lstlisting}
 
-Kode \ref{kode:parsedownsharif} akan menginisiasi \textit{library parsedown} pada sintaks baris pertama. Selanjutnya isi dari file \texttt{desc.md} akan diambil dan dilakukan \textit{parsedown} menjadi file HTML. Berikut merupakan contoh dari teks sebelum dan sesudah di \textit{parsedown}:
+Kode \ref{kode:parsedownsharif} akan menginisiasi \textit{library parsedown} pada sintaks baris pertama. Selanjutnya isi dari \textit{file} \texttt{desc.md} akan diambil dan dilakukan \textit{parsedown} menjadi \textit{file} HTML. Berikut merupakan contoh dari teks sebelum dan sesudah di \textit{parsedown}:
 
 Ini adalah list :
 \begin{enumerate}
@@ -690,7 +690,7 @@ Ini adalah list :
 	\item Tiga
 \end{enumerate}
 
-\begin{lstlisting}[caption=Contoh kode sesudah dilakukan \textit{parsedown}, label=kode:parsedownsharifContoh]
+\begin{lstlisting}[caption=Contoh hasil teks sesudah dilakukan \textit{parsedown}, label=kode:parsedownsharifContoh]
 	<p>Ini adalah list</p>
 	<ol>
 	<li>Satu</li>
@@ -698,18 +698,18 @@ Ini adalah list :
 	<li>Tiga</li>
 \end{lstlisting}
 
-Kode \ref{kode:parsedownsharifContoh} merupakan contoh kode HTML sesudah dilakukan \textit{parsedown}. Angka 1, 2, dan 3 akan diubah menjadi \textit{list} yang dapat ditampilkan pada HTML.
+Kode \ref{kode:parsedownsharifContoh} menunjukan contoh kode HTML sesudah dilakukan \textit{parsedown}. Angka 1, 2, dan 3 akan diubah menjadi \textit{list} yang dapat ditampilkan pada HTML.
 
 \subsubsection{\textit{Phpexcel}}
-\textit{Phpexcel} merupakan sebuah \textit{library} yang dibentuk oleh \textit{PHPExcel}. \textit{Library} ini memiliki fungsi untuk mengubah data yang ada pada PHP menjadi file excel. 
+\textit{Phpexcel} merupakan sebuah \textit{library} yang dibentuk oleh \textit{PHPExcel}. \textit{Library} ini memiliki fungsi untuk mengubah data yang ada pada PHP menjadi \textit{file} excel. 
 
 \subsubsection{\textit{Shj\_pagination}}
 \textit{Shj\_pagination} merupakan \textit{library} yang dibentuk secara manual dengan fungsi untuk membatasi maksimal data pada setiap halaman sesuai dengan konfigurasinya.
 
 \subsubsection{\textit{Upload}}
-\textit{Library} ini merupakan fungsi yang tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini berguna untuk menerima masukan dan mengunggah file yang dimasukan oleh pengguna. Kode \ref{kode:uploadlibbab3} merupakan penggunaan \textit{library upload} pada \textit{SharIF Jugde}.
+\textit{Library} ini merupakan fungsi yang tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini berguna untuk menerima masukan dan mengunggah \textit{file} yang dimasukan oleh pengguna. Kode \ref{kode:uploadlibbab3} menunjukan contoh penggunaan \textit{library upload} pada \textit{SharIF Judge} untuk melakukan \textit{upload} sebuah \textit{file}.
 
-\begin{lstlisting}[caption=Contoh penggunaan \textit{library upload}, label=kode:uploadlibbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh penggunaan \textit{library upload}, label=kode:uploadlibbab3]
 	$this->load->library('upload');
 	$config = array(
 			'upload_path' => $assignments_root,
@@ -720,17 +720,15 @@ Kode \ref{kode:parsedownsharifContoh} merupakan contoh kode HTML sesudah dilakuk
 		$u_data = $this->upload->data();
 \end{lstlisting}
 
-Kode \ref{kode:uploadlibbab3} merupakan contoh penggunaan \textit{library upload} untuk menerima \textit{input} berupa post. Sintaks baris pertama akan melakukan inisiasi terhadap \textit{library upload}. Sedangkan sintaks selanjutnya akan menentukan dan menginisiasikan konfigurasi terhadap \textit{path} dan tipe apa saja yang dapat dikirimkan oleh pengguna. Setelah itu akan dilakukan \textit{upload} menggunakan sintaks \texttt{do\_upload}. Terakhir akan disimpan seluruh data file yang telah dilakukan \textit{upload} menuju variabel.
+Kode \ref{kode:uploadlibbab3} akan melakukan inisiasi terhadap \textit{library upload}. Sedangkan sintaks selanjutnya akan menentukan dan menginisiasikan konfigurasi terhadap \textit{path} dan tipe apa saja yang dapat dikirimkan oleh pengguna. Setelah itu akan dilakukan \textit{upload} menggunakan sintaks \texttt{do\_upload}. Terakhir seluruh data \textit{file} yang telah dilakukan \textit{upload} disimpan menuju variabel.
 
 \subsubsection{\textit{Input}}
-\textit{Library} ini merupakan fungsi yang tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini berguna untuk menerima \textit{input} dari pengguna. Kode \ref{kode:inputlibbab3} merupakan penggunaan \textit{library input} pada \textit{SharIF Jugde}.
+\textit{Library} ini merupakan fungsi yang tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini berguna untuk menerima \textit{input} dari pengguna. Kode \ref{kode:inputlibbab3} menunjukan penggunaan \textit{library input} pada \textit{SharIF Judge} untuk menerima input \textit{post} dengan \textit{input form} bernama \texttt{name}.
 
-\begin{lstlisting}[caption=Contoh penggunaan \textit{library input}, label=kode:inputlibbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh penggunaan \textit{library input}, label=kode:inputlibbab3]
 	$this->load->library('upload');
 	$names = $this->input->post('name');
 \end{lstlisting}
-
-Kode \ref{kode:inputlibbab3} merupakan contoh penggunaan \textit{library upload} untuk menerima \textit{input} berupa post. Sintaks baris pertama akan melakukan inisiasi terhadap \textit{library upload}. Sedangkan sintaks selanjutnya akan menerima data bernama \textit{name} yang dikirim melalui \textit{post}.
 
 \subsubsection{\textit{Email}}
 \textit{Library} ini merupakan fungsi yang tersedia pada \textit{CodeIgniter 3}. \textit{Library} ini berguna untuk mengirimkan \textit{email} kepada orang yang dituju sesuai dengan konfigurasinya.
@@ -740,14 +738,14 @@ Kode \ref{kode:inputlibbab3} merupakan contoh penggunaan \textit{library upload}
 
 \subsubsection{Kelas \textit{URI}}
 \textit{Library} ini berfungsi untuk mengambil informasi yang terdapat pada \textit{segment} dalam sebuah \textit{URI}. Kode \ref{kode:uriclassbab3} merupakan penggunaan \textit{library} ini untuk mengambil \textit{segment} dan mengubahnya menjadi sebuah \textit{array}.
-\begin{lstlisting}[caption=Contoh penggunaan \textit{library URI}, label=kode:uriclassbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh penggunaan \textit{library URI}, label=kode:uriclassbab3]
 	$input = $this->uri->uri_to_assoc();
 \end{lstlisting}
 Kode \ref{kode:uriclassbab3} merupakan fungsi untuk mengambil informasi yang tersedia pada \textit{segment}. Hasil data dari pengambilan tersebut berupa \textit{associative array}.
 
 \subsubsection{\textit{Session}}
 \textit{Library} ini berfungsi untuk menyimpan informasi setiap pengguna memakai perangkat lunak. Data-data ini selanjutnya disimpan menuju \textit{database} dengan nama tabel \texttt{shj\_session}. Data-data yang telah disimpan selanjutnya dapat diambil kembali untuk melakukan pengecekan ataupun disimpan menuju tabel lainnya. Berikut merupakan penggunaan \textit{library session} untuk mengambil data pengguna:
-\begin{lstlisting}[caption=Contoh penggunaan \textit{library session}, label=kode:sessionbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh penggunaan \textit{library session}, label=kode:sessionbab3]
 	$this->session->userdata('logged_in')
 \end{lstlisting}
 
@@ -758,17 +756,17 @@ Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulis
 \subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{phpoffice}, \textit{radius}, dan \textit{adldap2}.
 
 \subsection{Struktur Aplikasi}
-Struktur aplikasi pada \textit{CodeIgniter 3} dan \textit{CodeIgniter 4} memiliki perubahan sehingga perlu dilakukan pemindahan \textit{file-file} menuju \textit{CodeIgnter 4}. Gambar \ref{fig:dirMapping} merupakan pemindahan struktur aplikasi \textit{SharIF Judge} pada \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4}.
+Struktur aplikasi pada \textit{CodeIgniter 3} dan \textit{CodeIgniter 4} memiliki perubahan sehingga perlu dilakukan pemindahan \textit{file} menuju direktori \textit{CodeIgnter 4}. Gambar \ref{fig:dirMapping} menunjukan pemindahan struktur aplikasi \textit{SharIF Judge} pada \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4}.
 \begin{figure}[H]
 	\centering  
 	\includegraphics[scale=0.5]{dirMapping}  
-	\caption[\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}]{\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}} 
+	\caption[Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}]{\textit{Pemindahan struktur aplikasi menuju \textit{CodeIgniter 4}}} 
 	\label{fig:dirMapping} 
 \end{figure} 
 
-Berikut merupakan rincian direktori yang akan dipindahkan menuju \textit{CodeIgniter 4}.
+Berikut merupakan rincian direktori yang dipindahkan menuju \textit{CodeIgniter 4}:
 \subsubsection{Application}
-Direktori-direktori \texttt{application} pada \textit{CodeIgniter 3} akan dipindahkan dengan penyesuaian menuju direktori \texttt{app} terkecuali direktori \texttt{vendor}, \texttt{cache} dan \texttt{core}. Berikut merupakan direktori yang dipindahkan dari direktori \textit{application} menuju direktori \textit{app}.
+Direktori-direktori \texttt{application} pada \textit{CodeIgniter 3} dipindahkan dengan penyesuaian menuju direktori \texttt{app} terkecuali direktori \texttt{vendor}, \texttt{cache} dan \texttt{core}. Berikut merupakan direktori yang dipindahkan dari direktori \textit{application} menuju direktori \textit{app}:
 \begin{itemize}
 \item \verb|application/config| akan dipindahkan menuju \texttt{app/Config}.
 \item \verb|application/controllers| akan dipindahkan menuju \texttt{app/Controllers}.
@@ -781,10 +779,10 @@ Direktori-direktori \texttt{application} pada \textit{CodeIgniter 3} akan dipind
 
 \subsubsection{\texttt{Config}}
 \label{subsubsec:configbab3usulan}
-Data dari file pada direktori \textit{config} \textit{CodeIgniter 3} akan dipindahkan dengan penyesuaian menuju direktori \textit{Config}. Berikut merupakan file-file yang dipindahkan dengan penyesuaian.
+Data dari \textit{file} pada direktori \textit{config} \textit{CodeIgniter 3} dipindahkan dengan penyesuaian menuju direktori \textit{Config}. Berikut merupakan \textit{file-file} yang dipindahkan dengan penyesuaian:
 \begin{itemize}
-	\item \verb|autoload.php| akan dipindahkan menuju \texttt{BaseController} seperti \textit{helpers} dan terdapat penghapusan \textit{autoload library} dan \textit{model} karena perbedaan cara kerjanya.
-	\item \verb|config.php| akan dipecah dan dipindahkan menjadi tiga buah file yakni \texttt{Config/app.php}, \texttt{Config/Session.php}, dan \texttt{Config/Security.php}.
+	\item \verb|autoload.php| akan dipindahkan menuju \texttt{BaseController} seperti \textit{helpers} dan terdapat penghapusan \textit{autoload library} dan \textit{model} karena terdapat perbedaan cara kerja.
+	\item \verb|config.php| akan dipecah dan dipindahkan menjadi tiga buah \textit{file} yakni \texttt{Config/app.php}, \texttt{Config/Session.php}, dan \texttt{Config/Security.php}.
 	\item \verb|constants.php| akan dipindahkan menuju \texttt{Config/Constants.php}.
 	\item \verb|database.php| akan dipindahkan menuju \texttt{Config/Database.php}.
 	\item \verb|routes.php| akan dipindahkan menuju \texttt{Config/Routes.php}.
@@ -792,7 +790,7 @@ Data dari file pada direktori \textit{config} \textit{CodeIgniter 3} akan dipind
 \end{itemize}
 
 \subsubsection{\textit{Public}}
-\textit{CodeIgniter 3} tidak menyediakan direktori akar berupa \textit{public} sehingga terdapat perubahan struktur dimana direktori yang sebelumnya ada pada \texttt{application} akan dipindah menuju direktori \texttt{public}. Berikut merupakan direktori yang dipindahkan menuju direktori \texttt{public}.
+\textit{CodeIgniter 3} tidak menyediakan direktori akar berupa \textit{public} sehingga terdapat perubahan struktur. Stuktur berubah dimana direktori yang sebelumnya terdapat pada \texttt{application} akan dipindah menuju direktori \texttt{public}. Berikut merupakan direktori yang dipindahkan menuju direktori \texttt{public}:
 \begin{itemize}
 \item \verb|assets| akan dipindahkan menuju \texttt{public/assets}.
 \end{itemize}
@@ -800,7 +798,7 @@ Data dari file pada direktori \textit{config} \textit{CodeIgniter 3} akan dipind
 Selain stuktur aplikasi diatas, \textit{SharIF Judge} memiliki dua buah direktori terpisah diluar direktori utama bernama \textit{assignments} dan \textit{tester}. Direktori \textit{assignments} ini berfungsi untuk menyimpan seluruh \textit{file} yang telah dikumpulkan sedangkan direktori \textit{tester} digunakan untuk melakukan percobaan untuk keamanan \textit{sandbox}. Kedua direktori ini harus dapat ditulis oleh \textit{PHP} sehingga akan dipindahkan menuju direktori \textit{writables}.
 
 \subsubsection{\textit{Writables}}
-Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis oleh \textit{PHP}. Berikut merupakan direktori yang dipindahkan menuju \textit{writables}.
+Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis oleh PHP. Berikut merupakan direktori yang dipindahkan menuju \textit{writables}:
 \begin{itemize}
 \item \verb|application/cache| akan dipindahkan menuju \texttt{writables/cache}.
 \item \verb|application/log| akan dipindahkan menuju \texttt{writables/logs}.
@@ -808,7 +806,7 @@ Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis
 \end{itemize}
 
 \subsection{\textit{Routing}}
-\textit{Routing} pada aplikasi \textit{SharIF Judge} menggunakan \textit{auto routing} yang telah disediakan oleh \textit{CodeIgniter 3}. \textit{Auto routing} akan membentuk \textit{url} sesuai dengan \textit{controller} dan \textit{method} yang telah dibentuk tanpa harus didefinisikan secara manual. Penggunaan \textit{auto routing} seperti pada \textit{CodeIgniter 3} memiliki kekurangan pada bagian keamanan dimana \textit{filter} pada \textit{controller} dan proteksi \textit{CSRF} akan dilewati. Sehingga, konversi pada aplikasi \textit{SharIF Judge} akan menggunakan \textit{URI Routing} yang didefinisikan secara manual untuk alasan keamanan dan \textit{url} yang fleksibel. Berikut merupakan contoh \textit{route} yang didefinisikan secar a manual.
+\textit{Routing} pada aplikasi \textit{SharIF Judge} menggunakan \textit{auto routing} yang disediakan oleh \textit{CodeIgniter 3}. \textit{Auto routing} akan membentuk \textit{url} sesuai dengan \textit{controller} dan \textit{method} yang telah dibentuk tanpa harus didefinisikan secara manual. Penggunaan \textit{auto routing} seperti pada \textit{CodeIgniter 3} memiliki kekurangan pada bagian keamanan dimana \textit{filter} pada \textit{controller} dan proteksi CSRF dilewati. Sehingga, konversi pada aplikasi \textit{SharIF Judge} akan menggunakan \textit{URI Routing} yang didefinisikan secara manual untuk alasan keamanan dan \textit{url} yang fleksibel. Berikut merupakan contoh \textit{route} yang didefinisikan secar a manual:
 \begin{center}
 \verb|$routes->post("login/register",'Login::register');|
 \end{center}
@@ -822,7 +820,7 @@ Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis
 \item Menggunakan \textit{Model} dari \textit{CodeIgniter 3}
 
 \textit{Model} akan dipindahkan menuju direktori \texttt{app/Models} dan dilakukan beberapa perubahan. Kode \ref{kode:modelCI3} merupakan contoh fungsi yang terdapat pada \textit{CodeIgniter 3}.
-\begin{lstlisting}[caption=Contoh fungsi untuk mengambil data seluruh user pada \textit{CodeIgniter 3}, label=kode:modelCI3]
+\begin{lstlisting}[language=PHP, caption=Contoh fungsi untuk mengambil data seluruh user pada \textit{CodeIgniter 3}, label=kode:modelCI3]
 public function get_all_users()
 	{
 		return $this->db->order_by('role', 'asc')->order_by('id')->get('users')->result_array();
@@ -830,7 +828,7 @@ public function get_all_users()
 \end{lstlisting}
 
 Kode \ref{kode:modelCI3} mengambil data dari tabel \texttt{users} dengan hasil berupa \textit{array} dan diurutkan sesuai dengan \texttt{role} dan \texttt{id}nya. Kode akan dilakukan konversi dengan pengubahan sintaks. Berikut merupakan hasil konversi fungsi untuk mengambil data seluruh \textit{user}.
-\begin{lstlisting}[caption=Hasil konversi fungsi untuk mengambil data seluruh user, label=kode:modelCI3konv]
+\begin{lstlisting}[language=PHP, caption=Hasil konversi fungsi untuk mengambil data seluruh user, label=kode:modelCI3konv]
 public function get_all_users()
 	{
 		return $this->db->table('users)->orderBy('role', 'asc')->orderBy('id')->get()->getResultArray();
@@ -858,10 +856,10 @@ Sintaks diatas akan mengambil seluruh data dari \verb|$userModel| sesuai dengan 
 \begin{center}
 	\verb|$this->Notifications_model->delete('notifications', array('id' => $id));|
 \end{center}
-Sintaks diatas akan menghapus data dari tabel \texttt{notifications} sesuai dengan \texttt{id} yang diberikan. Fungsi ini tidak perlu membentuk sintaks secara manual pada file \textit{models} melainkan hanya perlu memanggil \textit{model} yang ingin digunakan. Konversi aplikasi \textit{SharIF Judge} akan menggunakan cara pertama dengan penghapusan dan pembaharuan beberapa sintaks. Selain itu, terdapat perubahan nama \textit{model} dari yang sebelumnya menggunakan \textit{snake case} menjadi \textit{PascalCase} agar sesuai dengan standar PHP.
+Sintaks diatas akan menghapus data dari tabel \texttt{notifications} sesuai dengan \texttt{id} yang diberikan. Fungsi ini tidak perlu membentuk sintaks secara manual pada \textit{file} \textit{models} melainkan hanya perlu memanggil \textit{model} yang ingin digunakan. Konversi aplikasi \textit{SharIF Judge} akan menggunakan cara pertama dengan penghapusan dan pembaharuan beberapa sintaks. Selain itu, terdapat perubahan nama \textit{model} dari yang sebelumnya menggunakan \textit{snake case} menjadi \textit{PascalCase} agar sesuai dengan standar PHP.
 
 \subsubsection{\textit{View}}
-\textit{View} pada aplikasi \textit{SharIF Judge} menggunakan \textit{template engine} bernama \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman \textit{PHP} yang berguna untuk mempermudah dalam mebentuk tampilan sebuah aplikasi. \textit{Twig} tidak terintegrasi pada \textit{CodeIgniter 4} sehingga akan terdapat beberapa pemasangan dan perubahan pada sintaks yang telah dipasang. Selain itu, terdapat beberapa perubahan fungsi pada \textit{CodeIgniter 4} sehingga perlu dilakukan penyesuaian seperti pengubahan \textit{file extension} dari \texttt{.twig} menjadi \texttt{.php}. Konversi \textit{SharIF Judge} menuju \textit{CodeIgniter 4} akan mengubah \textit{view} yang sebelumnya menggunakan \textit{twig} menjadi menggunakan \textit{PHP} sesuai dengan dokumentasi \textit{CodeIgniter 4}. Seluruh \textit{delimiters} akan diubah menggunakan fitur yang terdapat pada \textit{CodeIgniter 4}. Kode \ref{kode:viewTwig} merupakan contoh konversi yang dilakukan.
+\textit{View} pada aplikasi \textit{SharIF Judge} menggunakan \textit{template engine} bernama \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman PHP yang berguna untuk mempermudah dalam membentuk tampilan sebuah aplikasi \textit{webiste}. \textit{Twig} tidak terintegrasi pada \textit{CodeIgniter 4} sehingga terdapat perubahan pada sintaks yang telah dipasang. Selain itu, terdapat beberapa perubahan fungsi pada \textit{CodeIgniter 4} sehingga perlu dilakukan penyesuaian seperti pengubahan \textit{file extension} dari \texttt{.twig} menjadi \texttt{.php}. Konversi \textit{SharIF Judge} menuju \textit{CodeIgniter 4} dilakukan dengan mengubah \textit{view} dari sebelumnya menggunakan \textit{twig} menjadi menggunakan \textit{PHP}. Seluruh \textit{delimiters} akan diubah menggunakan fitur yang terdapat pada \textit{CodeIgniter 4}. Kode \ref{kode:viewTwig} menunjukan contoh konversi yang dilakukan.
 
 \begin{lstlisting}[caption=Contoh \textit{view} menggunakan \textit{twig}, label=kode:viewTwig]
 {% if registration_enabled %}
@@ -871,18 +869,18 @@ Sintaks diatas akan menghapus data dari tabel \texttt{notifications} sesuai deng
 
 menjadi kode berikut:
 
-\begin{lstlisting}[caption=Contoh \textit{view} menggunakan \textit{php}, label=kode:viewPHP]
+\begin{lstlisting}[language=PHP, caption=Contoh \textit{view} menggunakan \textit{php}, label=kode:viewPHP]
 <?php if($registration_enabled): ?>
 	<a href="<?= site_url('register') ?>">Register</a> |
 <?php endif ?>
 \end{lstlisting}
 
-Seluruh sintaks \textit{twig} akan diubah menjadi sintaks \textit{PHP} dari \textit{CodeIgniter 4} seperti yang terdapat pada kode \ref{kode:viewPHP}.
+Seluruh sintaks \textit{twig} akan diubah menjadi sintaks \textit{PHP} dari \textit{CodeIgniter 4} seperti yang ditunjukan pada kode \ref{kode:viewPHP}.
 
 \subsubsection{\textit{Controller}}
-\textit{Controller} pada \textit{CodeIgniter 4} memiliki fungsi sama dengan pada \textit{CodeIgniter 3} sehingga hanya akan dipindahkan dan dilakukan penghapusan dan perubahan pada sintaks yang ada. Sintaks yang dihapus berupa \texttt{defined} dan akan digantikan dengan \textit{namespace}. Beberapa sintaks untuk memanggil \textit{models} dan pengembalian \textit{view} juga akan disesuaikan. Namun, terdapat perubahan pada \texttt{constructor} dimana pada \textit{CodeIgniter 4} terdapat \texttt{initController}. \textit{Constructor} pada \textit{PHP} tidak diperbolehkan untuk mengembalikan apapun sehingga terdapat beberapa pemindahan fungsi seperti \texttt{redirect()} menuju \textit{filters}. Selain itu, konversi akan tetap menggunakan \verb|__construct| dengan pemindahan beberapa sintaks menuju \texttt{initController} seperti pemanggilan \textit{helpers} dan variabel yang dapat diakses pada seluruh \textit{controller}. Berikut merupakan contoh penggunaan \texttt{initController} untuk melakukan inisiasi fungsi menuju variabel.
+\textit{Controller} pada \textit{CodeIgniter 4} memiliki fungsi sama dengan pada \textit{CodeIgniter 3} sehingga hanya akan dipindahkan dan dilakukan perubahan pada sintaks yang ada. Sintaks yang dihapus berupa \texttt{defined} dan akan digantikan dengan \texttt{namespace}. Beberapa sintaks untuk memanggil \textit{models} dan pengembalian \textit{view} juga akan disesuaikan. Namun, terdapat perubahan pada \texttt{constructor} dimana pada \textit{CodeIgniter 4} terdapat \texttt{initController} yang akan dipanggil setelah \textit{constructor} dijalankan. \textit{Constructor} pada \textit{PHP} tidak diperbolehkan untuk mengembalikan apapun sehingga terdapat beberapa pemindahan fungsi seperti \texttt{redirect()} menuju \textit{filters}. Selain itu, konversi akan tetap menggunakan \verb|__construct| dengan pemindahan beberapa sintaks menuju \texttt{initController} seperti pemanggilan \textit{helpers} dan variabel yang dapat diakses pada seluruh \textit{controller}. Kode \ref{kode:initController} menunjukan contoh penggunaan \texttt{initController} untuk melakukan inisiasi fungsi menuju variabel.
 
-\begin{lstlisting}[caption=Penggunaan initController untuk inisiasi fungsi menuju variabel, label=kode:initController]
+\begin{lstlisting}[language=PHP, caption=Penggunaan initController untuk inisiasi fungsi menuju variabel, label=kode:initController]
 protected $config;
 
 public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
@@ -897,27 +895,25 @@ public function initController(RequestInterface $request, ResponseInterface $res
     }
 \end{lstlisting}
 
-Kode \ref{kode:initController} akan memanggil variabel \verb|$config| berisikan data dari \textit{file config} \texttt{Secrets.php} yang dapat digunakan seluruh \textit{controller} tanpa perlu melakukan inisiasi lagi.
-
-Fungsi lainnya akan dipindahkan sesuai dengan yang ada pada \textit{CodeIgniter 3} dengan pembaharuan. Selain pembaharuan, akan terdapat pemindahan variabel \textit{global} yang sebelumnya telah diinisiasikan menuju \textit{controller}.
+Kode \ref{kode:initController} memanggil variabel \verb|$config| berisikan data dari \textit{file config} \texttt{Secrets.php} yang dapat diakses oleh seluruh \textit{controller} tanpa perlu melakukan inisiasi lagi. Fungsi lainnya akan dipindahkan sesuai dengan yang ada pada \textit{CodeIgniter 3} dengan pembaharuan. Selain pembaharuan, akan terdapat pemindahan variabel \textit{global} yang sebelumnya telah diinisiasikan menuju \textit{controller}.
 
 \subsubsection{IncomingRequest}
-\textit{Input} akan digantikan menggunakan fungsi \textit{request} dengan perubahan beberapa fungsi. Kode \ref{kode:requestconvbab3} merupakan perubahan yang terdapat dalam menerima \textit{input} dari pengguna.
+\textit{Input} digantikan menggunakan fungsi \textit{request} dengan perubahan beberapa fungsi. Kode \ref{kode:requestconvbab3} menunjukan perubahan yang terdapat dalam menerima \textit{input} dari pengguna.
 
-\begin{lstlisting}[caption=Contoh perubahan \textit{library request}, label=kode:requestconvbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan \textit{library request}, label=kode:requestconvbab3]
 $this->request = \Config\Services::request(); 
 $names => $this->request->getPost('name'),
 \end{lstlisting}
 
-Kode \ref{kode:requestconvbab3} merupakan perubahan dalam menerima data yang dikirim melalui \textit{post}.Sintaks pertama akan melakukan inisiasi terhadap \textit{library} tersebut namun inisiasi tersebut hanya diperlukan pada \textit{model} karena fungsi ini sudah terdapat pada \textit{controller}.Sintaks baris kedua akan mengambil data bernama \textit{name} yang telah dikirimkan oleh pengguna melalui \textit{post}. Konversi aplikasi \textit{SharIF Judge} akan menggunakan fungsi ini dengan beberapa perubahan sintaks sesuai dengan dokumentasinya.
+Kode \ref{kode:requestconvbab3} melakukan inisiasi terhadap \textit{library} tersebut namun inisiasi tersebut hanya diperlukan pada \textit{file model} karena fungsi ini sudah terinisiasi pada \textit{controller}. Sintaks selanjutnya mengambil data bernama \texttt{name} yang telah dikirimkan oleh pengguna melalui \textit{post}. Konversi aplikasi \textit{SharIF Judge} akan menggunakan fungsi ini dengan beberapa perubahan sintaks sesuai dengan dokumentasinya.
 
 \subsection{\textit{Libraries}}
 \textit{Libraries} pada \textit{CodeIgniter 3} memiliki perubahan dan penghapusan pada \textit{CodeIgnier 4} sehingga perlu dilakukan pembaharuan. Berikut merupakan \textit{libraries} yang dipakai pada \textit{SharIF Judge}:
 
 \subsubsection{\textit{Emails}}
-\textit{Emails} pada \textit{CodeIgniter 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snake case} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3ci4} merupakan contoh penggunaan \textit{library email}.
+\textit{Emails} pada \textit{CodeIgniter 4} terdapat perubahan sintaks dan cara pemanggilan sehingga akan dipindahkan sesuai dengan sintaks yang baru. Sintaks berubah dari yang sebelumnya menggunakan \textit{snake case} menjadi menggunakan \textit{camelcase}. Kode \ref{kode:emailslibbab3ci4} menunjukan contoh penggunaan \textit{library email}.
 
-\begin{lstlisting}[caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3ci4]
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan \textit{library emails}, label=kode:emailslibbab3ci4]
 $this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->settings_model->get_setting('mail_from_name'));
 				$this->email->setTo($user[1]);
 				$this->email->setSubject('SharIF Judge Username and Password');
@@ -931,49 +927,48 @@ $this->email->setFrom($this->settings_model->get_setting('mail_from'), $this->se
 				$this->email->send()
 \end{lstlisting}
 
-Kode \ref{kode:emailslibbab3ci4} memiliki sintaks dengan nama sama namun terdapat perubahan menjadi \textit{camelcase}.
+Kode \ref{kode:emailslibbab3ci4} memiliki sintaks dengan nama sama namun terdapat perubahan menjadi \textit{camelCase}.
 
 \subsubsection{\textit{Working with Uploaded Files}}
-\textit{Upload} akan digantikan dengan fungsi \textit{Working with oploaded files} dengan beberapa penggantian dan penghapusan fungsi. \textit{Working with uploaded files} terdapat perubahan pada beberapa sintaks dan validasi terhadap \textit{file} yang telah diunggah. Kode \ref{kode:uploadconvbab3} merupakan perubahan yang terdapat dalam melakukan \textit{upload} sebuah file.
+\textit{Upload} akan diganti menggunakan fungsi \textit{Working with oploaded files} dengan beberapa penggantian dan penghapusan fungsi. \textit{Working with uploaded files} terdapat perubahan pada beberapa sintaks dan validasi terhadap \textit{file} yang telah diunggah. Kode \ref{kode:uploadconvbab3} merupakan perubahan yang terdapat dalam melakukan \textit{upload} sebuah \textit{file}.
 
-\begin{lstlisting}[caption=Contoh perubahan \textit{library upload}, label=kode:uploadconvbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan \textit{library upload}, label=kode:uploadconvbab3]
 $zip_uploaded = $this->request->getFile('tests_desc');
 $pdf_uploaded->move("$assignment_dir");
 \end{lstlisting}
 
-Kode \ref{kode:uploadconvbab3} merupakan perubahan dalam melakukan \textit{upload} sebuah file. Sintaks \texttt{getFile} akan mengambil file bernama \texttt{tests\_desc} yang dikirimkan oleh pengguna. Sintaks selanjutnya akan memindahkan file tersebut menuju direktori yang terlah ditentukan. Pada \textit{CodeIgniter 4} sudah tidak terdapat konfigurasi aturan dan pengambilan data terhadap file yang diterima. Sehingga fungsi tersebut akan digantikan oleh \textit{validation} dan beberapa fitur yang terdapat pada \textit{library ini}. Berikut merupakan contoh sintaks untuk mengambil \textit{extension} dan data dari file yang diunggah.
-\begin{lstlisting}[caption=Contoh sintaks untuk mengambil \textit{extension} dan data file, label=kode:uploadconvbab32]
+Kode \ref{kode:uploadconvbab3} merupakan perubahan dalam melakukan \textit{upload} sebuah \textit{file}. Sintaks \texttt{getFile} akan mengambil \textit{file} bernama \texttt{tests\_desc} yang dikirimkan oleh pengguna. Sintaks selanjutnya akan memindahkan \textit{file} tersebut menuju direktori yang terlah ditentukan. Pada \textit{CodeIgniter 4} sudah tidak terdapat konfigurasi aturan dan pengambilan data terhadap \textit{file} yang diterima. Sehingga fungsi tersebut akan digantikan oleh \textit{validation} dan beberapa fitur yang terdapat pada \textit{library ini}. Kode \ref{kode:uploadconvbab32} menunjukan contoh sintaks untuk melakukan pengecekan \textit{extension} dan pengambilan data berupa nama dari \textit{file}.
+\begin{lstlisting}[language=PHP, caption=Contoh sintaks untuk mengambil \textit{extension} dan data \textit{file}, label=kode:uploadconvbab32]
 if($pdf_uploaded->getExtension() != "pdf"){
 	$zip_uploaded->getName()
 }
 \end{lstlisting}
-Kode \ref{kode:uploadconvbab32} merupakan contoh sintaks untuk melakukan pengecekan \textit{extension} dan pengambilan data berupa nama dari file.
 
 \subsubsection{\textit{Working with URIs}}
-Kelas \textit{URI} akan digantikan menggunakan fungsi \textit{working with URIs} dengan perubahan fungsi. Berikut merupakan contoh pengambilan sebuah \textit{segement} yang terdapat pada \textit{URI}:
+Kelas \textit{URI} digantikan dengan fungsi \textit{working with URIs} dengan perubahan fungsi. Berikut merupakan contoh pengambilan sebuah \textit{segement} yang terdapat pada \textit{URI}:
 \begin{center}
 	\verb|$temp_inp = $this->uri->getSegments();|
 \end{center}
 Sintaks diatas akan mengambil semua \textit{segment} yang tersedia pada \textit{URI}. \textit{Segment} yang sudah diambil akan disimpan menjadi sebuah \textit{array}.
 
 \subsubsection{\textit{Session}}
-Pemakaian \textit{library} ini terdapat perubahan dalam sintaks dan inisiasi \textit{library}. \textit{Library} ini perlu dilakukan inisiasi pada \textit{CodeIgniter 4}. Berikut merupakan contoh inisiasi \textit{library} ini:
+Pemakaian \textit{library session} terdapat perubahan dalam sintaks dan melakukan inisiasi \textit{library}. \textit{Library session} perlu dilakukan inisiasi pada \textit{CodeIgniter 4}. Berikut merupakan contoh inisiasi \textit{library} ini:
 \begin{center}
 	\verb|$this->session = session();|
 \end{center}
-Sintaks diatas akan melakukan inisiasi terhadap \textit{library} yang nantinya dapat dipakai pada seluruh file. Selanjutnya terdapat perubahan cara pengambilan data berikut merupakan contoh pengambilan data pada \textit{CodeIgniter 4}:
+Sintaks diatas akan melakukan inisiasi terhadap \textit{library} yang nantinya dapat dipakai pada seluruh \textit{file}. Selanjutnya terdapat perubahan cara pengambilan data berikut merupakan contoh pengambilan data pada \textit{CodeIgniter 4}:
 \begin{center}
 	\verb|$this->session->get('logged_in')|
 \end{center}
-Sintaks diatas akan mengambil data dengan nama \textit{logged\_in}. Penggunaan berubah dari yang sebelumnya menggunakan sintaks \texttt{userdata}. Selanjutnya data tersebut akan disimpan menuju \textit{database} dengan perubahan dan penghapusan kolom. Kolom tabel akan berubah menjadi empat buah yakni \textit{id, ip\_address, timestamp}, dan data.
+Sintaks diatas akan mengambil data \textit{session} dengan nama \texttt{logged\_in}. Penggunaan berubah dari yang sebelumnya menggunakan sintaks \texttt{userdata}. Selanjutnya data tersebut akan disimpan menuju \textit{database} dengan perubahan dan penghapusan kolom. Kolom tabel akan berubah menjadi empat buah yakni \textit{id, ip\_address, timestamp}, dan data.
 
 \subsubsection{\textit{Validation}}
-\textit{Form\_validation} akan digantikan menggunakan fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. Berikut merupakan contoh penetapan aturan untuk melakukan validasi saat mengumpulkan sebuah data pada \textit{form}:
+\textit{Form\_validation} diganti menggunakan fungsi \textit{validation} dengan perubahan dan pengapusan beberapa fungsi. Berikut merupakan contoh penetapan aturan untuk melakukan validasi saat mengumpulkan sebuah data pada \textit{form}:
 \begin{center}
 \texttt{\$validate->setRule('username', 'username', 'required|min\_length[3]|max\_length[20]');}
 \end{center}
-Sintaks diatas akan melakukan validasi terhadap \textit{input} yang akan masukan oleh pengguna. Sintaks penetapan aturan berubah menggunakan \textit{camelCase} dari yang sebelumnya berupa \texttt{set\_rules} menjadi \texttt{setRule}. Aturan untuk validasi tetap menggunakan fungsi yang tersedia pada \textit{CodeIgniter} tanpa perubahan namun, terdapat pemindahan aturan yang dibentuk manual dan penambahan beberapa sintaks. Kode \ref{kode:rulesaddonbab3} merupakan pemindahan aturan dengan penambahan beberapa sintaks:
-\begin{lstlisting}[caption=Contoh perubahan penambahan sintaks pada aturan yang dibentuk manual, label=kode:rulesaddonbab3]
+Sintaks diatas akan melakukan validasi terhadap \textit{input} yang dimasukan oleh pengguna. Sintaks penetapan aturan berubah menggunakan \textit{camelCase} dari yang sebelumnya berupa \texttt{set\_rules} menjadi \texttt{setRule}. Aturan untuk validasi tetap menggunakan fungsi yang tersedia pada \textit{CodeIgniter} tanpa perubahan namun, terdapat pemindahan aturan yang dibentuk manual dan penambahan beberapa sintaks. Kode \ref{kode:rulesaddonbab3} menunjukan pemindahan aturan dengan penambahan beberapa sintaks menuju \texttt{app/Config/Validation.php}.
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan penambahan sintaks pada aturan yang dibentuk manual, label=kode:rulesaddonbab3]
 		public function email_check($email, $edit_username):bool
 	{
 		$edit_username = explode(',', $edit_username);
@@ -984,26 +979,26 @@ Sintaks diatas akan melakukan validasi terhadap \textit{input} yang akan masukan
 	}
 \end{lstlisting}
 
-Kode \ref{kode:rulesaddonbab3} merupakan pemindahan aturan menuju \texttt{app/Config/Validation.php} aturan akan ditambahkan sintaks \texttt{explode} untuk memecah \textit{array} dan juga terdapat inisiasi \textit{model}. Aturan ini dapat digunakan seperti aturan lainnya. Namun, \textit{CodeIgniter 4} tidak menyediakan fungsi \texttt{form\_error} sehingga akan diubah dengan menggunakan fungsi baru bernama \texttt{validation\_errors()}. Fungsi tersebut dapat digunakan untuk mengembalikan \textit{error} apabila terdapat data yang tidak sesuai dengan aturan. \textit{Error} tersebut dapat ditampilkan pada halaman \textit{view} menggunakan sintaks berikut.
+Aturan pada Kode \ref{kode:rulesaddonbab3} ditambahkan sintaks \texttt{explode} untuk memecah \textit{array} dan juga terdapat inisiasi \textit{model}. Aturan ini dapat digunakan seperti aturan lainnya pada sintaks \texttt{setRule}. Namun, \textit{CodeIgniter 4} tidak menyediakan fungsi \texttt{form\_error} sehingga pengembalian \textit{error} diubah dengan menggunakan fungsi baru bernama \texttt{validation\_errors()}. Fungsi tersebut dapat digunakan untuk mengembalikan \textit{error} setiap \textit{input} apabila terdapat data yang tidak sesuai dengan aturan. \textit{Error} tersebut dapat ditampilkan pada halaman \textit{view} menggunakan sintaks berikut:
 
 \begin{center}
 \verb|<?= $validation->getError('username'); ?>|
 \end{center}
 
-Sintaks diatas akan mengembalikan \textit{error} terhadap \textit{form} dengan nama \textit{username} apabila tidak sesuai dengan aturan yang sudah ditentukan. Variabel \texttt{validation} akan dikirimkan dari \textit{controller} berisikan \textit{library} dari \textit{validation} tersebut. 
+Sintaks diatas akan mengembalikan \textit{error} terhadap \texttt{form} dengan nama \texttt{username} apabila tidak sesuai dengan aturan yang sudah ditentukan. Variabel \texttt{validation} dikirimkan dari \textit{controller} berisikan \textit{library} dari \textit{validation} tersebut. 
 
 \subsubsection{\textit{Zip Archive}}
 \label{subsubsec:ziparchivebab3}
-\textit{Zip Encoding} dan \textit{Unzip} akan digantikan dengan fungsi PHP \textit{zip archive} karena sudah tidak tersedia pada \textit{CodeIgniter 4}. Fungsi \textit{zip archive} terdapat beberapa perbedaan sehingga akan disesuaikan dengan fungsi-fungsi yang ada. Berikut merupakan penggunaan \textit{zip archive} untuk melakukan \textit{zip}.
+\textit{Zip Encoding} dan \textit{Unzip} digantikan dengan fungsi PHP \textit{zip archive} karena sudah tidak tersedia pada \textit{CodeIgniter 4}. Fungsi \textit{zip archive} terdapat beberapa perbedaan sehingga akan disesuaikan dengan fungsi-fungsi \textit{Zip Encoding}. Kode \ref{kode:ziparchivebab3} menunjukan penggunaan \textit{zip archive} untuk melakukan \textit{zip}.
 
-\begin{lstlisting}[caption=Contoh perubahan penggunaan \textit{library Zip Archive} untuk melakukan \textit{zip}, label=kode:ziparchivebab3]
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan penggunaan \textit{library Zip Archive} untuk melakukan \textit{zip}, label=kode:ziparchivebab3]
 		$this->zip = new \ZipArchive();
 		$this->zip->open($zipname, ZipArchive::CREATE);
 		$this->zip->addFile($file_path,"{$item['username']}/p{$item['problem']}.".filetype_to_extension($item['file_type']));
 \end{lstlisting}
 
-Kode \ref{kode:ziparchivebab3} merupakan perubahan dalam melakukan \textit{zip} sebuah file. Baris pertama akan melakukan inisiasi terhadap \textit{ZipArchive} sedangkan baris kedua akan membuka file \textit{zip}. Terakhir sintaks \texttt{addFile} akan memasukan file bernama \textit{file\_path} menuju zip yang terdapat pada \textit{array item}. Selain untuk membentuk file \textit{zip}, \textit{zip arhive} juga dapat melakukan \textit{unzip} terhadap file. Kode \ref{kode:ziparchiveunzipbab3} merupakan penggunaan \textit{ZipArchive} dalam melakukan \textit{unzip}.
-\begin{lstlisting}[caption=Contoh perubahan penggunaan\textit{library ZipArhive} untuk melakukan \textit{unzip}, label=kode:ziparchiveunzipbab3]
+Kode \ref{kode:ziparchivebab3} berfungsi untuk melakukan inisiasi terhadap \textit{ZipArchive} dan membuka sebuah \textit{file} \textit{zip}. Sintaks \texttt{addFile} selanjutnya memasukan \textit{file} bernama \textit{file\_path} menuju zip yang terdapat pada \textit{array item}. Selain untuk membentuk \textit{file} \textit{zip}, \textit{zip archive} juga dapat melakukan \textit{unzip} terhadap \textit{file zip}. Kode \ref{kode:ziparchiveunzipbab3} menunjukan penggunaan \textit{ZipArchive} dalam melakukan \textit{unzip}.
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan penggunaan\textit{library ZipArhive} untuk melakukan \textit{unzip}, label=kode:ziparchiveunzipbab3]
 		$this->unzip = new ZipArchive();
 			// Create a temp directory
 			$tmp_dir = "$assignments_root/$tmp_dir_name";
@@ -1012,10 +1007,10 @@ Kode \ref{kode:ziparchivebab3} merupakan perubahan dalam melakukan \textit{zip} 
 			$extract_result = $this->unzip->extractTo($tmp_dir);
 \end{lstlisting}
 
-Kode \ref{kode:ziparchiveunzipbab3} merupakan perubahan dalam melakukan \textit{unzip} dalam \textit{ZipArchive}. Baris pertama akan melakukan inisiasi terhadap \textit{ZipArchive} sedangkan baris kedua membentuk sebuah direktori sementara bernama \textit{assignments\_root/shj\_tmp\_directory}. Baris ketiga akan membuka sebuah \textit{zip} pada \textit{assignments\_root} dengan nama yang dibentuk. Baris terakhir akan melakukan \textit{extract} file pada direktori yang sudah dibentuk.
+Kode \ref{kode:ziparchiveunzipbab3} melakukan inisiasi terhadap \textit{ZipArchive}. Kode selanjutnya akan membuka sebuah \textit{zip} pada \textit{assignments\_root} dengan nama yang dibentuk. Terakhir fungsi \texttt{extractTo} akan melakukan extraksi \textit{file} pada direktori yang sudah dibentuk.
 
 \subsubsection{\textit{Twig}}
-\textit{Library} ini tidak akan digunakan untuk membentuk \textit{view} pada \textit{CodeIgniter 4} namun, akan ada penggunaan sebuah fungsi \textit{Twig} yang akan dibentuk pada direktori \texttt{app/Libraries}. Fungsi tersebut bernama \texttt{extra\_time\_formatter} yang memiliki fungsi untuk mengubah input yang diberikan menjadi format jam dikali enam puluh menit. 
+\textit{Library} ini tidak digunakan untuk membentuk \textit{view} pada \textit{CodeIgniter 4} namun, akan ada penggunaan sebuah fungsi \textit{Twig} yang dibentuk pada direktori \texttt{app/Libraries}. Fungsi tersebut bernama \texttt{extra\_time\_formatter} yang memiliki fungsi untuk mengubah input yang diberikan menjadi format jam dikali enam puluh menit. 
 
 \subsubsection{\textit{Unzip}}
 \textit{Library} ini tidak akan digunakan dan digantikan oleh \textit{ZipArchive} yang disediakan oleh PHP. Terdapat perubahan sintaks pada \textit{ZipArchive} sehingga akan disesuaikan. Perubahan dapat dilihat pada subbab \ref{subsubsec:ziparchivebab3} kode \ref{kode:ziparchiveunzipbab3}.
@@ -1034,8 +1029,8 @@ menjadi
 Sintaks \texttt{password\_hash()} diatas menerima dua buah parameter yakni data yang ingin di enkripsi dan tipe enkripsi. Enkripsi akan menggunakan sintaks \texttt{PASSWORD\_BCRYPT} yang menggunakan tipe \textit{hash} berupa \texttt{CRYPT\_BLOWFISH}.
 
 \subsubsection{\textit{MY\_Form\_validation}}
-\textit{Library MY\_Form\_validation} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan perubahan \textit{extends} menjadi menuju \texttt{Validation}, penghapusan sintaks \texttt{defined} , dan akan ada penambahan \textit{namespace} pada baris awal file. Kode \ref{kode:myformvalidationbab3} merupakan contoh penambahan \textit{namespace} dan penggantian \textit{extends} pada \textit{library} ini.
-\begin{lstlisting}[caption=Contoh perubahan \textit{library MY\_Form\_validation} pada \textit{CodeIgniter 4}, label=kode:myformvalidationbab3]
+\textit{Library MY\_Form\_validation} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan perubahan \textit{extends} menjadi menuju \texttt{Validation}, penghapusan sintaks \texttt{defined} , dan akan ada penambahan \textit{namespace} pada baris awal \textit{file}. Kode \ref{kode:myformvalidationbab3} merupakan contoh penambahan \textit{namespace} dan penggantian \textit{extends} pada \textit{library} ini.
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan \textit{library MY\_Form\_validation} pada \textit{CodeIgniter 4}, label=kode:myformvalidationbab3]
 namespace App\Libraries;
 
 use CodeIgniter\Validation\Validation;
@@ -1045,8 +1040,8 @@ class MY_Form_validation extends Validation
 Kode \ref{kode:myformvalidationbab3} mengapus sintaks \texttt{defined} dan menggantikannya dengan penambahan \textit{namespace}. Selain itu, kelas \textit{library} akan \textit{extends} \textit{Validation}.
 
 \subsubsection{\textit{Parsedown}}
-\textit{Library Parsedown} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \texttt{defined}.  Kode \ref{kode:parsedownbab3ci4} merupakan contoh penambahan \textit{namespace} dan juga penambahan sintaks \textit{defined}.
-\begin{lstlisting}[caption=Contoh perubahan \textit{library Parsedown} pada \textit{CodeIgniter 4}, label=kode:parsedownbab3ci4]
+\textit{Library Parsedown} akan dipindahkan menuju direktori \texttt{app/Libraries}. \textit{Library} ini akan digunakan kembali dengan penambahan \textit{namespace} pada baris awal \textit{file} dan penghapusan sintaks \texttt{defined}.  Kode \ref{kode:parsedownbab3ci4} merupakan contoh penambahan \textit{namespace} dan juga penambahan sintaks \textit{defined}.
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan \textit{library Parsedown} pada \textit{CodeIgniter 4}, label=kode:parsedownbab3ci4]
 namespace App\Libraries;
 
 class Parsedown
@@ -1059,7 +1054,7 @@ Kode \ref{kode:parsedownbab3ci4} menghapus sintaks \texttt{defined} dan menggant
 \end{center}
 Sintaks diatas akan dijalankan pada akar dari aplikasi dan tidak terdapat perubahan terhadap penggunaan sintaks ini.
 \subsubsection{\textit{Shj\_pagination}}
-\textit{Library} ini akan digunakan kembali dan dipindahkan menuju direktori \texttt{app/Libraries}. Selain itu, terdapat penambahan \textit{namespace} pada baris awal file dan penghapusan sintaks \textit{defined}.
+\textit{Library} ini akan digunakan kembali dan dipindahkan menuju direktori \texttt{app/Libraries}. Selain itu, terdapat penambahan \textit{namespace} pada baris awal \textit{file} dan penghapusan sintaks \textit{defined}.
 
 \subsection{\textit{Configuration}}
 \textit{Configuration} terdapat perubahan nama dari yang sebelumnya \texttt{application/config/config.php} menjadi \texttt{app/Config/App.php} dan penambahan \textit{file} dengan nama \texttt{app/Config/Secrets.php}. Berhubung dengan perubahan nama tersebut, terdapat beberapa perpindahan sintaks menuju direktori baru tersebut. Berikut merupakan sintaks yang dipindahkan menuju \texttt{app/Config/Security.php}:
@@ -1071,7 +1066,7 @@ Sintaks diatas akan dijalankan pada akar dari aplikasi dan tidak terdapat peruba
 \item \verb|$config['csrf_regenerate'] = FALSE;|
 \end{itemize}
 
-\textit{Configurations} yang telah dipindahkan akan diubah dari yang sebelumnya menggunakan \textit{array} menjadi menggunakan \textit{variable}. Seluruh \textit{configurations} pada \textit{CodeIgniter 3} akan dipindahkan menuju \textit{CodeIgniter 4} sesuai dengan direktorinya dan fungsinya. Sedangkan \texttt{app/Config/App.php} dan dipindahkan menuju file \texttt{.env} karena alasan kemudahan untuk penggantian \textit{environment} dalam melakukan \textit{deploy}.
+\textit{Configurations} yang telah dipindahkan akan diubah dari yang sebelumnya menggunakan \textit{array} menjadi menggunakan \textit{variable}. Seluruh \textit{configurations} pada \textit{CodeIgniter 3} akan dipindahkan menuju \textit{CodeIgniter 4} sesuai dengan direktorinya dan fungsinya. Sedangkan \texttt{app/Config/App.php} dan dipindahkan menuju \textit{file} \texttt{.env} karena alasan kemudahan untuk penggantian \textit{environment} dalam melakukan \textit{deploy}.
 
 \subsection{\textit{Database}}
 \textit{Database} pada \textit{CodeIgniter 4} memiliki fungsi yang sama pada \textit{CodeIgniter 3} sehingga akan dilakukan pemindahan konfigurasi sesuai dengan yang ada pada \textit{CodeIgniter 3}. Namun, terjadi beberapa perubahan pada sintaks untuk melakukan koneksi ke \textit{database} dan beberapa sintaks untuk melakukan \textit{query}. Sintaks koneksi \textit{database} akan berubah dari \texttt{\$this->load->database();} menjadi \texttt{db = db\_connect()}. Selain itu, pemanggilan fungsi \textit{query builder} berubah menggunakan \textit{camelcase} dari yang sebelumnya menggunakan \textit{snakecase}. Seperti dari yang sebelumnya menggunakan sintaks \texttt{get\_where} menjadi \texttt{getWhere}.
@@ -1080,13 +1075,13 @@ Sintaks diatas akan dijalankan pada akar dari aplikasi dan tidak terdapat peruba
 
 \subsection{\textit{Error Handling}}
 \textit{Error Handling} terdapat perubahan sintaks dan perubahan cara pemanggilan. Berikut merupakan cara pemanggilan \textit{error handling}:
-\begin{lstlisting}[caption=Contoh pemanggilan \textit{Error Handling} pada \textit{CodeIgniter 4}, label=kode:errorhandlingbab3]
+\begin{lstlisting}[language=PHP, caption=Contoh pemanggilan \textit{Error Handling} pada \textit{CodeIgniter 4}, label=kode:errorhandlingbab3]
 <?php
 
 throw new \Exception('Some message goes here');
 \end{lstlisting}
 Kode \ref{kode:errorhandlingbab3} merupakan cara pemangilan \textit{error hadnling} pada \textit{CodeIgniter 4}. Sintaks ini akan memberikan \textit{exception} dengan pesan yang telah ditentukan. Selain memberikan pesan, pengguna juga dapat mengembalikan \textit{error} berupa 404 dengan sintaks berikut:
-\begin{lstlisting}[caption=Contoh pemanggilan \textit{Error Handling} 404 pada \textit{CodeIgniter 4}, label=kode:errorhandling404bab3]
+\begin{lstlisting}[language=PHP, caption=Contoh pemanggilan \textit{Error Handling} 404 pada \textit{CodeIgniter 4}, label=kode:errorhandling404bab3]
 throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 \end{lstlisting}
 Kode \ref{kode:errorhandling404bab3} akan mengembalikan \textit{error} berupa 404 halaman tidak ditemukan.

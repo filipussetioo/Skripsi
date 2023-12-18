@@ -1,7 +1,7 @@
 <!-- {#
  # SharIF Judge
- # file: base.twig
- # author: Mohammad Javad Naderi <mjnaderi@gmail.com>
+ # file: base.php
+ # author: Filipus Setio Nugroho <filipussetio@gmail.com>
  #} -->
 <?= $this->renderSection('base')?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ shj.csrf_token = $.cookie('shjcsrftoken');
 shj.offset = moment('<?= shj_now_str() ?>').diff(moment());
 shj.time = moment();
 shj.finish_time = moment("<?= $finish_time ?>");
-shj.extra_time = moment.duration("<?= $extra_time ?>", 'seconds');
+shj.extra_time = moment.duration(<?= $extra_time ?>, 'seconds');
 // notifications
 shj.check_for_notifications = false;
 shj.notif_check_delay = 30;

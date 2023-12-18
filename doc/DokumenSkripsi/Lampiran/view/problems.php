@@ -1,7 +1,7 @@
 <!-- {#
  # SharIF Judge
- # file: problems.twig
- # author: Kelvin Ng <kelvin9302104@gmail.com>
+ # file: problems.php
+ # author: Filipus Setio Nugroho <filipussetio@gmail.com>
  #} -->
 <?= $this->extend('templates/base') ?>
 <?= $this->section('icon') ?>fa-puzzle-piece<?= $this->endSection()?>

@@ -1,7 +1,7 @@
 <!-- {#
  # SharIF Judge
- # file: assignments.twig
- # author: Mohammad Javad Naderi <mjnaderi@gmail.com>
+ # file: assignments.php
+ # author: Filipus Setio Nugroho <filipussetio@gmail.com>
  #} -->
 <?= $this->extend('templates/base') ?>
 <?= $this->section('icon') ?>fa-folder-open<?= $this->endSection()?>
