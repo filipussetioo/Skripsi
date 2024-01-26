@@ -2,7 +2,7 @@
 /**
  * SharIF Judge online judge
  * @file Assignment_model.php
- * @author Mohammad Javad Naderi <mjnaderi@gmail.com>
+ * @author: Filipus Setio Nugroho <filipussetio@gmail.com>
  */
 namespace App\Models;
 

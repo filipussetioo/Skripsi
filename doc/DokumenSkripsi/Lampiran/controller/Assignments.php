@@ -13,7 +13,7 @@ use ZipArchive;
 /**
  * SharIF Judge online judge
  * @file Assignments.php
- * @author Mohammad Javad Naderi <mjnaderi@gmail.com>
+ * @author: Filipus Setio Nugroho <filipussetio@gmail.com>
  */
 
 class Assignments extends BaseController

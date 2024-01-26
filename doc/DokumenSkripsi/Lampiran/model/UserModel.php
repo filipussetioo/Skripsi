@@ -2,7 +2,7 @@
 /**
  * SharIF Judge online judge
  * @file User_model.php
- * @author Mohammad Javad Naderi <mjnaderi@gmail.com>
+ * @author: Filipus Setio Nugroho <filipussetio@gmail.com>
  */
 namespace App\Models;
 use CodeIgniter\Model;
@@ -487,9 +487,7 @@ class UserModel extends Model
 		$text = str_replace('{RESET_LINK}', site_url('login/reset/'.$passchange_key), $text);
 		$text = str_replace('{VALID_TIME}', '1 hour', $text); // links are valid for 1 hour
 		$this->email->setMessage($text);
-		if(!$this->email->send()){
-			dd($this->email->printDebugger());
-		}
+		$this->email->send();
 	}
 
 

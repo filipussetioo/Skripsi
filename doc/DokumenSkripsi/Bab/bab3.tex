@@ -1,7 +1,8 @@
 \chapter{Analisis}
 \label{chap:analisis}
 \section{Analisis Sistem Kini}
-Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} yang dikustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan  arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}. Selain itu, terdapat direktori \texttt{assets} yang berisikan seluruh kebutuhan pengguna untuk ditampilkan seperti \textit{javascript} dan gambar. Terakhir terdapat direktori \textit{config} yang berisikan konfigurasi aplikasi dan \textit{library} yang dibentuk dan digunakan oleh \textit{SharIF Judge}.
+\label{sec:now}
+Seperti dibahas pada bab \ref{sec:judge}, \textit{SharIF Judge} merupakan sebuah \textit{online judge} yang dikustomisasi sesuai dengan kebutuhan Informatika UNPAR. \textit{SharIF Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang menerapkan arsitektur \textit{Model-View-Controller} atau MVC. Arsitektur ini memisahkan pemrosesan data pada \textit{Model}, memisahkan logika pada \textit{Controller}, dan memisahkan tampilan pada \textit{View}. Selain itu, terdapat direktori \texttt{assets} yang berisikan seluruh kebutuhan pengguna untuk ditampilkan seperti \textit{javascript} dan gambar. Terakhir terdapat direktori \textit{config} yang berisikan konfigurasi aplikasi dan \textit{library} yang dibentuk dan digunakan oleh \textit{SharIF Judge}. Analisis dimulai dengan melakukan eksplorasi setiap fungsi yang terdapat pada MVC aplikasi \textit{SharIF Judge}. Berikut merupakan hasil temuan dari eksplorasi yang telah dilakukan:
 
 \subsection{\textit{Model}}
 \textit{Model} terdapat pada direktori \texttt{application/models}. Direktori ini berisikan kelas \textit{model} dengan fungsi-fungsi untuk mengolah data pada aplikasi. Berikut merupakan \textit{model} pada \textit{SharIF Judge} beserta setiap fungsinya:
@@ -387,7 +388,7 @@ Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Dashboard.php}:
 	Fungsi ini berguna untuk menyimpan data \textit{widget} pengguna menggunakan AJAX.
 \end{itemize}
 \subsubsection{\texttt{Install.php}}
-\textit{Controller} \texttt{Install.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk membentuk tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk menerima data pengguna \textit{admin} yang pertama kali melakukan instalasi \textit{SharIF Judge} pada perangkat.
+\textit{Controller} \texttt{Install.php} hanya memiliki satu buah fungsi bernama \texttt{index}. Fungsi ini berguna untuk membangun tabel yang dibutuhkan oleh \textit{SharIF Judge} pada \textit{database}. Selain itu, fungsi ini juga berguna untuk menerima data pengguna \textit{admin} yang pertama kali melakukan instalasi \textit{SharIF Judge} pada perangkat.
 
 \subsubsection{\texttt{Login.php}}
 Berikut merupakan fungsi-fungsi pada \textit{controller} \texttt{Login.php}:
@@ -560,16 +561,16 @@ Direktori ini berisikan seluruh kebutuhan pengguna seperti \textit{library javas
 	\item Direktori \textit{ace} \\ Direktori ini berisikan \textit{javascript} yang berfungsi untuk menambahkan \textit{code editor} pada aplikasi.
 	\item Direktori \textit{font} \\Direktori ini berisikan seluruh \textit{font} yang digunakan oleh aplikasi \textit{SharIF Jugde}.
 	\item Direktori \textit{fullcalendar} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi untuk menambahkan kalender pada aplikasi.
-	\item Direktori \textit{gridster} \\Direktori ini berisikan \textit{javascript}, \textit{css}, dan gambar yang berfungsi untuk membentuk kolom \textit{grid} dengan sifat \textit{drag and drop}.
+	\item Direktori \textit{gridster} \\Direktori ini berisikan \textit{javascript}, \textit{css}, dan gambar yang berfungsi untuk membangun kolom \textit{grid} dengan sifat \textit{drag and drop}.
 	\item Direktori \textit{images} \\Direktori ini berisikan seluruh gambar yang digunakan pada aplikasi \textit{SharIF Judge} seperti banner dan juga logo.
 	\item Direktori \textit{js} \\Direktori ini berisikan \textit{javascript} dan \textit{jquery}. \textit{Javascript} dan \textit{jquery} yang terdapat pada direktori ini dibentuk secara manual dan diambil dari situs resmi.
-	\item Direktori \textit{nano\_scroller} \\Direktori ini berisikan \textit{jquery} dan \textit{css} yang berfungsi untuk membentuk \textit{scrollbar} pada aplikasi.
-	\item Direktori \textit{noty} \\Direktori ini berisikan \textit{javascript} yang berfungsi untuk mempermudah membentuk pesan \textit{alert, success,} dan sebagainya.
+	\item Direktori \textit{nano\_scroller} \\Direktori ini berisikan \textit{jquery} dan \textit{css} yang berfungsi untuk membangun \textit{scrollbar} pada aplikasi.
+	\item Direktori \textit{noty} \\Direktori ini berisikan \textit{javascript} yang berfungsi untuk mempermudah membangun pesan \textit{alert, success,} dan sebagainya.
 	\item Direktori \textit{pdfjs} \\Direktori ini berisikan \textit{javascript} yang berfungsi untuk melakukan \textit{parsing} dan \textit{rendering} \textit{file} \textit{pdf}.
 	\item Direktori \textit{reveal} \\Direktori ini berisikan \textit{jquery} dan \textit{css} yang berfungsi untuk menampilkan \textit{popup} berupa halaman yang dikonfigurasikan.
-	\item Direktori \textit{snippet} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi sebagai \textit{template} dalam membentuk kode \textit{javascript}.
+	\item Direktori \textit{snippet} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi sebagai \textit{template} dalam membangun kode \textit{javascript}.
 	\item Direktori \textit{styles} \\Direktori ini berisikan \textit{css} yang berfungsi untuk memperindah aplikasi yang dibentuk.
-	\item Direktori \textit{tinymce} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi untuk membentuk \textit{WYSIWYG editor} pada sebuah aplikasi.
+	\item Direktori \textit{tinymce} \\Direktori ini berisikan \textit{javascript} dan \textit{css} yang berfungsi untuk membangun \textit{WYSIWYG editor} pada sebuah aplikasi.
 \end{itemize}
 
 \subsection{\textit{Config}}
@@ -607,7 +608,7 @@ Direktori ini berisikan seluruh konfigurasi aplikasi \textit{SharIF Judge} seper
 Sintaks \verb|$this->load->library('unzip');| berfungsi untuk melakukan \textit{load} \textit{library Unzip} agar dapat digunakan pada fungsi tersebut. Selanjutnya sintaks \verb|$this->unzip->allow();| berfungsi untuk memberikan batasan \textit{extension} apa saja yang diinginkan dari \textit{file} tersebut. Terakhir sintaks \verb|$extract_result = $this->unzip->extract($u_data['full_path'], $tmp_dir);| berfungsi untuk melakukan ekstraksi terhadap \textit{file} zip pada \verb|$u_data['full_path']| tersebut menuju direktori pada variabel tmp\_dir.
 
 \subsubsection{\textit{Twig}}
-\textit{Twig} merupakan sebuah \textit{template engine library} yang digunakan untuk mempermudah dalam membentuk \textit{view} pada aplikasi. \textit{Twig} terintegrasi dengan fungsi-fungsi pada \textit{CodeIgniter 3} sehingga dapat menggunakan seluruh fungsi yang terdapat pada \textit{CodeIgniter 3}. Kode \ref{kode:twigsharif} merupakan contoh penggunaan \textit{Twig} pada \textit{SharIF Judge}.
+\textit{Twig} merupakan sebuah \textit{template engine library} yang digunakan untuk mempermudah dalam membangun \textit{view} pada aplikasi. \textit{Twig} terintegrasi dengan fungsi-fungsi pada \textit{CodeIgniter 3} sehingga dapat menggunakan seluruh fungsi yang terdapat pada \textit{CodeIgniter 3}. Kode \ref{kode:twigsharif} merupakan contoh penggunaan \textit{Twig} pada \textit{SharIF Judge}.
 \begin{lstlisting}[caption=Contoh \textit{view} menggunakan \textit{library Twig}, label=kode:twigsharif]
 {% set title = 'Login' %}
 {% include 'templates/simple_header.twig' %}
@@ -752,7 +753,7 @@ Kode \ref{kode:uriclassbab3} merupakan fungsi untuk mengambil informasi yang ter
 Kode \ref{kode:sessionbab3} merupakan penggunaan \textit{library} ini untuk mengambil data dengan nama \textit{logged\_in}. \textit{SharIF Judge} menggunakan tabel untuk menyimpan \textit{session} dengan isi kolom berupa \textit{session\_id, ip\_address, user\_agent, last\_activity}, dan \textit{user\_data}.
 
 \section{Analisis Sistem Usulan}
-Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulisan ulang karena terdapat perubahan struktur aplikasi dan beberapa fungsi yang memiliki pemanggilan berbeda dan harus dilakukan pembaharuan.
+Seperti yang sudah dijelaskan pada sub bab \ref{sec:now}, sistem saat ini masih menggunakan struktur pada \textit{CodeIgniter 3}. \textit{CodeIgniter 3} akan konversi menuju \textit{CodeIgniter 4} tanpa perubahan fitur dan tampilan. Konversi \textit{CodeIgniter 3} menuju \textit{CodeIgniter 4} diperlukan penulisan ulang karena terdapat perubahan struktur aplikasi dan beberapa fungsi yang memiliki pemanggilan berbeda dan harus dilakukan pembaharuan. Oleh karena itu, berikut merupakan sistem usulan untuk melakukan konversi \textit{SharIF Judge}:
 \subsection{Persiapan \textit{CodeIgniter 4}} Konversi dimulai dengan mempersiapkan aplikasi \textit{CodeIgniter 4} dengan mengunduh ataupun memasangnya melalui \textit{Composer}. Pengguna juga perlu memasang komponen pendukung seperti \textit{phpoffice}, \textit{radius}, dan \textit{adldap2}.
 
 \subsection{Struktur Aplikasi}
@@ -806,7 +807,7 @@ Direktori ini merupakan direktori berisikan seluruh direktori yang dapat ditulis
 \end{itemize}
 
 \subsection{\textit{Routing}}
-\textit{Routing} pada aplikasi \textit{SharIF Judge} menggunakan \textit{auto routing} yang disediakan oleh \textit{CodeIgniter 3}. \textit{Auto routing} akan membentuk \textit{url} sesuai dengan \textit{controller} dan \textit{method} yang telah dibentuk tanpa harus didefinisikan secara manual. Penggunaan \textit{auto routing} seperti pada \textit{CodeIgniter 3} memiliki kekurangan pada bagian keamanan dimana \textit{filter} pada \textit{controller} dan proteksi CSRF dilewati. Sehingga, konversi pada aplikasi \textit{SharIF Judge} akan menggunakan \textit{URI Routing} yang didefinisikan secara manual untuk alasan keamanan dan \textit{url} yang fleksibel. Berikut merupakan contoh \textit{route} yang didefinisikan secar a manual:
+\textit{Routing} pada aplikasi \textit{SharIF Judge} menggunakan \textit{auto routing} yang disediakan oleh \textit{CodeIgniter 3}. \textit{Auto routing} akan membangun URL sesuai dengan \textit{controller} dan \textit{method} yang telah dibentuk tanpa harus didefinisikan secara manual. Penggunaan \textit{auto routing} seperti pada \textit{CodeIgniter 3} memiliki kekurangan pada bagian keamanan dimana \textit{filter} pada \textit{controller} dan proteksi CSRF dilewati. Sehingga, konversi pada aplikasi \textit{SharIF Judge} akan menggunakan \textit{URI Routing} yang didefinisikan secara manual untuk alasan keamanan dan URL yang fleksibel. Berikut merupakan contoh \textit{route} yang didefinisikan secar a manual:
 \begin{center}
 \verb|$routes->post("login/register",'Login::register');|
 \end{center}
@@ -838,11 +839,11 @@ Kode \ref{kode:modelCI3konv} merupakan hasil konversi \textit{model} \textit{Sha
 
 \item Menggunakan \textit{Model} pada \textit{CodeIgniter 4}
 
-\textit{CodeIgnier 4} menyediakan fungsi \textit{model} yang dapat dibentuk melalui \textit{command line} untuk sebuah tabel spesifik. Pengguna dapat membentuk \textit{model} melalui \textit{command line} menggunakan sintaks sebagai berikut.
+\textit{CodeIgnier 4} menyediakan fungsi \textit{model} yang dapat dibentuk melalui \textit{command line} untuk sebuah tabel spesifik. Pengguna dapat membangun \textit{model} melalui \textit{command line} menggunakan sintaks sebagai berikut.
 \begin{center}
 	\verb|make:model <name>|
 \end{center}
-\textit{Model} pada \textit{CodeIgniter 4} menyediakan fungsi untuk mengambil, memasukan, dan memperbaharui data dari sebuah tabel spesifik tanpa harus membentuk secara manual fungsi-fungsi tersebut. Pengguna dapat melakukan inisiasi dan memakai fungsi untuk mengambil data menggunakan sintaks berikut.
+\textit{Model} pada \textit{CodeIgniter 4} menyediakan fungsi untuk mengambil, memasukan, dan memperbaharui data dari sebuah tabel spesifik tanpa harus membangun secara manual fungsi-fungsi tersebut. Pengguna dapat melakukan inisiasi dan memakai fungsi untuk mengambil data menggunakan sintaks berikut.
 \begin{center}
 	\verb|$userModel = new \App\Models\UserModel();|
 \end{center}
@@ -856,10 +857,10 @@ Sintaks diatas akan mengambil seluruh data dari \verb|$userModel| sesuai dengan 
 \begin{center}
 	\verb|$this->Notifications_model->delete('notifications', array('id' => $id));|
 \end{center}
-Sintaks diatas akan menghapus data dari tabel \texttt{notifications} sesuai dengan \texttt{id} yang diberikan. Fungsi ini tidak perlu membentuk sintaks secara manual pada \textit{file} \textit{models} melainkan hanya perlu memanggil \textit{model} yang ingin digunakan. Konversi aplikasi \textit{SharIF Judge} akan menggunakan cara pertama dengan penghapusan dan pembaharuan beberapa sintaks. Selain itu, terdapat perubahan nama \textit{model} dari yang sebelumnya menggunakan \textit{snake case} menjadi \textit{PascalCase} agar sesuai dengan standar PHP.
+Sintaks diatas akan menghapus data dari tabel \texttt{notifications} sesuai dengan \texttt{id} yang diberikan. Fungsi ini tidak perlu membangun sintaks secara manual pada \textit{file} \textit{models} melainkan hanya perlu memanggil \textit{model} yang ingin digunakan. Konversi aplikasi \textit{SharIF Judge} akan menggunakan cara pertama dengan penghapusan dan pembaharuan beberapa sintaks. Selain itu, terdapat perubahan nama \textit{model} dari yang sebelumnya menggunakan \textit{snake case} menjadi \textit{PascalCase} agar sesuai dengan standar PHP.
 
 \subsubsection{\textit{View}}
-\textit{View} pada aplikasi \textit{SharIF Judge} menggunakan \textit{template engine} bernama \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman PHP yang berguna untuk mempermudah dalam membentuk tampilan sebuah aplikasi \textit{webiste}. \textit{Twig} tidak terintegrasi pada \textit{CodeIgniter 4} sehingga terdapat perubahan pada sintaks yang telah dipasang. Selain itu, terdapat beberapa perubahan fungsi pada \textit{CodeIgniter 4} sehingga perlu dilakukan penyesuaian seperti pengubahan \textit{file extension} dari \texttt{.twig} menjadi \texttt{.php}. Konversi \textit{SharIF Judge} menuju \textit{CodeIgniter 4} dilakukan dengan mengubah \textit{view} dari sebelumnya menggunakan \textit{twig} menjadi menggunakan \textit{PHP}. Seluruh \textit{delimiters} akan diubah menggunakan fitur yang terdapat pada \textit{CodeIgniter 4}. Kode \ref{kode:viewTwig} menunjukan contoh konversi yang dilakukan.
+\textit{View} pada aplikasi \textit{SharIF Judge} menggunakan \textit{template engine} bernama \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine} untuk bahasa pemrograman PHP yang berguna untuk mempermudah dalam membangun tampilan sebuah aplikasi \textit{webiste}. \textit{Twig} tidak terintegrasi pada \textit{CodeIgniter 4} sehingga terdapat perubahan pada sintaks yang telah dipasang. Selain itu, terdapat beberapa perubahan fungsi pada \textit{CodeIgniter 4} sehingga perlu dilakukan penyesuaian seperti pengubahan \textit{file extension} dari \texttt{.twig} menjadi \texttt{.php}. Konversi \textit{SharIF Judge} menuju \textit{CodeIgniter 4} dilakukan dengan mengubah \textit{view} dari sebelumnya menggunakan \textit{twig} menjadi menggunakan \textit{PHP}. Seluruh \textit{delimiters} akan diubah menggunakan fitur yang terdapat pada \textit{CodeIgniter 4}. Kode \ref{kode:viewTwig} menunjukan contoh konversi yang dilakukan.
 
 \begin{lstlisting}[caption=Contoh \textit{view} menggunakan \textit{twig}, label=kode:viewTwig]
 {% if registration_enabled %}
@@ -997,8 +998,8 @@ Sintaks diatas akan mengembalikan \textit{error} terhadap \texttt{form} dengan n
 		$this->zip->addFile($file_path,"{$item['username']}/p{$item['problem']}.".filetype_to_extension($item['file_type']));
 \end{lstlisting}
 
-Kode \ref{kode:ziparchivebab3} berfungsi untuk melakukan inisiasi terhadap \textit{ZipArchive} dan membuka sebuah \textit{file} \textit{zip}. Sintaks \texttt{addFile} selanjutnya memasukan \textit{file} bernama \textit{file\_path} menuju zip yang terdapat pada \textit{array item}. Selain untuk membentuk \textit{file} \textit{zip}, \textit{zip archive} juga dapat melakukan \textit{unzip} terhadap \textit{file zip}. Kode \ref{kode:ziparchiveunzipbab3} menunjukan penggunaan \textit{ZipArchive} dalam melakukan \textit{unzip}.
-\begin{lstlisting}[language=PHP, caption=Contoh perubahan penggunaan\textit{library ZipArhive} untuk melakukan \textit{unzip}, label=kode:ziparchiveunzipbab3]
+Kode \ref{kode:ziparchivebab3} berfungsi untuk melakukan inisiasi terhadap \textit{ZipArchive} dan membuka sebuah \textit{file} \textit{zip}. Sintaks \texttt{addFile} selanjutnya memasukan \textit{file} bernama \textit{file\_path} menuju zip yang terdapat pada \textit{array item}. Selain untuk membangun \textit{file} \textit{zip}, \textit{zip archive} juga dapat melakukan \textit{unzip} terhadap \textit{file zip}. Kode \ref{kode:ziparchiveunzipbab3} menunjukan penggunaan \textit{ZipArchive} dalam melakukan \textit{unzip}.
+\begin{lstlisting}[language=PHP, caption=Contoh perubahan penggunaan \textit{library Zip Archive} untuk melakukan \textit{unzip}, label=kode:ziparchiveunzipbab3]
 		$this->unzip = new ZipArchive();
 			// Create a temp directory
 			$tmp_dir = "$assignments_root/$tmp_dir_name";
@@ -1010,13 +1011,13 @@ Kode \ref{kode:ziparchivebab3} berfungsi untuk melakukan inisiasi terhadap \text
 Kode \ref{kode:ziparchiveunzipbab3} melakukan inisiasi terhadap \textit{ZipArchive}. Kode selanjutnya akan membuka sebuah \textit{zip} pada \textit{assignments\_root} dengan nama yang dibentuk. Terakhir fungsi \texttt{extractTo} akan melakukan extraksi \textit{file} pada direktori yang sudah dibentuk.
 
 \subsubsection{\textit{Twig}}
-\textit{Library} ini tidak digunakan untuk membentuk \textit{view} pada \textit{CodeIgniter 4} namun, akan ada penggunaan sebuah fungsi \textit{Twig} yang dibentuk pada direktori \texttt{app/Libraries}. Fungsi tersebut bernama \texttt{extra\_time\_formatter} yang memiliki fungsi untuk mengubah input yang diberikan menjadi format jam dikali enam puluh menit. 
+\textit{Library} ini tidak digunakan untuk membangun \textit{view} pada \textit{CodeIgniter 4} namun, akan ada penggunaan sebuah fungsi \textit{Twig} yang dibentuk pada direktori \texttt{app/Libraries}. Fungsi tersebut bernama \texttt{extra\_time\_formatter} yang memiliki fungsi untuk mengubah input yang diberikan menjadi format jam dikali enam puluh menit. 
 
 \subsubsection{\textit{Unzip}}
 \textit{Library} ini tidak akan digunakan dan digantikan oleh \textit{ZipArchive} yang disediakan oleh PHP. Terdapat perubahan sintaks pada \textit{ZipArchive} sehingga akan disesuaikan. Perubahan dapat dilihat pada subbab \ref{subsubsec:ziparchivebab3} kode \ref{kode:ziparchiveunzipbab3}.
 
 \subsubsection{\textit{Password\_hash}}
-\textit{Library} ini tidak akan digunakan dan akan digantikan oleh \textit{password hash} yang disediakan oleh PHP .\textit{Library} \textit{Password\_hash} merekomendasikan pegguna untuk menggunakan fungsi \textit{native} yang disediakan oleh PHP apabila aplikasi mendukung PHP versi 5.5 ke atas. Sehingga, akan dilakukan konversi menggunakan fungsi yang disediakan oleh PHP bernama \texttt{password\_hash()}. Seluruh penggunaan \textit{library} ini akan diubah menggunakan fungsi yang disediakan oleh PHP dengan metode \textit{hashing} sama yaitu \textit{CRYPT\_BLOWFISH}. Perubahan fungsi \textit{hashing} ini bersifat \textit{backward compatible} sehingga dapat menggunakan \textit{database} aplikasi terdahulu tanpa perlu membentuk data baru. Berikut merupakan contoh pengubahan kode dari \textit{phpass} menjadi \textit{password\_hash}.
+\textit{Library} ini tidak akan digunakan dan akan digantikan oleh \textit{password hash} yang disediakan oleh PHP .\textit{Library} \textit{Password\_hash} merekomendasikan pegguna untuk menggunakan fungsi \textit{native} yang disediakan oleh PHP apabila aplikasi mendukung PHP versi 5.5 ke atas. Sehingga, akan dilakukan konversi menggunakan fungsi yang disediakan oleh PHP bernama \texttt{password\_hash()}. Seluruh penggunaan \textit{library} ini akan diubah menggunakan fungsi yang disediakan oleh PHP dengan metode \textit{hashing} sama yaitu \textit{CRYPT\_BLOWFISH}. Perubahan fungsi \textit{hashing} ini bersifat \textit{backward compatible} sehingga dapat menggunakan \textit{database} aplikasi terdahulu tanpa perlu membangun data baru. Berikut merupakan contoh pengubahan kode dari \textit{phpass} menjadi \textit{password\_hash}.
 
 \begin{center}
 \verb|'password' => $this->password_hash->HashPassword($password)|
@@ -1099,12 +1100,12 @@ Kode \ref{kode:errorhandling404bab3} akan mengembalikan \textit{error} berupa 40
 Sintaks diatas mengembalikan \textit{file} yang ingin diunduh pengguna dengan dua buah parameter. Parameter pertama berupa nama \textit{file} yang ingin diunduh sedangkan parameter kedua merupakan data dalam \textit{file} tersebut.
 
 \item \texttt{redirect()} \\
-Fungsi ini memiliki perubahan pada \textit{CodeIgniter 4} dimana \texttt{redirect()} tidak langsung mengarahkan kepada \textit{url} yang dibentuk. Pengguna harus mengembalikan fungsi \textit{redirect()} menggunakan \texttt{return} dengan sintaks sebagai berikut.
+Fungsi ini memiliki perubahan pada \textit{CodeIgniter 4} dimana \texttt{redirect()} tidak langsung mengarahkan kepada URL yang dibentuk. Pengguna harus mengembalikan fungsi \textit{redirect()} menggunakan \texttt{return} dengan sintaks sebagai berikut.
 \begin{center}
  \verb|return redirect()->to('login/form')|
 \end{center} 
 
-Sintaks diatas akan mengembalikan pengguna menuju \textit{url} \texttt{login/form} yang sudah dibentuk pada \textit{routes}.
+Sintaks diatas akan mengembalikan pengguna menuju URL \texttt{login/form} yang sudah dibentuk pada \textit{routes}.
 
 \end{itemize}
 

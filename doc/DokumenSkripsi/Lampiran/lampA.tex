@@ -1,5 +1,5 @@
 %versi 3 (18-12-2016)
-\chapter{Kode Program \textit{Controllers}}
+\chapter{Kode Program}
 \label{lamp:A}
 
 %terdapat 2 cara untuk memasukkan kode program
@@ -14,12 +14,38 @@
 % Perhatian: Abaikan warning tentang textasteriskcentered!!
 %
 
+Kode perangkat lunak hanya akan dilampirkan beberapa \textit{file} dengan perubahan terbanyak. Lampiran kode lainnya tidak ditampilkan karena dapat memperpanjang dan memperberat dokumen tugas akhir ini. Lampiran lainnya dapat dilihat pada \url{https://github.com/filipussetioo/SharIF-JudgeCI4}.
+
+\section{\textit{Controller}}
+\label{sec:lampContr}
 \lstinputlisting[language=PHP, caption=Assignments.php]{./Lampiran/controller/Assignments.php}
 \lstinputlisting[language=PHP, caption=BaseController.php]{./Lampiran/controller/BaseController.php}
 \lstinputlisting[language=PHP, caption=Submissions.php]{./Lampiran/controller/Submissions.php}
 \lstinputlisting[language=PHP, caption=Submit.php]{./Lampiran/controller/Submit.php}
 
-Lampiran kode \textit{controller} lainnya dapat dilihat pada \url{https://github.com/filipussetioo/SharIF-JudgeCI4/tree/main/app/Controllers}.
+\section{\textit{Model}}
+\label{sec:lampModel}
+\lstinputlisting[language=PHP, caption=AssignmentModel.php]{./Lampiran/model/AssignmentModel.php}
+\lstinputlisting[language=PHP, caption=ScoreboardModel.php]{./Lampiran/model/ScoreboardModel.php}
+\lstinputlisting[language=PHP, caption=UserModel.php]{./Lampiran/model/UserModel.php}
+
+\section{\textit{View}}
+\label{sec:lampView}
+\lstinputlisting[language=PHP, caption=add\_assignment.php]{./Lampiran/view/add_assignment.php}
+\lstinputlisting[language=PHP, caption=settings.php]{./Lampiran/view/settings.php}
+\lstinputlisting[language=PHP, caption=assignments.php]{./Lampiran/view/assignments.php}
+\lstinputlisting[language=PHP, caption=dashboard.php]{./Lampiran/view/dashboard.php}
+\lstinputlisting[language=PHP, caption=problems.php]{./Lampiran/view/problems.php}
+\lstinputlisting[language=PHP, caption=base.php]{./Lampiran/view/base.php}
+
+\section{Kode lainnya}
+\label{sec:lampLain}
+Berikut merupakan lampiran kode lainnya seperti \texttt{Filters}, aturan \texttt{Validation}, dan lainnya.
+
+\lstinputlisting[language=PHP, caption=CheckInstallAndLogin.php]{./Lampiran/others/CheckInstallAndLogin.php}
+\lstinputlisting[language=PHP, caption=CheckLoginandisAjax.php]{./Lampiran/others/CheckLoginandisAjax.php}
+\lstinputlisting[language=PHP, caption=CheckLoginandLevelAdmin.php]{./Lampiran/others/CheckLoginandLevelAdmin.php}
+\lstinputlisting[language=PHP, caption=Validation.php]{./Lampiran/others/Validation.php}
 
 \iffalse
 \begin{lstlisting}[language=Java, caption=MyCode.c]

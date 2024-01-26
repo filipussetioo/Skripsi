@@ -80,7 +80,7 @@
 %\mode{sidangakhir} 	% untuk sidang 2 / sidang pada Skripsi 2(IF)
 %\mode{final} 			% untuk mencetak buku skripsi 
 %=============================================================================
-\mode{sidangakhir}
+\mode{final}
 
 %_____________________________________________________________________________
 %=============================================================================
@@ -97,8 +97,8 @@
 %   dokumen latex anda
 % - bagian ini hanya bisa diatur di mode bimbingan
 %=============================================================================
-\linenumber{no} 
-%\linenumber{yes}
+%\linenumber{no} 
+\linenumber{yes}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -134,9 +134,9 @@
 \gambar{yes}
 %\gambar{no}
 %\tabel{yes}
-\tabel{no} 
+\tabel{yes} 
 %\kode{yes}
-\kode{no} 
+\kode{yes} 
 %\notasi{yes}
 \notasi{no}
 %=============================================================================
@@ -203,9 +203,9 @@
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda
 %=============================================================================
 \namanpm{Filipus}{6181901074}
-\tanggal{03}{11}{2023}         %isi bulan dengan angka
-\pembimbing{Pascal Alfadian}{<<pembimbing pendamping/2>>}    
-\penguji{<<penguji 1>>}{<<penguji 2>>} 
+\tanggal{11}{1}{2024}         %isi bulan dengan angka
+\pembimbing{\PAN}{}    
+\penguji{\HUH}{\ELH} 
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -221,8 +221,8 @@
 % - gunakan \texorpdfstring{\\}{} untuk pindah ke baris baru
 % - judul TIDAK ditulis dengan menggunakan huruf besar seluruhnya !!
 %=============================================================================
-\judulINA{Konversi SharIF Judge dari CodeIgniter 3 ke CodeIgniter 4}
-\judulENG{SharIF Judge Conversion from CodeIgniter 3 to CodeIgniter 4}
+\judulINA{Konversi SharIF Judge dari berbasis CodeIgniter 3 menjadi berbasis CodeIgniter 4}
+\judulENG{SharIF Judge Conversion from CodeIgniter 3 based to CodeIgniter 4 based}
 %_____________________________________________________________________________
 %=============================================================================
 % 								BAGIAN X
@@ -234,16 +234,17 @@
 % - hilangkan tanda << & >>, dan isi sesuai dengan data anda
 % - langsung mulai setelah '{' awal, jangan mulai menulis di baris bawahnya
 %=============================================================================
-\abstrakINA{\textit{SharIF Judge} merupakan sebuah \textit{online judge} yang dikustomisasi untuk keperluan tugas pada Universitas Katolik Parahyangan prodi Informatika. \textit{SharIF Judge} pada awalnya bernama \textit{Sharif Judge} yang merupakan sebuah perangkat lunak \textit{open source}. Perangkat lunak \textit{Sharif Judge} dibentuk oleh Mohammad Javad yang memiliki fungsi untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python. \textit{Sharif Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang merupakan \textit{framework} berbasis PHP. \textit{Sharif Judge} kemudian di \textit{fork} dan dimodifikasi menjadi \textit{SharIF Judge} dengan penambahan fungsi sesuai dengan kebutuhan Informatika UNPAR untuk mengumpulkan tugas dan ujian mahasiswa.
+\abstrakINA{\textit{SharIF Judge} merupakan sebuah \textit{online judge} yang dikustomisasi untuk keperluan tugas pada prodi Informatika Universitas Katolik Parahyangan. \textit{SharIF Judge} pada awalnya bernama \textit{Sharif Judge} yang merupakan sebuah perangkat lunak \textit{open source}. Perangkat lunak \textit{Sharif Judge} dibentuk oleh Mohammad Javad yang memiliki fungsi untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python. \textit{Sharif Judge} dibentuk menggunakan \textit{framework CodeIgniter 3} yang merupakan \textit{framework} berbasis PHP. \textit{Sharif Judge} kemudian di \textit{fork} dan dimodifikasi menjadi \textit{SharIF Judge} dengan penambahan fungsi sesuai dengan kebutuhan Informatika UNPAR untuk mengumpulkan tugas dan ujian mahasiswa.
 
-Perangkat lunak \textit{SharIF Judge} pada saat ini menggunakan \textit{CodeIgniter 3} yang merupakan sebuah \textit{framework} ringan dan menyediakan banyak \textit{library} untuk digunakan. Namun, \textit{CodeIgniter 3} sudah memasuki fase \textit{maintenance} sehingga tidak mendapat pembaharuan lebih lanjut dari pembentuknya. \textit{CodeIgniter 3} juga pada akhirnya tidak dapat dipakai dan akan kehilangan dokumentasi dari situs \textit{website} resminya. Oleh karena itu pada skripsi ini \textit{SharIF Judge} akan dikonversi menuju \textit{framework CodeIgniter 4}.
+Perangkat lunak \textit{SharIF Judge} pada saat ini menggunakan \textit{CodeIgniter 3} yang merupakan sebuah \textit{framework} cepat karena hanya membutuhkan sedikit sumber daya untuk menjalankannya. \textit{framework} ini juga menyediakan banyak \textit{library} yang dapat digunakan untuk melakukan pembangunan. Namun, \textit{CodeIgniter 3} sudah memasuki fase \textit{maintenance} sehingga tidak mendapat pembaharuan lebih lanjut dari pembentuknya. \textit{CodeIgniter 3} juga pada akhirnya tidak dapat dipakai dan akan kehilangan dokumentasi dari situs \textit{website} resminya. Oleh karena itu pada tugas akhir ini \textit{SharIF Judge} akan dikonversi menuju \textit{framework CodeIgniter 4}.
 
-Konversi dilakukan dengan pemindahan \textit{file} menuju direktori baru dan penulisan ulang fungsi-fungsi yang terdapat pada \textit{SharIF Judge}. Selain itu, beberapa \textit{library} dihapus dan digantikan karena sudah tidak terdapat pada \textit{CodeIgniter 4}. \textit{Library} yang sudah tidak ada diganti menggunakan fungsi baru yang terdapat pada \textit{CodeIgniter 4} dan PHP. Konversi ini tidak mengubah fitur yang terdapat pada \textit{SharIF Judge} sehingga dilakukan pengujian untuk setiap fitur agar berjalan sama dengan \textit{SharIF Judge} versi \textit{CodeIgniter 3}.}
-\abstrakENG{SharIF Judge is an online judge customized for tasks at the Parahyangan Catholic University, specifically for the Computer Science program. Initially named Sharif Judge, it was an open-source software developed by Mohammad Javad. The primary function of SharIF Judge is to evaluate code written in languages such as C, C++, Java, and Python. The software was built using CodeIgniter 3, a PHP-based framework. It was later forked and modified to become SharIF Judge, incorporating additional features to meet the specific needs of the Computer Science department at UNPAR (Parahyangan Catholic University) for collecting student assignments and exams.
+Konversi dilakukan dengan pemindahan \textit{file} menuju direktori baru dan penulisan ulang fungsi-fungsi yang terdapat pada \textit{SharIF Judge}. Selain itu, beberapa \textit{library} dihapus dan digantikan karena sudah tidak terdapat pada \textit{CodeIgniter 4}. \textit{Library} yang sudah tidak ada diganti menggunakan fungsi baru yang terdapat pada \textit{CodeIgniter 4} dan PHP. Konversi ini tidak mengubah fitur yang terdapat pada \textit{SharIF Judge} sehingga dilakukan pengujian untuk setiap fitur agar berjalan sama dengan \textit{SharIF Judge} versi \textit{CodeIgniter 3}. Pengujian dilakukan dengan membandingkan fitur yang terdapat pada \textit{SharIF Judge} berbasis \textit{CodeIgniter 4} dan \textit{SharIF Judge} berbasis \textit{CodeIgniter 3}. Pengujian menghasilkan tidak terdapat perubahan pada fitur yang terdapat pada \textit{SharIF Judge} berbasis \textit{CodeIgniter 4} dan \textit{SharIF Judge} berbasis \textit{CodeIgniter 3}.
+}
+\abstrakENG{SharIF Judge is an online judge customized for the needs of tasks in the Computer Science program at Parahyangan Catholic University. Initially named Sharif Judge, it was an open-source software developed by Mohammad Javad with the purpose of evaluating code in various languages such as C, C++, Java, and Python. The SharIF Judge software was built using CodeIgniter 3, a PHP-based framework. Later on, it was forked and modified to become SharIF Judge, incorporating additional functionalities tailored to the needs of the Computer Science program at UNPAR (Parahyangan Catholic University) for collecting students' assignments and exams.
 
-The current version of SharIF Judge utilizes CodeIgniter 3, a lightweight framework that provides numerous libraries for development. However, as CodeIgniter 3 has entered the maintenance phase, it no longer receives updates from its creators. Furthermore, CodeIgniter 3 has become unusable and lost documentation from its official website. Therefore, in this thesis, SharIF Judge will be migrated to the CodeIgniter 4 framework.
+Currently, SharIF Judge utilizes CodeIgniter 3, known for its efficiency in resource usage and providing a variety of libraries for development. However, since CodeIgniter 3 has entered a maintenance phase, it no longer receives updates from its developers and has lost documentation on its official website. Therefore, in this final project, SharIF Judge will be converted to the CodeIgniter 4 framework.
 
-The conversion involves transferring files to a new directory and rewriting functions found in SharIF Judge. Additionally, some libraries are removed and replaced due to their absence in CodeIgniter 4. The missing libraries are substituted with new functions available in CodeIgniter 4 and PHP. This conversion does not alter the features of SharIF Judge, and thorough testing is conducted for each feature to ensure it functions the same as SharIF Judge version CodeIgniter 3.} 
+The conversion involves moving files to a new directory and rewriting functions present in SharIF Judge. Additionally, some libraries are removed and replaced since they are no longer available in CodeIgniter 4. The absent libraries are substituted with new functions present in CodeIgniter 4 and PHP. This conversion does not alter the features of SharIF Judge, and thorough testing is conducted for each feature to ensure that it operates similarly to the CodeIgniter 3-based version. The testing compares the features of SharIF Judge based on CodeIgniter 4 with those of SharIF Judge based on CodeIgniter 3, resulting in no changes observed in the features between the two versions.} 
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -266,7 +267,7 @@ The conversion involves transferring files to a new directory and rewriting func
 % Persembahan : kepada siapa anda mempersembahkan skripsi ini ...
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
-\untuk{<<kepada siapa anda mempersembahkan skripsi ini\ldots?>>}
+\untuk{Tugas Akhir ini dipersembahkan kepada Tuhan Yang Maha Esa, Keluarga, dan rekan-rekan sesama mahasiswa.}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -277,7 +278,16 @@ The conversion involves transferring files to a new directory and rewriting func
 % kasih kepada yang telah membantu anda bla bla bla ....  
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
-\prakata{<<Tuliskan kata pengantar dari anda di sini \ldots>>} 
+\prakata{Puji syukur kepada Tuhan Yang Masa Esa atas seluruh berkat dan kekuatan yang diberikan kepada penulis sehingga dapat menyelesaikan tugas akhir dengan judul  "Konversi \textit{SharIF Judge} dari berbasis \textit{CodeIgniter 3} menjadi berbasis \textit{CodeIgniter 4}". Penulis juga ingin mengucapkan terima kasih sebesar-besarnya kepada beberapa pihak atas dukungan dan bantuan yang telah diberikan. Penulis ingin mengucapkan terima kasih kepada:\\
+\begin{enumerate}
+	\item Kedua orang tua dan keluarga penulis yang selalu memberikan dukungan kepada penulis.
+	\item Bapak Pascal Alfadian sebagai dosen pembimbing yang telah membimbing serta membantu memberikan arahan pada tugas akhir ini.
+	\item Seluruh rekan kerja DNArtworks yang telah membantu dalam pengerjaan tugas akhir ini.
+	\item Kepada seluruh teman-teman yang telah menemani, membantu, dan memberi dukungan selama pengerjaan tugas akhir ini.
+	\item Pihak-pihak lain yang telah membantu penulisan skripsi ini, yang terus memberikan doa dan semangat kepada penulis.
+\end{enumerate}
+Akhir kata, penulis ingin mengucapkan permohonan maaf atas kekurangan-kekurangan pada tugas akhir ini. Penulis berharap agar tugas akhir ini dapat bermanfaat bagi pembaca yang hendak melakukan penelitian serupa.
+} 
 %=============================================================================
 
 %_____________________________________________________________________________

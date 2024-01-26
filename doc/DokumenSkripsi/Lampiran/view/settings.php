@@ -1,7 +1,7 @@
 <!-- {#
  # SharIF Judge
- # file: settings.twig
- # author: Mohammad Javad Naderi <mjnaderi@gmail.com>
+ # file: settings.php
+ # author: Filipus Setio Nugroho <filipussetio@gmail.com>
  #} -->
 <?= $this->extend('templates/base') ?>
 <?= $this->section('icon') ?>fa-gear<?= $this->endSection()?>
