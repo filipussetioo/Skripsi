@@ -22,7 +22,16 @@ Struktur aplikasi \textit{SharIF Judge} dipindahkan seperti pemetaan pada bab \r
 \subsubsection{\texttt{app/Config/Encryption.php}}
 \textit{File} ini terdapat perubahan pada \textit{encryption key} yang dipindahkan dari \texttt{config/config.php}.
 \subsubsection{\texttt{app/Config/Filters.php}}
-\textit{File} ini terdapat penambahan penamaan seluruh \textit{filters} yang telah dibentuk.
+\textit{File} ini terdapat penambahan penamaan seluruh \textit{filters} yang telah dibentuk. Berikut merupakan kelas yang ditambahkan menuju variabel \texttt{aliases}:
+\begin{itemize}
+	\item \texttt{check-installandlogin} merupakan penamaan untuk \textit{filter} \texttt{CheckInstallAndLogin}.
+	\item \texttt{check-login} merupakan penamaan untuk \textit{filter} \texttt{CheckLogin}.
+	\item \texttt{check-loginandlevelAdmin} merupakan penamaan untuk \textit{filter} \texttt{CheckLoginandLevelAdmin}.
+	\item \texttt{check-loginandlevelHead} merupakan penamaan untuk \textit{filter} \texttt{CheckLoginandLevelHead}.
+	\item \texttt{check-loginandcli} merupakan penamaan untuk \textit{filter} \texttt{CheckLoginandCLI}.
+	\item \texttt{check-loginandisajax} merupakan penamaan untuk \textit{filter} \texttt{CheckLoginandisAjax}.
+	\item \texttt{check-iscli} merupakan penamaan untuk \textit{filter} \texttt{CheckCLI}.
+\end{itemize}
 \subsubsection{\texttt{app/Config/Routes.php}}
 \textit{File} ini terdapat penambahan manual dari \textit{routes} pada \textit{SharIF Judge}.
 \subsubsection{\texttt{app/Config/Secrets.example.php}}

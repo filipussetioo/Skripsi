@@ -17,9 +17,9 @@ Tugas merupakan suatu bentuk pembelajaran dan penilaian yang diberikan oleh peng
 \end{figure} 
 
 
-\textit{SharIF Judge} pada awalnya bernama \textit{Sharif Judge} yang merupakan sebuah perangkat lunak \textit{open source}. \textit{Sharif Judge} berfungsi untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python secara online. \textit{Sharif Judge} pada awalnya dibentuk oleh Mohammad Javad menggunakan \textit{framework} \textit{CodeIgniter 3} yang merupakan \textit{framework} berbasis PHP atau \textit{Hypertext Preprocessor} \cite{sharif:23}. \textit{Sharif Judge} kemudian di \textit{fork} dan dimodifikasi menjadi \textit{SharIF Judge} dengan penambahan fungsi sesuai kebutuhan Informatika UNPAR untuk mengumpulkan tugas dan ujian mahasiswa\cite{sharif:23}. \textit{SharIF Judge} menggunakan autentikasi \textit{Remote Authentication Dial In Service} (RADIUS) dan \textit{Light Weight Directory Protocol} (LDAP) yang memungkinkan autentikasi menuju \textit{database} pusat pada RADIUS dan direktori pada LDAP. Autentikasi ini membutuhkan \textit{server} yang terintegrasi untuk menyimpan data-data yang diperlukan.
+\textit{SharIF Judge} pada awalnya bernama \textit{Sharif Judge} yang merupakan sebuah perangkat lunak \textit{open source}. \textit{Sharif Judge} berfungsi untuk menilai kode dengan beberapa bahasa seperti C, C++, Java, dan Python secara online. \textit{Sharif Judge} pada awalnya dibentuk oleh Mohammad Javad menggunakan \textit{framework} \textit{CodeIgniter 3} yang merupakan \textit{framework} berbasis PHP atau \textit{Hypertext Preprocessor}. \textit{Sharif Judge} kemudian di \textit{fork} dan dimodifikasi menjadi \textit{SharIF Judge} dengan penambahan fungsi sesuai kebutuhan Informatika UNPAR untuk mengumpulkan tugas dan ujian mahasiswa. \textit{SharIF Judge} menggunakan autentikasi \textit{Remote Authentication Dial In Service} (RADIUS) dan \textit{Light Weight Directory Protocol} (LDAP) yang memungkinkan autentikasi menuju \textit{database} pusat pada RADIUS dan direktori pada LDAP. Autentikasi ini membutuhkan \textit{server} yang terintegrasi untuk menyimpan data-data yang diperlukan.
 
-\textit{CodeIgniter 3} merupakan sebuah \textit{framework opensource} yang bertujuan untuk mempermudah dalam pembangunan sebuah aplikasi \textit{website} menggunakan PHP. \textit{CodeIgniter 3} menggunakan struktur MVC yang membagi \textit{file} menjadi 3 buah yaitu \textit{Model, View,} dan \textit{Controller}. Selain itu, \textit{CodeIgniter 3} merupakan \textit{framework} cepat karena hanya membutuhkan sedikit sumber daya untuk menjalankannya. \textit{Framework} ini juga menyediakan banyak \textit{library} untuk melakukan pembangunan\cite{ci3:22}. Namun, \textit{CodeIgniter} 3 sudah memasuki fase \textit{maintenance}\footnote{Pemberitahuan fase \textit{maintenance CodeIgniter 3} \url{https://codeigniter.com/download}(19 Maret 2023)} sehingga tidak mendapatkan pembaharuan lebih lanjut dari pembentuknya. \textit{CodeIgniter 3} pada akhirnya tidak dapat dipakai dan akan kehilangan dokumentasi dari situs web resminya. Sehingga, perangkat lunak yang menggunakan \textit{CodeIgniter 3} perlu dikonversi ke \textit{framework} \textit{CodeIgniter} dengan versi terbaru yakni \textit{CodeIgniter 4}.
+\textit{CodeIgniter 3} merupakan sebuah \textit{framework opensource} yang bertujuan untuk mempermudah dalam pembangunan sebuah aplikasi \textit{website} menggunakan PHP. \textit{CodeIgniter 3} menggunakan struktur MVC yang membagi \textit{file} menjadi 3 buah yaitu \textit{Model, View,} dan \textit{Controller}. Selain itu, \textit{CodeIgniter 3} merupakan \textit{framework} cepat karena hanya membutuhkan sedikit sumber daya untuk menjalankannya. \textit{Framework} ini juga menyediakan banyak \textit{library} untuk melakukan pembangunan\cite{ci3:22}. Namun, \textit{CodeIgniter} 3 sudah memasuki fase \textit{maintenance}\footnote{Pemberitahuan fase \textit{maintenance CodeIgniter 3} \url{https://codeigniter.com/download}(19 Maret 2023)} sehingga tidak mendapatkan pembaharuan lebih lanjut dari pembentuknya. \textit{CodeIgniter 3} pada akhirnya tidak dapat digunakan kembali dan kehilangan dokumentasi dari situs web resminya. Sehingga, perangkat lunak yang menggunakan \textit{CodeIgniter 3} perlu dikonversi ke \textit{framework} \textit{CodeIgniter} dengan versi terbaru yakni \textit{CodeIgniter 4}.
 
 \textit{CodeIgniter 4} merupakan versi terbaru dari \textit{framework} \textit{CodeIgniter} yang memiliki banyak perubahan fitur dari versi sebelumnya. \textit{CodeIgniter 4} bisa dijalankan menggunakan versi PHP 7.4 atau lebih baru sedangkan \textit{CodeIgniter 3} bisa dijalankan menggunakan versi PHP 5.6 atau lebih baru. \textit{CodeIgniter 4} membagi \textit{file} menggunakan struktur MVC, namun memiliki struktur direktori berbeda dengan versi sebelumnya\cite{codeigniter:23:ci4}. Perubahan direktori ditunjukan oleh Gambar \ref{fig:dirMappingBab1}.
 \begin{figure}[H]
@@ -29,13 +29,12 @@ Tugas merupakan suatu bentuk pembelajaran dan penilaian yang diberikan oleh peng
 	\label{fig:dirMappingBab1} 
 \end{figure}
 
-Gambar \ref{fig:dirMappingBab1} menunjukan perubahan struktur yang terdapat pada \textit{CodeIgniter 4}. Rincian perubahan dapat dilihat pada bab \ref{chap:analisis}. Pada tugas akhir ini dilakukan konversi \textit{SharIF Judge} dari \textit{CodeIgniter 3} menjadi \textit{CodeIgniter 4}.
+Gambar \ref{fig:dirMappingBab1} menunjukan perubahan struktur yang terdapat pada \textit{CodeIgniter 4}. Rincian perubahan dapat dilihat pada bab \ref{chap:analisis}. Pada tugas akhir ini dilakukan konversi \textit{SharIF Judge} dari \textit{CodeIgniter 3} menjadi \textit{CodeIgniter 4}. Konversi dilakukan agar \textit{SharIF Judge} dapat digunakan kembali apabila \textit{CodeIgniter 3} sudah tidak mendapat dukungan.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
 \begin{itemize}
 	\item Bagaimana cara melakukan konversi \textit{SharIF Judge} pada \textit{CodeIgniter 3} menjadi \textit{CodeIgniter 4}? 
-	\item Bagaimana cara mengimplementasikan hasil analisis konversi pada \textit{framework CodeIgniter 3} ke \textit{CodeIgniter 4} pada aplikasi \textit{SharIF Judge}.
 		\item Bagaimana cara menguji \textit{SharIF Judge} berbasis \textit{CodeIgniter 4}?.
 \end{itemize}
 \section{Tujuan}
@@ -43,7 +42,6 @@ Gambar \ref{fig:dirMappingBab1} menunjukan perubahan struktur yang terdapat pada
 Tujuan dari tugas akhir ini adalah sebagai berikut:
 \begin{itemize}
 	\item Melakukan konversi dengan megubah kode sesuai dengan standar \textit{CodeIgniter 4}.
-	\item Mengimplementasikan hasil analisis konversi pada \textit{framework CodeIgniter 3} ke \textit{CodeIgniter 4} pada aplikasi \textit{SharIF Judge}.
 	\item Melakukan pengujian dan perbandingan setiap fitur pada \textit{SharIF Judge} berbasis \textit{CodeIgniter 3} dengan \textit{SharIF Judge} berbasis \textit{CodeIgniter 4}.
 \end{itemize}
 

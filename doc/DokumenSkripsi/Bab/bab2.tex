@@ -263,8 +263,8 @@ Penggunga dapat memakai berbagai fungsi \textit{library jquery} menggunakan sint
 \textit{CodeIgniter 3} menyediakan kelas \textit{email} dengan fitur sebagai berikut:
 
 \begin{itemize}
-\item Beberapa Protokol: \textit{Mail, Sendmail}, dan \textit{Send Mail Transfer Protocol}(SMTP)
-\item Enkripsi \textit{Transport Layer Security}(TLS) dan \textit{Secure Sockets Layer}(SSL) untuk SMTP
+\item Beberapa Protokol: \textit{Mail, Sendmail}, dan \textit{Send Mail Transfer Protocol} (SMTP)
+\item Enkripsi \textit{Transport Layer Security} (TLS) dan \textit{Secure Sockets Layer} (SSL) untuk SMTP
 \item Beberapa Penerima
 \item \textit{Carbon Copy}(CC) dan \textit{Blind Carbon Copy}(BCC)
 \item HTML atau \textit{email} teks biasa
@@ -275,7 +275,7 @@ Penggunga dapat memakai berbagai fungsi \textit{library jquery} menggunakan sint
 \item Alat \textit{Debugging email}
 \end{itemize}
 
-Penggunaan \textit{library email} dapat dikonfigurasikan pada \textit{file} \texttt{config}. Pengguna dapat mengirim \textit{email} menggunakan fungsi-fungsi yang telah disediakan \textit{library email}. Kode \ref{kode:emaillib} menunjukan contoh pengiriman email dari \texttt{your@example.com} menuju \texttt{someone@example.com} melalui \textit{controller}.
+SMTP merupakan protokol pengiriman \textit{email} yang berfungsi untuk mengirim dan mengambil \textit{email}. TLS berfungsi untuk melakukan enkripsi dengan cara memberikan koneksi aman pada \textit{server} dan \textit{client}. Sedangkan SSL melakukan enkripsi pada data yang dikirimkan agar tidak mungkin dibaca. Penggunaan \textit{library email} dapat dikonfigurasikan pada \textit{file} \texttt{config}. Pengguna dapat mengirim \textit{email} menggunakan fungsi-fungsi yang telah disediakan \textit{library email}. Kode \ref{kode:emaillib} menunjukan contoh pengiriman email dari \texttt{your@example.com} menuju \texttt{someone@example.com} melalui \textit{controller}.
 
 \begin{lstlisting}[language=PHP, caption=Contoh pengiriman email melalui \textit{controller}, label=kode:emaillib]
 $this->load->library('email');
@@ -1903,7 +1903,7 @@ Kode \ref{kode:ci4databaseforge} akan membangun \textit{database} dengan tabel b
 \item Beberapa Protokol: \textit{Mail, Sendmail},dan SMTP
 \item Enkripsi \textit{Transport Layer Security}(TLS) dan \textit{Secure Sockets Layer}(SSL) untuk SMTP
 \item Beberapa Penerima
-\item \textit{Carbon Copy}(CC) dan \textit{Blind Carbon Copy}(BCC)
+\item \textit{Carbon Copy}(CC) dan \textit{Blind Carbon Copy} (BCC)
 \item HTML atau \textit{email} teks biasa
 \item Lampiran
 \item Pembungkus kata
@@ -1912,7 +1912,7 @@ Kode \ref{kode:ci4databaseforge} akan membangun \textit{database} dengan tabel b
 \item Alat \textit{Debugging email}
 \end{itemize}
 
-Pengguna dapat melakukan konfigurasi pada \textit{file} \verb|app/Config/Email.php| untuk melakukan pengiriman \textit{email}. Kode \ref{kode:ci4emailclassconfig} menunjukan contoh konfigurasi preferensi pengiriman \textit{email} secara manual.
+SMTP merupakan protokol pengiriman \textit{email} yang berfungsi untuk mengirim dan mengambil \textit{email}. TLS berfungsi untuk melakukan enkripsi dengan cara memberikan koneksi aman pada \textit{server} dan \textit{client}. Sedangkan SSL melakukan enkripsi pada data yang dikirimkan agar tidak mungkin dibaca. Pengguna dapat melakukan konfigurasi pada \textit{file} \verb|app/Config/Email.php| untuk melakukan pengiriman \textit{email}. Kode \ref{kode:ci4emailclassconfig} menunjukan contoh konfigurasi preferensi pengiriman \textit{email} secara manual.
  \begin{lstlisting}[language=PHP, caption=Contoh kode untuk melakukan konfigurasi \textit{email}. ,label=kode:ci4emailclassconfig]
 <?php
 
@@ -2279,7 +2279,7 @@ Pengguna dapat melakukan pembaharuan \textit{routing} dengan cara sebagai beriku
  
 \textit{CodeIgniter 4} menyediakan \textit{library} untuk digunakan dan dapat diinstall apabila diperlukan. Pemanggilan \textit{library} berubah dari \verb|$this->load->library('x');| menjadi \verb|$this->x = new X();|. Terdapat beberapa \textit{library} yang harus di perbaharui dengan sedikit perubahan. Berikut merupakan beberapa \textit{libraries} yang terdapat pembaharuan:
 
-\subsubsection{\textit{Emails}}
+\subsubsection{\textit{Email}}
 
 Perubahan \textit{email} hanya terdapat pada nama dari \textit{method} dan pemanggilan \textit{library email}. Pemanggilan  \textit{library} berubah dari \verb|$this->load->library('email);| menjadi \verb|$email = service('email');| dan selanjutnya perlu dilakukan perubahan pada semua \verb|$this->email| menjadi \verb|$email|. Selanjutnya beberapa pemanggilan \textit{method} berubah dengan tambahan \textit{set} didepannya seperti \textit{from} menjadi \textit{setFrom}.
 
